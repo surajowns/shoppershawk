@@ -62,7 +62,7 @@ class CommonController extends Controller
             ]);
 
             $data=$request->all();
-            $data['passowrd']=bcrypt($request->password);
+            $data['password']=bcrypt($request->password);
             if($request->hasFile('profile_image')){
                 $image = $request->file('profile_image');
                 $name = time().'.'.$image->getClientOriginalExtension();
