@@ -53,7 +53,7 @@
 	</div>
 </div> 
 </form>                       
-<img src="{{url('/category/'.$editData['image'])}}" id="brand_image" alt="category_image" width=200 height=200>
+<img src="{{url('public/category/'.$editData['image'])}}" id="brand_image" alt="category_image" width=200 height=200>
 			
 			</div>
 		</div>
