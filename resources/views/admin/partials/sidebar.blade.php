@@ -2,7 +2,7 @@
 <div class="sidebar" id="sidebar">
 			<div class="sidebar-logo">
 				<a href="{{url('admin/dashboard')}}">
-					<img src="{{url('admin/assets/img/logo-icon.png')}}" class="img-fluid" alt="">
+					<img src="{{url('public/admin/assets/img/logo-icon.png')}}" class="img-fluid" alt="">
 				</a>
 			</div>
 			<div class="sidebar-inner slimscroll">

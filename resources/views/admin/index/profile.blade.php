@@ -21,7 +21,7 @@
             <div class="row align-items-center">
                 <div class="col-auto profile-image">
                     <a href="javascript:void(0);">
-                        <img class="rounded-circle" alt="User Image" src="{{url('/admin/images/'.Auth::User()->profile_image)}}">
+                        <img class="rounded-circle" alt="User Image" src="{{url('public/admin/images/'.Auth::User()->profile_image)}}">
                     </a>
                 </div>
                 <div class="col ml-md-n2 profile-user-info">

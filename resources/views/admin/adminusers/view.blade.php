@@ -48,7 +48,7 @@
                                <td>{{$user['email']}}</td>
                                <td>{{$user['location']}}</td>
                                <td>{{$user['roles']['name']}}</td>
-                               <td><img class="rounded service-img mr-1" src="{{url('admin/images/'.$user['profile_image'])}}" alt="profile"></td>
+                               <td><img class="rounded service-img mr-1" src="{{url('public/admin/images/'.$user['profile_image'])}}" alt="profile"></td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/users/'.$user['id'].'/'.$user['status'])}}">{{$user['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">
                                     <a href="{{url('admin/admin_users/edit-user/'.$user['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
@@ -66,12 +66,12 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{url('admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('admin/assets/js/moment.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{url('admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrapValidator.min.html')}}"></script>
-<script src="{{url('admin/assets/plugins/datatables/datatables.min.js')}}"></script>
-<script src="{{url('admin/assets/js/select2.min.js')}}"></script>
-<script src="{{url('admin/assets/js/admin.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/moment.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
+<script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 @stop

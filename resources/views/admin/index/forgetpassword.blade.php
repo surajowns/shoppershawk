@@ -33,7 +33,7 @@
 						<div class="account-header">
 							<div class="account-logo text-center mb-4">
 								<a href="index.html">
-									<img src="assets/img/logo-icon.png" alt="" class="img-fluid">
+									<img src="{{url('public/admin/assets/img/logo-icon.png')}}" alt="" class="img-fluid">
 								</a>
 							</div>
 						</div>

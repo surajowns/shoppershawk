@@ -40,7 +40,7 @@
 
                                <td>{{$loop->iteration}}</td>
                                <td>{{$cat['name']}}</td>
-                               <td><img class="rounded service-img mr-1" src="{{url('category/'.$cat['image'])}}" alt="Brand Image"></td>
+                               <td><img class="rounded service-img mr-1" src="{{url('public/category/'.$cat['image'])}}" alt="Brand Image"></td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/brands/'.$cat['id'].'/'.$cat['status'])}}">{{$cat['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">
                                     <a href="{{url('admin/brand/edit-brand/'.$cat['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
@@ -59,12 +59,12 @@
 @endsection
 @section('javascript')
 
-<script src="{{url('admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('admin/assets/js/moment.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{url('admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrapValidator.min.html')}}"></script>
-<script src="{{url('admin/assets/plugins/datatables/datatables.min.js')}}"></script>
-<script src="{{url('admin/assets/js/select2.min.js')}}"></script>
-<script src="{{url('admin/assets/js/admin.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/moment.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
+<script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 @stop

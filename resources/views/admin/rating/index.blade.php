@@ -65,12 +65,12 @@
 @endsection
 @section('javascript')
 
-<script src="{{url('admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('admin/assets/js/moment.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{url('admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrapValidator.min.html')}}"></script>
-<script src="{{url('admin/assets/plugins/datatables/datatables.min.js')}}"></script>
-<script src="{{url('admin/assets/js/select2.min.js')}}"></script>
-<script src="{{url('admin/assets/js/admin.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/moment.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
+<script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 @stop

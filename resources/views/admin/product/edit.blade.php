@@ -154,7 +154,7 @@
  @foreach($productimage as $images)
              <div class="col-sm-3">
              <a class="whRemove delete_wish_list_item removeitem" href="{{url('admin/remove-image/'.$images['id'])}}" onclick="if(!window.confirm('Do You Want to Delete ?')) return false;"  title="Remove Item" data="{{$images['id']}}"><i class="fa fa-times"></i></a>
-            <img src="{{url('/product_image/'.$images['image'])}}" alt="" style="width: 80px;height:80px; border: 2px solid" class="img-responsive">
+            <img src="{{url('public/product_image/'.$images['image'])}}" alt="" style="width: 80px;height:80px; border: 2px solid" class="img-responsive">
             </div>
             @endforeach   
     </div>
