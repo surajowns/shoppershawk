@@ -23,7 +23,12 @@
 
 
 </head>
+<style>
+#DataTables_Table_0_filter{
 
+    text-align: right;
+}
+</style>
 <body>
 	<div class="main-wrapper">
 	
