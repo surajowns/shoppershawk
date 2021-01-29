@@ -66,7 +66,7 @@ class LoginController extends Controller
                     $user=Auth::User();
                     Session::put('logRole',Auth::User()['role']); 
                     Session::put('logid',Auth::User()['id']) ; 
-                    $clientIP = \Request::ip();
+                    // $clientIP = \Request::ip();
 
                     $url='https://maps.google.com/maps/api/geocode/json?latlng='.$request->latitude.','.$request->longitude.'&key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries';
                     //  echo $url;
@@ -80,13 +80,13 @@ class LoginController extends Controller
                     // $data=json_decode($json);
                     // dd($data);
 
-                       $loginlog= new LoginLogModel;
-                       $loginlog->user=$user['name'];
-                       $loginlog->mobile=$user['mobile'];
-                       $loginlog->location=$user['location'];
-                       $loginlog->email=$request->email;
-                       $loginlog->ip_address=$clientIP;
-                       $loginlog->save();
+                    //    $loginlog= new LoginLogModel;
+                    //    $loginlog->user=$user['name'];
+                    //    $loginlog->mobile=$user['mobile'];
+                    //    $loginlog->location=$user['location'];
+                    //    $loginlog->email=$request->email;
+                    //    $loginlog->ip_address=$clientIP;
+                    //    $loginlog->save();
                     return redirect('admin/dashboard')
                             ->with('success', 'Welcome to admin dashboard.');
                     
