@@ -117,5 +117,11 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
       //forget password
       Route::any('/forget_passord','LoginController@ForgetPassword')->name('Forget Password');
       Route::any('/reset_password/{token}','LoginController@ResetPassword')->name('Reset Password');
+       
+
+      Route::get('/under-construction',function(){
+
+        return view('underconstruction');
+      });
 
 });

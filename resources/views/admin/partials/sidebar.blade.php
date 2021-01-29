@@ -25,10 +25,10 @@
 							<a href="{{url('/admin/product')}}"><i class="fas fa-bullhorn"></i> <span>Products</span></a>
 						</li>
 						<li>
-							<a href="total-report.html"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
+							<a href="{{url('admin/under-construction')}}"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
 						</li>
 						<li>
-							<a href="payment_list.html"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
+							<a href="{{url('admin/under-construction')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
 						</li>
 						<li>
 							<a href="{{url('admin/coupon')}}"><i class="fas fa-ticket-alt"></i> <span>Coupons</span></a>
@@ -40,7 +40,7 @@
 							<a href="{{url('admin/social_links')}}"><i class="fas fa-link"></i> <span>Social Links</span></a>
 						</li>
 						<li>
-							<a href=""><i class="fas fa-wallet"></i> <span> Content Management</span></a>
+							<a href="{{url('admin/under-construction')}}"><i class="fas fa-wallet"></i> <span> Content Management</span></a>
 						</li>
 						<li>
 							<a href="{{url('/admin/role')}}"><i class="fas fa-user"></i><span>Role</span></a>
