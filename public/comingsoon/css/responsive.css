@@ -1,0 +1,37 @@
+
+@media only screen and (max-width: 5000px){
+	
+}
+
+@media only screen and (max-width: 1400px){
+	
+}
+
+@media only screen and (max-width: 1140px){
+	
+}
+
+@media only screen and (min-width: 768px){
+	
+}
+
+@media only screen and (max-width: 767px){
+	
+}
+
+@media only screen and (max-width: 599px){
+	
+}
+
+@media only screen and (max-width: 479px) {
+	#c{
+		width: 650px;
+	    left: 50%;
+	    position: absolute;
+	    top: 35%;
+	    transform: translate(-50%, -50%);
+	}
+	.content{
+		top: 40%;
+	}
+}

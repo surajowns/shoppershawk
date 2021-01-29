@@ -15,7 +15,10 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/','HomeController@index');
+Route::get('/',function(){
+    return view('front.common.comingsoon');
+});
+Route::get('/home','HomeController@index');
 Route::get('/register','HomeController@Register');
 Route::get('/login','HomeController@Login');
 
