@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Banner')
+@section('title','Under Construction')
 @section('content')
 <!-- Page Header -->
 
