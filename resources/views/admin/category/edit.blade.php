@@ -58,14 +58,14 @@
 
                         <div class="form-group row">
                             
-                            <div class="col-sm-12">
-                            <button class="btn btn-primary" type="submit">Edit Category</button>
+                            <div class="col-sm-12 text-center">
+                            <button class="btn btn-primary text-center" type="submit">Edit Category</button>
 										<a href="{{url('/admin/category')}}" class="btn btn-link">Cancel</a>                            </div>
                         </div>                                    
                     </div>
                 </div> 
                 </form> 
-                <img src="{{url('/category/'.$editData['image'])}}" id="category_image" alt="category_image" width=200 height=200>
+                <img src="{{url('public/category/'.$editData['image'])}}" id="category_image" alt="category_image" width=200 height=200>
 			</div>
 		</div>
 	</div>

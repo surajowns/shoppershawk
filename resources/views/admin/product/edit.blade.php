@@ -142,7 +142,7 @@
 
 <div class="form-group row">
     
-    <div class="col-sm-12">
+    <div class="col-sm-12 text-center">
     <button class="btn btn-primary" type="submit">Edit Product</button>
                                 <a href="{{url('/admin/product')}}" class="btn btn-link">Cancel</a>			</div>
 </div>                                    

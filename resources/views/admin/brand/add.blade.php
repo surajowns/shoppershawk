@@ -46,7 +46,7 @@
 		</div>
 		<div class="form-group row text-center">
 			
-			<div class="col-sm-12">
+			<div class="col-sm-12 text-center">
 			<button class="btn btn-primary " type="submit">Add Brand</button>
 										<a href="{{url('/admin/brand')}}" class="btn btn-link">Cancel</a>			</div>
 		</div>                                    

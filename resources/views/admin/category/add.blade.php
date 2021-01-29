@@ -56,8 +56,8 @@
 		</div>
 		<div class="form-group row">
 			
-			<div class="col-sm-12">
-			<button class="btn btn-primary" type="submit">Add Category</button>
+			<div class="col-sm-12 text-center">
+			<button class="btn btn-primary " type="submit">Add Category</button>
 										<a href="{{url('/admin/category')}}" class="btn btn-link">Cancel</a>			</div>
 		</div>                                    
 	</div>
