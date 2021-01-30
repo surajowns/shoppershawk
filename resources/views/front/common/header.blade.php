@@ -32,11 +32,11 @@
                             </ul>
                         </li>
                        @endforeach           
-                        <li class="hidden"><a href="#">New Sofas</a></li>
+                        <!-- <li class="hidden"><a href="#">New Sofas</a></li>
                         <li class="hidden"><a href="#">Sleight Sofas</a></li>
                         <li>
                             <a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More Categories</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

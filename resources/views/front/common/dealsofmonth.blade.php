@@ -1,3 +1,16 @@
+<?php
+  $product=App\Product::with('productImage')->where('type',1)->where('status',1)->get()->toArray();
+  
+  $category=array();
+  foreach($product as $productdetails){
+      $category[]=$productdetails['category_id'];
+    
+  }
+//   dd($category);
+  $categoryies=App\CategoryModel::whereIn('id',$category)->get();
+//   dd($categoryies);
+
+?>
 <div class="product_area deals_product">
     <div class="container">
         <div class="row">
@@ -8,26 +21,15 @@
                     </div>
                     <div class="product_tab_btn">
                         <ul class="nav" role="tablist" id="nav-tab">
+                        @foreach($categoryies as $cat)
                             <li>
-                                <a class="active" data-toggle="tab" href="#Fashion" role="tab" aria-controls="Fashion" aria-selected="true">
-                                    Fashion & Clothing
+                                <a class="active" data-toggle="tab" href="#{{$cat['id']}}" role="tab" aria-controls="{{$cat['id']}}" aria-selected="true">
+                                  {{ $cat['name']}}
                                 </a>
                             </li>
-                            <li>
-                                <a data-toggle="tab" href="#Games" role="tab" aria-controls="Games" aria-selected="false">
-                                    Games & Consoles
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#Speaker" role="tab" aria-controls="Speaker" aria-selected="false">
-                                    Headphone & Speaker
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#Mobile" role="tab" aria-controls="Mobile" aria-selected="false">
-                                    Mobile & Tablets
-                                </a>
-                            </li>
+                            @endforeach
+                           
+                            
                         </ul>
                     </div>
                 </div>
@@ -35,13 +37,14 @@
         </div>
 
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="Fashion" role="tabpanel">
+        @foreach($product as $productdetails)
+            <div class="tab-pane fade show active" id="$productdetails['category_id']" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product1.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product2.jpg" alt="" /></a>
+                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
                                 <div class="label_product">
                                     <span class="label_sale">Sale</span>
                                 </div>
@@ -63,16 +66,16 @@
                             </div>
                             <div class="product_content">
                                 <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                    <h4 class="product_name"><a href="product-countdown.html">{{$productdetails['name']}}</a></h4>
                                     <div class="price_box">
-                                        <span class="old_price">₹86.00</span>
-                                        <span class="current_price">₹79.00</span>
+                                        <span class="old_price">₹{{$productdetails['price']}}</span>
+                                        <span class="current_price">₹{{$productdetails['selling_price']}}</span>
                                     </div>
                                     <div class="countdown_text">
                                         <p><span>Hurry Up!</span> Offers ends in:</p>
                                     </div>
                                     <div class="product_timing">
-                                        <div data-countdown="2021/12/15"></div>
+                                        <div data-countdown="{{$productdetails['created_at']}}"></div>
                                     </div>
                                 </div>
                                 <div class="add_to_cart">
@@ -81,227 +84,10 @@
                             </div>
                         </figure>
                     </article>
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product3.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product4.jpg" alt="" /></a>
-                                <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li class="compare">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a>
-                                        </li>
-                                        <li class="quick_button">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Donec tempus pretium arcu et faucibus commodo</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">₹82.00</span>
-                                        <span class="current_price">₹75.00</span>
-                                    </div>
-                                    <div class="countdown_text">
-                                        <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
-                                        <div data-countdown="2021/08/15"></div>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html" title="Add to cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </figure>
-                    </article>
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product5.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product6.jpg" alt="" /></a>
-                                <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li class="compare">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a>
-                                        </li>
-                                        <li class="quick_button">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Natus erro at congue massa commodo sit Natus erro</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">₹80.00</span>
-                                        <span class="current_price">₹70.00</span>
-                                    </div>
-                                    <div class="countdown_text">
-                                        <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
-                                        <div data-countdown="2021/02/15"></div>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html" title="Add to cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </figure>
-                    </article>
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product7.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product8.jpg" alt="" /></a>
-                                <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li class="compare">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a>
-                                        </li>
-                                        <li class="quick_button">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Nullam maximus eget nisi dignissim sodales eget tempor</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">₹76.00</span>
-                                        <span class="current_price">₹75.00</span>
-                                    </div>
-                                    <div class="countdown_text">
-                                        <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
-                                        <div data-countdown="2021/11/15"></div>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html" title="Add to cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </figure>
-                    </article>
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product9.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product10.jpg" alt="" /></a>
-                                <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li class="compare">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a>
-                                        </li>
-                                        <li class="quick_button">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">₹72.00</span>
-                                        <span class="current_price">₹70.00</span>
-                                    </div>
-                                    <div class="countdown_text">
-                                        <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
-                                        <div data-countdown="2021/12/15"></div>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html" title="Add to cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </figure>
-                    </article>
-                    <article class="single_product">
-                        <figure>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-countdown.html"><img src="front/img/product/product11.jpg" alt="" /></a>
-                                <a class="secondary_img" href="product-countdown.html"><img src="front/img/product/product12.jpg" alt="" /></a>
-                                <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                        </li>
-                                        <li class="compare">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a>
-                                        </li>
-                                        <li class="quick_button">
-                                            <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
-                                    <div class="price_box">
-                                        <span class="old_price">₹65.00</span>
-                                        <span class="current_price">₹60.00</span>
-                                    </div>
-                                    <div class="countdown_text">
-                                        <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
-                                        <div data-countdown="2021/10/15"></div>
-                                    </div>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="cart.html" title="Add to cart">Add to cart</a>
-                                </div>
-                            </div>
-                        </figure>
-                    </article>
+                   
                 </div>
+                @endforeach
+
             </div>
             <div class="tab-pane fade" id="Games" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
