@@ -1,57 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Banner')
 @section('content')
-<style>
-.popup{
-    /* width: 900px;
-    margin: auto;
-    text-align: center */
-}
-.popup img{
-    /* width: 200px;
-    height: 200px; */
-    cursor: pointer
-}
-.show{
-    z-index: 999;
-    display: none;
-}
-.show .overlay{
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.66);
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.show .img-show{
-    width: 600px;
-    height: 400px;
-    background: #FFF;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    overflow: hidden;
-    z-index:9999;
-}
-.img-show span{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 99;
-    cursor: pointer;
-}
-.img-show img{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-/*End style*/
 
-</style>
 <!-- Page Header -->
 <div class="page-header">
     <div class="row">
@@ -94,10 +44,7 @@
 
                                <td>{{$loop->iteration}}</td>
                                <td>{{$banner['title']}}</td>
-                               <td> 
-                                   <div class="popup">
-                                      <img class="rounded service-img mr-1"  src="{{url('public/banner/'.$banner['banner_image'])}}" alt="Banner Image"></td>
-                                   </div>
+                               <td><img class="rounded service-img mr-1"  src="{{url('public/banner/'.$banner['banner_image'])}}" alt="Banner Image"></td>
                                <td>{{$banner['link']}}</td>
                                <td>{{$banner['type']}}</td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/banner/'.$banner['id'].'/'.$banner['status'])}}">{{$banner['status']==1?'Active':'Inactive'}}</a></td>
@@ -133,19 +80,4 @@
 <script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
 <script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 <script>
- $(function () {
-    "use strict";
-    
-    $(".popup img").click(function () {
-        var $src = $(this).attr("src");
-        $(".show").fadeIn();
-        $(".img-show img").attr("src", $src);
-    });
-    
-    $("span, .overlay").click(function () {
-        $(".show").fadeOut();
-    });
-    
-});
-</script>
 @stop
