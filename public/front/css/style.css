@@ -3140,7 +3140,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-position: center center;
   background-size: cover;
   height: 445px;
-  margin-right: 0 !important;
+  /* margin-right: 0 !important; */
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .single_slider {
