@@ -1,15 +1,10 @@
 <?php
   $product=App\Product::with('productImage')->where('type',1)->where('status',1)->get()->toArray();
-  
-  $category=array();
-  foreach($product as $productdetails){
-      $category[]=$productdetails['category_id'];
+//   foreach($product as $productdetails){
+//     print_r($productdetails['product_image']);
     
-  }
-//   dd($category);
-  $categoryies=App\CategoryModel::whereIn('id',$category)->get();
-//   dd($categoryies);
-
+//   }
+//   die;
 ?>
 <div class="product_area deals_product">
     <div class="container">
@@ -21,15 +16,26 @@
                     </div>
                     <div class="product_tab_btn">
                         <ul class="nav" role="tablist" id="nav-tab">
-                        @foreach($categoryies as $cat)
                             <li>
-                                <a class="active" data-toggle="tab" href="#{{$cat['id']}}" role="tab" aria-controls="{{$cat['id']}}" aria-selected="true">
-                                  {{ $cat['name']}}
+                                <a class="active" data-toggle="tab" href="#Fashion" role="tab" aria-controls="Fashion" aria-selected="true">
+                                    Fashion & Clothing
                                 </a>
                             </li>
-                            @endforeach
-                           
-                            
+                            <li>
+                                <a data-toggle="tab" href="#Games" role="tab" aria-controls="Games" aria-selected="false">
+                                    Games & Consoles
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Speaker" role="tab" aria-controls="Speaker" aria-selected="false">
+                                    Headphone & Speaker
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Mobile" role="tab" aria-controls="Mobile" aria-selected="false">
+                                    Mobile & Tablets
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -37,9 +43,10 @@
         </div>
 
         <div class="tab-content">
-        @foreach($product as $productdetails)
-            <div class="tab-pane fade show active" id="$productdetails['category_id']" role="tabpanel">
+          @foreach($product as $productdetails)
+            <div class="tab-pane fade show active" id="Fashion" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
+                   
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
@@ -84,11 +91,10 @@
                             </div>
                         </figure>
                     </article>
-                   
-                </div>
-                @endforeach
+                  </div>
+              </div>
+          @endforeach              
 
-            </div>
             <div class="tab-pane fade" id="Games" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
                     <article class="single_product">

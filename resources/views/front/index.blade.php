@@ -223,5 +223,6 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
+        @yield('javascript')
     </body>
 </html>

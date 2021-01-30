@@ -61,7 +61,7 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-3 col-form-label">Model Number</label>
         <div class="col-sm-9">
-            <input class="form-control" type="text" name="model_no" value="" id="model_no" required placeholder="Enter Model Number" required  autocomplete="off"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+            <input class="form-control" type="text" name="model_no" value="" id="model_no" required placeholder="Enter Model Number" required  autocomplete="off" >
             <span class="text-danger">{{$errors->first('model_no')}}</span>
         </div>
     </div>

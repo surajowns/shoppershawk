@@ -2302,7 +2302,7 @@ html.menu-opened body {
 	justify-content: center;
 }
 .sidebar-logo img {
-	max-height: 30px;
+	max-height:70px;
 	width: auto;
 }
 .pricing-box .pricing-selected .card {

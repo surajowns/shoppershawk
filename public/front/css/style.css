@@ -136,7 +136,7 @@ button, input[type="submit"] {
 }
 
 img {
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
 }
 
