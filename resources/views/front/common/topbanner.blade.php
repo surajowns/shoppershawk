@@ -13,13 +13,13 @@
                             @foreach($topbanner as $banner)
                                 <div class="single_slider swiper-slide d-flex align-items-center" data-bgimg="{{url('public/banner/'.$banner['banner_image'])}}">
                                     <div class="slider_content">
-                                        <h3>popular products</h3>
+                                        <h3></h3>
                                         <h1>
-                                            summer <br />
-                                            collection 2020
+                                             <br />
+                                          
                                         </h1>
-                                        <p>discount <span> -30% off</span> this week</p>
-                                        <a class="button" href="shop.html">DISCOVER NOW</a>
+                                        <p> <span> </span></p>
+                                        <a class="button" href="{{$banner['link']}}">DISCOVER NOW</a>
                                     </div>
                                 </div>
                             @endforeach

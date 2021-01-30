@@ -6,27 +6,15 @@
 <div class="banner_area banner_style2 mb-55">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+        @foreach($triplebanner as $triple)
+            <div class="col-lg-4 col-md-4">
                 <figure class="single_banner">
                     <div class="banner_thumb">
-                        <a href="shop.html"><img src="{{url('public/front/img/bg/banner6.jpg')}}" alt="" /></a>
+                        <a href="{{$triple['link']}}"><img src="{{url('public/banner/'.$triple['banner_image'])}}" alt="" /></a>
                     </div>
                 </figure>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <figure class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="{{url('public/front/img/bg/banner7.jpg')}}" alt="" /></a>
-                    </div>
-                </figure>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <figure class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="{{url('public/front/img/bg/banner8.jpg')}}" alt="" /></a>
-                    </div>
-                </figure>
-            </div>
+         @endforeach   
         </div>
     </div>
 </div>

@@ -1,20 +1,19 @@
+<?php
+    $doublebanner=App\BannerModel::where('status',1)->where('type','Double ADs')->get();
+
+?>
 <div class="banner_area mb-55">
 <div class="container">
     <div class="row">
+    @foreach($doublebanner as $banner)
         <div class="col-lg-6 col-md-6">
             <figure class="single_banner">
                 <div class="banner_thumb">
-                    <a href="shop.html"><img src="front/img/bg/banner4.jpg" alt="" /></a>
+                    <a href="{{$banner['link']}}"><img src="{{url('public/banner/'.$banner['banner_image'])}}" alt="" /></a>
                 </div>
             </figure>
         </div>
-        <div class="col-lg-6 col-md-6">
-            <figure class="single_banner">
-                <div class="banner_thumb">
-                    <a href="shop.html"><img src="front/img/bg/banner5.jpg" alt="" /></a>
-                </div>
-            </figure>
-        </div>
+        @endforeach
     </div>
 </div>
 </div>
