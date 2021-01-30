@@ -47,7 +47,7 @@
                         @foreach($singlebanner as $single)
                             <figure class="single_banner mb-20">
                                 <div class="banner_thumb">
-                                    <a href="{{$banner['link']}}"><img src="{{url('public/banner/'.$banner['banner_image'])}}" alt="" /></a>
+                                    <a href="{{$single['link']}}"><img src="{{url('public/banner/'.$single['banner_image'])}}" alt="" /></a>
                                 </div>
                             </figure>
                         @endforeach

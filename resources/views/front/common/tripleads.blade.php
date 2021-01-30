@@ -1,3 +1,8 @@
+<?php 
+   
+   $triplebanner=App\BannerModel::where('status',1)->where('type','Triple ADs')->get();
+
+?>
 <div class="banner_area banner_style2 mb-55">
     <div class="container">
         <div class="row">
