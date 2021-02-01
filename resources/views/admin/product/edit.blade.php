@@ -46,7 +46,7 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-3 col-form-label">Type</label>
         <div class="col-sm-9">
-            <select name="brand" id="" class="form-control" required>
+            <select name="type" id="" class="form-control" required>
             <option value="">--Select Type--</option>
                 @foreach($type as $key=>$value)
                 <option value="{{ $value->id }}" {{$value->id==$product['type']?"selected":""}}>{{ $value->name }}</option>
@@ -57,7 +57,7 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-3 col-form-label">Brand</label>
         <div class="col-sm-9">
-            <select name="type" id="" class="form-control" required>
+            <select name="brand" id="" class="form-control" required>
             <option value="">--Select Brand--</option>
                 @foreach($brand as $key=>$value)
                 <option value="{{ $value->id }}" {{$value->id==$product['brand']?"selected":""}}>{{ $value->name }}</option>

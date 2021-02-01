@@ -132,10 +132,10 @@ class ProductController extends Controller
                 'description'=>'required',
                 'qty'=>'required|numeric',
             ]);
-            // DB::beginTransaction();
+            DB::beginTransaction();
             try{
                
-                $product=Product::where('id',$request->id)->update($data);
+        
      
                 if($request->has('image') && $request->image[0])
                 {
@@ -157,12 +157,14 @@ class ProductController extends Controller
                       
                     }
                 }
+                $product=Product::where('id',$request->id)->update($data);
+                DB::commit();
                 return redirect('admin/product')->with('success','Product Updated Successfull');
-                // DB::commit();  
+                 
             }catch(\Exception $e){
-                    // DB::rollBack();
-                    dd($e->getMessage());
-                    return redirect('admin/add-product')->with('error',$e->getMessage());
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return back()->with('error',$e->getMessage());
 
             }
         }
