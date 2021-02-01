@@ -7,7 +7,6 @@
   }
   $categories=App\CategoryModel::whereIn('id',$cate)->get();
   //die;
-  dd($product);
 ?>
 <div class="product_area deals_product">
     <div class="container">
