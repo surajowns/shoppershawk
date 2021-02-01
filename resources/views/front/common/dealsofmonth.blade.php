@@ -16,10 +16,10 @@
                     <div class="section_title">
                         <h2>Deals Of The Month</h2>
                     </div>
-                    <div class="product_tab_btn" id="deals_of_the_month">
+                    <div class="product_tab_btn">
                         <ul class="nav" role="tablist" id="nav-tab">
                           @foreach($categories as $category)
-                            <li class="deals">
+                            <li>
                                 <a  data-toggle="tab" href="#{{$category['slug']}}" role="tab" aria-controls="{{$category['slug']}}" aria-selected="false">
                                    {{$category['name']}}
                                 </a>
@@ -33,7 +33,7 @@
 
         <div class="tab-content">
         @foreach($categories as $category)
-            <div class="dealsofthemont fade" id="{{$category['slug']}}" role="tabpanel">
+            <div class="tab-pane fade" id="{{$category['slug']}}" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
                 @foreach($product as $productdetails)
                    @if($category['id']==$productdetails['supercategory_id'])
@@ -95,9 +95,9 @@
 @section('javascript')
 <script>
  $(document).ready(function(){
-    $("#deals_of_the_month li.deals:first a").addClass("active");
-    $('#deals_of_the_month li.deals:first a').attr('aria-selected', true);
-    $('.dealsofthemont').first().addClass('active show');
+    $(".product_tab_btn li:first a").addClass("active");
+    $('.product_tab_btn li:first a').attr('aria-selected', true);
+    $('.tab-pane').first().addClass('active show');
  })
 </script>
 @stop
