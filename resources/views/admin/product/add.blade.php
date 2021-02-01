@@ -120,7 +120,7 @@
     <div class="form-group row">
         <label for="example-text-input" class="col-sm-3 col-form-label">Description</label>
         <div class="col-sm-9">
-            <textarea class="form-control" type="text" name="description" value="" id="editor" placeholder="Product Description"  autocomplete="off" style="height:250px;"></textarea>
+            <textarea class="form-control" type="text" name="description" value="" id="editor" placeholder="Product Description" required  autocomplete="off" style="height:250px;"></textarea>
             <span class="text-danger">{{$errors->first('description')}}</span>
         </div> 
     </div>

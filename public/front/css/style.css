@@ -4117,9 +4117,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   visibility: hidden;
   transition: all 0.3s ease;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 10px;
+  left: 10;
+  /* right: 0; */
+  top: 10px;
   z-index: 9;
   text-align: center;
 }

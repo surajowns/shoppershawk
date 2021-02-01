@@ -16,7 +16,7 @@ class CheckSession
     public function handle($request, Closure $next)
     {
         // dd($request->session()->get('logid'));
-        if($request->session()->get('logid') === null){
+        if($request->session()->get('logid') === null ){
             return redirect('/admin/login');
         }
         return $next($request);
