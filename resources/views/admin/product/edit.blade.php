@@ -88,8 +88,9 @@
         <div class="col-sm-9">
             <select   class="form-control" name="category_id"   required="required" >
             @foreach($subcategories as $key=>$value)
-                <option value="{{ $value->id }}"  {{$value->id==$product['category_id'?"selected":""]}}>{{ $value->name }}</option>
-                @endforeach            </select>
+                <option value="{{ $value->id }}"  {{$value->id==$product['category_id']?"selected":""}}>{{ $value->name }}</option>
+                @endforeach           
+         </select>
         </div>
     </div>
 
