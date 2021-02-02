@@ -20,7 +20,7 @@
                         <ul class="nav" role="tablist" id="nav-tab4">
                            @foreach($categories as $val)
                            <li>
-                                <a  data-toggle="tab" href="#{{$val['slug']}}" role="tab" aria-controls="{{$val['slug']}}" aria-selected="false">
+                                <a  data-toggle="tab" href="#new{{$val['slug']}}" role="tab" aria-controls="new{{$val['slug']}}" aria-selected="false">
                                    {{$val['name']}}
                                 </a>
                             </li>
@@ -32,7 +32,7 @@
         </div>
         <div class="tab-content">
         @foreach($categories as $val)
-            <div class="tab-pane fade  newarrivalproduct" id="{{$val['slug']}}" role="tabpanel">
+            <div class="tab-pane fade  newarrivalproduct" id="new{{$val['slug']}}" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
                 @foreach($newarrivalproduct as $productdetails)
                    @if($val['id']==$productdetails['supercategory_id'])
