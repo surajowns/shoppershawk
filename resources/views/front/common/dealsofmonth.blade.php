@@ -16,11 +16,11 @@
                     <div class="section_title">
                         <h2>Deals Of The Month</h2>
                     </div>
-                    <div class="product_tab_btn">
+                    <div class="product_tab_btn deals_of_the_month">
                         <ul class="nav" role="tablist" id="nav-tab">
                           @foreach($categories as $category)
                             <li>
-                                <a  data-toggle="tab" href="#{{$category['slug']}}" role="tab" aria-controls="{{$category['slug']}}" aria-selected="false">
+                                <a  data-toggle="tab" href="#deals{{$category['slug']}}" role="tab" aria-controls="deals{{$category['slug']}}" aria-selected="false">
                                    {{$category['name']}}
                                 </a>
                             </li>
@@ -33,7 +33,7 @@
 
         <div class="tab-content">
         @foreach($categories as $category)
-            <div class="tab-pane fade" id="{{$category['slug']}}" role="tabpanel">
+            <div class="tab-pane fade dealsofthemonth" id="deals{{$category['slug']}}" role="tabpanel">
                 <div class="product_carousel product_style product_column5 owl-carousel">
                 @foreach($product as $productdetails)
                    @if($category['id']==$productdetails['supercategory_id'])
@@ -67,8 +67,8 @@
                                 <div class="product_content_inner">
                                     <h4 class="product_name"><a href="product-countdown.html">{{$productdetails['name']}}</a></h4>
                                     <div class="price_box">
-                                        <span class="old_price">₹{{$productdetails['price']}}</span>
-                                        <span class="current_price">₹{{$productdetails['selling_price']}}</span>
+                                        <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
+                                        <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                     </div>
                                     <div class="countdown_text">
                                         <p><span>Hurry Up!</span> Offers ends in:</p>
@@ -94,12 +94,12 @@
 <!--modal start-->
 
 <!--end modal-->
-@section('javascript')
+<!-- @section('javascript')
 <script>
  $(document).ready(function(){
-    $(".product_tab_btn li:first a").addClass("active");
-    $('.product_tab_btn li:first a').attr('aria-selected', true);
-    $('.tab-pane').first().addClass('active show');
+    $(".deals_of_the_month li:first a").addClass("active");
+    $('.deals_of_the_month li:first a').attr('aria-selected', true);
+    $('.dealsofthemonth').first().addClass('active show');
  })
 </script>
-@stop
+@stop -->
