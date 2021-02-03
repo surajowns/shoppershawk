@@ -40,26 +40,11 @@ class BannerController extends Controller
             ]);
 
             $data=$request->all();
-            if($request->hasFile('banner_image')){
-                $image = $request->file('banner_image');
-                $bannerimageName =uniqid().'_'.date('Ymd').'.'.$image->getClientOriginalExtension();
-                $image_resize = Image::make($image->getRealPath()); 
-                $height = Image::make($image)->height();
-                $width = Image::make($image)->width(); 
-
-                if($width>$height)
-        
-                {  
-                    $image_resize->resize(1400, null, function ($constraint) use($image_resize){
-                        $constraint->aspectRatio();
-                    })->save(public_path('/banner/'.$bannerimageName));
-                    
-                 }else{
-                    $image_resize->resize(null, 400, function ($constraint) use($image_resize){
-                        $constraint->aspectRatio();
-                    })->save(public_path('/banner/'.$bannerimageName));
-                 }
-                $data['banner_image']=$bannerimageName;
+            if($file = $request->hasFile('banner_image')){
+                $file = $request->file('banner_image');
+                $fileName = uniqid('banner')."".$file->getClientOriginalName();
+                $file->move(public_path('/banner/'),$fileName);
+                $data['banner_image'] = $fileName;
             }
             BannerModel::Create($data);
             return redirect('admin/banner')->with('success','Banner added successful');
