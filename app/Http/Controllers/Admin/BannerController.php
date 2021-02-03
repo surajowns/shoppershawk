@@ -79,8 +79,8 @@ class BannerController extends Controller
                 'title' => 'required'
             ]);
 
-            $data=collect($request->all())->except('_token');
-            $data= $data->toArray();
+            $data=$request->except('_token');
+            // $data= $data->toArray();
             if($request->hasFile('banner_image')){
                 $image = $request->file('banner_image');
                 $bannerimageName =$image->getClientOriginalExtension();
