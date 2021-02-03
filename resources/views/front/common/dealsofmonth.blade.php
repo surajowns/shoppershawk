@@ -42,7 +42,7 @@
                             <div class="product_thumb">
                             @if(!empty($productdetails['product_image']))
                                 <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
-                                <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
                              @endif
                                 <div class="label_product">
                                     <span class="label_sale">Sale</span>
@@ -74,7 +74,7 @@
                                         <p><span>Hurry Up!</span> Offers ends in:</p>
                                     </div>
                                     <div class="product_timing">
-                                        <div data-countdown="{{$productdetails['created_at']}}"></div>
+                                        <div data-countdown="{{date('Y/m/d', strtotime($productdetails['created_at']))}}"></div>
                                     </div>
                                 </div>
                                 <div class="add_to_cart">
