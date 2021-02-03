@@ -3848,6 +3848,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .categories_product_thumb {
   width: 100px;
   padding: 10px;
+  height: 100px;
 }
 
 .section_title {
