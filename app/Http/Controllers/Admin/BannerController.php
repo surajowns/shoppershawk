@@ -9,6 +9,7 @@ use Validator;
 use DB;
 use File;
 use Image;
+use App\BannerType;
 class BannerController extends Controller
 {
     public function __construct()
@@ -22,7 +23,7 @@ class BannerController extends Controller
      */
     public function index(Request $request)
     {
-        $data= BannerModel::all();
+        $data= BannerModel::with('bannertype')->get()->toArray();
         return view('admin.banner.view',compact('data'));
     }
 
@@ -49,7 +50,8 @@ class BannerController extends Controller
             BannerModel::Create($data);
             return redirect('admin/banner')->with('success','Banner added successful');
         }
-       return view('admin.banner.add');
+        $bannertype=BannerType::get();
+       return view('admin.banner.add',compact('bannertype'));
     }
 
      /**
@@ -89,8 +91,9 @@ class BannerController extends Controller
         }
         
         $page= BannerModel::where('id',$id)->first();
-       
-        return view('admin.banner.edit',compact('page'));
+        $bannertype=BannerType::get();
+
+        return view('admin.banner.edit',compact('page','bannertype'));
     }
     /**
      * Delete page

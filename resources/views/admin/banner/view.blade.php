@@ -26,6 +26,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
+                 
                 <table class="table table-hover table-center mb-0 datatable">
                         <thead>
                             <tr>
@@ -39,6 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                           
                          @foreach($data as $banner)
                         <tr>
 
@@ -46,7 +48,7 @@
                                <td>{{$banner['title']}}</td>
                                <td><img class="rounded service-img mr-1"  src="{{url('public/banner/'.$banner['banner_image'])}}" alt="Banner Image"></td>
                                <td>{{$banner['link']}}</td>
-                               <td>{{$banner['type']}}</td>
+                               <td>{{$banner['bannertype'][0]['name']}}</td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/banner/'.$banner['id'].'/'.$banner['status'])}}">{{$banner['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">
                                     <a href="{{url('admin/banner/edit-banner/'.$banner['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>

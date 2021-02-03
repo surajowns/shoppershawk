@@ -41,10 +41,9 @@
 			<label class="col-sm-3 col-form-label text-right">Select Type</label>
 			<div class="col-sm-9">
 				<select class="form-control" name="type" required>
-					<option value="Top Banner">Top Banner</option>
-                    <option value="Single ADs">Single ADs</option>
-					<option value="Double ADs">Double ADs</option>
-					<option value="Triple ADs">Triple ADs</option>
+                    @foreach($bannertype as $banner)
+                    <option value="{{$banner['id']}}" {{$banner->id==$page['type']?"selected":""}}>{{$banner['name']}}</option>
+                    @endforeach
 				</select>
 			</div>
 		</div>

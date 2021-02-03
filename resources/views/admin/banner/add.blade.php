@@ -41,10 +41,9 @@
 			<label class="col-sm-3 col-form-label text-right">Select Type</label>
 			<div class="col-sm-9">
 				<select class="form-control" name="type" required>
-					<option value="Top Banner">Top Banner (750 x 420 px)</option>
-                    <option value="Single ADs">Single ADs (1100 x 240 px)</option>
-					<option value="Double ADs">Double ADs (650 x 190 px)</option>
-					<option value="Triple ADs">Triple ADs (290 X 150 px)</option>
+                  @foreach($bannertype as $banner)
+                    <option value="{{$banner['id']}}">{{$banner['name']}}</option>
+                   @endforeach  
 				</select>
 			</div>
 		</div>
