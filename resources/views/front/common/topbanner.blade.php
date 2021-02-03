@@ -1,7 +1,7 @@
 <?php 
 
-$topbanner=App\BannerModel::where('status',1)->where('type','Top Banner')->get();
-$singlebanner=App\BannerModel::where('status',1)->where('type','Single ADs')->get();
+$topbanner=App\BannerModel::where('status',1)->where('type',1)->get();
+$singlebanner=App\BannerModel::where('status',1)->where('type',2)->get();
 
 ?>
 <section class="slider_section slider_s_one mb-60 mt-20">

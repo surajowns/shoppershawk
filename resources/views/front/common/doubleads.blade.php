@@ -1,5 +1,5 @@
 <?php
-    $doublebanner=App\BannerModel::where('status',1)->where('type','Double ADs')->get();
+    $doublebanner=App\BannerModel::where('status',1)->where('type',3)->get();
 
 ?>
 <div class="banner_area mb-55">
