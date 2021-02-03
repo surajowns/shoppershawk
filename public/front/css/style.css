@@ -3846,7 +3846,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .categories_product_thumb {
-  width: 40%;
+  width: 100px;
+  padding: 10px;
 }
 
 .section_title {
