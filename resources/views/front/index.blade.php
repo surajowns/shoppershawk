@@ -235,6 +235,10 @@
         $('.new_arrival_product li:first a').attr('aria-selected', true);
         $('.newarrivalproduct').first().addClass('active show');
 
+        $(".featured_product li:first a").addClass("active");
+        $('.featured_product li:first a').attr('aria-selected', true);
+        $('.featuredproduct').first().addClass('active show');
+
  });
         
         </script>

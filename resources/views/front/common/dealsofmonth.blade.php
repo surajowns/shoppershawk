@@ -65,7 +65,7 @@
                             </div>
                             <div class="product_content">
                                 <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="product-countdown.html">{{$productdetails['name']}}</a></h4>
+                                    <h4 class="product_name"><a href="product-countdown.html">{{ucfirst($productdetails['name'])}}</a></h4>
                                     <div class="price_box">
                                         <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
                                         <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
