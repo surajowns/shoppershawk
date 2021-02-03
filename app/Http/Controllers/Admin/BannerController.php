@@ -78,37 +78,29 @@ class BannerController extends Controller
             $validatedData = $request->validate([
                 'title' => 'required'
             ]);
-
+           try{
             $data=$request->except('_token');
-            // $data= $data->toArray();
-            if($request->hasFile('banner_image')){
-                $image = $request->file('banner_image');
-                $bannerimageName =$image->getClientOriginalExtension();
-                $image_resize = Image::make($image->getRealPath()); 
-                
-                $height = Image::make($image)->height();
-                $width = Image::make($image)->width(); 
+             
+            $details=BannerModel::where('id',$id)->first();
+                if($file = $request->hasFile('banner_image')){
+                    $file = $request->file('banner_image');
+                    $fileName = uniqid('banner')."".$file->getClientOriginalName();
+                    $file->move(public_path('/banner/'),$fileName);
+                    $data['banner_image'] = $fileName;
+                    $removeimage=('/public/banner/'.$details->banner_image);
+                    if($details->banner_image){
+                        File::delete($removeimage);
+                    }
+                }
 
-                if($width>$height)
-        
-                {  
-                    $image_resize->resize(1400, null, function ($constraint) use($image_resize){
-                        $constraint->aspectRatio();
-                    })->save(public_path('/banner/'.$bannerimageName));
-                    
-                 }else{
-                    $image_resize->resize(null, 400, function ($constraint) use($image_resize){
-                        $constraint->aspectRatio();
-                    })->save(public_path('/banner/'.$bannerimageName));
-                 }
-                $data['banner_image']=$bannerimageName;
-            }
            
             $update =BannerModel::where('id',$id)->update($data);
             if($update){
                 return redirect('/admin/banner')->with('success','Data updated successful');
             }
-
+        }catch(\Exception $e){
+            return redirect('admin/banner/edit-banner/'.$id)->with('error',$e->getMessage());
+        }
         }
         
         $page= BannerModel::where('id',$id)->first();
