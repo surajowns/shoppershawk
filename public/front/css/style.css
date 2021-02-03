@@ -3662,6 +3662,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .banner_thumb a img {
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  width: 100%;
+  height: 146px;
 }
 @media only screen and (max-width: 767px) {
   .banner_thumb a img {
@@ -4261,8 +4263,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-right: 1px solid #ebebeb;
 }
 .product_carousel .product_thumb a img {
-  width: inherit;
+  width: 250;
   margin: 0 auto;
+  height: 250px;
 }
 @media only screen and (max-width: 767px) {
   .product_carousel .product_thumb a img {
