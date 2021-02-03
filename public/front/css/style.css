@@ -4263,7 +4263,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-right: 1px solid #ebebeb;
 }
 .product_carousel .product_thumb a img {
-  width: 250;
+  width: 250px;
   margin: 0 auto;
   height: 250px;
 }
