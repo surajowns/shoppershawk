@@ -20,12 +20,12 @@
                                 @if($cat['id']==$subcat['parent_id']) 
                                 <li class="menu_item_children">
                                     <a href="#">{{$subcat['name']}}</a>
-                                    <ul class="categorie_sub_menu">
+                                    <!-- <ul class="categorie_sub_menu">
                                         <li><a href="#">Sweater</a></li>
                                         <li><a href="#">Evening</a></li>
                                         <li><a href="#">Day</a></li>
                                         <li><a href="#">Sports</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 @endif
                                 @endforeach
