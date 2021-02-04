@@ -11,4 +11,9 @@ class CategoryModel extends Model
      protected $table='category';
      protected $primaryKey = 'id';
      protected $dates = ['deleted_at'];
+
+     public function products()
+     {
+          return $this->hasMany('App\Product','category_id','id');
+     }
 }
