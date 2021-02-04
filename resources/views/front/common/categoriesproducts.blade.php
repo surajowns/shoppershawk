@@ -4,6 +4,7 @@
   $category[$i]['subcat']=App\CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
   $i++;
   }
+//   dd($category);
 ?>
 <div class="small_product_area small_product_style2">
     <div class="container">
@@ -18,12 +19,12 @@
 
                         </div>
                     <div class="product_carousel small_p_container product_column1 owl-carousel">
-                   @foreach($cat as $subcat)
-                    {{$subcat}}
+                   @foreach($cat['subcat'] as $subcat)
+                    <!-- {{$subcat}} -->
                        <div class="product_items">
                             <figure class="single_product">
                                 <div class="product_thumb">
-                                <a class="primary_img" href="#"><img class="best-selling" src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
+                                <a class="primary_img" href="#"><img class="best-selling" src="{{url('public/category/'.$subcat['image'])}}" alt="" /></a>
                                 </div>
                                 <div class="product_content">
                                     <h4 class="product_name"><a href="product-details.html"></a></h4>
