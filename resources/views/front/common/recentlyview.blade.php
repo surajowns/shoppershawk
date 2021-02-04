@@ -1,12 +1,6 @@
 <?php
   $product=App\Product::with('productImage')->where('status',1)->get()->toArray();
-//   dd($product);
-  $cate=array();
-  foreach($product as $productdetails){
-       $cate[]=$productdetails['supercategory_id'];
-    
-  }
-  $categories=App\CategoryModel::whereIn('id',$cate)->get();
+
 
 ?>
 <div class="product_area">
@@ -22,7 +16,6 @@
         </div>
         <div class="tab-content">
 
-        @foreach($categories as $category)
                 <div class="product_carousel product_style product_column5 owl-carousel">
              
                 @foreach($product as $productdetails)
@@ -74,7 +67,6 @@
                     </div>
                   @endforeach
                 </div>
-          @endforeach
         </div>
         
     </div>
