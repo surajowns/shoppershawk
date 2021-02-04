@@ -239,6 +239,11 @@
         $('.featured_product li:first a').attr('aria-selected', true);
         $('.featuredproduct').first().addClass('active show');
 
+
+        $(".best_selling_product li:first a").addClass("active");
+        $('.best_selling_product li:first a').attr('aria-selected', true);
+        $('.bestsellingproduct').first().addClass('active show');
+
  });
         
         </script>
