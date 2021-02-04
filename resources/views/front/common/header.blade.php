@@ -8,18 +8,18 @@
         <div class="column1 col-lg-3 col-md-6">
             <div class="categories_menu">
                 <div class="categories_title">
-                    <h2 class="categori_toggle">ALL CATEGORIES</h2>
+                    <h2 class="categori_toggle">ALL CATEGORIES123</h2>
                 </div>
                 <div class="categories_menu_toggle">
                     <ul>
                     @foreach($categories as $cat)
                         <li class="menu_item_children">
-                            <a href="">{{$cat['name']}} <i class="fa fa-angle-right"></i></a>
+                            <a href="{{url('/'.$cat['slug'])}}">{{$cat['name']}} <i class="fa fa-angle-right"></i></a>
                             <ul class="categories_mega_menu">
                                 @foreach($subcategories as $subcat)
                                 @if($cat['id']==$subcat['parent_id']) 
                                 <li class="menu_item_children">
-                                    <a href="#">{{$subcat['name']}}</a>
+                                    <a href="{{url('/'.$cat['slug'])}}">{{$subcat['name']}}</a>
                                     <!-- <ul class="categorie_sub_menu">
                                         <li><a href="#">Sweater</a></li>
                                         <li><a href="#">Evening</a></li>

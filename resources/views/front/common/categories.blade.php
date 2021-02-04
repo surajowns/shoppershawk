@@ -12,7 +12,7 @@
                     <p>12 Products</p>
                 </div>
                 <div class="categories_product_thumb">
-                    <a href="shop.html"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
+                    <a href="{{url('/'.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
                 </div>
             </div>
             @endforeach

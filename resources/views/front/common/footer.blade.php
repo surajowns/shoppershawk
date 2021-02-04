@@ -103,7 +103,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
-                        <p>Copyright &copy; 2020 <a href="#">Besthawk</a> All Right Reserved.</p>
+                        <p>Copyright &copy; 2020 <a href="{{url('/')}}">Shoppershawk</a> All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

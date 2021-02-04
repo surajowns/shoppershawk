@@ -22,13 +22,12 @@ Route::get('/home','HomeController@index');
 Route::get('/register','HomeController@Register');
 Route::get('/login','HomeController@Login');
 
+Route::get('/{slug}','HomeController@ProuctList')->name('Product list');
+
+
 
 
 ///Admin section start
-
-
-
-
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
