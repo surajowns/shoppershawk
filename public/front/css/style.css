@@ -10740,3 +10740,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .profile-img img{border-radius: 50%;border:2px solid #333;}
 .personal-details p {padding: 0; margin: 0;}
 .defalt-address p {padding: 0; margin: 0;}
+.best-selling {
+  width: 100% !important;
+  height: 100px !important;
+  padding: 0 !important;
+}
