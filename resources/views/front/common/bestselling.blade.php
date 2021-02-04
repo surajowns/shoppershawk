@@ -21,11 +21,11 @@
                                     <ul class="nav" role="tablist" id="nav-tab3">
                                     @foreach($categories as $category)
                                     <li>
-                                        <a  data-toggle="tab" href="#best{{$category['slug']}}" role="tab" aria-controls="deals{{$category['slug']}}" aria-selected="false">
+                                        <a  data-toggle="tab" href="#best{{$category['slug']}}" role="tab" aria-controls="best{{$category['slug']}}" aria-selected="false">
                                         {{$category['name']}}
                                         </a>
                                     </li>
-                                @endforeach
+                                    @endforeach
                                       
                                     </ul>
                                 </div>
@@ -34,19 +34,18 @@
                     </div>
                     <div class="tab-content">
                     @foreach($categories as $category)
-                         <div class="tab-pane fade bestsellingproduct" id="best{{$category['slug']}}" role="tabpanel">
-                          <div class="product_carousel product_style product_column5 owl-carousel">
-             
-                            @foreach($product as $productdetails)
-                
-                              @if($category['id']==$productdetails['supercategory_id'])
-                                <div class="product_items">
+
+                        <div class="tab-pane fade bestsellingproduct" id="best{{$category['slug']}}" role="tabpanel">
+                            <div class="product_carousel small_p_container small_product_column3 owl-carousel">
+                     @foreach($product as $productdetails)
+                         @if($category['id']==$productdetails['supercategory_id'])
+                            <div class="product_items">
                                     <figure class="single_product">
                                         <div class="product_thumb">
                                         @if(!empty($productdetails['product_image']))
-                                              <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
-                                            <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
-                                           @endif
+                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                  @endif 
+  
                                         </div>
                                         <div class="product_content">
                                             <h4 class="product_name"><a href="product-details.html">{{ucfirst($productdetails['name'])}}</a></h4>
@@ -78,13 +77,14 @@
                                             </div>
                                         </div>
                                     </figure>
-                               
                                 </div>
-                               @endif
-                            @endforeach
+                                @endif
+                              @endforeach  
+                              
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
+
                     </div>
                 </div>
             </div>
