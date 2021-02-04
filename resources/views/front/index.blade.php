@@ -124,7 +124,7 @@
         <!--slider area end-->
 
         <!--shipping area start-->
-       @include('front.common.shippingdetails')
+       <!-- @include('front.common.shippingdetails') -->
         <!--shipping area end-->
 
         <!--home section bg area start-->
