@@ -2348,7 +2348,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   left: 0;
 }
 .categories_menu_toggle > ul > li ul.categories_mega_menu > li {
-  padding: 0 15px;
+  /* padding: 0 15px; */
   width: 25%;
   /* float: left; */
 }
