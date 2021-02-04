@@ -166,6 +166,7 @@
             <!--triple ads banner area end-->
 
             <!-- categories  product area start-->
+                  @include('front.common.recentlyview')
             <!-- categories product area end-->
         </div>
         <!--home section bg area end-->
