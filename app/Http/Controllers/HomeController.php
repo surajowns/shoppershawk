@@ -22,7 +22,7 @@ class HomeController extends Controller
     }
     public function ProuctList(Request $request,$slug)
     {
-        $product=Product::with('productImage')->where('status',1)->paginate(5);
+        $product=Product::with('productImage')->where('status',1)->paginate(32);
         $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
         $i=0;foreach($category as $cat){
         $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
