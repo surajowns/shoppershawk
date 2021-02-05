@@ -148,7 +148,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-        <div class="newletter-popup">
+        <div class="newletter-popupExtra">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">

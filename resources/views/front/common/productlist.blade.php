@@ -16,11 +16,11 @@
                 <ul>
                 @foreach($category as $cat)
                     <li class="widget_sub_categories"> 
-                        <a href="{{url('/'.$cat['slug'])}}">{{$cat['name']}}</a>
+                        <a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a>
                         <ul class="widget_dropdown_categories">
 
                         @foreach($cat['subcat'] as $subcat)
-                        <li><a href="{{url('/'.$subcat['slug'])}}">{{$subcat['name']}}</a></li>
+                        <li><a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a></li>
 
                         @endforeach
                         </ul>

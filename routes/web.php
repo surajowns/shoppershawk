@@ -22,7 +22,7 @@ Route::get('/home','HomeController@index');
 Route::get('/register','HomeController@Register');
 Route::get('/login','HomeController@Login');
 
-Route::get('/{slug}','HomeController@ProuctList')->name('Product list');
+Route::any('/{slug}','HomeController@ProuctList')->name('Product list');
 
 
 
