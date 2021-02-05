@@ -8,11 +8,11 @@
         @foreach($categories as $cat)
             <div class="single_categories_product">
                 <div class="categories_product_content">
-                    <h4><a href="shop.html">{{$cat['name']}}</a></h4>
+                    <h4><a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a></h4>
                     <p>12 Products</p>
                 </div>
                 <div class="categories_product_thumb">
-                    <a href="{{url('/'.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
+                    <a href="{{url('/products/'.'?cat='.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
                 </div>
             </div>
             @endforeach
