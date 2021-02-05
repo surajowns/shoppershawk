@@ -73,7 +73,6 @@
             <div class=" niceselect_option">
                 <form class="select_option" action="#">
                     <select name="orderby" id="short">
-
                         <option selected value="1">Sort by average rating</option>
                         <option value="2">Sort by popularity</option>
                         <option value="3">Sort by newness</option>
@@ -83,24 +82,22 @@
                     </select>
                 </form>
             </div>
-            <div class="page_amount">
-                <p>Showing 1–9 of 21 results</p>
-            </div>
         </div>
         <!--shop toolbar end-->
 
         <!--shop wrapper start-->
-        <div class="row no-gutters shop_wrapper infinite-scroll">
+        <div class="row no-gutters shop_wrapper">
         
            @foreach($product as $details)
              <div class="col-lg-3 col-md-4 col-12 ">
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
-                        @if(!empty($details['product_image']))
-                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$details['product_image'][0]['image'])}}" alt="" /></a>
-                                <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$details['product_image'][0]['image'])}}" alt="" /></a> -->
-                                  @endif                             
+                        @foreach($details->productImage as $image)
+       
+                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
+                                @break
+                         @endforeach                             
                             <div class="label_product">
                                 <span class="label_sale">Sale</span>
                             </div>
@@ -179,20 +176,3 @@
 </div>
 <!--shop  area end-->
 @endsection
-@section('javascript')
-<script type="text/javascript">
-    $('ul.pagination').hide();
-    $(function() {
-        $('.infinite-scroll').jscroll({
-            autoTrigger: true,
-            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
-            padding: 0,
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-            callback: function() {
-                $('ul.pagination').remove();
-            }
-        });
-    });
-</script>
-@stop
