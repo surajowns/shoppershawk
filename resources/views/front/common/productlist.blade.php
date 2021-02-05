@@ -96,8 +96,10 @@
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img src="{{url('public/product_image/'.$details['product_image'][0]['image'])}}" alt=""></a>
-                            <!-- <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product6.jpg" alt=""></a> -->
+                        @if(!empty($details['product_image']))
+                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
+                                  @endif                             <!-- <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product6.jpg" alt=""></a> -->
                             <div class="label_product">
                                 <span class="label_sale">Sale</span>
                             </div>
