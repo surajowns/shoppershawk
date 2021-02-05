@@ -90,7 +90,8 @@
         <!--shop toolbar end-->
 
         <!--shop wrapper start-->
-        <div class="row no-gutters shop_wrapper">
+        <div class="row no-gutters shop_wrapper infinite-scroll">
+        
            @foreach($product as $details)
              <div class="col-lg-3 col-md-4 col-12 ">
                 <article class="single_product">
@@ -166,11 +167,7 @@
         <div class="shop_toolbar t_bottom">
             <div class="pagination">
                 <ul>
-                    <li class="current">1</li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="next"><a href="#">next</a></li>
-                    <li><a href="#">>></a></li>
+                {!! $product->links() !!}
                 </ul>
             </div>
         </div>
@@ -182,3 +179,20 @@
 </div>
 <!--shop  area end-->
 @endsection
+@section('javascript')
+<script type="text/javascript">
+    $('ul.pagination').hide();
+    $(function() {
+        $('.infinite-scroll').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
+            callback: function() {
+                $('ul.pagination').remove();
+            }
+        });
+    });
+</script>
+@stop

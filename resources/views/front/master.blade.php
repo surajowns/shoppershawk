@@ -191,6 +191,8 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
+        <script src="{{url('public/front/js/jscroll.js')}}"></script>
+
         @yield('javascript')
         <!-- <script>
         $(document).ready(function(){
