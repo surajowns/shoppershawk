@@ -8,7 +8,7 @@
         <div class="column1 col-lg-3 col-md-6">
             <div class="categories_menu">
                 <div class="categories_title">
-                    <h2 class="categori_toggle">ALL CATEGORIES123</h2>
+                    <h2 class="categori_toggle">ALL CATEGORIES</h2>
                 </div>
                 <div class="categories_menu_toggle">
                     <ul>
