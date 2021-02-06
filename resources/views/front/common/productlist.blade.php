@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="shop_banner_thumb">
-                        <img src="assets/img/bg/banner16.jpg" alt="">
+                        <img src="{{url('public/front/img/banner16.jpg')}}" alt="">
                     </div>
                 </div>
             </div>
