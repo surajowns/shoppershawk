@@ -122,8 +122,8 @@
                                     </ul>
                                 </div>
                                 <div class="price_box">
-                                    <span class="old_price">${{number_format($details['price'],2)}}</span>
-                                    <span class="current_price">${{number_format($details['selling_price'],2)}}</span>
+                                    <span class="old_price">₹{{number_format($details['price'],2)}}</span>
+                                    <span class="current_price">₹{{number_format($details['selling_price'],2)}}</span>
                                 </div>
                             </div>
                             <div class="add_to_cart">
@@ -142,8 +142,8 @@
                                 </ul>
                             </div>
                             <div class="price_box">
-                                <span class="old_price">${{number_format($details['price'],2)}}</span>
-                                <span class="current_price">${{number_format($details['selling_price'],2)}}</span>
+                                <span class="old_price">₹{{number_format($details['price'],2)}}</span>
+                                <span class="current_price">₹{{number_format($details['selling_price'],2)}}</span>
                             </div>
                             <div class="product_desc">
                             {!! ucfirst($details['description']) !!}
