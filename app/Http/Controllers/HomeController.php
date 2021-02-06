@@ -40,6 +40,13 @@ class HomeController extends Controller
         $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
         $i++;
         }
-        return view('front.common.productlist',compact('product','category'));
+        
+        if(isset($_GET['cat'])){
+          return view('front.common.productlist',compact('product','category'));
+
+        }else{
+          return view('errors.404');
+
+        }
     }
 }

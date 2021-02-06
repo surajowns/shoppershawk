@@ -115,8 +115,13 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>shop</li>
+                            <li><a href="{{url('/')}}">home</a></li>
+                           @if(isset($_GET['cat']))
+                            <li>{{$_GET['cat']}}</li>
+                            @endif
+                            @if(isset($_GET['cat']))
+                            <li>{{$_GET['subcat']}}</li>
+                            @endif
                         </ul>
                     </div>
                 </div>
