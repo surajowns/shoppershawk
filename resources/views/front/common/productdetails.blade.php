@@ -60,16 +60,7 @@
                                     <div class="product_desc">
                                         <p>{{ucfirst($product['description'])}} </p>
                                     </div>
-                                    <div class="product_variant color">
-                                        <h3>Available Options</h3>
-                                        <label>color</label>
-                                        <ul>
-                                            <li class="color1"><a href="#"></a></li>
-                                            <li class="color2"><a href="#"></a></li>
-                                            <li class="color3"><a href="#"></a></li>
-                                            <li class="color4"><a href="#"></a></li>
-                                        </ul>
-                                    </div>
+                                  
                                     <div class="product_variant quantity">
                                         <label>quantity</label>
                                         <input min="1" max="100" value="1" type="number">
@@ -79,23 +70,12 @@
                                     <div class=" product_d_action">
                                         <ul>
                                             <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                            <li><a href="#" title="Add to wishlist">+ Compare</a></li>
                                         </ul>
                                     </div>
-                                    <div class="product_meta">
-                                        <span>Category: <a href="#">Clothing</a></span>
-                                    </div>
+                                   
 
                                 </form>
-                                <div class="priduct_social">
-                                    <ul>
-                                        <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>
-                                        <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> tweet</a></li>
-                                        <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> save</a></li>
-                                        <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>
-                                        <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>
-                                    </ul>
-                                </div>
+                              
 
                             </div>
                         </div>
