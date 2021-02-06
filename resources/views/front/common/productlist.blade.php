@@ -96,7 +96,7 @@
                         <div class="product_thumb">
                         @foreach($details->productImage as $image)
        
-                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
+                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
                                 @break
                          @endforeach                             
                             <div class="label_product">
@@ -111,7 +111,7 @@
 
                         <div class="product_content grid_content">
                             <div class="product_content_inner">
-                                <h4 class="product_name"><a href="product-details.html">{{ucfirst($details['name'])}}</a></h4>
+                                <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
                                 <div class="product_rating">
                                     <ul>
                                         <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         <div class="product_content list_content">
-                            <h4 class="product_name"><a href="product-details.html">{{ucfirst($details['name'])}}</a></h4>
+                            <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
                             <div class="product_rating">
                                 <ul>
                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>

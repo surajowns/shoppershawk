@@ -49,4 +49,13 @@ class HomeController extends Controller
 
         }
     }
+    public function ProuctDetails(Request $request,$slug=null)
+    {
+      $product=Product::with('productImage')->where('slug',$slug)->where('status',1)->first();
+
+      $relatedproducts=Product::with('productImage')->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
+
+      return view('front.common.productdetails',compact('product','relatedproducts'));
+
+    }
 }
