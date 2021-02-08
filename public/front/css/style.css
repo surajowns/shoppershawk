@@ -10746,3 +10746,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   height: 100px !important;
   padding: 0 !important;
 }
+.error{
+  color: red;
+}

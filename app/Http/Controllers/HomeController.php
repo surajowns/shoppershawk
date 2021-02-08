@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\CategoryModel;
+use Validator,Redirect,Response;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,30 @@ class HomeController extends Controller
     }
     public function Register(Request $request)
     {
+      if($request->isMethod('post')){
+        $validatedData = $request->validate([
+          'name' => 'required',
+          'email' => 'required|unique:users',
+          'mobile' => 'required|unique:users',
+          'password'=>'required',
+          ]);
+          try{
+            $data=$request->except('_token');
+            $password=bcrypt($request->password);
+            $data['password']=$password;
+            $data['role']=2;
+            
+            User::create($data); 
+            return redirect('/home')->with('success','You are registered successfully');
+
+          }catch(\Exception $e){
+            dd($e->getMessage());
+            return back()->with('error',$e->getMessage());
+
+          }
+             
+
+        }
         return view('front.common.register');
     }
     public function Login(Request $request)

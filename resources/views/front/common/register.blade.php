@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Besthawk</title>
+        <title>Shoppershawk</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Favicon -->
@@ -129,22 +129,30 @@
                     <div class="col-lg-6 col-md-6">
                        <div class="account_form register">
                             <h2>Register</h2>
-                            <form action="" >
+                            <form action="" method="post" id="contact_form">
+                            @include('message')
+                            {{csrf_field()}}
+                            <p>
+                                    <label>Name <span>*</span></label>
+                                    <input type="text" name="name"   placeholder="Enter Name" required>
+                                </p>
                                 <p>
                                     <label>Email address <span>*</span></label>
-                                    <input type="email" required>
+                                    <input type="email" name="email"  placeholder="Enter Email" required>
+                                    <span class="text-danger">{{$errors->first('email')}}</span>
                                 </p>
                                 <p>
                                     <label>Mobile Number<span>*</span></label>
-                                    <input type="text" required>
+                                    <input type="text" name="mobile"  placeholder="Enter Mobile no." required>
+                                    <span class="text-danger">{{$errors->first('mobile')}}</span>
                                 </p>
                                 <p>
                                     <label>Enter Password <span>*</span></label>
-                                    <input type="password" required>
+                                    <input type="password" name="password" id="password"  placeholder="Enter Password" required>
                                 </p>
                                 <p>
                                     <label>Confirm Password <span>*</span></label>
-                                    <input type="c_password" required>
+                                    <input type="password" name="c_password"   placeholder="Enter Confirm password"required>
                                 </p>
                                 <div class="login_submit">
                                     <button type="submit">Register</button>
@@ -198,5 +206,69 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
+        <script src="{{url('public/front/js/jquery.validate.min.js')}}"></script>
+
+        <script>
+        $(document).ready(function(){
+
+      
+             if ($("#contact_form").length > 0) {
+        $("#contact_form").validate({
+ 
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 50
+                },
+ 
+                email: {
+                    required: true,
+                    maxlength: 50,
+                    email: true,
+                },
+ 
+                mobile: {
+                    required: true,
+                    minlength:10,
+                    maxlength:10,
+                    number:true,
+                },
+                password: {
+                    required: true,
+                    minlength:6,
+                    
+                },
+                c_password: {
+                    required: true,
+                    minlength:6,
+                    equalTo : "#password",
+                    
+                },
+            },
+            messages: {
+ 
+                name: {
+                    required: "Please enter name",
+                },
+               
+                email: {
+                    required: "Please enter valid email",
+                    email: "Please enter valid email",
+                    maxlength: "The email name should less than or equal to 50 characters",
+                },
+                mobile: {
+                    required: "Please enter message",
+                    maxlength:"The mobile number should not be greater than 10 digit"
+                },
+                c_password:{
+                    equalTo : "Confirm password is not equal to password",
+                    minlength:"Please enter at least 6 characters"
+                }
+ 
+            },
+        })
+    }
+});
+        </script>
     </body>
 </html>

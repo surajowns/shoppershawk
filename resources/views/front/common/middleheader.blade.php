@@ -6,6 +6,7 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
+        @include('message')
             <!-- <div class="main_menu menu_position text-center">
             <nav>
                 <ul>

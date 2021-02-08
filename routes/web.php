@@ -19,7 +19,7 @@ Route::get('/',function(){
     return view('front.common.comingsoon');
 });
 Route::get('/home','HomeController@index');
-Route::get('/register','HomeController@Register');
+Route::any('/register','HomeController@Register')->name('Register');
 Route::get('/login','HomeController@Login');
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');

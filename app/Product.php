@@ -19,5 +19,8 @@ class Product extends Model
         return $this->hasOne('App\BrandModel','id','brand');
  
     }
+    public function productRating(){
+        return  $this->hasMany('App\RatingModel','product_id','id');
+    }
 
 }
