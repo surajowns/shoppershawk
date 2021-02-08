@@ -43,12 +43,12 @@
                                     <figure class="single_product">
                                         <div class="product_thumb">
                                         @if(!empty($productdetails['product_image']))
-                                <a class="primary_img" href="#"><img class="best-selling" src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img class="best-selling" src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
                                   @endif 
   
                                         </div>
                                         <div class="product_content">
-                                            <h4 class="product_name"><a href="product-details.html">{{ucfirst($productdetails['name'])}}</a></h4>
+                                            <h4 class="product_name"><a href="{{url('/product_details/'.$productdetails['slug'])}}">{{ucfirst($productdetails['name'])}}</a></h4>
                                             <div class="product_rating">
                                                 <ul>
                                                     <li>
