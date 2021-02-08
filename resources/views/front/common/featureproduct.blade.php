@@ -48,7 +48,7 @@
                             <figure >
                                 <div class="product_thumb">
                                 @if(!empty($productdetails['product_image']))
-                                <a class="primary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
+                                <a class="primary_img" href="{{url('/product_details/'.product$details['slug'])}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
                                 <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
                                   @endif                                   
                                     <div class="label_product">
