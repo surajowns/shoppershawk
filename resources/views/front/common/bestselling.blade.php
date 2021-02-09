@@ -73,7 +73,7 @@
                                                 <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                             </div>
                                             <div class="product_cart_button">
-                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                                <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}"><i class="fa fa-shopping-bag"></i></a>
                                             </div>
                                         </div>
                                     </figure>

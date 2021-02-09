@@ -37,12 +37,7 @@
                                 <form action="#">
 
                                     <h3><a href="javascript:void(0)">{{$product['name']}}</a></h3>
-                                    <div class="product_nav">
-                                        <ul>
-                                            <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
-                                            <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                    </div>
+                                   
                                     <div class="product_rating">
                                         <ul>
                                             <li><a href="#"><i class="ion-android-star-outline"></i></a></li>

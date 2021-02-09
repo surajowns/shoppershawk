@@ -132,28 +132,49 @@
                             <form action="" method="post" id="contact_form">
                             @include('message')
                             {{csrf_field()}}
+                            <div class="row">
+                            <div class="col-sm-6">
                             <p>
                                     <label>Name <span>*</span></label>
                                     <input type="text" name="name"   placeholder="Enter Name" required>
                                 </p>
-                                <p>
-                                    <label>Email address <span>*</span></label>
-                                    <input type="email" name="email"  placeholder="Enter Email" required>
-                                    <span class="text-danger">{{$errors->first('email')}}</span>
-                                </p>
+                                </div>
+                                <div class="col-sm-6">
+
                                 <p>
                                     <label>Mobile Number<span>*</span></label>
                                     <input type="text" name="mobile"  placeholder="Enter Mobile no." required>
                                     <span class="text-danger">{{$errors->first('mobile')}}</span>
                                 </p>
+                                </div>
+                                </div>
+                                <div class="row">
+
+                                <div class="col-sm-12">
+
+                                <p>
+                                    <label>Email address <span>*</span></label>
+                                    <input type="email" name="email"  placeholder="Enter Email" required>
+                                    <span class="text-danger">{{$errors->first('email')}}</span>
+                                </p>
+                                </div>
+                                </div>
+                                <div class="row">
+
+                                <div class="col-sm-6">
+
                                 <p>
                                     <label>Enter Password <span>*</span></label>
                                     <input type="password" name="password" id="password"  placeholder="Enter Password" required>
                                 </p>
+                                </div>
+                                <div class="col-sm-6">
                                 <p>
                                     <label>Confirm Password <span>*</span></label>
                                     <input type="password" name="c_password"   placeholder="Enter Confirm password"required>
                                 </p>
+                                </div>
+                                </div>
                                 <div class="login_submit">
                                     <button type="submit">Register</button>
                                 </div>
@@ -240,7 +261,6 @@
                 },
                 c_password: {
                     required: true,
-                    minlength:6,
                     equalTo : "#password",
                     
                 },
@@ -261,8 +281,7 @@
                     maxlength:"The mobile number should not be greater than 10 digit"
                 },
                 c_password:{
-                    equalTo : "Confirm password is not equal to password",
-                    minlength:"Please enter at least 6 characters"
+                    equalTo : "Incorrect password",
                 }
  
             },

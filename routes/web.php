@@ -24,6 +24,10 @@ Route::get('/login','HomeController@Login');
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');
 Route::any('/product_details/{slug}','HomeController@ProuctDetails')->name('Product details');
+Route::any('ajax/add_to_cart','CartController@AddtoCart')->name('Add to cart');
+Route::any('ajax/remove_cart','CartController@removecart')->name('Remove from cart');
+
+
 
 
 

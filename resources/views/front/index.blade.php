@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
     </head>
     <body>
         <!--Offcanvas menu area start-->
@@ -191,6 +192,8 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
         @yield('javascript')
         <script>
         $(document).ready(function(){
@@ -211,6 +214,70 @@
         $(".best_selling_product li:first a").addClass("active");
         $('.best_selling_product li:first a').attr('aria-selected', true);
         $('.bestsellingproduct').first().addClass('active show');
+
+         
+
+$('.cart').click(function(){
+        
+var productid= $(this).data('productid');
+
+$.ajax({
+        Type:"GET",
+        url : '{{url("ajax/add_to_cart")}}',
+        dataType:'json',
+        cache: false,
+        data: {productid:productid},
+        success: function(response){
+        //  console.log(response);
+         if(response.status == 'error'){
+           // ShowError();
+        //    alert("error");
+        //    $("#Items_already").modal('show');
+            toastr.warning("error");
+           
+         }
+        else{
+            // alert("success")
+            toastr.info('Added to cart');
+            // location.reload();
+           
+         }
+        }
+     })
+    });
+    $('.removecart').click(function(){
+        
+        var productid= $(this).data('productid');
+        // alert()
+        $(this).parent().prev().prev().parent().css("display","none");
+        // $(this).parent().prev().css("display","none");
+        // $(this).parent().css("display","none");
+
+
+        $.ajax({
+                Type:"GET",
+                url : '{{url("ajax/remove_cart")}}',
+                dataType:'json',
+                cache: false,
+                data: {productid:productid},
+                success: function(response){
+                //  console.log(response);
+                 if(response.status == 'error'){
+                   // ShowError();
+                //    alert("error");
+                //    $("#Items_already").modal('show');
+                    toastr.warning("error");
+                   
+                 }
+                else{
+                    // alert("success")
+                    toastr.info('Remove from cart');
+                    // location.reload();
+                   
+                 }
+                }
+             })
+            });
 
  });
         

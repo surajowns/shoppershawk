@@ -1,3 +1,9 @@
+<?php 
+  
+    $cartdetails=Cart::getContent()->toArray(); 
+    // print_r($cartdetails);
+
+?>
 <div class="header_middle sticky-header">
     <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-4">
@@ -72,8 +78,8 @@
                 <div class="mini_cart_wrapper">
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="cart_price">₹152.00 <!-- <i class="ion-ios-arrow-down"></i> --></span>
-                        <span class="cart_count">2</span>
+                        <span class="cart_price">₹{{number_format(Cart::getSubTotal(),2)}} <i class="ion-ios-arrow-down"></i></span>
+                        <span class="cart_count">{{Cart::getTotalQuantity()}}</span>
                     </a>
                 </div>
             </div>
@@ -92,38 +98,29 @@
             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
         </div>
     </div>
+    @foreach($cartdetails as $cart)
     <div class="cart_item">
         <div class="cart_img">
             <a href="#"><img src="{{url('public/front/img/s-product/product.jpg')}}" alt="" /></a>
         </div>
         <div class="cart_info">
-            <a href="#">Primis In Faucibus</a>
-            <p>Qty: 1 X <span> ₹60.00 </span></p>
+            <a href="#">{{$cart['name']}}</a>
+            <p>Qty: {{$cart['quantity']}} X <span> ₹{{number_format($cart['price'],2)}} </span></p>
         </div>
         <div class="cart_remove">
-            <a href="#"><i class="ion-android-close"></i></a>
+            <a href="javascript:void(0)" class="removecart" data-productid="{{$cart['id']}}"><i class="ion-android-close"></i></a>
         </div>
     </div>
-    <div class="cart_item">
-        <div class="cart_img">
-            <a href="#"><img src="{{url('public/front/img/s-product/product2.jpg')}}" alt="" /></a>
-        </div>
-        <div class="cart_info">
-            <a href="#">Letraset Sheets</a>
-            <p>Qty: 1 X <span> ₹60.00 </span></p>
-        </div>
-        <div class="cart_remove">
-            <a href="#"><i class="ion-android-close"></i></a>
-        </div>
-    </div>
+    @endforeach
+   
     <div class="mini_cart_table">
         <div class="cart_total">
             <span>Sub total:</span>
-            <span class="price">₹138.00</span>
+            <span class="price">₹{{number_format(Cart::getSubTotal(),2)}}</span>
         </div>
         <div class="cart_total mt-10">
             <span>total:</span>
-            <span class="price">₹138.00</span>
+            <span class="price">₹{{number_format(Cart::getTotal(),2)}}</span>
         </div>
     </div>
     <div class="mini_cart_footer">
