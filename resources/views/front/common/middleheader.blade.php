@@ -101,7 +101,7 @@
     @foreach($cartdetails as $cart)
     <div class="cart_item">
         <div class="cart_img">
-            <a href="#"><img src="{{url('public/front/img/s-product/product.jpg')}}" alt="" /></a>
+            <a href="#"><img src="{{url('public/product_image/',$cart['attributes'])}}" alt="" /></a>
         </div>
         <div class="cart_info">
             <a href="#">{{$cart['name']}}</a>
