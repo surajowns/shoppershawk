@@ -237,9 +237,8 @@ $.ajax({
            
          }
         else{
-            // alert("success")
             toastr.info('Added to cart');
-            // location.reload();
+            location.reload();
            
          }
         }
@@ -261,18 +260,12 @@ $.ajax({
                 cache: false,
                 data: {productid:productid},
                 success: function(response){
-                //  console.log(response);
                  if(response.status == 'error'){
-                   // ShowError();
-                //    alert("error");
-                //    $("#Items_already").modal('show');
                     toastr.warning("error");
-                   
                  }
                 else{
-                    // alert("success")
-                    toastr.info('Remove from cart');
-                    // location.reload();
+                    toastr.success('Remove from cart');
+                    location.reload();
                    
                  }
                 }

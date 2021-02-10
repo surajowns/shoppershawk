@@ -59,7 +59,7 @@
                                     <div class="product_variant quantity">
                                         <!-- <label>quantity</label> -->
                                         <!-- <input min="1" max="100" value="1" type="number"> -->
-                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a>
+                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}"> <button class="button" type="submit">add to cart</button></a>
 
                                     </div>
                                     <div class=" product_d_action">
@@ -106,9 +106,7 @@
                                         <div class="product_d_table">
                                         {!! $product['specification']!!} 
                                         </div>
-                                        <div class="product_info_content">
-                                            <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
-                                        </div>
+                                      
                                     </div>
 
                                     <div class="tab-pane fade" id="reviews" role="tabpanel">

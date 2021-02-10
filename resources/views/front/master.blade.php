@@ -17,6 +17,8 @@
 
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+
         <!-- Main Responsive CSS -->
         <!-- <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" /> -->
     </head>
@@ -235,7 +237,65 @@
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
         <script src="{{url('public/front/js/jscroll.js')}}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
         @yield('javascript')
+        <script>
+        $(document).ready(function(){
+            $('.cart').click(function(){
+        
+        var productid= $(this).data('productid');
+        
+        $.ajax({
+                Type:"GET",
+                url : '{{url("ajax/add_to_cart")}}',
+                dataType:'json',
+                cache: false,
+                data: {productid:productid},
+                success: function(response){
+                 if(response.status == 'error'){
+                  
+                    toastr.warning("error");
+                   
+                 }
+                else{
+                    toastr.success('Added to cart');
+                    location.reload();
+
+                   
+                 }
+                }
+             })
+            });
+            $('.removecart').click(function(){
+        
+        var productid= $(this).data('productid');
+        // alert()
+        $(this).parent().prev().prev().parent().css("display","none");
+        // $(this).parent().prev().css("display","none");
+        // $(this).parent().css("display","none");
+
+
+        $.ajax({
+                Type:"GET",
+                url : '{{url("ajax/remove_cart")}}',
+                dataType:'json',
+                cache: false,
+                data: {productid:productid},
+                success: function(response){
+                 if(response.status == 'error'){
+                    toastr.warning("error");
+                 }
+                else{
+                    toastr.success('Remove from cart');
+                    location.reload();
+                   
+                 }
+                }
+             })
+            });
+        });
+       </script>
      </body>
 </html>
