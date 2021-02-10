@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="add_to_cart">
-                                <a href="cart.html" title="Add to cart">Add to cart</a>
+                              <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
                             </div>
                         </div>
                         <div class="product_content list_content">
