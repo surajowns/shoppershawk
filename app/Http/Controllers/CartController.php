@@ -18,12 +18,13 @@ class CartController extends Controller
             $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();
         //    dd($products);
            $add  =  array('id'=>$request->productid,
-           'slug'=>$products['slug'],
+           
            'name'=> $products['name'],
            'price'=>$products['selling_price'],
            'quantity'=>$quantity,
            'attributes' => array(
                                  'image'=>$products['product_image'][0]['image'],
+                                 'slug'=>$products['slug'],
                                 ),
                                 
            );
