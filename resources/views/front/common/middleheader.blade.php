@@ -1,7 +1,7 @@
 <?php 
   
     $cartdetails=Cart::getContent()->toArray(); 
-    // print_r($cartdetails);
+    //print_r($cartdetails);
 
 ?>
 <div class="header_middle sticky-header">
@@ -12,7 +12,6 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
-        @include('message')
             <!-- <div class="main_menu menu_position text-center">
             <nav>
                 <ul>
@@ -79,7 +78,7 @@
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag"></i>
                         <span class="cart_price">₹{{number_format(Cart::getSubTotal(),2)}} <i class="ion-ios-arrow-down"></i></span>
-                        <span class="cart_count">{{Cart::getTotalQuantity()}}</span>
+                        <span class="cart_count">₹{{Cart::getTotalQuantity()}}</span>
                     </a>
                 </div>
             </div>
@@ -125,11 +124,11 @@
     </div>
     <div class="mini_cart_footer">
         <div class="cart_button">
-            <a href="cart.html">View cart</a>
+            <a href="{{url('user/cart_details')}}">View cart</a>
         </div>
-        <div class="cart_button">
-            <a class="active" href="checkout.html">Checkout</a>
-        </div>
+        <!-- <div class="cart_button">
+            <a class="active" href="{{url('/user/checkout')}}">Checkout</a>
+        </div> -->
     </div>
 </div>
 <!--mini cart end-->

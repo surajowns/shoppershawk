@@ -247,55 +247,105 @@
         
         var productid= $(this).data('productid');
         
-        $.ajax({
-                Type:"GET",
-                url : '{{url("ajax/add_to_cart")}}',
-                dataType:'json',
-                cache: false,
-                data: {productid:productid},
-                success: function(response){
-                 if(response.status == 'error'){
-                  
-                    toastr.warning("error");
-                   
-                 }
-                else{
-                    toastr.success('Added to cart');
-                    location.reload();
+            $.ajax({
+                    Type:"GET",
+                    url : '{{url("ajax/add_to_cart")}}',
+                    dataType:'json',
+                    cache: false,
+                    data: {productid:productid},
+                    success: function(response){
+                    if(response.status == 'error'){
+                    
+                        toastr.warning("error");
+                    
+                    }
+                    else{
+                        toastr.success('Added to cart');
+                        location.reload();
 
-                   
-                 }
-                }
-             })
+                    
+                    }
+                    }
+                })
+                });
+                $('.removecart').click(function(){
+            
+            var productid= $(this).data('productid');
+            // alert()
+            $(this).parent().prev().prev().parent().css("display","none");
+            // $(this).parent().prev().css("display","none");
+            // $(this).parent().css("display","none");
+
+
+            $.ajax({
+                    Type:"GET",
+                    url : '{{url("ajax/remove_cart")}}',
+                    dataType:'json',
+                    cache: false,
+                    data: {productid:productid},
+                    success: function(response){
+                    if(response.status == 'error'){
+                        toastr.warning("error");
+                    }
+                    else{
+                       // toastr.success('Remove from cart');
+                        location.reload();
+                    
+                    }
+                    }
+                })
+                });
             });
-            $('.removecart').click(function(){
-        
-        var productid= $(this).data('productid');
-        // alert()
-        $(this).parent().prev().prev().parent().css("display","none");
-        // $(this).parent().prev().css("display","none");
-        // $(this).parent().css("display","none");
+        $(document).ready(function(){
 
-
-        $.ajax({
-                Type:"GET",
-                url : '{{url("ajax/remove_cart")}}',
-                dataType:'json',
-                cache: false,
-                data: {productid:productid},
-                success: function(response){
-                 if(response.status == 'error'){
-                    toastr.warning("error");
-                 }
-                else{
-                    toastr.success('Remove from cart');
-                    location.reload();
-                   
-                 }
-                }
-             })
-            });
+        $( ".increment" ).click(function() {
+            var value=$(this).prev().val()
+            var productid= $(this).data('productid');
+            value++;
+            $.ajax({
+                    Type:"POST",
+                    url : '{{url("/user/updatecart")}}',
+                    dataType:'json',
+                    cache: true,
+                    data: {value:value,productid:productid},
+                    success: function(response){
+                    if(response.status == 'error'){
+                        toastr.warning("error");
+                    }
+                    else{
+                       // toastr.success('Cart Updated');
+                        location.reload();
+                    
+                    }
+                    }
+                })       
         });
+       
+        $( ".decrement" ).click(function() {
+            var value=$(this).next().val();
+
+        var productid= $(this).data('productid');
+        value--;
+            $.ajax({
+                    Type:"POST",
+                    url : '{{url("/user/updatecart")}}',
+                    dataType:'json',
+                    cache: true,
+                    data: {value:value,productid:productid},
+                    success: function(response){
+                    if(response.status == 'error'){
+                        toastr.warning("error");
+                    }
+                    else{
+                       // toastr.success('Cart Updated');
+                        location.reload();
+                    
+                    }
+                    }
+                })       
+        });
+     });
+
        </script>
      </body>
 </html>

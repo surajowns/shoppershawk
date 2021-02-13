@@ -129,19 +129,29 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="account_form login">
                             <h2>login</h2>
-                            <form action="#">
+                            @if(session('failed'))
+                                    <p class="text-center text-danger">{{session('failed')}}</p>
+                             @endif
+						     @if(session('error'))
+                                     <p class="text-center text-danger">{{session('error')}}</p>
+                             @endif
+                             @if(session('success'))
+                                    <p class="text-center text-success">{{session('success')}}</p>
+                            @endif
+                            <form action="{{url('/user/verifyuser')}}" method='post'>
+                            @csrf
                                 <p>
                                     <label>Phone Number or Email Address <span>*</span></label>
-                                    <input type="text">
+                                    <input type="text" name="email" required>
                                 </p>
                                 <p>
-                                    <label>Password <span>*</span></label>
-                                    <input type="password">
+                                    <label>Password <span>*</span></label >
+                                    <input type="password" name="password" required>
                                 </p>
                                 <div class="login_submit">
                                     <a href="#">Lost your password?</a>
-                                    <label for="remember">
-                                        <input id="remember" type="checkbox">
+                                    <label for="remember" >
+                                        <input  name="remember" id="remember" type="checkbox" checked>
                                         Remember me
                                     </label>
                                     <button type="submit">login</button>

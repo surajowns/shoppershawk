@@ -21,13 +21,19 @@ Route::get('/',function(){
 Route::get('/home','HomeController@index');
 Route::any('/register','HomeController@Register')->name('Register');
 Route::get('/login','HomeController@Login');
+Route::post('/user/verifyuser','LoginController@validateUser');
+
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');
 Route::any('/product_details/{slug}','HomeController@ProuctDetails')->name('Product details');
 Route::any('ajax/add_to_cart','CartController@AddtoCart')->name('Add to cart');
 Route::any('ajax/remove_cart','CartController@removecart')->name('Remove from cart');
+Route::any('user/cart_details','CartController@index')->name('Cart Details');
+
+Route::any('user/checkout','CheckoutController@Checkout')->name('Checkout Details');
 
 
+Route::any('user/updatecart','CartController@updateCart')->name('Update Cart');
 
 
 

@@ -10,6 +10,15 @@ use Auth;
 
 class CartController extends Controller
 {
+    public function index(Request $request)
+    {
+       // $productprice=0;
+        $cartdetails=Cart::getContent()->toArray(); 
+        // foreach($cartdetails as $details){
+        //   $productprice= $details['quantity']*$details['price'];
+        // }
+        return view('front/common/cart',compact('cartdetails'));
+    }
     public function AddtoCart(Request $request)
     {
            
@@ -39,5 +48,17 @@ class CartController extends Controller
         Cart::remove($request->productid);
         return response()->json(array('status'=>'success','msg'=>'success'));   
 
+    }
+
+    public function updateCart(Request $request)
+    {
+        //dd($request->productid);
+        $qty=$request->value;
+        $success=Cart::update($request->productid,array(
+                'quantity' => array(
+                'relative' => false,
+                'value' => $qty
+            ),));
+        return json_encode($success);
     }
 }

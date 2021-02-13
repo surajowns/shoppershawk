@@ -39,7 +39,7 @@
                             <ul>
                                 <li><a href="#">My Profile</a></li>
                                 <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">My Cart</a></li>
+                                <li><a href="{{url('user/cart_details')}}">My Cart</a></li>
                             </ul>
                         </div>
                     </div>
