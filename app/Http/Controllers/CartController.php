@@ -54,6 +54,11 @@ class CartController extends Controller
     {
         //dd($request->productid);
         $qty=$request->value;
+        if($qty==0 || $qty==null){
+            $id=$request->productid;
+            $success=Cart::remove($id);
+             return json_encode($success);
+          }
         $success=Cart::update($request->productid,array(
                 'quantity' => array(
                 'relative' => false,
