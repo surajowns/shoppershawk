@@ -78,7 +78,7 @@
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag"></i>
                         <span class="cart_price">₹{{number_format(Cart::getSubTotal(),2)}} <i class="ion-ios-arrow-down"></i></span>
-                        <span class="cart_count">₹{{Cart::getTotalQuantity()}}</span>
+                        <span class="cart_count">{{Cart::getTotalQuantity()}}</span>
                     </a>
                 </div>
             </div>

@@ -23,9 +23,7 @@ class CartController extends Controller
     {
            
         $quantity = 1 ;
-        // dd($request->all());
             $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();
-        //    dd($products);
            $add  =  array('id'=>$request->productid,
            
            'name'=> $products['name'],
@@ -44,7 +42,6 @@ class CartController extends Controller
 
     public function removecart(Request $request)
     {
-        // dd($request->productid);
         Cart::remove($request->productid);
         return response()->json(array('status'=>'success','msg'=>'success'));   
 
@@ -52,7 +49,6 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
-        //dd($request->productid);
         $qty=$request->value;
         if($qty==0 || $qty==null){
             $id=$request->productid;

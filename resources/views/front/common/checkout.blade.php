@@ -212,22 +212,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach($details as $data)
                                                 <tr>
-                                                    <td> Handbag fringilla <strong> × 2</strong></td>
+                                                    <td> {{$data['name']}} <strong> ×{{$data['name']}}  </strong></td>
                                                     <td> $165.00</td>
                                                 </tr>
-                                                <tr>
-                                                    <td> Handbag justo <strong> × 2</strong></td>
-                                                    <td> $50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> Handbag elit <strong> × 2</strong></td>
-                                                    <td> $50.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> Handbag Rutrum <strong> × 1</strong></td>
-                                                    <td> $50.00</td>
-                                                </tr>
+                                            @endforeach
                                             </tbody>
                                             <tfoot>
                                                 <tr>
