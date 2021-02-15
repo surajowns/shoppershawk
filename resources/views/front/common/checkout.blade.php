@@ -222,7 +222,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Cart Subtotal</th>
-                                                    <td>$215.00</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Shipping</th>
