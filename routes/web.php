@@ -20,8 +20,10 @@ Route::get('/',function(){
 });
 Route::get('/home','HomeController@index');
 Route::any('/register','HomeController@Register')->name('Register');
-Route::get('/login','HomeController@Login');
-Route::post('/user/verifyuser','LoginController@validateUser');
+Route::get('/login','HomeController@Login')->name('Login page');
+Route::post('/user/verifyuser','LoginController@validateUser')->name('Verify User');
+Route::any('/user/logout','LoginController@logout')->name('User Logout');
+
 
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');

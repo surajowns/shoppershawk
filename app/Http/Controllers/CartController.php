@@ -13,7 +13,7 @@ class CartController extends Controller
     public function index(Request $request)
     {
        // $productprice=0;
-        $cartdetails=Cart::getContent()->toArray(); 
+        $cartdetails=Cart::getContent()->orderBy('id','DESC')->toArray(); 
         // foreach($cartdetails as $details){
         //   $productprice= $details['quantity']*$details['price'];
         // }
