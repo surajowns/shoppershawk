@@ -261,6 +261,7 @@
                     cache: false,
                     data: {productid:productid,producturl:producturl},
                     success: function(response){
+                        console.log(response);
                     if(response.status == 'error'){
                     
                        toastr.warning("error");
@@ -268,12 +269,9 @@
                     }
                     if(response.redirect == 'product_details'){
                         window.location.href = "{{url('user/cart_details')}}";
-
                      }
                     else{
                         location.reload();
-
-                    
                     }
                     }
                 })
