@@ -26,8 +26,12 @@ class LoginController extends Controller
             }  
             
             try{
-                
-            $credentials = $request->only('email', 'password');
+                if(is_numeric($request->get('email'))){
+                    $credentials  =['mobile'=>$request->email,'password'=>$request->password];
+                  }else{
+                    $credentials = $request->only('email', 'password');
+                  }
+            
             if (Auth::attempt($credentials, $request->has('remember')) ){
                
                 if (Auth::User()['role']==2)

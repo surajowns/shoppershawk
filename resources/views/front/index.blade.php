@@ -45,18 +45,18 @@
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
-                                <a class="btn btn-primary" href="{{url('/login')}}">Login</a>
-                                <a class="btn btn-primary" href="{{url('/register')}}">Register</a>
+                                <a class="btn btn-danger" href="{{url('/login')}}">Login</a>
+                                <a class="btn btn-danger" href="{{url('/register')}}">Register</a>
                                 @else
                                 <a href="">Hi {{Auth::user()->name}}</a></li>
-                                 <a class="btn btn-primary" href="{{url('/user/logout')}}">Logout</a></li>
+                                 <a class="btn btn-danger" href="{{url('/user/logout')}}">Logout</a></li>
                                 @endif
                                 </div>
                             </div>
                             <div id="menu" class="text-left">
                                 <ul class="offcanvas_main_menu">
                                     <li class="menu-item-has-children active">
-                                        <a href="#">Home</a>
+                                        <a href="{{url('/home')}}">Home</a>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Category</a>
@@ -68,13 +68,13 @@
                                         <a href="my-account.html">my account</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="contact.html"> Contact Us</a>
+                                        <a href="contact.html">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="Offcanvas_footer">
                                 <span>
-                                    <a href="#"><i class="fa fa-envelope-o"></i> info@Shoppershawk.com</a>
+                                    <a href="#"><i class="fa fa-envelope-o"></i>info@Shoppershawk.com</a>
                                 </span>
                                 <ul>
                                     <li class="facebook">
