@@ -246,6 +246,32 @@
 
 
         @yield('javascript')
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
+
+<script>
+
+google.maps.event.addDomListener(window, 'load', function () {
+     var options = {
+          componentRestrictions: {country: "IND"}
+        };
+        var places = new google.maps.places.Autocomplete(document.getElementById('billing_address','latitude','longitude'),'');
+        google.maps.event.addListener(places, 'place_changed', function () {
+          var place = places.getPlace();
+          var address = place.formatted_address;
+          var latitude = place.geometry.location.lat();
+          var longitude = place.geometry.location.lng();
+          // var mesg = address;
+        
+          // var suburb = address.split(',');
+          $('#latitude').val(latitude);
+          $('#latitude').val(latitude);
+
+
+          $('#longitude').val(longitude);
+          // alert(mesg+' latitude:- '+latitude+' longitude:-'+longitude);
+        });
+      });
+ </script>
         <script>
         $(document).ready(function(){
             $('.cart').click(function(){
