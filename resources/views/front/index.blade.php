@@ -233,11 +233,11 @@ $.ajax({
            // ShowError();
         //    alert("error");
         //    $("#Items_already").modal('show');
-            toastr.warning("error");
+            //toastr.warning("error");
            
          }
         else{
-            toastr.info('Added to cart');
+            //toastr.info('Added to cart');
             location.reload();
            
          }
@@ -261,10 +261,10 @@ $.ajax({
                 data: {productid:productid},
                 success: function(response){
                  if(response.status == 'error'){
-                    toastr.warning("error");
+                    //toastr.warning("error");
                  }
                 else{
-                    toastr.success('Remove from cart');
+                    //toastr.success('Remove from cart');
                     location.reload();
                    
                  }

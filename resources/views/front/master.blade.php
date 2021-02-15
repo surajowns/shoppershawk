@@ -256,11 +256,10 @@
                     success: function(response){
                     if(response.status == 'error'){
                     
-                        toastr.warning("error");
+                       toastr.warning("error");
                     
                     }
                     else{
-                        toastr.success('Added to cart');
                         location.reload();
 
                     
@@ -285,10 +284,9 @@
                     data: {productid:productid},
                     success: function(response){
                     if(response.status == 'error'){
-                        toastr.warning("error");
+                       toastr.warning("error");
                     }
                     else{
-                       // toastr.success('Remove from cart');
                         location.reload();
                     
                     }
@@ -310,10 +308,9 @@
                     data: {value:value,productid:productid},
                     success: function(response){
                     if(response.status == 'error'){
-                        toastr.warning("error");
+                    toastr.warning("error");
                     }
                     else{
-                       // toastr.success('Cart Updated');
                         location.reload();
                     
                     }
@@ -334,10 +331,9 @@
                     data: {value:value,productid:productid},
                     success: function(response){
                     if(response.status == 'error'){
-                        toastr.warning("error");
+                         toastr.warning("error");
                     }
                     else{
-                       // toastr.success('Cart Updated');
                         location.reload();
                     
                     }

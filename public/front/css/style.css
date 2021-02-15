@@ -1533,6 +1533,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   top: 0;
   transition: .5s;
   transform: translateX(100%);
+  overflow: scroll;
 }
 .mini_cart.active {
   transform: translateX(0);
