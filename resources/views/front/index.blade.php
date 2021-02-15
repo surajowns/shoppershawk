@@ -44,8 +44,13 @@
                                     <li>Hotline: <a href="tel:+0120-2512786">+0120-2512786</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
-                                    <button class="btn btn-primary">Login</button>
-                                    <button class="btn btn-primary">Register</button>
+                                @if(!Auth::check())
+                                <a class="btn btn-primary" href="{{url('/login')}}">Login</a>
+                                <a class="btn btn-primary" href="{{url('/register')}}">Register</a>
+                                @else
+                                <a href="">Hi {{Auth::user()->name}}</a></li>
+                                 <a class="btn btn-primary" href="{{url('/user/logout')}}">Logout</a></li>
+                                @endif
                                 </div>
                             </div>
                             <div id="menu" class="text-left">
@@ -69,7 +74,7 @@
                             </div>
                             <div class="Offcanvas_footer">
                                 <span>
-                                    <a href="#"><i class="fa fa-envelope-o"></i> info@besthawk.com</a>
+                                    <a href="#"><i class="fa fa-envelope-o"></i> info@Shoppershawk.com</a>
                                 </span>
                                 <ul>
                                     <li class="facebook">
