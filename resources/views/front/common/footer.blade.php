@@ -6,7 +6,7 @@
                     <div class="widgets_container contact_us">
                         <h3>GET THE APP</h3>
                         <div class="aff_content">
-                            <p><strong>Besthawk</strong> App is now available on Google Play & App Store. Get it now.</p>
+                            <p><strong>Shoppershawk</strong> App is now available on Google Play & App Store. Get it now.</p>
                         </div>
                         <div class="app_img">
                             <figure class="app_img">
