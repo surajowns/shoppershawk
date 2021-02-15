@@ -251,19 +251,25 @@
             $('.cart').click(function(){
         
         var productid= $(this).data('productid');
+        var producturl= $(this).data('url');
+
         
             $.ajax({
                     Type:"GET",
                     url : '{{url("ajax/add_to_cart")}}',
                     dataType:'json',
                     cache: false,
-                    data: {productid:productid},
+                    data: {productid:productid,producturl:producturl},
                     success: function(response){
                     if(response.status == 'error'){
                     
                        toastr.warning("error");
                     
                     }
+                    if(response.redirect == 'product_details'){
+                        window.location.href = "{{url('user/cart_details')}}";
+
+                     }
                     else{
                         location.reload();
 

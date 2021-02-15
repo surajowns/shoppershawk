@@ -12,13 +12,11 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-       // $productprice=0;
         $cartdetails=Cart::getContent()->toArray(); 
-        // foreach($cartdetails as $details){
-        //   $productprice= $details['quantity']*$details['price'];
-        // }
+       
         return view('front/common/cart',compact('cartdetails'));
     }
+
     public function AddtoCart(Request $request)
     {
            
@@ -36,7 +34,8 @@ class CartController extends Controller
                                 
            );
            Cart::add($add); 
-           return response()->json(array('status'=>'success','msg'=>'success'));   
+       
+           return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
 
