@@ -36,7 +36,7 @@
                                     <div class="action_links">
                                         <ul>
                                             <li class="wishlist">
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="fa fa-angle-down"></i></a>
                                             </li>
                                             <li class="compare">
                                                 <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->

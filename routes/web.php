@@ -42,6 +42,7 @@ Route::any('user/checkout','CheckoutController@Checkout')->name('Checkout Detail
 
 ///Wishlist
 Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->name('Add and Remove from wishlist');
+Route::any('/user/wishlist_details','WishlistController@index')->name('wishlist details');
 
 
 

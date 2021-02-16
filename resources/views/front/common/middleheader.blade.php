@@ -1,7 +1,15 @@
 <?php 
   
     $cartdetails=Cart::getContent()->toArray(); 
-    //print_r($cartdetails);
+    $user=Auth::user();
+   
+    if(!empty($user)){
+        $wishlist=App\Wishlist::where('user_id',$user->id)->get()->count();
+
+    }else{
+        $wishlist=0;
+    }
+    
 
 ?>
 <div class="header_middle sticky-header">
@@ -69,16 +77,16 @@
         <div class="col-lg-3 col-md-7 col-6">
             <div class="header_configure_area">
                 <div class="header_wishlist">
-                    <a href="wishlist.html">
+                    <a href="{{url('/user/wishlist_details')}}">
                         <i class="ion-android-favorite-outline"></i>
-                        <span class="wishlist_count">3</span>
+                        <span class="wishlist_count">{{$wishlist}}</span>
                     </a>
                 </div>
                 <div class="mini_cart_wrapper">
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag"></i>
                         <span class="cart_price">₹{{number_format(Cart::getSubTotal(),2)}} <i class="ion-ios-arrow-down"></i></span>
-                        <span class="cart_count">{{Cart::getTotalQuantity()}}</span>
+                        <span class="cart_count">{{Cart::getContent()->count()}}</span>
                     </a>
                 </div>
             </div>

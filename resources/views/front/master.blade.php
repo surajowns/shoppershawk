@@ -198,6 +198,9 @@
                             @endif
                             @if(isset($_GET['subcat']))
                             <li>{{$_GET['subcat']}}</li>
+                            @else
+                            <li>@yield('title')</li>
+
                             @endif
                         </ul>
                     </div>

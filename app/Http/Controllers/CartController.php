@@ -7,6 +7,7 @@ use App\Product;
 use Cart;
 use Session;
 use Auth;
+use App\Wishlist;
 
 class CartController extends Controller
 {
@@ -19,7 +20,7 @@ class CartController extends Controller
 
     public function AddtoCart(Request $request)
     {
-           
+           $user=Auth::user();
         $quantity = 1 ;
             $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();
            $add  =  array('id'=>$request->productid,
@@ -34,7 +35,7 @@ class CartController extends Controller
                                 
            );
            Cart::add($add); 
-       
+           Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
            return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
