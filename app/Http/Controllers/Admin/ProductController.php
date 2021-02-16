@@ -163,7 +163,7 @@ class ProductController extends Controller
                  
             }catch(\Exception $e){
                     // DB::rollBack();
-                    dd($e->getMessage());
+                    //dd($e->getMessage());
                     return back()->with('error',$e->getMessage());
 
             }

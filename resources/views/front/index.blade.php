@@ -201,6 +201,24 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
         @yield('javascript')
+
+        @if (session('error'))
+        <script>
+            $(document).ready(function() {
+                toastr.warning(session('error'));
+
+            });
+        </script>
+        @endif
+        @if(session('success'))
+        <script>
+            $(document).ready(function() {
+                toastr.success({{session('success')}});
+
+            });
+        </script>
+        @endif
+
         <script>
         $(document).ready(function(){
         

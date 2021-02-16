@@ -28,16 +28,20 @@ Route::any('/user/logout','LoginController@logout')->name('User Logout');
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');
 Route::any('/product_details/{slug}','HomeController@ProuctDetails')->name('Product details');
+
+//User Cart
+
 Route::any('ajax/add_to_cart','CartController@AddtoCart')->name('Add to cart');
 Route::any('ajax/remove_cart','CartController@removecart')->name('Remove from cart');
 Route::any('user/cart_details','CartController@index')->name('Cart Details');
+Route::any('user/updatecart','CartController@updateCart')->name('Update Cart');
+
+///User Checkout
 
 Route::any('user/checkout','CheckoutController@Checkout')->name('Checkout Details');
 
-
-Route::any('user/updatecart','CartController@updateCart')->name('Update Cart');
-
-
+///Wishlist
+Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->name('Add and Remove from wishlist');
 
 
 

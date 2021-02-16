@@ -51,12 +51,12 @@ class HomeController extends Controller
         //   dd($slug);
           if(isset($_GET['cat'])){
             $category =CategoryModel::where('status',1)->where('slug',$_GET['cat'])->first();
-            $product=Product::with('productImage')->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
+            $product=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
 
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug',$_GET['subcat'])->first();
-             $product=Product::with('productImage')->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
+             $product=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
 
 
           }
@@ -77,9 +77,9 @@ class HomeController extends Controller
     }
     public function ProuctDetails(Request $request,$slug=null)
     {
-      $product=Product::with('productImage')->where('slug',$slug)->where('status',1)->first();
+      $product=Product::with('productImage','wishlist','productRating')->where('slug',$slug)->where('status',1)->first();
 
-      $relatedproducts=Product::with('productImage')->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
+      $relatedproducts=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
 
       return view('front.common.productdetails',compact('product','relatedproducts'));
 

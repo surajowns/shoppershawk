@@ -6,7 +6,7 @@
     
   }
   $categories=App\CategoryModel::whereIn('id',$cate)->get();
-
+  
 ?>
 <div class="product_area deals_product">
     <div class="container">
@@ -50,7 +50,7 @@
                                 <div class="action_links">
                                     <ul>
                                         <li class="wishlist">
-                                            <a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                         </li>
                                         <li class="compare">
                                             <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->

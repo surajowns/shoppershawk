@@ -114,11 +114,17 @@
                                 <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
                                 <div class="product_rating">
                                     <ul>
-                                        <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                        <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                        <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                        <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                        <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    
+                                    <?php  $avgrating = 0; ?>
+                                             @if(count($details->productRating)>0)
+                                                      @foreach($details->productRating as $avg_rating) 
+                                                           <?php  $avgrating= $avgrating + $avg_rating['rating']/count($details->productRating) ?>
+                                                      @endforeach
+                                                    <li>
+                                                        <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
+                                                    </li>
+                                                    
+                                                @endif
                                     </ul>
                                 </div>
                                 <div class="price_box">
@@ -134,11 +140,16 @@
                             <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
                             <div class="product_rating">
                                 <ul>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                <?php  $avgrating = 0; ?>
+                                @if(!empty($details['product_rating']))
+                                                      @foreach($details['product_rating'] as $avg_rating) 
+                                                           <?php  $avgrating= $avgrating + $avg_rating['rating']/count($details['product_rating']) ?>
+                                                      @endforeach
+                                                    <li>
+                                                        <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
+                                                    </li>
+                                                    
+                                                @endif
                                 </ul>
                             </div>
                             <div class="price_box">

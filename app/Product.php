@@ -22,5 +22,7 @@ class Product extends Model
     public function productRating(){
         return  $this->hasMany('App\RatingModel','product_id','id');
     }
-
+    public function wishlist(){
+        return  $this->hasMany('App\Wishlist','product_id','id');
+    }
 }
