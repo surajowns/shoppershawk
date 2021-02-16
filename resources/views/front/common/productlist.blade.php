@@ -164,7 +164,10 @@
                             </div>
                             <div class="action_links">
                                 <ul>
-                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i> Add to Wishlist</a></li>                                </ul>
+                                    <li class="wishlist">
+                                       <a href="wishlist.html" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i> Add to Wishlist</a>
+                                       </li>  
+                                 </ul>
                             </div>
                         </div>
                     </figure>
