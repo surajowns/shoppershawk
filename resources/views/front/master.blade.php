@@ -252,7 +252,17 @@
 
         @yield('javascript')
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
+        <script>
+            $(document).ready(function() {
+                @if(Session::has('success'))
+                    toastr.success("{{Session::get('success')}}")
+                @endif
+                @if(Session::has('error'))
+                    toastr.error("{{Session::get('error')}}")
+                @endif
 
+            });
+        </script>
 <script>
 
 google.maps.event.addDomListener(window, 'load', function () {
