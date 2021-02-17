@@ -1,5 +1,5 @@
 <?php 
-    $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
+    $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->limit(5)->get();
     $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
 
     $cartdetails=Cart::getContent()->toArray(); 
@@ -29,7 +29,7 @@
                 @foreach($categories as $cat)
                         <li>
                             <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}} <i class="fa fa-angle-down"></i></a>
-                            <ul class="sub_menu">
+                            <!-- <ul class="sub_menu">
                                 @foreach($subcategories as $subcat)
                                 @if($cat['id']==$subcat['parent_id']) 
                                 <li class="menu_item_children">
@@ -37,7 +37,7 @@
                                 </li>
                                 @endif
                                 @endforeach
-                            </ul>
+                            </ul> -->
                         </li>
                        @endforeach 
                 </ul>
