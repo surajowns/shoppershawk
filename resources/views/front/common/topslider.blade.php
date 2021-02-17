@@ -3,7 +3,7 @@
 $topbanner=App\BannerModel::where('status',1)->where('type',1)->get(); 
 $singlebanner=App\BannerModel::where('status',1)->where('type',2)->get(); ?>
  <!--slider area start-->
- <section class="slider_section slider_s_three mb-60 mt-20">
+<section class="slider_section slider_s_three mb-60 mt-20">
         <div class="slider_area slider3_carousel owl-carousel">
         @foreach($topbanner as $slider)
             <div class="single_slider d-flex align-items-center" data-bgimg="{{url('public/banner/'.$slider['banner_image'])}}">
@@ -22,5 +22,5 @@ $singlebanner=App\BannerModel::where('status',1)->where('type',2)->get(); ?>
             </div>
          @endforeach
         </div>
-    </section>
+</section>
     <!--slider area end-->
