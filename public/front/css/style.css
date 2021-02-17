@@ -1144,7 +1144,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 100%;
 }
 .main_menu nav > ul > li > a::before {
-  background: #222222;
+  /* background: #222222; */
   bottom: 0;
   content: '';
   display: block;
