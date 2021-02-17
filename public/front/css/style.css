@@ -782,7 +782,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .main_header {
-    padding-bottom: 30px;
+    padding-bottom:0px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -1041,7 +1041,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .header_middle {
-  padding: 27px 0;
+  padding: 10px 0;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_middle {
@@ -1103,7 +1103,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main_menu nav > ul > li {
-    margin-right: 26px;
+    margin-right:18px;
   }
 }
 .main_menu nav > ul > li:hover ul.sub_menu {
@@ -3762,12 +3762,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .home_section_bg {
-    padding: 60px 0 79px;
+    padding:0px;
   }
 }
 @media only screen and (max-width: 767px) {
   .home_section_bg {
-    padding: 60px 0 57px;
+    padding: 0px;
   }
 }
 
@@ -6241,11 +6241,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* 15. product details css here */
 .product_page_bg {
   background: #F5F5F9;
-  padding: 60px 0 75px;
+  padding: 15px 0 15px;
 }
 @media only screen and (max-width: 767px) {
   .product_page_bg {
-    padding: 60px 0 50px;
+    padding: 15px 0 15px;
   }
 }
 
