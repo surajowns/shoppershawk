@@ -1,5 +1,7 @@
 <?php 
-  
+    $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
+    $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+
     $cartdetails=Cart::getContent()->toArray(); 
     $user=Auth::user();
    
@@ -20,59 +22,27 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
-            <!-- <div class="main_menu menu_position text-center">
+             <div class="main_menu menu_position text-center">
             <nav>
                 <ul>
-                    <li><a class="active" href="#">Computers<i class="fa fa-angle-down"></i></a>
-                        <ul class="sub_menu">
-                            <li><a href="#">Tab 1</a></li>
-                            <li><a href="#">Tab 2</a></li>
-                            <li><a href="#">Tab 3</a></li>
-                            <li><a href="#">Tab 4</a></li>
-                            <li><a href="#">Tab 5</a></li>
-                            <li><a href="#">Tab 6</a></li>
-                            <li><a href="#">Tab 7</a></li>
-                        </ul>
-                    </li>
-                    <li class="mega_items"><a href="#">Health & Personal Care<i class="fa fa-angle-down"></i></a>
-                        <div class="mega_menu">
-                            <ul class="mega_menu_inner">
-                                <li><a href="#">Shop Layouts</a>
-                                    <ul>
-                                        <li><a href="#">Full Width</a></li>
-                                        <li><a href="#">Full Width list</a></li>
-                                        <li><a href="#">Right Sidebar </a></li>
-                                        <li><a href="#"> Right Sidebar list</a></li>
-                                        <li><a href="#">List View</a></li>
-                                    </ul>
+
+                @foreach($categories as $cat)
+                        <li>
+                            <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}} <i class="fa fa-angle-down"></i></a>
+                            <ul class="sub_menu">
+                                @foreach($subcategories as $subcat)
+                                @if($cat['id']==$subcat['parent_id']) 
+                                <li class="menu_item_children">
+                                    <a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a>
                                 </li>
-                                <li><a href="#">other Pages</a>
-                                    <ul>
-                                        <li><a href="#">cart</a></li>
-                                        <li><a href="#">Wishlist</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">my account</a></li>
-                                        <li><a href="#">Error 404</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Product Types</a>
-                                    <ul>
-                                        <li><a href="#">product details</a></li>
-                                        <li><a href="#">product sidebar</a></li>
-                                        <li><a href="#">product grouped</a></li>
-                                        <li><a href="#">product variable</a></li>
-                                        <li><a href="#">product countdown</a></li>
-                                    </ul>
-                                </li>
+                                @endif
+                                @endforeach
                             </ul>
-                                <li><a href="#">Electronics & Appliances</a></li>
-                                <li><a href="#">Telecom & Mobility</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                        </li>
+                       @endforeach 
                 </ul>
             </nav>
-        </div> -->
+        </div> 
         </div>
         <div class="col-lg-3 col-md-7 col-6">
             <div class="header_configure_area">

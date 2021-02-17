@@ -125,7 +125,7 @@
 
         <!--slider area start-->
         <!--top and side banner-->
-        @include('front.common.topbanner')
+        @include('front.common.topslider')
         <!--end top and side banner-->
        
         <!--slider area end-->

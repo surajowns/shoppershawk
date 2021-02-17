@@ -16,7 +16,7 @@
 		<img src="{{url('public/comingsoon/logo-shooper.png')}}" width="300px">
 	</div>
 	  	<h2>SOMETHING BIG IS COMING SOON !</h2>
-        <h2 id="countdown" data-time="2021/03/01 07:03:27"></h2>
+        <h2 id="countdown" data-time="2021/03/15 07:03:27"></h2>
 	  	<!-- <a class="btn" href="#">
 			<svg width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
 			  <g>

@@ -6,11 +6,11 @@
 <div class="header_bottom">
     <div class="row align-items-center">
         <div class="column1 col-lg-3 col-md-6">
-            <div class="categories_menu">
+            <div class="categories_menu categories_three">
                 <div class="categories_title">
                     <h2 class="categori_toggle">ALL CATEGORIES</h2>
                 </div>
-                <div class="categories_menu_toggle">
+                <div class="categories_menu_toggle" style="display: none;">
                     <ul>
                     @foreach($categories as $cat)
                         <li class="menu_item_children">
@@ -20,12 +20,7 @@
                                 @if($cat['id']==$subcat['parent_id']) 
                                 <li class="menu_item_children">
                                     <a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a>
-                                    <!-- <ul class="categorie_sub_menu">
-                                        <li><a href="#">Sweater</a></li>
-                                        <li><a href="#">Evening</a></li>
-                                        <li><a href="#">Day</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                    </ul> -->
+                                  
                                 </li>
                                 @endif
                                 @endforeach
