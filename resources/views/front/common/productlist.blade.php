@@ -14,7 +14,9 @@
                 <h3>Product categories</h3>
               
                 <ul>
+                   <?php //echo $_GET['cat'] ?>
                 @foreach($category as $cat)
+                    @if($cat['name'] == ucfirst($_GET['cat']))
                     <li class="widget_sub_categories"> 
                         <a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a>
                         <ul class="widget_dropdown_categories">
@@ -25,6 +27,7 @@
                         @endforeach
                         </ul>
                     </li>
+                    @endif
                   
                     @endforeach
                 </ul>
