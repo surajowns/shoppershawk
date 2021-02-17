@@ -8367,7 +8367,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .chose_content h3 {
     font-size: 16px;
-    argin-bottom: 13px;
+    margin-bottom: 13px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -10756,11 +10756,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   box-sizing: border-box
 }
 .input-number{
-  width: 80px
-  padding: 0 12px
-  vertical-align: top
-  text-align: center
-  outline: none
+  width: 80px;
+  padding: 0 12px;
+  vertical-align: top;
+  text-align: center;
+  outline: none;
 }
 
 .input-number,
@@ -10783,7 +10783,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   cursor: pointer
 }
 
-  &:active{
+.input-number-increment
+  :active{
     background: #ddd;
   }
 

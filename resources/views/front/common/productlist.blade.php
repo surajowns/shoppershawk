@@ -104,7 +104,7 @@
                             </div>
                             <div class="action_links">
                                 <ul>
-                                    <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                    <li class="wishlist"><a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                             <div class="action_links">
                                 <ul>
                                     <li class="wishlist">
-                                       <a href="wishlist.html" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i> Add to Wishlist</a>
+                                       <a href="{{url('user/wishlist/'.$details['id'])}}" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i> Add to Wishlist</a>
                                        </li>  
                                  </ul>
                             </div>

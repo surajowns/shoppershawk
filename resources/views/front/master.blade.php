@@ -219,7 +219,9 @@
             @yield('content')
 
             <!-- categories  product area start-->
+               @if(!Request::segment(2) == 'wishlist_details' || !Request::segment(2) == 'cart_details' )
                   @include('front.common.recentlyview')
+               @endif  
             <!-- categories product area end-->
         </div>
         <!--home section bg area end-->

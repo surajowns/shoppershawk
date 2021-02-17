@@ -3,7 +3,9 @@
 @section('content')
 <div class="cart_page_bg">
         <div class="container">
+        @if(!empty(Cart::getContent()->toArray()))
             <div class="shopping_cart_area">
+               
              <div class="col-sm-3 p-3 mb-2 bg-gradient-warning text-dark"><h3>My Cart ({{Cart::getContent()->count()}})</h3></div>
                 <!-- <form action="#"> -->
                     <div class="row">
@@ -92,7 +94,16 @@
                     </div>
                     <!--coupon code area end-->
                 <!-- </form> -->
+           
+      
             </div>
+            @else
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                   <img src="{{url('/public/front/img/emptycart.jpg')}}" alt="">
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     @endsection

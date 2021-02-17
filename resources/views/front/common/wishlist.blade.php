@@ -3,6 +3,7 @@
 @section('content')
 <div class="wishlist_page_bg">
         <div class="container">
+        @if(!empty($products))
             <div class="wishlist_area">
                 <div class="wishlist_inner">
                     <form action="#">
@@ -52,6 +53,13 @@
                     </form>
                 </div>
             </div>
+            @else
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                   <img src="{{url('/public/front/img/emptywish.jpg')}}" alt="">
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     @endsection
