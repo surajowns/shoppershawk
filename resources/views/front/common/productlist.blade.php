@@ -68,6 +68,7 @@
         </div>
         <!--shop banner area end-->
         <!--shop toolbar start-->
+        @if((count($product)))
         <div class="shop_toolbar_wrapper">
             <div class="shop_toolbar_btn">
                 <button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>
@@ -186,6 +187,14 @@
                 </ul>
             </div>
         </div>
+        @else
+          <div class="row">
+              <div class="col-sm-12 text-center">
+              <img src="{{url('/public/front/img/productlist.png')}}" alt="">
+              </div>
+          </div>
+        @endif
+        
         <!--shop toolbar end-->
         <!--shop wrapper end-->
     </div>
