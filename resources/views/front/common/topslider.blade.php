@@ -8,7 +8,7 @@ $singlebanner=App\BannerModel::where('status',1)->where('type',2)->get(); ?>
             <div class="owl-stage" style="transform: translate3d(-2698px, 0px, 0px); transition: all 0s ease 0s; width: 9443px;">
                @foreach($topbanner as $slider)
                <div class="owl-item" style="width: 1349px;">
-                    <div class="single_slider d-flex align-items-center" data-bgimg="{{url('public/banner/'.$slider['banner_image'])}}">
+                    <div class="single_slider d-flex align-items-center" data-bgimg="{{url('public/banner/'.$slider['banner_image'])}}" style="background-image: url(&quot;{{url('public/banner/'.$slider['banner_image'])}}&quot;);">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-8 col-12">
