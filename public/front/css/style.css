@@ -743,7 +743,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .canvas_open {
     right: 24px;
-    top: 24px;
+    top: 15px;
   }
 }
 .canvas_open a {
@@ -1035,9 +1035,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 @media only screen and (max-width: 575px) {
-  .logo a img {
+  /* .logo a img {
     max-width: 105px;
-  }
+  } */
 }
 
 .header_middle {
@@ -1045,12 +1045,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_middle {
-    padding: 30px 0;
+    padding: 15px 0;
   }
 }
 @media only screen and (max-width: 767px) {
   .header_middle {
-    padding: 25px 0;
+    padding: 15px 0;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5431,7 +5431,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /* 10. shop page css here */
 .breadcrumbs_area {
-  padding: 20px 0;
+  padding: 0 0 10px 0;
 }
 
 .breadcrumb_content ul li {
@@ -10692,7 +10692,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*# sourceMappingURL=style.css.map */
 
 
-.logo{padding: 10px 10px 0;}
+.logo{padding: 0px;}
 .btn-my,
         .btn2-my {
             font-size: 18px;
