@@ -7,6 +7,7 @@ use App\Product;
 use App\CategoryModel;
 use Validator,Redirect,Response;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -49,14 +50,16 @@ class HomeController extends Controller
     public function ProuctList(Request $request,$slug=null)
     {   
         //   dd($slug);
+
+        $user=Auth::user();
           if(isset($_GET['cat'])){
             $category =CategoryModel::where('status',1)->where('slug',$_GET['cat'])->first();
-            $product=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
 
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug',$_GET['subcat'])->first();
-             $product=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
+             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
 
 
           }

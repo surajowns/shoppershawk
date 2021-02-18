@@ -4133,13 +4133,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: inline-block;
 }
 .action_links ul li a {
-  font-size: 21px;
-  border: 2px solid #ebebeb;
+  font-size:30px;
+  /* border: 2px solid #ebebeb; */
   height: 43px;
   width: 43px;
   line-height: 39px;
   text-align: center;
-  background: #ffffff;
+  /* background: #ffffff; */
   display: block;
 }
 .action_links ul li a:hover {
@@ -10796,4 +10796,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .input-number-increment{
   border-left: none;
   border-radius: 0 4px 4px 0
+}
+.action_links ul li a .ion-android-favorite{
+  color: red;
 }

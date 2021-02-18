@@ -2,7 +2,7 @@
 @section('title','Product List')
 @section('content')
 <!--breadcrumbs area start-->
-
+<?php $user=Auth::user();?>
 <!--shop  area start-->
 <div class="shop_area shop_reverse">
 <div class="container">
@@ -107,9 +107,38 @@
                                 <span class="label_sale">Sale</span>
                             </div>
                             <div class="action_links">
-                                <ul>
-                                    <li class="wishlist"><a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
-                                </ul>
+                            <ul>
+                                    @if(isset($user))
+                                        @if(count($details->wishlist)>0)
+                                           @foreach($details->wishlist as $val)
+                                           
+                                                    <li class="wishlist">
+                                                    @if($val['user_id'] == $user->id )
+                                                        <a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite"></i></a>
+                                                        @else
+                                                          <a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                     @endif
+                                                    </li>
+                                            @endforeach
+                                        @else
+                                         <li class="wishlist">
+                                            <a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                       @endif
+                                    @else
+                                       <li class="wishlist">
+                                            <a href="{{url('user/wishlist/'.$details['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                    @endif
+                                        <li class="compare">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
+                                        </li>
+                                        <li class="quick_button">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$details['slug']}}" data-tippy="quick view">
+                                                <i class="ion-ios-search-strong"></i>
+                                            </a> -->
+                                        </li>
+                                    </ul>
                             </div>
                         </div>
 
