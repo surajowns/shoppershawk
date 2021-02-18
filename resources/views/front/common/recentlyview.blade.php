@@ -1,6 +1,6 @@
 <?php
   $user=Auth::user();
-  $product=App\Product::with('productImage')->where('status',1)->get()->toArray();
+  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->get()->toArray();
 
 
 ?>
@@ -39,7 +39,6 @@
                                     @if(isset($user))
                                         @if(!empty($productdetails['wishlist']))
                                            @foreach($productdetails['wishlist'] as $val)
-                                           
                                                     <li class="wishlist">
                                                     @if($val['user_id'] == $user->id )
                                                         <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite-outline"></i></a>
