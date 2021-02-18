@@ -3792,12 +3792,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .single_categories_product {
+    
     width: 50%;
   }
 }
 @media only screen and (max-width: 767px) {
   .single_categories_product {
-    width: 100%;
+    float: left;
+    width: 50%;
   }
 }
 .single_categories_product:hover {

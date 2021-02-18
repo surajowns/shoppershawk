@@ -48,7 +48,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." type="text" />
+                        <input placeholder="Search product..." type="text" id="sample_search" />
                         <button type="submit">Search</button>
                     </div>
                 </form>
@@ -64,35 +64,46 @@
         </div>
     </div>
     <div class="row">
-                            <div class="col-md-12">
-                                <div class="search_container-1">
-                                <form action="#">
-                                    <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori2" style="display: none;">
-                                            <option selected="" value="1">All Categories</option>
-                                            <option value="2">Accessories</option>
-                                            <option value="3">Accessories &amp; More</option>
-                                            <option value="4">Butters &amp; Eggs</option>
-                                            <option value="5">Camera &amp; Video </option>
-                                            <option value="6">Mornitors</option>
-                                            <option value="7">Tablets</option>
-                                            <option value="8">Laptops</option>
-                                            <option value="9">Handbags</option>
-                                            <option value="10">Headphone &amp; Speaker</option>
-                                            <option value="11">Herbs &amp; botanicals</option>
-                                            <option value="12">Vegetables</option>
-                                            <option value="13">Shop</option>
-                                            <option value="14">Laptops &amp; Desktops</option>
-                                            <option value="15">Watchs</option>
-                                            <option value="16">Electronic</option>
-                                        </select><div class="nice-select select_option" tabindex="0" style="display: none;"><span class="current">All Categories</span><ul class="list"><li data-value="1" class="option selected">All Categories</li><li data-value="2" class="option">Accessories</li><li data-value="3" class="option">Accessories &amp; More</li><li data-value="4" class="option">Butters &amp; Eggs</li><li data-value="5" class="option">Camera &amp; Video </li><li data-value="6" class="option">Mornitors</li><li data-value="7" class="option">Tablets</li><li data-value="8" class="option">Laptops</li><li data-value="9" class="option">Handbags</li><li data-value="10" class="option">Headphone &amp; Speaker</li><li data-value="11" class="option">Herbs &amp; botanicals</li><li data-value="12" class="option">Vegetables</li><li data-value="13" class="option">Shop</li><li data-value="14" class="option">Laptops &amp; Desktops</li><li data-value="15" class="option">Watchs</li><li data-value="16" class="option">Electronic</li></ul></div><div class="nice-select select_option" tabindex="0"><span class="current"></span><ul class="list"></ul></div>
-                                    </div>
-                                    <div class="search_box">
-                                        <input placeholder="Search product..." type="text">
-                                        <button type="submit">Search</button>
-                                    </div>
-                                </form>
-                            </div>
-                            </div>
-                        </div>
+        <div class="col-md-12">
+            <div class="search_container-1">
+            <form action="#">
+                <div class="search_box">
+                    <input placeholder="Search product..." type="text">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
+<script>
+    $(function () {
+    var minlength = 3;
+
+    $("#sample_search").keyup(function () {
+        var that = this,
+        value = $(this).val();
+        alert('dds');
+        
+
+        if (value.length >= minlength ) {
+            if (searchRequest != null) 
+                searchRequest.abort();
+               searchRequest = $.ajax({
+                type: "GET",
+                url: "",
+                data: {
+                    'search_keyword' : value
+                },
+                dataType: "text",
+                success: function(msg){
+                    //we need to check if the value is the same
+                    if (value==$(that).val()) {
+                    //Receiving the result of search here
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
