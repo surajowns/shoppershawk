@@ -1,4 +1,5 @@
 <?php
+$user=Auth::user();
   $newarrivalproduct=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',$user->id);}])->where('type',4)->where('status',1)->get()->toArray();
   $newarrivalcate=array();
   foreach($newarrivalproduct as $productdetails){
