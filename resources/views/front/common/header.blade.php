@@ -38,12 +38,12 @@
         </div>
         <div class="column2 col-lg-6">
             <div class="search_container">
-                <form action="">
+                <form>
                     <div class="hover_category">
                         <select class="select_option" name="select" id="categor" required>
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
-                               <option value="{{$catonly['slug']}}">{{$catonly['name']}}</option>
+                               <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
                              @endforeach 
                         </select>
                     </div>

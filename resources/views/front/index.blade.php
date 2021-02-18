@@ -296,33 +296,25 @@ $.ajax({
         </script>
         <script>
     $(function () {
-    var minlength = 3;
 
     $("#sample_search").keyup(function () {
-        var that = this,
-        var cat=$('#categor').val();
-        value  = $(this).val();
-        alert(value);
+        var  cat = $('#categor').val();
+        var   keywords  = $(this).val();
+        // alert(cat);
         
         $.ajax({
         Type:"GET",
         url : '{{url("ajax/search")}}',
         dataType:'json',
         cache: false,
-        data: {productid:productid},
+        data: {cat:cat,keywords:keywords},
         success: function(response){
-        //  console.log(response);
+         console.log(response);
          if(response.status == 'error'){
-           // ShowError();
-        //    alert("error");
-        //    $("#Items_already").modal('show');
-            //toastr.warning("error");
            
          }
         else{
-            //toastr.info('Added to cart');
-            location.reload();
-           
+                    
          }
         }
      })

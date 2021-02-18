@@ -90,7 +90,8 @@ class HomeController extends Controller
     public function Search(Request  $request)
     {
             
-           $data=$request->all();
-           dd($data);
+          //  $search=$request->all();
+           $result=Product::where('supercategory_id',$request->cat)->where('slug','like','%' .$request->keywords. '%')->get();
+          return json_encode($result);
     }
 }

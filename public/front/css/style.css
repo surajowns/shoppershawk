@@ -3765,7 +3765,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .home_section_bg {
-    padding:0px;
+    padding: 15px 0 0 0;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -4150,7 +4150,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .action_links ul li a:hover {
   /* background: #c40316; */
   /* border-color: #c40316; */
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .product_rating ul {
