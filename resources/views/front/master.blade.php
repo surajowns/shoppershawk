@@ -308,8 +308,9 @@ google.maps.event.addDomListener(window, 'load', function () {
                        toastr.warning("error");
                     
                     }
-                    if(response.redirect == 'product_details'){
-                        window.location.href = "{{url('user/cart_details')}}";
+                    if(response.redirect === 'product_details'){
+                        $url="{{url('user/cart_details')}}";
+                        window.location=$url;
                      }
                     else{
                         location.reload();

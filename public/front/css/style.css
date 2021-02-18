@@ -4119,8 +4119,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .action_links {
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 1; */
+  /* visibility: hidden; */
   transition: all 0.3s ease;
   position: absolute;
   left: 10;

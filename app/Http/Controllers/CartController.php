@@ -20,6 +20,7 @@ class CartController extends Controller
 
     public function AddtoCart(Request $request)
     {
+        //dd($request->all());
            $user=Auth::user();
         $quantity = 1 ;
             $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();

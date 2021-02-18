@@ -1,12 +1,14 @@
 <?php
-  $product=App\Product::with('productImage')->where('type',1)->where('status',1)->get()->toArray();
+ $user=Auth::user();
+  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',$user->id);}])->where('type',1)->where('status',1)->get()->toArray();
   $cate=array();
   foreach($product as $productdetails){
        $cate[]=$productdetails['supercategory_id'];
     
   }
   $categories=App\CategoryModel::whereIn('id',$cate)->get();
-  
+ // dd($product);
+ 
 ?>
 <div class="product_area deals_product">
     <div class="container">
@@ -49,13 +51,28 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist">
-                                            @if($productdetails['id'])
+                                    @if(isset($user))
+                                        @if(!empty($productdetails['wishlist']))
+                                           @foreach($productdetails['wishlist'] as $val)
+                                           
+                                                    <li class="wishlist">
+                                                    @if($val['user_id'] == $user->id )
+                                                        <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                        @else
+                                                          <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                     @endif
+                                                    </li>
+                                            @endforeach
+                                        @else
+                                         <li class="wishlist">
                                             <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            @else
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            @endif
-                                        </li>
+                                         </li>
+                                       @endif
+                                    @else
+                                       <li class="wishlist">
+                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                    @endif
                                         <li class="compare">
                                             <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                                         </li>
