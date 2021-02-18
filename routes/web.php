@@ -44,7 +44,7 @@ Route::any('user/checkout','CheckoutController@Checkout')->name('Checkout Detail
 Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->name('Add and Remove from wishlist');
 Route::any('/user/wishlist_details','WishlistController@index')->name('wishlist details');
 
-
+Route::any('/ajax/search','HomeController@Search')->name('Search product');
 
 ///Admin section start
 

@@ -38,9 +38,9 @@
         </div>
         <div class="column2 col-lg-6">
             <div class="search_container">
-                <form action="#">
+                <form action="">
                     <div class="hover_category">
-                        <select class="select_option" name="select" id="categori2" required>
+                        <select class="select_option" name="select" id="categor" required>
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
                                <option value="{{$catonly['slug']}}">{{$catonly['name']}}</option>
@@ -76,34 +76,5 @@
         </div>
     </div>
 </div>
-<script>
-    $(function () {
-    var minlength = 3;
 
-    $("#sample_search").keyup(function () {
-        var that = this,
-        value = $(this).val();
-        alert('dds');
-        
 
-        if (value.length >= minlength ) {
-            if (searchRequest != null) 
-                searchRequest.abort();
-               searchRequest = $.ajax({
-                type: "GET",
-                url: "",
-                data: {
-                    'search_keyword' : value
-                },
-                dataType: "text",
-                success: function(msg){
-                    //we need to check if the value is the same
-                    if (value==$(that).val()) {
-                    //Receiving the result of search here
-                    }
-                }
-            });
-        }
-    });
-});
-</script>

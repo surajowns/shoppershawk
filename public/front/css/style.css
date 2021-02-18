@@ -3553,7 +3553,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .slider_s_three .single_slider {
     background-position: 10%;
-    height: 300px;
+    height:132px;
   }
 }
 
@@ -3767,7 +3767,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (max-width: 767px) {
   .home_section_bg {
-    padding: 0px;
+    padding: 15px 0 0 0;
   }
 }
 

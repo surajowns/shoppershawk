@@ -87,4 +87,10 @@ class HomeController extends Controller
       return view('front.common.productdetails',compact('product','relatedproducts'));
 
     }
+    public function Search(Request  $request)
+    {
+            
+           $data=$request->all();
+           dd($data);
+    }
 }
