@@ -4135,16 +4135,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .action_links ul li a {
   font-size:30px;
   /* border: 2px solid #ebebeb; */
-  height: 43px;
+  /* height: 43px;
   width: 43px;
   line-height: 39px;
-  text-align: center;
+  text-align: center; */
   /* background: #ffffff; */
-  display: block;
+  /* display: block; */
 }
 .action_links ul li a:hover {
-  background: #c40316;
-  border-color: #c40316;
+  /* background: #c40316; */
+  /* border-color: #c40316; */
   color: #ffffff;
 }
 
