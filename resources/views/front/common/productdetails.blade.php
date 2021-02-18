@@ -1,6 +1,7 @@
 @extends('front.master')
 @section('title','Product Details')
 @section('content')
+<?php $user=Auth::user();?>
 <div class="product_page_bg">
         <div class="container">
             <div class="product_details_wrapper mb-55">
@@ -64,7 +65,7 @@
                                     </div>
                                     <div class=" product_d_action">
                                         <ul>
-                                            <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
+                                            <li><a href="{{url('user/wishlist/'.$product['id'])}}" title="Add to wishlist">+ Add to Wishlist</a></li>
                                         </ul>
                                     </div>
                                    
@@ -201,8 +202,36 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
-                                    </ul>
+                                    @if(isset($user))
+                                        @if(!empty($productdetails['wishlist']))
+                                           @foreach($productdetails['wishlist']  as $val)
+                                           
+                                                    <li class="wishlist">
+                                                    @if($val['user_id'] == $user->id )
+                                                        <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite"></i></a>
+                                                        @else
+                                                          <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                     @endif
+                                                    </li>
+                                            @endforeach
+                                        @else
+                                         <li class="wishlist">
+                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                       @endif
+                                    @else
+                                       <li class="wishlist">
+                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                    @endif
+                                        <li class="compare">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
+                                        </li>
+                                        <li class="quick_button">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
+                                                <i class="ion-ios-search-strong"></i>
+                                            </a> -->
+                                        </li>                                    </ul>
                                 </div>
                             </div>
                             <div class="product_content">
