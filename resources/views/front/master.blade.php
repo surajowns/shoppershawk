@@ -8,7 +8,7 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.ico')}}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
 
         <!-- CSS -->
 
@@ -272,11 +272,9 @@ $.ajax({
         cache: false,
         data: {cat:cat,keywords:keywords},
         success: function(response){
-         var check=jQuery.isEmptyObject(response);
-         console.log(response)
             var rows='';
                     $.each(response,function(key,value){
-                        var newurl = "{{url('/product_details')}}"+'/'+value.slug;
+                        var newurl = "{{url('/products/'.'?cat=')}}"+value.category.slug;
                        
                         rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
                     });
