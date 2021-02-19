@@ -37,6 +37,7 @@
             </div>
         </div>
         <div class="column2 col-lg-6">
+            <!-- desktop search -->
             <div class="search_container">
                 <form>
                     <div class="hover_category ">
@@ -65,6 +66,7 @@
             </div>
         </div>
     </div>
+    <!-- mobile serch -->
     <div class="row">
         <div class="col-md-12">
             <div class="search_container-1">
@@ -78,6 +80,7 @@
         </div>
         </div>
     </div>
+    
 </div>
 
 

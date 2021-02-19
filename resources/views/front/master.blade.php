@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>@yield('title')</title>
+        <title>Shoppershawk</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Favicon -->
@@ -17,18 +17,13 @@
 
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
-        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
-
         <!-- Main Responsive CSS -->
-        <!-- <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" /> -->
+        <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
     </head>
-    <?php 
-  $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
-  $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
-
-?>
     <body>
         <!--Offcanvas menu area start-->
+        
         <div class="off_canvars_overlay"></div>
         <div class="Offcanvas_menu">
             <div class="container">
@@ -118,74 +113,11 @@
                     <!--header middel start-->
                
                     @include('front.common.middleheader')
-                    <div class="header_bottom">
-                    <div class="row align-items-center">
-                        <div class="column1 col-lg-3 col-md-6">
-                            <div class="categories_menu categories_three">
-                                <div class="categories_title">
-                                    <h2 class="categori_toggle">ALL CATEGORIES</h2>
-                                </div>
-                                <div class="categories_menu_toggle">
-                                <ul>
-                    @foreach($categories as $cat)
-                        <li class="menu_item_children">
-                            <a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}} <i class="fa fa-angle-right"></i></a>
-                            <ul class="categories_mega_menu">
-                                @foreach($subcategories as $subcat)
-                                @if($cat['id']==$subcat['parent_id']) 
-                                <li class="menu_item_children">
-                                    <a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a>
-                                    <!-- <ul class="categorie_sub_menu">
-                                        <li><a href="#">Sweater</a></li>
-                                        <li><a href="#">Evening</a></li>
-                                        <li><a href="#">Day</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                    </ul> -->
-                                </li>
-                                @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                       @endforeach           
-                        <!-- <li class="hidden"><a href="#">New Sofas</a></li>
-                        <li class="hidden"><a href="#">Sleight Sofas</a></li>
-                        <li>
-                            <a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More Categories</a>
-                        </li> -->
-                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column2 col-lg-6 ">
-                            <div class="search_container">
-                                    <form action="#">
-                            <div class="hover_category">
-                                <select class="select_option" name="select" id="categori2" required>
-                                    <option selected value="">All Categories</option>
-                                    @foreach($categories as $catonly)
-                                    <option value="{{$catonly['slug']}}">{{$catonly['name']}}</option>
-                                    @endforeach 
-                                </select>
-                            </div>
-                            <div class="search_box">
-                                <input placeholder="Search product..." type="text" />
-                                <button type="submit">Search</button>
-                            </div>
-                        </form>
-                            </div>
 
-                        </div>
-                        <div class="column3 col-lg-3 col-md-6">
-                            <div class="header_bigsale">
-                            <div class="btn-my">
-                    Flash Sale Deal !!!
-                    <div class="btn2-my"></div>
-                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                     <!--header bottom satrt-->
+                    @include('front.common.header')
+
+                    <!--header bottom end-->
                     <div class="breadcrumbs_area">
         <div class="container">
             <div class="row">
@@ -208,11 +140,10 @@
             </div>
         </div>
     </div>
-                    <!--header bottom end-->
                 </div>
             </div>
         </header>
-      
+        <!--header area end-->
         <div class="home_section_bg">
             <!--Categories product area start-->
 
@@ -228,16 +159,6 @@
 
         <!--footer area start-->
           @include('front.common.footer')
-        <!--footer area end-->
-
-        <!-- modal area start-->
-      
-        <!-- modal area end-->
-
-        <!--news letter popup start-->
-     
-        <!--news letter popup start-->
-
         <!-- JS
 ============================================ -->
 
@@ -246,12 +167,9 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
-        <script src="{{url('public/front/js/jscroll.js')}}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-
         @yield('javascript')
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
         <script>
             $(document).ready(function() {
                 @if(Session::has('success'))
@@ -263,136 +181,112 @@
 
             });
         </script>
-<script>
-
-google.maps.event.addDomListener(window, 'load', function () {
-     var options = {
-          componentRestrictions: {country: "IND"}
-        };
-        var places = new google.maps.places.Autocomplete(document.getElementById('billing_address','latitude','longitude'),'');
-        google.maps.event.addListener(places, 'place_changed', function () {
-          var place = places.getPlace();
-          var address = place.formatted_address;
-          var latitude = place.geometry.location.lat();
-          var longitude = place.geometry.location.lng();
-          // var mesg = address;
-        
-          // var suburb = address.split(',');
-          $('#latitude').val(latitude);
-          $('#latitude').val(latitude);
-
-
-          $('#longitude').val(longitude);
-          // alert(mesg+' latitude:- '+latitude+' longitude:-'+longitude);
-        });
-      });
- </script>
         <script>
         $(document).ready(function(){
-            $('.cart').click(function(){
+        
+        $(".deals_of_the_month li:first a").addClass("active");
+        $('.deals_of_the_month li:first a').attr('aria-selected', true);
+        $('.dealsofthemonth').first().addClass('active show');
+
+        $(".new_arrival_product li:first a").addClass("active");
+        $('.new_arrival_product li:first a').attr('aria-selected', true);
+        $('.newarrivalproduct').first().addClass('active show');
+
+        $(".featured_product li:first a").addClass("active");
+        $('.featured_product li:first a').attr('aria-selected', true);
+        $('.featuredproduct').first().addClass('active show');
+
+
+        $(".best_selling_product li:first a").addClass("active");
+        $('.best_selling_product li:first a').attr('aria-selected', true);
+        $('.bestsellingproduct').first().addClass('active show');
+
+         
+
+$('.cart').click(function(){
+        
+var productid= $(this).data('productid');
+
+$.ajax({
+        Type:"GET",
+        url : '{{url("ajax/add_to_cart")}}',
+        dataType:'json',
+        cache: false,
+        data: {productid:productid},
+        success: function(response){
+        //  console.log(response);
+         if(response.status == 'error'){
+           
+         }
+        else{
+            //toastr.info('Added to cart');
+            location.reload();
+           
+         }
+        }
+     })
+    });
+    $('.removecart').click(function(){
         
         var productid= $(this).data('productid');
-        var producturl= $(this).data('url');
-
-        
-            $.ajax({
-                    Type:"GET",
-                    url : '{{url("ajax/add_to_cart")}}',
-                    dataType:'json',
-                    cache: false,
-                    data: {productid:productid,producturl:producturl},
-                    success: function(response){
-                        console.log(response);
-                    if(response.status == 'error'){
-                    
-                       toastr.warning("error");
-                    
-                    }
-                    if(response.redirect === 'product_details'){
-                        $url="{{url('user/cart_details')}}";
-                        window.location=$url;
-                     }
-                    else{
-                        location.reload();
-                    }
-                    }
-                })
-                });
-                $('.removecart').click(function(){
-            
-            var productid= $(this).data('productid');
-            // alert()
-            $(this).parent().prev().prev().parent().css("display","none");
-            // $(this).parent().prev().css("display","none");
-            // $(this).parent().css("display","none");
+        // alert()
+        $(this).parent().prev().prev().parent().css("display","none");
+        // $(this).parent().prev().css("display","none");
+        // $(this).parent().css("display","none");
 
 
-            $.ajax({
-                    Type:"GET",
-                    url : '{{url("ajax/remove_cart")}}',
-                    dataType:'json',
-                    cache: false,
-                    data: {productid:productid},
-                    success: function(response){
-                    if(response.status == 'error'){
-                       toastr.warning("error");
-                    }
-                    else{
-                        location.reload();
-                    
-                    }
-                    }
-                })
-                });
+        $.ajax({
+                Type:"GET",
+                url : '{{url("ajax/remove_cart")}}',
+                dataType:'json',
+                cache: false,
+                data: {productid:productid},
+                success: function(response){
+                 if(response.status == 'error'){
+                    //toastr.warning("error");
+                 }
+                else{
+                    //toastr.success('Remove from cart');
+                    location.reload();
+                   
+                 }
+                }
+             })
             });
-        $(document).ready(function(){
 
-        $( ".increment" ).click(function() {
-            var value=$(this).prev().val()
-            var productid= $(this).data('productid');
-            value++;
-            $.ajax({
-                    Type:"POST",
-                    url : '{{url("/user/updatecart")}}',
-                    dataType:'json',
-                    cache: true,
-                    data: {value:value,productid:productid},
-                    success: function(response){
-                    if(response.status == 'error'){
-                    toastr.warning("error");
-                    }
-                    else{
-                        location.reload();
-                    
-                    }
-                    }
-                })       
-        });
-       
-        $( ".decrement" ).click(function() {
-            var value=$(this).next().val();
+ });
+        
+        </script>
+        <script>
+    $(function () {
 
-        var productid= $(this).data('productid');
-        value--;
-            $.ajax({
-                    Type:"POST",
-                    url : '{{url("/user/updatecart")}}',
-                    dataType:'json',
-                    cache: true,
-                    data: {value:value,productid:productid},
-                    success: function(response){
-                    if(response.status == 'error'){
-                         toastr.warning("error");
-                    }
-                    else{
-                        location.reload();
-                    
-                    }
-                    }
-                })       
-        });
-     });
+    $(".sample_search").keyup(function () {
+        var  cat = $('#categor').val();
+        var   keywords  = $(this).val();
+        // alert(cat);
+        if(keywords!=''){
+        $.ajax({
+        Type:"POST",
+        url : '{{url("ajax/search")}}',
+        dataType:'json',
+        cache: false,
+        data: {cat:cat,keywords:keywords},
+        success: function(response){
+         var check=jQuery.isEmptyObject(response);
+         console.log(response)
+            var rows='';
+                    $.each(response,function(key,value){
+                        var newurl = "{{url('/product_details')}}"+'/'+value.slug;
+                       
+                        rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
+                    });
+            $('.list_details').html(rows)
+        }
+     })
+    }
+    });
+    });
+</script>
 
-       </script>
-     </body>
+    </body>
 </html>

@@ -796,7 +796,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .sticky-header.sticky {
   position: fixed;
-  z-index: 99;
+  z-index: 999999;
   width: 100%;
   top: 0;
   background: rgba(255, 255, 255, 0.95);
@@ -1994,7 +1994,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .search_box {
     /*margin-bottom: 25px;*/
-    border-left: 2px solid #ebebeb;
+    border-left: 2px solid #ffffff;
     border-radius: 4px;
   }
   .list_details li{
