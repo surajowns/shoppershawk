@@ -126,7 +126,8 @@
                         <ul>
                             <li><a href="{{url('/')}}">home</a></li>
                            @if(isset($_GET['cat']))
-                            <li>{{$_GET['cat']}}</li>
+                           <?php $brandname=App\BrandModel::where('id',$_GET['cat'])->first('name')?>
+                            <li>{{is_numeric($_GET['cat'])?$brandname['name']:$_GET['cat']}}</li>
                             @endif
                             @if(isset($_GET['subcat']))
                             <li>{{$_GET['subcat']}}</li>
