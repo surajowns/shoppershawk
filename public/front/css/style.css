@@ -4150,7 +4150,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 43px;
   line-height: 39px;
   text-align: center; */
-  /* background: #ffffff; */
+  color: #c40316;
   /* display: block; */
 }
 .action_links ul li a:hover {
@@ -10825,9 +10825,5 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .list_details li a:hover{
-  padding: 10px 15px;
-  position: relative;
-  left: 180px;
-  background: #c40316;
-  z-index: 9999;
+  color: #c40316;
 }
