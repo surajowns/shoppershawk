@@ -81,7 +81,7 @@ class HomeController extends Controller
     }
     public function Search(Request  $request)
     {
-          $result=Product::where('supercategory_id',$request->cat)->where('slug','like','%' .$request->keywords. '%')->get();
+          $result=Product::where('supercategory_id',$request->cat)->where('name','like','%' .$request->keywords. '%')->get();
           return json_encode($result);
     }
 }

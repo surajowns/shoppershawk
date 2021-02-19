@@ -48,10 +48,12 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." type="text" id="sample_search" />
+                        <input placeholder="Search product..." type="text" class="sample_search" />
                         <button type="submit">Search</button>
                     </div>
+                   
                 </form>
+                <ul class="search_list"></ul>
             </div>
         </div>
         <div class="column3 col-lg-3 col-md-6">
@@ -66,12 +68,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="search_container-1">
-            <form action="#">
+            <form>
                 <div class="search_box">
-                    <input placeholder="Search product..." type="text">
+                    <input placeholder="Search product..." type="text" class="sample_search">
                     <button type="submit">Search</button>
                 </div>
             </form>
+            <ul class="search_list"></ul>
         </div>
         </div>
     </div>

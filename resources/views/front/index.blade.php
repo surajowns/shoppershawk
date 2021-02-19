@@ -212,8 +212,6 @@
 
             });
         </script>
-       
-
         <script>
         $(document).ready(function(){
         
@@ -249,10 +247,6 @@ $.ajax({
         success: function(response){
         //  console.log(response);
          if(response.status == 'error'){
-           // ShowError();
-        //    alert("error");
-        //    $("#Items_already").modal('show');
-            //toastr.warning("error");
            
          }
         else{
@@ -297,7 +291,7 @@ $.ajax({
         <script>
     $(function () {
 
-    $("#sample_search").keyup(function () {
+    $(".sample_search").keyup(function () {
         var  cat = $('#categor').val();
         var   keywords  = $(this).val();
         // alert(cat);
@@ -309,12 +303,15 @@ $.ajax({
         cache: false,
         data: {cat:cat,keywords:keywords},
         success: function(response){
-         console.log(response);
+        console.log(response);
          if(response.status == 'error'){
            
          }
         else{
-                    
+            $.each(response, function(key, value){
+               var producturl="{{url('/product_details')}}"+'/'+value.slug;
+            $(".search_list").append('<a href="'+producturl+'"><li>'+value.name+'</li></a>');
+        });
          }
         }
      })
