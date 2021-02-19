@@ -284,6 +284,53 @@ $.ajax({
     }
     });
     });
+    $(document).ready(function(){
+
+$( ".increment" ).click(function() {
+    var value=$(this).prev().val()
+    var productid= $(this).data('productid');
+    value++;
+    $.ajax({
+            Type:"POST",
+            url : '{{url("/user/updatecart")}}',
+            dataType:'json',
+            cache: true,
+            data: {value:value,productid:productid},
+            success: function(response){
+            if(response.status == 'error'){
+            toastr.warning("error");
+            }
+            else{
+                location.reload();
+            
+            }
+            }
+        })       
+});
+
+$( ".decrement" ).click(function() {
+    var value=$(this).next().val();
+
+var productid= $(this).data('productid');
+value--;
+    $.ajax({
+            Type:"POST",
+            url : '{{url("/user/updatecart")}}',
+            dataType:'json',
+            cache: true,
+            data: {value:value,productid:productid},
+            success: function(response){
+            if(response.status == 'error'){
+                 toastr.warning("error");
+            }
+            else{
+                location.reload();
+            
+            }
+            }
+        })       
+});
+});
 </script>
 
     </body>
