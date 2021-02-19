@@ -1997,6 +1997,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     border-left: 2px solid #ebebeb;
     border-radius: 4px;
   }
+  .list_details li{
+    left: 0 !important;
+  }
+  .list_details{
+    width: 297px !important;
+  }
 }
 .search_box input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -10804,4 +10810,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .action_links ul li a .ion-android-favorite{
   color: red;
+}
+.list_details{
+  position: absolute;
+  z-index: 99999;
+  width: 425px;
+}
+.list_details li{
+  padding: 10px 15px;
+  position: relative;
+  left: 180px;
+  background: #ebebeb;
+  z-index: 9999;
 }

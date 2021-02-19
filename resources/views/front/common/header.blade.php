@@ -39,7 +39,7 @@
         <div class="column2 col-lg-6">
             <div class="search_container">
                 <form>
-                    <div class="hover_category">
+                    <div class="hover_category ">
                         <select class="select_option" name="select" id="categor" required>
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
@@ -53,7 +53,7 @@
                     </div>
                    
                 </form>
-                <ul class="search_list"></ul>
+                 <ul class="list_details"></ul>
             </div>
         </div>
         <div class="column3 col-lg-3 col-md-6">
@@ -74,7 +74,7 @@
                     <button type="submit">Search</button>
                 </div>
             </form>
-            <ul class="search_list"></ul>
+                 <ul class="list_details"></ul>
         </div>
         </div>
     </div>

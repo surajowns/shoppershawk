@@ -295,28 +295,29 @@ $.ajax({
         var  cat = $('#categor').val();
         var   keywords  = $(this).val();
         // alert(cat);
-        
+        if(keywords!=''){
         $.ajax({
-        Type:"GET",
+        Type:"POST",
         url : '{{url("ajax/search")}}',
         dataType:'json',
         cache: false,
         data: {cat:cat,keywords:keywords},
         success: function(response){
-        console.log(response);
-         if(response.status == 'error'){
-           
-         }
-        else{
-            $.each(response, function(key, value){
-               var producturl="{{url('/product_details')}}"+'/'+value.slug;
-            $(".search_list").append('<a href="'+producturl+'"><li>'+value.name+'</li></a>');
-        });
-         }
+         var check=jQuery.isEmptyObject(response);
+         console.log(response)
+            var rows='';
+                    $.each(response,function(key,value){
+                        var newurl = "{{url('/product_details')}}"+'/'+value.slug;
+                       
+                        rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
+                    });
+            $('.list_details').html(rows)
         }
      })
+    }
     });
     });
 </script>
+
     </body>
 </html>
