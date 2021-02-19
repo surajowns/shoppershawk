@@ -49,7 +49,11 @@ class HomeController extends Controller
     public function ProuctList(Request $request,$slug=null)
     {   
         $user=Auth::user();
-          if(isset($_GET['cat'])){
+          if(is_numeric($_GET['cat'])){
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand',$_GET['cat'])->where('status',1)->paginate(32);
+
+          }
+        else{
             $category =CategoryModel::where('status',1)->where('slug',$_GET['cat'])->first();
             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
           }
@@ -67,7 +71,6 @@ class HomeController extends Controller
 
         }else{
           return view('errors.404');
-
         }
     }
     public function ProuctDetails(Request $request,$slug=null)

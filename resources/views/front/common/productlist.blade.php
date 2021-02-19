@@ -2,7 +2,11 @@
 @section('title','Product List')
 @section('content')
 <!--breadcrumbs area start-->
-<?php $user=Auth::user();?>
+<?php
+   $brand=App\BrandModel::where('status',1)->get();
+  $user=Auth::user();
+
+?>
 <!--shop  area start-->
 <div class="shop_area shop_reverse">
 <div class="container">
@@ -28,7 +32,6 @@
                         </ul>
                     </li>
                     @endif
-                  
                     @endforeach
                 </ul>
             </div>
@@ -44,11 +47,9 @@
             <div class="widget_list tags_widget">
                 <h3>Product tags</h3>
                 <div class="tag_cloud">
-                    <a href="#">blouse</a>
-                    <a href="#">clothes</a>
-                    <a href="#">fashion</a>
-                    <a href="#">handbag</a>
-                    <a href="#">laptop</a>
+                    @foreach($brand as $value)
+                    <a href="{{url('/products/'.'?cat='.strtolower($value['id']))}}">{{$value['name']}}</a>
+                    @endforeach
                 </div>
             </div>
         </aside>
