@@ -6,6 +6,7 @@ $singlebanner=App\BannerModel::where('status',1)->where('type',2)->get(); ?>
 <section class="slider_section slider_s_three mt-20">
         <div class="slider_area slider3_carousel owl-carousel">
         @foreach($topbanner as $slider)
+        <a href="{{$slider['link']}}">
             <div class="single_slider d-flex align-items-center" data-bgimg="{{url('public/banner/'.$slider['banner_image'])}}">
                 <div class="container">
                     <div class="row">
@@ -20,6 +21,7 @@ $singlebanner=App\BannerModel::where('status',1)->where('type',2)->get(); ?>
                     </div>
                 </div>
             </div>
+            </a>
          @endforeach
         </div>
 </section>
