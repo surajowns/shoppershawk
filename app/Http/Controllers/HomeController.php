@@ -38,7 +38,6 @@ class HomeController extends Controller
             return back()->with('error',$e->getMessage());
 
           }
-             
 
         }
         return view('front.common.register');
@@ -49,27 +48,20 @@ class HomeController extends Controller
     }
     public function ProuctList(Request $request,$slug=null)
     {   
-        //   dd($slug);
-
         $user=Auth::user();
           if(isset($_GET['cat'])){
             $category =CategoryModel::where('status',1)->where('slug',$_GET['cat'])->first();
             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
-
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug',$_GET['subcat'])->first();
              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
-
-
           }
-        // $product=Product::with('productImage')->where('supercategory_id',$category['id'])->whereOr('category_id',$subcategory['id'])->where('status',1)->paginate(32);
         $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
         $i=0;foreach($category as $cat){
         $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
         $i++;
         }
-        
         if(isset($_GET['cat'])){
           return view('front.common.productlist',compact('product','category'));
 
@@ -80,18 +72,16 @@ class HomeController extends Controller
     }
     public function ProuctDetails(Request $request,$slug=null)
     {
+
+      $user=Auth::user();
       $product=Product::with('productImage','wishlist','productRating')->where('slug',$slug)->where('status',1)->first();
-
-      $relatedproducts=Product::with('productImage','wishlist','productRating')->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
-
+      $relatedproducts=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
       return view('front.common.productdetails',compact('product','relatedproducts'));
 
     }
     public function Search(Request  $request)
     {
-            
-          //  $search=$request->all();
-           $result=Product::where('supercategory_id',$request->cat)->where('slug','like','%' .$request->keywords. '%')->get();
+          $result=Product::where('supercategory_id',$request->cat)->where('slug','like','%' .$request->keywords. '%')->get();
           return json_encode($result);
     }
 }
