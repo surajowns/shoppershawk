@@ -10820,6 +10820,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 10px 15px;
   position: relative;
   left: 180px;
-  background: #ebebeb;
+  background: #ffffff;
+  z-index: 9999;
+}
+
+.list_details li a:hover{
+  padding: 10px 15px;
+  position: relative;
+  left: 180px;
+  background: #c40316;
   z-index: 9999;
 }
