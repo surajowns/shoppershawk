@@ -45,6 +45,7 @@ Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->n
 Route::any('/user/wishlist_details','WishlistController@index')->name('wishlist details');
 
 Route::any('/ajax/search','HomeController@Search')->name('Search product');
+Route::any('/ajax/multisearch','HomeController@MultiSearch')->name('Search product');
 
 ///Admin section start
 

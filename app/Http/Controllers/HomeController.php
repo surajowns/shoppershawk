@@ -48,17 +48,18 @@ class HomeController extends Controller
     }
     public function ProuctList(Request $request,$slug=null)
     {   
+       try{
         $user=Auth::user();
           if(is_numeric($_GET['cat'])){
-            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand',$_GET['cat'])->where('status',1)->paginate(32);
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->where('status',1)->paginate(32);
 
           }
         else{
-            $category =CategoryModel::where('status',1)->where('slug',$_GET['cat'])->first();
+            $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('status',1)->paginate(32);
           }
           if(isset($_GET['subcat'])){
-             $subcategory =CategoryModel::where('status',1)->where('slug',$_GET['subcat'])->first();
+             $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
           }
         $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
@@ -72,6 +73,11 @@ class HomeController extends Controller
         }else{
           return view('errors.404');
         }
+      }catch(\Exception $e){
+
+          return view('errors.404');
+
+      }
     }
     public function ProuctDetails(Request $request,$slug=null)
     {
@@ -94,5 +100,11 @@ class HomeController extends Controller
           }
           //dd($result);
           return response()->json($result);
+    }
+    public function MultiSearch(Request $request)
+    {
+      $user=Auth::user();
+      $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('slug','like','%'.$request->keywords.'%')->where('status',1)->get();
+      return view('front.common.productlist',compact('product'));
     }
 }
