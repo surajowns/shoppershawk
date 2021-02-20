@@ -182,24 +182,27 @@
                               <thead>
                                  <tr>
                                     <th>Product</th>
+                                    <th>Quantity</th>
                                     <th>Total</th>
                                  </tr>
                               </thead>
                               <tbody>
                                  @foreach($details as $data)
                                  <tr>
-                                    <td>{{number_format($data['quantity'])}} <strong>×{{$data['name']}}</strong></td>
+                                    <td class="text-left">{{number_format($data['quantity'])}} <strong>×{{$data['name']}}</strong></td>
+                                    <td>{{number_format($data['quantity'])}}</td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
                                  @endforeach
                               </tbody>
                               <tfoot>
                                  <tr>
-                                    <th>Cart Subtotal</th>
+                                    <th colspan="2">Cart Subtotal</th>
                                     <td>₹{{number_format(Cart::getSubTotal(),2)}}</td>
                                  </tr>
                                  <tr>
-                                    <th>Shipping</th>
+                                    <th colspan="2">Shipping</th>
+                                   
                                     <td>
                                        <strong>
                                           <p class="cart_amount text-success">Free</p>
@@ -207,13 +210,12 @@
                                     </td>
                                  </tr>
                                  <tr class="order_total">
-                                    <th>Order Total</th>
+                                    <th colspan="2">Order Total</th>
                                     <td><strong>₹{{number_format(Cart::getTotal(),2)}}</strong></td>
                                  </tr>
                               </tfoot>
                            </table>
                         </div>
-                     
                   </div>
                </div>
             </div>

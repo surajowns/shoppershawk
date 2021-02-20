@@ -8,6 +8,7 @@ use Cart;
 use Session;
 use Auth;
 use App\Wishlist;
+use App\CartModel;
 
 class CartController extends Controller
 {
@@ -20,10 +21,9 @@ class CartController extends Controller
 
     public function AddtoCart(Request $request)
     {
-        //dd($request->all());
            $user=Auth::user();
-        $quantity = 1 ;
-            $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();
+           $quantity = 1 ;
+           $products=Product::with('productImage')->where('id',$request->productid)->first()->toArray();
            $add  =  array('id'=>$request->productid,
            
            'name'=> $products['name'],
@@ -36,14 +36,37 @@ class CartController extends Controller
                                 
            );
            Cart::add($add); 
-           Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
+           $check=Wishlist::where('product_id',$request->productid)->first();
+           if(!empty($check) && !empty($user)){
+               Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
+              }
+            
+              $checkcart=CartModel::where('product_id',$request->productid)->first();
+            //   dd($checkcart);
+            if(!empty($checkcart) && !empty($user)){
+                 $quantity=$quantity+$checkcart['quantity'];
+                 CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$quantity]);
+              
+            }
+             else{
+                $carts= new CartModel;
+                $carts->user_id=$user->id;
+                $carts->product_id=$request->productid;
+                $carts->quantity=$quantity;
+                $carts->save(); 
+             }
+
            return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
 
     public function removecart(Request $request)
-    {
+    {    $user=Auth::user();
         Cart::remove($request->productid);
+        $check=CartModel::where('product_id',$request->productid)->first();
+        if(!empty($check) && !empty($user)){
+            CartModel::where('user_id',$user->id)->where('product_id',$check['product_id'])->delete();
+           }
         return response()->json(array('status'=>'success','msg'=>'success'));   
 
     }
@@ -61,6 +84,14 @@ class CartController extends Controller
                 'relative' => false,
                 'value' => $qty
             ),));
+
+            $user=Auth::user();
+            $checkcart=CartModel::where('product_id',$request->productid)->first();
+            $quantity=1;
+            if(!empty($checkcart) && !empty($user)){
+                 CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$qty]);
+              
+            }
         return json_encode($success);
     }
 }

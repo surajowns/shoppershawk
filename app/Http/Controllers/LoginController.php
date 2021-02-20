@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use Session;
+use Cart;
+use App\CartModel;
 
 class LoginController extends Controller
 {
@@ -13,6 +15,9 @@ class LoginController extends Controller
     {
         
         // dd($request->all());
+
+       
+
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                     'email' => 'required',
@@ -37,6 +42,19 @@ class LoginController extends Controller
                 if (Auth::User()['role']==2)
                 { 
                     $user=Auth::User();
+                    $cartdetails=Cart::getContent()->toArray();
+                   
+                    if(!empty($cartdetails)){
+                        foreach($cartdetails as $details){
+                            $carts= new CartModel;
+                            $carts->user_id=$user->id;
+                            $carts->product_id=$details['id'];
+                            $carts->quantity=$details['quantity'] ;
+                            $carts->save();                        
+                        }
+                    }
+
+
                     Session::put('logid',Auth::User()['id']) ; 
                   
                     return redirect('/home')->with('success', 'Login Successfully');
