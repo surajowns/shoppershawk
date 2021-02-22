@@ -80,15 +80,15 @@
                         <div class="row">
                            <div class="col-lg-6 mb-20">
                               <label>Name <span>*</span></label>
-                              <input type="text" name="name" value="{{isset($userdeta['name'])?$userdeta['name']:''}}" required>
+                              <input type="text" name="billing_name" value="{{isset($userdeta['name'])?$userdeta['name']:''}}" required>
                            </div>
                            <div class="col-lg-6 mb-20">
                               <label>Email<span>*</span></label>
-                              <input type="text" name="email" value="{{isset($userdeta['email'])?$userdeta['email']:''}}" required>
+                              <input type="text" name="billing_email" value="{{isset($userdeta['email'])?$userdeta['email']:''}}" required>
                            </div>
                            <div class="col-6 mb-20">
                               <label for="country">Country <span>*</span></label>
-                              <select class="niceselect_option" name="country" id="country" required>
+                              <select class="niceselect_option" name="billing_country" id="country" required>
                                  <option value="india">India</option>
                                  <!-- <option value="3">Algeria</option>
                                     <option value="4">Afghanistan</option>
@@ -101,7 +101,7 @@
                            </div>
                            <div class="col-6 mb-20">
                               <label>State<span>*</span></label>
-                              <input type="text"  required>
+                              <input type="text" name="billing_state"  required>
                            </div>
                            <div class="col-12 mb-20">
                               <label>Address<span>*</span></label>
@@ -109,15 +109,15 @@
                            </div>
                            <div class="col-12 mb-20">
                               <label>Landmark</label>
-                              <input type="text" name="landmark">
+                              <input type="text" name="billing_landmark">
                            </div>
                            <div class="col-lg-6 mb-20">
                               <label>Phone<span>*</span></label>
-                              <input type="text" name="mobile" value="{{isset($userdeta['mobile'])?$userdeta['mobile']:''}}" required>
+                              <input type="text" name="billing_mobile" value="{{isset($userdeta['mobile'])?$userdeta['mobile']:''}}" required>
                            </div>
                            <div class="col-lg-6 mb-20">
                               <label>Pincode <span>*</span></label>
-                              <input type="text" name="pincode" value="" required>
+                              <input type="text" name="billing_pincode" value="" required>
                            </div>
                            <div class="col-12 mb-20">
                               <input id="address" type="checkbox" data-target="createp_account" />
@@ -168,7 +168,7 @@
                                     <div class="col-12">
                                        <div class="order-notes">
                                           <label for="order_note">Order Notes</label>
-                                          <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                          <textarea id="order_note" name="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                        </div>
                                     </div>
                                  </div>

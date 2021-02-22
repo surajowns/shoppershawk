@@ -14,9 +14,6 @@ class LoginController extends Controller
     public function validateUser(Request $request)
     {
         
-        // dd($request->all());
-
-       
 
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
@@ -83,6 +80,7 @@ class LoginController extends Controller
         Auth::logout();
         Session::forget('logRole'); 
         Session::forget('logid') ;  
+        Session::forget('discount');
         return redirect('/home');
     }
 }

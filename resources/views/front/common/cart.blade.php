@@ -75,9 +75,13 @@
                                             <p>Subtotal</p>
                                             <p class="cart_amount">₹{{number_format(Cart::getSubTotal(),2)}}</p>
                                         </div>
-                                        <div class="cart_subtotal ">
+                                        <div class="cart_subtotal">
                                             <p>Shipping</p>
                                             <p class="cart_amount text-success">Free</p>
+                                        </div>
+                                        <div class="cart_subtotal">
+                                            <p>Discount</p>
+                                            <p>₹{{number_format(Session::get('discount'),2)}}</p>
                                         </div>
                                         <!-- <a href="#">Calculate shipping</a> -->
 
