@@ -75,7 +75,8 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method action="#">
+                     <form method="post" action="{{url('/user/createorder/')}}">
+                     @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
                            <div class="col-lg-6 mb-20">
