@@ -51,7 +51,25 @@
                   </div>
                </div>
                @endif
-            </div>
+               <div class="user-actions">
+                            <h3> 
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                Apply Coupon Code?
+                                <a class="Returning" href="#checkout_coupon" data-bs-toggle="collapse"  aria-expanded="true">Click here to Apply your coupon code</a>     
+    
+                            </h3>
+                             <div id="checkout_coupon" class="collapse" data-parent="#accordion">
+                                <div class="checkout_info coupon_info">
+                                    <form action="{{url('/user/coupon/')}}" method="post" >
+                                    @csrf
+                                        <input placeholder="Coupon code" type="text" name="code">
+                                        <button type="submit">Apply coupon</button>
+                                        <span class="text-danger">{{$errors->first('code')}}</span>
+                                    </form>
+                                </div>
+                            </div>    
+                  </div>
+               </div>
          </div>
          <div class="checkout_form">
             <div class="row">
@@ -98,7 +116,7 @@
                               <input type="text" name="mobile" value="{{isset($userdeta['mobile'])?$userdeta['mobile']:''}}" required>
                            </div>
                            <div class="col-lg-6 mb-20">
-                              <label> Pincode <span>*</span></label>
+                              <label>Pincode <span>*</span></label>
                               <input type="text" name="pincode" value="" required>
                            </div>
                            <div class="col-12 mb-20">
@@ -189,7 +207,7 @@
                               <tbody>
                                  @foreach($details as $data)
                                  <tr>
-                                    <td class="text-left">{{number_format($data['quantity'])}} <strong>×{{$data['name']}}</strong></td>
+                                    <td class="text-left"><strong>×{{$data['name']}}</strong></td>
                                     <td>{{number_format($data['quantity'])}}</td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
@@ -209,9 +227,13 @@
                                        </strong>
                                     </td>
                                  </tr>
+                                 <tr>
+                                   <th colspan="2">Discount</th>
+                                   <td>₹{{number_format(Session::get('discount'),2)}}</td>
+                                 </tr>
                                  <tr class="order_total">
                                     <th colspan="2">Order Total</th>
-                                    <td><strong>₹{{number_format(Cart::getTotal(),2)}}</strong></td>
+                                    <td><strong>₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
                                  </tr>
                               </tfoot>
                            </table>

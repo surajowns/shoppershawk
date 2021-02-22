@@ -57,10 +57,11 @@
                                 <div class="coupon_code left">
                                     <h3>Coupon</h3>
                                     <div class="coupon_inner">
-                                    <form action="">
-                                    <p>Enter your coupon code if you have one.</p>
-                                        <input placeholder="Coupon code" type="text">
+                                     <form action="{{url('/user/coupon/')}}" method="post" >
+                                    @csrf
+                                        <input placeholder="Coupon code" type="text" name="code">
                                         <button type="submit">Apply coupon</button>
+                                        <span class="text-danger">{{$errors->first('code')}}</span>
                                     </form>
                                        
                                     </div>
