@@ -25,7 +25,7 @@
 							<a href="{{url('/admin/product')}}"><i class="fas fa-bullhorn"></i> <span>Products</span></a>
 						</li>
 						<li >
-							<a href="{{url('admin/under-construction')}}"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
+							<a href="{{url('admin/orders')}}"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
 						</li>
 						<li>
 							<a href="{{url('admin/under-construction')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>

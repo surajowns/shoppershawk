@@ -48,10 +48,11 @@ class CartController extends Controller
                  CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$quantity]);
               
             }
-             else{
+            elseif(!empty($user)){
                 $carts= new CartModel;
                 $carts->user_id=$user->id;
                 $carts->product_id=$request->productid;
+                $carts->price=$products['selling_price'];
                 $carts->quantity=$quantity;
                 $carts->save(); 
              }

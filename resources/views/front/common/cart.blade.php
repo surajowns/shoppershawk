@@ -87,7 +87,7 @@
 
                                         <div class="cart_subtotal">
                                             <p>Total</p>
-                                            <p class="cart_amount">₹{{number_format(Cart::getTotal(),2)}}</p>
+                                            <p class="cart_amount">₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</p>
                                         </div>
                                         <div class="checkout_btn">
                                             <a href="{{url('/user/checkout')}}">Proceed to Checkout</a>

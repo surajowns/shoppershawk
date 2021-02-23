@@ -127,6 +127,13 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
      Route::any('/role/add-role','RoleController@addRole')->name('Add  Role');
      Route::any('/role/edit-role/{id}', 'RoleController@editRole')->name('Edit  Role'); 
      Route::get('/role/delete-role/{id}','RoleController@deleteRole')->name('Delete Role');
+    
+     //Orders 
+     Route::get('/orders','OrderController@Index')->name('Order list');
+
+
+
+
 
      //admin users
 

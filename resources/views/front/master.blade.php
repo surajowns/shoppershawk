@@ -332,6 +332,13 @@ value--;
         })       
 });
 });
+
+
+
+
+// $(function(){
+//        $(".addrequired").prop('required',true);
+// });
 </script>
 
     </body>

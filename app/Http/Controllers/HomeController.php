@@ -137,8 +137,8 @@ class HomeController extends Controller
           }
           $item_total;
           if($minimum_amount <= $item_total){
-             Session::put("coupon",$coupon_code);
-             Session::put("discount",$discount);
+             Session::put('coupon',$coupon_code);
+             Session::put('discount',$discount);
             return back()->with(['success'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
           }else{
             return back()->with(['error'=>"Coupon not  available for this order"]);

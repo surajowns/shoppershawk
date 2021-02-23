@@ -41,13 +41,21 @@ class LoginController extends Controller
                     $user=Auth::User();
                     $cartdetails=Cart::getContent()->toArray();
                    
+                   
                     if(!empty($cartdetails)){
                         foreach($cartdetails as $details){
+                            $check=CartModel::where('user_id',Auth::User()['id'])->where('product_id',$details['id'])->first();
+                           
+                            if(empty($check)){
                             $carts= new CartModel;
-                            $carts->user_id=$user->id;
+                            $carts->user_id=Auth::User()['id'];
                             $carts->product_id=$details['id'];
+                            $carts->price=$details['price'];
                             $carts->quantity=$details['quantity'] ;
-                            $carts->save();                        
+                            $carts->save(); 
+                          
+                          }
+                                                   
                         }
                     }
 

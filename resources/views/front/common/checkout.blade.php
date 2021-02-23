@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post" action="{{url('/user/createorder/')}}">
+                     <form method="post" action="{{url('/user/createorder/')}}" id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -106,7 +106,7 @@
                            </div>
                            <div class="col-12 mb-20">
                               <label>Address<span>*</span></label>
-                              <input placeholder="" type="text" class="billing_address" name="address" required>
+                              <input placeholder="" type="text" class="billing_address" name="billing_address" required>
                            </div>
                            <div class="col-12 mb-20">
                               <label>Landmark</label>
@@ -127,15 +127,15 @@
                                  <div class="row">
                                     <div class="col-lg-6 mb-20">
                                        <label>Name <span>*</span></label>
-                                       <input type="text" name="shipping_name"  required>
+                                       <input class="addrequired" type="text" name="shipping_name">
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label>Email<span>*</span></label>
-                                       <input type="text" name="shipping_email" value="" required>
+                                       <input class="addrequired" type="text" name="shipping_email" value="" >
                                     </div>
                                     <div class="col-6 mb-20">
                                        <label for="country">Country <span>*</span></label>
-                                       <select class="niceselect_option" name="shipping_country" id="shipping_country" required>
+                                       <select  class="niceselect_option addrequired" name="shipping_country" id="shipping_country">
                                           <option value="india">India</option>
                                           <!-- <option value="3">Algeria</option>
                                              <option value="4">Afghanistan</option>
@@ -148,28 +148,28 @@
                                     </div>
                                     <div class="col-6 mb-20">
                                        <label>State<span>*</span></label>
-                                       <input type="text" name="shipping_state"  required>
+                                       <input class="addrequired" type="text" name="shipping_state">
                                     </div>
                                     <div class="col-12 mb-20">
                                        <label>Address<span>*</span></label>
-                                       <input placeholder="" type="text" id="shipping_address" required>
+                                       <input class="addrequired" placeholder="" type="text" name="shipping_address">
                                     </div>
                                     <div class="col-12 mb-20">
                                        <label>Landmark</label>
-                                       <input type="text" name="shipping_landmark">
+                                       <input class="addrequired" type="text" name="shipping_landmark">
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label>Phone<span>*</span></label>
-                                       <input type="text" name="shipping_mobile" value="" required>
+                                       <input type="text" name="shipping_mobile" value="">
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label> Pincode <span>*</span></label>
-                                       <input type="text" name="shipping_pincode" value="" required>
+                                       <input class="addrequired" type="text" name="shipping_pincode" value="">
                                     </div>
                                     <div class="col-12">
                                        <div class="order-notes">
                                           <label for="order_note">Order Notes</label>
-                                          <textarea id="order_note" name="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                          <textarea  id="order_note" name="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                        </div>
                                     </div>
                                  </div>
@@ -178,8 +178,16 @@
                         </div>
                         <div class="payment_method">
                            <div class="panel-default">
-                              <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
+
+                              <input id="payment_defult" name="order_type" value="cod" type="radio" data-target="createp_account" />
+                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD<img src="assets/img/icon/papyel.png" alt=""></label>
+                              
+                              <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" />
                               <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
+                             <br>
+                              @if($errors->first('order_type'))
+                              <span class="text-danger">Please Select Payment Method</span>
+                              @endif
                               <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                  <div class="card-body1">
                                     <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
@@ -208,7 +216,7 @@
                               <tbody>
                                  @foreach($details as $data)
                                  <tr>
-                                    <td class="text-left"><strong>×{{$data['name']}}</strong></td>
+                                    <td class="text-left"><strong>{{$data['name']}}</strong></td>
                                     <td>{{number_format($data['quantity'])}}</td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
@@ -246,4 +254,112 @@
       </div>
    </div>
 </div>
+
 @endsection
+@section('javascript')
+<script src="{{url('public/front/js/jquery.validate.min.js')}}"></script>
+
+<script>
+$(document).ready(function(){
+
+
+     if ($("#checkout_form").length > 0) {
+$("#checkout_form").validate({
+
+    rules: {
+        billing_name: {
+            required: true,
+            maxlength: 50
+        },
+
+        billing_email: {
+            required: true,
+            maxlength: 50,
+            email: true,
+        },
+
+        billing_country: {
+            required: true,
+        },
+        billing_state: {
+            required: true,
+        },
+        billing_address: {
+            required: true,
+        },
+        billing_landmark: {
+            required: true,
+        },
+        billing_mobile: {
+            required: true,
+            minlength:10,
+            maxlength:10,
+            number:true,
+        },
+        billing_pincode: {
+            required: true,
+            minlength:6,
+            maxlength:6,
+            number:true,
+        },
+        shipping_name: {
+            required: true,
+            maxlength: 50
+        },
+
+        shipping_email: {
+            required: true,
+            maxlength: 50,
+            email: true,
+        },
+
+        shipping_country: {
+            required: true,
+        },
+        shipping_state: {
+            required: true,
+        },
+        shipping_address: {
+            required: true,
+        },
+        shipping_landmark: {
+            required: true,
+        },
+        shipping_mobile: {
+            required: true,
+            minlength:10,
+            maxlength:10,
+            number:true,
+        },
+        shipping_pincode: {
+            required: true,
+            minlength:6,
+            maxlength:6,
+            number:true,
+        },  
+    },
+    messages: {
+
+      billing_name: {
+            required:true,
+        },
+       
+        billing_email: {
+            required: "Please enter valid email",
+            email: "Please enter valid email",
+            maxlength: "The email name should less than or equal to 50 characters",
+        },
+        billing_country: {
+            required:true,
+            maxlength:"The mobile number should not be greater than 10 digit"
+        },
+        billing_state:{
+            require :true,
+        }
+
+    },
+})
+}
+});
+</script>
+@stop
