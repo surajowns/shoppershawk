@@ -250,7 +250,7 @@ $.ajax({
          }
         else{
             toastr.info('Added to cart');
-            // location.reload();
+            location.reload();
            
          }
         }
