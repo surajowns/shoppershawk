@@ -3,13 +3,13 @@
         padding-top: 10px;
         text-align: center;
     }
-    .logo img{
-        display: none;
-    }
     .count-down-timer {
         text-align: center;
         margin-top: 0;
     }
+    .logo img {
+    display:none;
+}
     .count-down-timer #timer div {
         font-size: 40px;
         margin-left: 10px;
@@ -48,9 +48,10 @@
     }
     .dis-mob{
     	position: absolute;
-    	bottom: 30px;
+    	bottom: 100px;
     }
     .main-banner {
+        height: 93vh;
 	    background-position: 94%;
 	    background-image: url(../img/mob.jpg) !important;
 	}
@@ -125,4 +126,3 @@
         right: 0;
     }
 }
-
