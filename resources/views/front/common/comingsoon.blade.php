@@ -1,33 +1,74 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-    <title>Shoppershawk</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:100,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{url('public/comingsoon/css/style.css')}}" />
-    <link rel="stylesheet" href="{{url('public/comingsoon/css/responsive.css')}}" />
-</head>
-<body>
-	
-	<canvas id="c"></canvas>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-	<div class="content"><div class="logo">
-		<img src="{{url('public/comingsoon/logo-shooper.png')}}" width="300px">
-	</div>
-	  	<h2>SOMETHING BIG IS COMING SOON !</h2>
-        <h2 id="countdown" data-time="2021/03/15 07:03:27"></h2>
-	  	<!-- <a class="btn" href="#">
-			<svg width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
-			  <g>
-			    <path fill="#fff" d="M22.154,54.727c0.394,0.393,0.907,0.59,1.422,0.59s1.029-0.197,1.422-0.59c0.785-0.785,0.785-2.058,0-2.843   L7.193,34.078h54.781c1.111,0,2.011-0.9,2.011-2.01c0-1.11-0.899-2.011-2.011-2.011H7.193L24.998,12.25   c0.785-0.785,0.785-2.058,0-2.843s-2.058-0.786-2.844,0L0.917,30.646c-0.785,0.786-0.785,2.058,0,2.843L22.154,54.727z"/>
-			  </g>
-			</svg>
-	  		Go back to our Homepage</a> -->
-  	</div>
+        <link rel="stylesheet" href="{{url('public/comingsoon/css/bootstrap.min.css')}}" />
 
-    <script src="{{url('public/comingsoon/js/jquery.min.js')}}"></script>
-    <script src="{{url('public/comingsoon/js/jquery.countdown.min.js')}}"></script>
-    <script src="{{url('public/comingsoon/js/index.js')}}"></script>
-</body>
+        <link rel="stylesheet" href="{{url('public/comingsoon/css/animate.min.css')}}" />
+
+        <link rel="stylesheet" href="{{url('public/comingsoon/css/fontawesome.min.css')}}" />
+
+        <link rel="stylesheet" href="{{url('/public/comingsoon/css/style.css')}}" />
+
+        <link rel="stylesheet" href="{{url('public/comingsoon/css/responsive.css')}}" />
+        <title>Shoopershawk - Coming Soon Templates</title>
+        <link rel="icon" type="image/png" href="{{url('public/comingsoon/img/favicon.png')}}" />
+    </head>
+    <body>
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+            </div>
+        </div>
+
+        <div class="navbar-area">
+            <div class="container">
+                <div class="navbar-menu">
+                    <div class="logo"><img src="{{url('public/comingsoon/img/logo.png')}}" alt="image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-banner">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-lg-6 col-md-12 col-sm-12 dis-mob">
+                            	<div class="">
+                                 <div class="main-banner-content">
+                                    <h1>Something big is coming soon</h1>
+                                </div>
+                                
+                                <div class="count-down-timer">
+                                    <div id="timer">
+                                        <div id="days"></div>
+                                        <div id="hours"></div>
+                                        <div id="minutes"></div>
+                                        <div id="seconds"></div>
+                                    </div>
+                                </div>   
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12"></div>
+                        </div>
+            </div>
+        </div>
+
+        <script src="{{url('public/comingsoon/js/jquery.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/popper.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/bootstrap.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/wow.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/jquery.ajaxchimp.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/form-validator.min.js')}}"></script>
+
+        <script src="{{url('public/comingsoon/js/main.js')}}"></script>
+    </body>
 </html>
