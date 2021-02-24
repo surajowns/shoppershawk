@@ -1,7 +1,23 @@
 @extends('admin.layouts.master')
 @section('title','Orders')
 @section('content')
-<!-- /Search Filter -->
+<!-- Page Header -->
+
+			
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col">
+							<h3 class="page-title">Order List</h3>
+						</div>
+					
+					</div>
+				</div>
+				<!-- /Page Header -->
+				
+				<!-- Search Filter -->
+			
+				<!-- /Search Filter -->
 				
 				<ul class="nav nav-tabs menu-tabs">
 					<li class="nav-item {{Request::segment(2)=='orders'?'active':''}}">
