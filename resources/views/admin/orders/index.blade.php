@@ -1,55 +1,7 @@
 @extends('admin.layouts.master')
 @section('title','Orders')
 @section('content')
-<!-- Page Header -->
-
-			
-				<!-- Page Header -->
-				<div class="page-header">
-					<div class="row">
-						<div class="col">
-							<h3 class="page-title">Order List</h3>
-						</div>
-						<div class="col-auto text-right">
-							<a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
-								<i class="fas fa-filter"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				<!-- /Page Header -->
-				
-				<!-- Search Filter -->
-				<div class="card filter-card" id="filter_inputs">
-					<div class="card-body pb-0">
-						<form>
-							<div class="row filter-row">
-								 <div class="col-sm-6 col-md-3">
-									<div class="form-group">
-										<label class="col-form-label">From Date</label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
-										<label class="col-form-label">To Date</label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-3">
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" type="submit">Submit</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<!-- /Search Filter -->
+<!-- /Search Filter -->
 				
 				<ul class="nav nav-tabs menu-tabs">
 					<li class="nav-item {{Request::segment(2)=='orders'?'active':''}}">
