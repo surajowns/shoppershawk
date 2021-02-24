@@ -107,7 +107,6 @@
 
 												<td>₹{{number_format($value['total_amount'])}}</td>
 												<td>
-													<!-- <label class="badge badge-dark">{{$value['status'][0]['name']}}</label> -->
 														{{ Form::open(array('url' => 'admin/orders/updatestatus')) }}
 														<input type = "hidden" name = "order_id" value = "{{$value['id']}}" >
 														<select name = "status_change" class="selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
