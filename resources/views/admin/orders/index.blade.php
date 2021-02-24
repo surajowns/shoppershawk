@@ -83,11 +83,12 @@
 												<th>#</th>
 												<th>Date</th>
 												<th>User</th>
-											
-												<th>Service</th>
-												<th>Amount</th>
+												<th>Price</th>
+												<th>Qauntity</th>
+												<th>Total Amount</th>
 												<th>Status</th>
 												<th>Updated</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -101,16 +102,26 @@
 														<a href="javascript:void(0);">{{$value['users'][0]['name']}}</a>
 													</span>
 												</td>
-											
-												<td>Toughened Glass Fitting Services</td>
-												<td>$25</td>
+												<td>₹{{number_format($value['price'])}}</td>
+												<td>{{$value['quantity']}}</td>
+
+												<td>₹{{number_format($value['total_amount'])}}</td>
 												<td>
-													<label class="badge badge-dark">Pending</label>
+													<!-- <label class="badge badge-dark">{{$value['status'][0]['name']}}</label> -->
+														{{ Form::open(array('url' => 'admin/orders/updatestatus')) }}
+														<input type = "hidden" name = "order_id" value = "{{$value['id']}}" >
+														<select name = "status_change" class="selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
+														@foreach($status as $name) 
+														<option  data-content="<span class='badge badge-success'>Relish</span>" value = "{{$name->id}}" @if($name->id == $value['status'][0]['id']){{'selected'}} @endif>{{$name->name}}</option>
+														@endforeach
+														</select>{{ Form::close() }}
 												</td>
-												<td>{{date('l h:i:s A',strtotime($value['updated_at']))}}</td>
+												<td>{{date('l h:i A',strtotime($value['updated_at']))}}</td>
+												<td><a href="#" class="btn btn-sm bg-info-light">
+														<i class="far fa-eye mr-1"></i> View
+													</a></td>
 											</tr>
 											@endforeach
-					
 										</tbody>
 									</table>
 								</div>

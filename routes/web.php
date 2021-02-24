@@ -130,7 +130,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
     
      //Orders 
      Route::get('/orders','OrderController@Index')->name('Order list');
-
+     Route::post('orders/updatestatus','OrderController@updatestatus')->name('update order status');
 
 
 
