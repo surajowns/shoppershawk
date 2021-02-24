@@ -8,7 +8,7 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">Booking List</h3>
+							<h3 class="page-title">Order List</h3>
 						</div>
 						<div class="col-auto text-right">
 							<a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
@@ -111,12 +111,12 @@
 														<input type = "hidden" name = "order_id" value = "{{$value['id']}}" >
 														<select name = "status_change" class="selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
 														@foreach($status as $name) 
-														<option  data-content="<span class='badge badge-success'>Relish</span>" value = "{{$name->id}}" @if($name->id == $value['status'][0]['id']){{'selected'}} @endif>{{$name->name}}</option>
+														<option  value = "{{$name->id}}" @if($name->id == $value['status'][0]['id']){{'selected'}} @endif>{{$name->name}}</option>
 														@endforeach
 														</select>{{ Form::close() }}
 												</td>
-												<td>{{date('l h:i A',strtotime($value['updated_at']))}}</td>
-												<td><a href="#" class="btn btn-sm bg-info-light">
+												<td>{{date('l h:i A',strtotime($value['updated_at']?$value['updated_at']:$value['created_at']))}}</td>
+												<td><a href="{{url('admin/orders/viewdetails/'.$value['id'])}}" class="btn btn-sm bg-info-light">
 														<i class="far fa-eye mr-1"></i> View
 													</a></td>
 											</tr>

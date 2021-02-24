@@ -26,4 +26,19 @@ class OrderController extends Controller
             return redirect('admin/orders')->with('success','Status Updated successfull');
         }
     }
+    public function updateitem_status(Request $request)
+    {
+        $result=orderDetails::where('id',$request->id)->update(['status'=>$request->status_change]);
+        if($result){
+            return redirect('admin/orders/viewdetails/'.$request->order_id)->with('success','Status Updated successfull');
+        }
+    }
+    public function orderDetails(Request $request,$id=null)
+    {      
+           $orders=Order::with('users','status')->where('id',$id)->first();
+           $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
+           $status=Status::get();
+           return view('admin.orders.orderdetails',compact('orders','orderdetails','status'));
+           //dd($orderdetais);
+    }
 }

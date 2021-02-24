@@ -11,6 +11,7 @@ use App\CartModel;
 use validator;
 use DB;
 use Cart;
+use Product;
 class OrderController extends Controller
 {
        public function createOrder(Request $request)
@@ -48,15 +49,17 @@ class OrderController extends Controller
              if($order){
                   $order_id= Order::orderBy('id', 'DESC')->first();
                   $cartsdetails=CartModel::where('user_id',$user->id)->get();
+                  
                   foreach($cartsdetails as $details){
-                        $cartsdetails=new OrderDetails;
-                        $cartsdetails->user_id=$user['id'];
-                        $cartsdetails->order_id="SHOPPERSHAWK000".$order_id['id'];
-                        $cartsdetails->product_id=$details['product_id'];
-                        $cartsdetails->price=$details['price'];
-                        $cartsdetails->quantity=$details['quantity'];
-                        $cartsdetails->total_amount=$details['quantity']*$details['price'];
-                       $cartsdetails->save();
+                        $ordersdetails=new OrderDetails;
+                        $ordersdetails->user_id=$user['id'];
+                        $ordersdetails->order_id=$order_id['id'];
+                        $ordersdetails->product_id=$details['product_id'];
+                        $ordersdetails->price=$details['price'];
+                        $ordersdetails->quantity=$details['quantity'];
+                        $ordersdetails->total_amount=$details['quantity']*$details['price'];
+                        $ordersdetails->status=1;
+                        $ordersdetails->save();
 
                   }
                   Cart::clear();

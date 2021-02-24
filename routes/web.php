@@ -131,6 +131,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
      //Orders 
      Route::get('/orders','OrderController@Index')->name('Order list');
      Route::post('orders/updatestatus','OrderController@updatestatus')->name('update order status');
+     Route::any('orders/viewdetails/{id}','OrderController@orderDetails')->name('View Orders Details');
+     Route::post('orders/item_status','OrderController@updateitem_status')->name('update order item status');
+
+
 
 
 
