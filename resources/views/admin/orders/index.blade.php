@@ -52,24 +52,15 @@
 				<!-- /Search Filter -->
 				
 				<ul class="nav nav-tabs menu-tabs">
-					<li class="nav-item active">
-						<a class="nav-link" href="total-report.html">All Booking <span class="badge badge-primary">550</span></a>
+					<li class="nav-item {{Request::segment(2)=='orders'?'active':''}}">
+						<a class="nav-link" href="{{url('admin/orders')}}">All Orders <span class="badge badge-primary">{{count(App\Order::get())}}</span></a>
 					</li>
+					@foreach($status as $value)
 					<li class="nav-item">
-						<a class="nav-link" href="pending-report.html">Pending <span class="badge badge-primary">125</span></a>
+						<a class="nav-link" href="{{url('admin/orders/'.$value['id'])}}">{{$value['name']}}<span class="badge badge-primary">{{count(App\Order::where('status',$value['id'])->get())}}</span></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="inprogress-report.html">InProgress <span class="badge badge-primary">86</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="complete-report.html">Completed <span class="badge badge-primary">89</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="reject-report.html">Rejected <span class="badge badge-primary">101</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="cancel-report.html">Canceled <span class="badge badge-primary">121</span></a>
-					</li>
+					@endforeach
+			
 				</ul>
 				
 				<div class="row">
@@ -109,7 +100,7 @@
 												<td>
 														{{ Form::open(array('url' => 'admin/orders/updatestatus')) }}
 														<input type = "hidden" name = "order_id" value = "{{$value['id']}}" >
-														<select name = "status_change" class="selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
+														<select name = "status_change" class="form-control w-auto selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
 														@foreach($status as $name) 
 														<option  value = "{{$name->id}}" @if($name->id == $value['status'][0]['id']){{'selected'}} @endif>{{$name->name}}</option>
 														@endforeach

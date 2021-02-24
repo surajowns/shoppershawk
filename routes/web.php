@@ -134,6 +134,8 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
      Route::any('orders/viewdetails/{id}','OrderController@orderDetails')->name('View Orders Details');
      Route::post('orders/item_status','OrderController@updateitem_status')->name('update order item status');
 
+     Route::any('/orders/{status}','OrderController@OrderbyStatus')->name('Order list According to status');
+
 
 
 

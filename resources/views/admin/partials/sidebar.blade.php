@@ -24,7 +24,7 @@
 						<li class="{{Request::segment(2)=='product'?'active':''}}">
 							<a href="{{url('/admin/product')}}"><i class="fas fa-bullhorn"></i> <span>Products</span></a>
 						</li>
-						<li >
+						<li  class="{{Request::segment(2)=='orders'?'active':''}}">
 							<a href="{{url('admin/orders')}}"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
 						</li>
 						<li>

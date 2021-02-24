@@ -340,20 +340,20 @@ $("#checkout_form").validate({
     },
     messages: {
 
-      billing_name: {
+      shipping_name: {
             required:true,
         },
        
-        billing_email: {
+        shipping_email: {
             required: "Please enter valid email",
             email: "Please enter valid email",
             maxlength: "The email name should less than or equal to 50 characters",
         },
-        billing_country: {
+        shipping_country: {
             required:true,
             maxlength:"The mobile number should not be greater than 10 digit"
         },
-        billing_state:{
+        shipping_state:{
             require :true,
         }
 

@@ -4442,3 +4442,34 @@ table.table-inbox tbody tr.checked {
 		max-width: 160px;
 	}
 }
+
+
+.cart_subtotal {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+  }
+  .cart_subtotal p {
+	font-weight: 600;
+	font-size: 14px;
+  }
+  @media only screen and (max-width: 767px) {
+	.cart_subtotal p {
+	  font-size: 13px;
+	}
+  }
+  .cart_subtotal p.cart_amount {
+	font-size: 18px;
+	font-weight: 500;
+  }
+  @media only screen and (max-width: 767px) {
+	.cart_subtotal p.cart_amount {
+	  font-size: 13px;
+	}
+  }
+  .cart_subtotal p span {
+	margin-right: 30px;
+  }

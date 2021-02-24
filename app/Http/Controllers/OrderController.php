@@ -38,18 +38,17 @@ class OrderController extends Controller
              $data['user_id']=$user['id'];
              $data['price']=$total;
              $data['quantity']=$quantity;
-          
              $data['status']=1;
              $data['total_amount']=$total-Session::get('discount');
              $data['coupon'] = Session::get('coupon');
              $data['discount'] =  Session::get('discount');
             
-
+ 
              $order=Order::insert($data);
              if($order){
                   $order_id= Order::orderBy('id', 'DESC')->first();
                   $cartsdetails=CartModel::where('user_id',$user->id)->get();
-                  
+
                   foreach($cartsdetails as $details){
                         $ordersdetails=new OrderDetails;
                         $ordersdetails->user_id=$user['id'];

@@ -17,6 +17,12 @@ class OrderController extends Controller
            $status=Status::get();
            return view('admin.orders.index',compact('orders','status'));    
     }
+    public function OrderbyStatus(Request $request,$status=null)
+    {
+        $orders=Order::with('users','status')->where('status',$status)->orderBy('id','DESC')->get()->toArray();
+        $status=Status::get();
+        return view('admin.orders.index',compact('orders','status'));
+    }
 
     public function updatestatus(Request $request)
     {
