@@ -9,6 +9,10 @@ use App\Product;
 
 class WishlistController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('UserSession');
+    }
     public function Index(Request $request)
     {  
         $user=Auth::user();
