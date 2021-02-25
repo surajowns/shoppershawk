@@ -54,7 +54,7 @@
 										@foreach($orders as $value )
 											<tr>
 												<td>{{$loop->iteration}}</td>
-												<td>{{date('d M Y',strtotime($value['created_at']))}}</td>
+												<td>{{date('d M Y H:i A',strtotime($value['created_at']))}}</td>
 												<td>
 													<span class="table-avatar">
 														
