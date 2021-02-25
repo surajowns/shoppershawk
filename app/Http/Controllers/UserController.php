@@ -7,7 +7,9 @@ use App\Order;
 use App\OrderDetails;
 use App\Status;
 use Auth;
-
+use Validator;
+use Session;
+use App\User;
 class UserController extends Controller
 {
     public function __construct()
@@ -21,4 +23,34 @@ class UserController extends Controller
          $status=Status::get();
          return view('front.common.useraccount',compact('user','orders','status'));
     }
+    
+    public function UpdateProfile(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $validator = Validator::make($request->all(), [
+                    'email' => 'required',
+                    'name'	=> 'required',
+            ]);
+
+            try{
+                $data=  request()->except('_token');
+
+                if($request->hasFile('profile_image')){
+                    $image = $request->file('profile_image');
+                    $name = time().'.'.$image->getClientOriginalExtension();
+                    $destinationPath = public_path('/profile');
+                    $image->move($destinationPath, $name);
+                    $data['profile_image']=$name;
+                }
+               
+                User::where('id',Auth::user()['id'])->update($data);
+                return back()->with('success','Profile updated');
+            }catch(\Exception $e){
+                return back()->with('error',$e->getMessage());
+            }
+           
+            } 
+    }
+
+
 }

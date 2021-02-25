@@ -120,7 +120,7 @@
 
                     <!--header bottom end-->
                     <div class="breadcrumbs_area">
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
                 </div>
             </div>

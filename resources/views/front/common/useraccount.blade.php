@@ -13,11 +13,11 @@
                                 <ul role="tablist" class="nav flex-column dashboard-list" id="nav-tab">
                                     <li><a href="#dashboard" data-toggle="tab" class="nav-link active">My Account</a></li>
 
-                                    <li><a href="#downloads" data-toggle="tab" class="nav-link">My Cart</a></li>
+                                    <!-- <li><a href="#downloads" data-toggle="tab" class="nav-link">My Cart</a></li> -->
                                     <li> <a href="#orders" data-toggle="tab" class="nav-link">My Orders</a></li>
-                                    <li><a href="#address" data-toggle="tab" class="nav-link">Manage Address</a></li>
+                                    <!-- <li><a href="#address" data-toggle="tab" class="nav-link">Manage Address</a></li> -->
                                     <li><a href="#account-details" data-toggle="tab" class="nav-link">Manage details</a></li>
-                                    <li><a href="login.html" class="nav-link">logout</a></li>
+                                    <li><a href="{{('/logout')}}" class="nav-link">logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -26,14 +26,13 @@
                             <div class="tab-content dashboard_content">
                                 <div class="tab-pane fade show active" id="dashboard">
                                     <h3>My Account </h3>
-                                    <p>From your account My Account. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="personal-info">
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="profile-img">
-                                                            <img src="assets/img/about/testimonial1.jpg" width="100%">
+                                                            <img src="{{url('public/profile/'.$user['profile_image'])}}" width="100%">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-9">
@@ -53,7 +52,6 @@
                                                     <p>Home</p>
                                                 </div>
                                                 <p>{{$user['location']}}</p>
-                                                <p>Delta 1, Greater Noida, Uttar Pradesh - 201306</p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,22 +142,42 @@
                                     <div class="login">
                                         <div class="login_form_container">
                                             <div class="account_login_form">
-                                                <form action="#">
-                                                    <p>Didn't have an account? <a href="login.html">Log in instead!</a></p>
-                                                    <div class="input-radio">
-                                                        <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mr.</span>
-                                                        <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mrs.</span>
-                                                    </div> <br>
-                                                    <label>First Name</label>
-                                                    <input type="text" name="first-name">
-                                                    <label>Last Name</label>
-                                                    <input type="text" name="last-name">
-                                                    <label>Email</label>
-                                                    <input type="text" name="email-name">
-                                                    <br>
+                                                <form class="col-10" action="{{url('/user/profile')}}" method="post" enctype="multipart/form-data" >
+                                                @csrf
+                                                <div class="row">
+                                                  <div class="col-sm-6">
+                                                  <label>Name</label>
+                                                    <input class="form-control" type="text" name="name" value="{{$user['name']}}" required>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                  <label>Mobile</label>
+                                                    <input class="form-control" type="text" name="mobile" value="{{$user['mobile']}}" required>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-sm-12">
+                                                  <label>Email Address</label>
+                                                    <input class="form-control" type="text" name="email" value="{{$user['email']}}" required>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-sm-12">
+                                                  <label>Address</label>
+                                                    <input class="form-control" type="text" name="location" value="{{$user['location']}}" required>
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                  <div class="col-sm-12">
+                                                  <label>Profile</label>
+                                                    <input class="form-control" type="file" name="profile_image" value="{{url('public/admin/images/'.$user['profile_image'])}}">
+                                                  </div>
+                                                </div>
+                                                  
+                            
                                                     <div class="save_button primary_btn default_button">
                                                         <button type="submit">Update Profile</button>
                                                     </div>
+
                                                 </form>
                                             </div>
                                         </div>
