@@ -52,7 +52,9 @@ Route::any('/user/coupon/','HomeController@applycoupon')->name('Apply Coupon');
 
 Route::any('/user/createorder/','OrderController@createOrder')->name('create order');
 
-
+   Route::get('/user/thanku',function(){
+      return view('front.common.thanku');
+  });
 
 ///Admin section start
 
@@ -136,7 +138,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
      Route::any('/orders/{status}','OrderController@OrderbyStatus')->name('Order list According to status');
 
-
+  
 
 
 

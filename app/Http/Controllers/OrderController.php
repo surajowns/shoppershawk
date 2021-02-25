@@ -47,6 +47,8 @@ class OrderController extends Controller
              $order=Order::insert($data);
              if($order){
                   $order_id= Order::orderBy('id', 'DESC')->first();
+                  $order_no='#SHOPPERSHAWK'.$order_id['id'];
+                  Order::where('id',$order_id['id'])->update(['order_no'=>$order_no]);
                   $cartsdetails=CartModel::where('user_id',$user->id)->get();
 
                   foreach($cartsdetails as $details){
@@ -63,7 +65,10 @@ class OrderController extends Controller
                   }
                   Cart::clear();
                   CartModel::where('user_id',$user['id'])->delete();
-                  return back()->with('success','order placed');
+                  return redirect('user/thanku')->with('order_no',$order_no);
+
+                 // return redirect('',compact('order_no'));
+                 //return back()->with('success','order placed');
                   // return view('front.thanku',compact('order_id'));
              }
              else {
