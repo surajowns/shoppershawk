@@ -24,6 +24,7 @@ Route::get('/login','HomeController@Login')->name('Login page');
 Route::post('/user/verifyuser','LoginController@validateUser')->name('Verify User');
 Route::any('/user/logout','LoginController@logout')->name('User Logout');
 
+Route::any('/user/account','UserController@Index')->name('User Account');
 
 
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');

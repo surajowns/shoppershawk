@@ -47,7 +47,7 @@ class OrderController extends Controller
              $order=Order::insert($data);
              if($order){
                   $order_id= Order::orderBy('id', 'DESC')->first();
-                  $order_no='#SHOPPERSHAWK'.$order_id['id'];
+                  $order_no='SHOPPERSHAWK#'.$order_id['id'];
                   Order::where('id',$order_id['id'])->update(['order_no'=>$order_no]);
                   $cartsdetails=CartModel::where('user_id',$user->id)->get();
 

@@ -14,6 +14,7 @@
 
         <!-- Plugins CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/plugins.css')}}" />
+        <link rel="stylesheet" href="{{url('public/admin/assets/plugins/fontawesome/css/fontawesome.min.css')}}">
 
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
@@ -49,7 +50,7 @@
                                 <a class="btn btn-danger" href="{{url('/login')}}">Login</a>
                                 <a class="btn btn-danger" href="{{url('/register')}}">Register</a>
                                 @else
-                                <a href="">Hi {{Auth::user()->name}}</a></li>
+                                <a href="{{url('/user/account')}}">Hi {{Auth::user()->name}}</a></li>
                                  <a class="btn btn-danger" href="{{url('/user/logout')}}">Logout</a></li>
                                 @endif
                                 </div>
