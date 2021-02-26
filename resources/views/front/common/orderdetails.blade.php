@@ -511,7 +511,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-20 w-100"><b>Billing Address</b></h6>
                                                    
-                                                    <p>Address:{{$orders['billing_address']}}</p> 
+                                                    <p>{{$orders['billing_address']}}</p> 
                                                 </div>
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-20 w-100"><b>Shipping Address</b></h6>
@@ -521,7 +521,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                                      
                                                         @else
                                                  
-                                                        <p>Address:{{$orders['billing_address']}}</p> 
+                                                        <p>{{$orders['billing_address']}}</p> 
                                                         
                                                         @endif
                                                 </div>
