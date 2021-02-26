@@ -21,8 +21,16 @@
 
 @media only screen and (max-width: 599px){
 	.search_container-1{display: block !important;}
+	ol.progtrckr li:before {
+		bottom: -65px !important;
+		left: 23% !important;
+	}
 }
 
 @media only screen and (max-width: 479px) {
 	.search_container-1{display: block !important;}
+	ol.progtrckr li:before {
+		bottom: -65px  !important;
+		left: 23% !important;
+	}
 }

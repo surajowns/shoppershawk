@@ -443,7 +443,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                                     <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{date('d M Y h:i A',strtotime($orders['created_at']))}}</p>
                                                 </div>  
                                                 <div class="col-6 col-md">
-                                                    <h6 class="text-charcoal mb-0 w-100">Total</h6>
+                                                    <h6 class="text-charcoal mb-0 w-100">Price</h6>
                                                     <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['price'],2)}}</p>
                                                 </div>
                                                 <div class="col-6 col-md">
@@ -468,8 +468,8 @@ ol.progtrckr li.progtrckr-todo:before {
                                                         <li class="{{$orders['status'] >=2 && $orders['status'] <=7 ? 'progtrckr-done' : 'progtrckr-todo'}}">Confirm</li>
                                                         <li class="{{$orders['status'] >=3 && $orders['status'] <=7 ? 'progtrckr-done':'progtrckr-todo'}}">Inprogress</li>
                                                         <li class="{{$orders['status'] >=4 && $orders['status'] <=7 ?'progtrckr-done':'progtrckr-todo'}}">Completed</li>
-                                                        @if($orders['status'] ==5)
-                                                        <li class="{{$orders['status'] >=5 && $orders['status'] <=7?'progtrckr-done':'progtrckr-todo'}}">Cancel</li>
+                                                        @if($orders['status']==5)
+                                                        <li class="{{$orders['status'] ==5 ?'progtrckr-done':'progtrckr-todo'}}">Cancel</li>
                                                         @endif
                                                         @if($orders['status'] >= 6 && $orders['status'] <=7)
                                                         <li class="{{$orders['status'] >=6 && $orders['status'] <= 7?'progtrckr-done':'progtrckr-todo'}}">Return</li>
