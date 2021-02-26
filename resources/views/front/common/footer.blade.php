@@ -38,7 +38,7 @@
                         <div class="footer_menu">
                             <ul>
                                 <li><a href="{{url('/user/account')}}">My Profile</a></li>
-                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="{{url('user/wishlist_details')}}">My Wishlist</a></li>
                                 <li><a href="{{url('user/cart_details')}}">My Cart</a></li>
                             </ul>
                         </div>

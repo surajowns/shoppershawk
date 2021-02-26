@@ -102,11 +102,52 @@
                            </div>
                            <div class="col-6 mb-20">
                               <label>State<span>*</span></label>
-                              <input type="text" name="billing_state"  required>
+                                 <select name="billing_state" id="billing_state" class="niceselect_option" required>
+                                 <option value="">Select State</option>
+                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                 <option value="Assam">Assam</option>
+                                 <option value="Bihar">Bihar</option>
+                                 <option value="Chandigarh">Chandigarh</option>
+                                 <option value="Chhattisgarh">Chhattisgarh</option>
+                                 <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                 <option value="Daman and Diu">Daman and Diu</option>
+                                 <option value="Delhi">Delhi</option>
+                                 <option value="Lakshadweep">Lakshadweep</option>
+                                 <option value="Puducherry">Puducherry</option>
+                                 <option value="Goa">Goa</option>
+                                 <option value="Gujarat">Gujarat</option>
+                                 <option value="Haryana">Haryana</option>
+                                 <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                 <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                 <option value="Jharkhand">Jharkhand</option>
+                                 <option value="Karnataka">Karnataka</option>
+                                 <option value="Kerala">Kerala</option>
+                                 <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                 <option value="Maharashtra">Maharashtra</option>
+                                 <option value="Manipur">Manipur</option>
+                                 <option value="Meghalaya">Meghalaya</option>
+                                 <option value="Mizoram">Mizoram</option>
+                                 <option value="Nagaland">Nagaland</option>
+                                 <option value="Odisha">Odisha</option>
+                                 <option value="Punjab">Punjab</option>
+                                 <option value="Rajasthan">Rajasthan</option>
+                                 <option value="Sikkim">Sikkim</option>
+                                 <option value="Tamil Nadu">Tamil Nadu</option>
+                                 <option value="Telangana">Telangana</option>
+                                 <option value="Tripura">Tripura</option>
+                                 <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                 <option value="Uttarakhand">Uttarakhand</option>
+                                 <option value="West Bengal">West Bengal</option>
+                                 </select>
+                                 @if($errors->first('billing_state'))
+                                   <span class="text-danger">please Select State</span>
+                                 @endif
                            </div>
                            <div class="col-12 mb-20">
                               <label>Address<span>*</span></label>
-                              <input placeholder="" type="text" class="billing_address" name="billing_address" required>
+                              <input placeholder="" type="text" class="billing_address" name="billing_address" id="billing_address" value="{{isset($userdeta['location'])?$userdeta['location']:''}}" required>
                            </div>
                            <div class="col-12 mb-20">
                               <label>Landmark</label>
@@ -127,11 +168,11 @@
                                  <div class="row">
                                     <div class="col-lg-6 mb-20">
                                        <label>Name <span>*</span></label>
-                                       <input class="addrequired" type="text" name="shipping_name">
+                                       <input  type="text" name="shipping_name">
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label>Email<span>*</span></label>
-                                       <input class="addrequired" type="text" name="shipping_email" value="" >
+                                       <input  type="text" name="shipping_email" value="" >
                                     </div>
                                     <div class="col-6 mb-20">
                                        <label for="country">Country <span>*</span></label>
@@ -147,16 +188,55 @@
                                        </select>
                                     </div>
                                     <div class="col-6 mb-20">
-                                       <label>State<span>*</span></label>
-                                       <input class="addrequired" type="text" name="shipping_state">
+                                    <label>State<span>*</span></label>
+                                 <select name="shipping_state" id="shipping_state" class="niceselect_option">
+                                 <option value="">Select State</option>
+                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                 <option value="Assam">Assam</option>
+                                 <option value="Bihar">Bihar</option>
+                                 <option value="Chandigarh">Chandigarh</option>
+                                 <option value="Chhattisgarh">Chhattisgarh</option>
+                                 <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                 <option value="Daman and Diu">Daman and Diu</option>
+                                 <option value="Delhi">Delhi</option>
+                                 <option value="Lakshadweep">Lakshadweep</option>
+                                 <option value="Puducherry">Puducherry</option>
+                                 <option value="Goa">Goa</option>
+                                 <option value="Gujarat">Gujarat</option>
+                                 <option value="Haryana">Haryana</option>
+                                 <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                 <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                 <option value="Jharkhand">Jharkhand</option>
+                                 <option value="Karnataka">Karnataka</option>
+                                 <option value="Kerala">Kerala</option>
+                                 <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                 <option value="Maharashtra">Maharashtra</option>
+                                 <option value="Manipur">Manipur</option>
+                                 <option value="Meghalaya">Meghalaya</option>
+                                 <option value="Mizoram">Mizoram</option>
+                                 <option value="Nagaland">Nagaland</option>
+                                 <option value="Odisha">Odisha</option>
+                                 <option value="Punjab">Punjab</option>
+                                 <option value="Rajasthan">Rajasthan</option>
+                                 <option value="Sikkim">Sikkim</option>
+                                 <option value="Tamil Nadu">Tamil Nadu</option>
+                                 <option value="Telangana">Telangana</option>
+                                 <option value="Tripura">Tripura</option>
+                                 <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                 <option value="Uttarakhand">Uttarakhand</option>
+                                 <option value="West Bengal">West Bengal</option>
+                                 </select>
+                                 
                                     </div>
                                     <div class="col-12 mb-20">
                                        <label>Address<span>*</span></label>
-                                       <input class="addrequired" placeholder="" type="text" name="shipping_address">
+                                       <input  placeholder="" type="text"  name="shipping_address" value="{{isset($userdeta['location'])?$userdeta['location']:''}}" id="shipping_address">
                                     </div>
                                     <div class="col-12 mb-20">
                                        <label>Landmark</label>
-                                       <input class="addrequired" type="text" name="shipping_landmark">
+                                       <input  type="text" name="shipping_landmark">
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label>Phone<span>*</span></label>
@@ -164,7 +244,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-20">
                                        <label> Pincode <span>*</span></label>
-                                       <input class="addrequired" type="text" name="shipping_pincode" value="">
+                                       <input  type="text" name="shipping_pincode" value="">
                                     </div>
                                     <div class="col-12">
                                        <div class="order-notes">
@@ -362,4 +442,36 @@ $("#checkout_form").validate({
 }
 });
 </script>
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
+
+<script>
+
+google.maps.event.addDomListener(window, 'load', function () {
+     var options = {
+          componentRestrictions: {country: "IND"}
+        };
+        var places = new google.maps.places.Autocomplete(document.getElementById('billing_address','shipping_address','latitude','longitude'),'');
+        google.maps.event.addListener(places, 'place_changed', function () {
+          var place = places.getPlace();
+          var billing_address = place.formatted_address;
+          var shipping_address = place.formatted_address;
+
+          var latitude = place.geometry.location.lat();
+          var longitude = place.geometry.location.lng();
+          // var mesg = address;
+        
+          // var suburb = address.split(',');
+          $('#latitude').val(latitude);
+          $('#latitude').val(latitude);
+
+
+          $('#longitude').val(longitude);
+          // alert(mesg+' latitude:- '+latitude+' longitude:-'+longitude);
+        });
+      });
+ </script>
+
 @stop

@@ -186,22 +186,22 @@
         <script>
         $(document).ready(function(){
         
-        $(".deals_of_the_month li:first a").addClass("active");
-        $('.deals_of_the_month li:first a').attr('aria-selected', true);
-        $('.dealsofthemonth').first().addClass('active show');
+        // $(".deals_of_the_month li:first a").addClass("active");
+        // $('.deals_of_the_month li:first a').attr('aria-selected', true);
+        // $('.dealsofthemonth').first().addClass('active show');
 
-        $(".new_arrival_product li:first a").addClass("active");
-        $('.new_arrival_product li:first a').attr('aria-selected', true);
-        $('.newarrivalproduct').first().addClass('active show');
+        // $(".new_arrival_product li:first a").addClass("active");
+        // $('.new_arrival_product li:first a').attr('aria-selected', true);
+        // $('.newarrivalproduct').first().addClass('active show');
 
-        $(".featured_product li:first a").addClass("active");
-        $('.featured_product li:first a').attr('aria-selected', true);
-        $('.featuredproduct').first().addClass('active show');
+        // $(".featured_product li:first a").addClass("active");
+        // $('.featured_product li:first a').attr('aria-selected', true);
+        // $('.featuredproduct').first().addClass('active show');
 
 
-        $(".best_selling_product li:first a").addClass("active");
-        $('.best_selling_product li:first a').attr('aria-selected', true);
-        $('.bestsellingproduct').first().addClass('active show');
+        // $(".best_selling_product li:first a").addClass("active");
+        // $('.best_selling_product li:first a').attr('aria-selected', true);
+        // $('.bestsellingproduct').first().addClass('active show');
 
          
 
@@ -334,12 +334,6 @@ value--;
 });
 });
 
-
-
-
-// $(function(){
-//        $(".addrequired").prop('required',true);
-// });
 </script>
 
     </body>

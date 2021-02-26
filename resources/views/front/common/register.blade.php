@@ -273,7 +273,7 @@
             messages: {
  
                 name: {
-                    required: "Please enter name",
+                    required: "Please enter your name",
                 },
                
                 email: {
@@ -282,7 +282,7 @@
                     maxlength: "The email name should less than or equal to 50 characters",
                 },
                 mobile: {
-                    required: "Please enter message",
+                    required: "Please enter mobile no.",
                     maxlength:"The mobile number should not be greater than 10 digit"
                 },
                 c_password:{

@@ -9,17 +9,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-3 col-lg-3">
                             <!-- Nav tabs -->
-                            <div class="dashboard_tab_button">
-                                <ul role="tablist" class="nav flex-column dashboard-list" id="nav-tab">
-                                    <li><a href="#dashboard" data-toggle="tab" class="nav-link active">My Account</a></li>
-
-                                    <!-- <li><a href="#downloads" data-toggle="tab" class="nav-link">My Cart</a></li> -->
-                                    <li> <a href="#orders" data-toggle="tab" class="nav-link">My Orders</a></li>
-                                    <!-- <li><a href="#address" data-toggle="tab" class="nav-link">Manage Address</a></li> -->
-                                    <li><a href="#account-details" data-toggle="tab" class="nav-link">Manage details</a></li>
-                                    <li><a href="{{('/logout')}}" class="nav-link">logout</a></li>
-                                </ul>
-                            </div>
+                              @include('front.common.partials')
                         </div>
                         <div class="col-sm-12 col-md-9 col-lg-9">
                             <!-- Tab panes -->
@@ -144,29 +134,29 @@
                                             <div class="account_login_form">
                                                 <form class="col-10" action="{{url('/user/profile')}}" method="post" enctype="multipart/form-data" >
                                                 @csrf
-                                                <div class="row">
+                                                <div class="row pb-2">
                                                   <div class="col-sm-6">
                                                   <label>Name</label>
                                                     <input class="form-control" type="text" name="name" value="{{$user['name']}}" required>
-                                                  </div>
+                                                  </div> 
                                                   <div class="col-sm-6">
                                                   <label>Mobile</label>
                                                     <input class="form-control" type="text" name="mobile" value="{{$user['mobile']}}" required>
                                                   </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row pb-2">
                                                   <div class="col-sm-12">
                                                   <label>Email Address</label>
                                                     <input class="form-control" type="text" name="email" value="{{$user['email']}}" required>
                                                   </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row pb-2">
                                                   <div class="col-sm-12">
                                                   <label>Address</label>
-                                                    <input class="form-control" type="text" name="location" value="{{$user['location']}}" required>
+                                                    <input class="form-control" type="text" name="location"  id="address_id" value="{{$user['location']}}" required>
                                                   </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row pb-2">
                                                   <div class="col-sm-12">
                                                   <label>Profile</label>
                                                     <input class="form-control" type="file" name="profile_image" value="{{url('public/admin/images/'.$user['profile_image'])}}">
@@ -192,3 +182,31 @@
     </div>
     <!-- my account end   -->
     @endsection
+    @section('javascript')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
+
+<script>
+
+google.maps.event.addDomListener(window, 'load', function () {
+     var options = {
+          componentRestrictions: {country: "IND"}
+        };
+        var places = new google.maps.places.Autocomplete(document.getElementById('address_id','latitude','longitude'),'');
+        google.maps.event.addListener(places, 'place_changed', function () {
+          var place = places.getPlace();
+          var address = place.formatted_address;
+          var latitude = place.geometry.location.lat();
+          var longitude = place.geometry.location.lng();
+          // var mesg = address;
+        
+          // var suburb = address.split(',');
+          $('#latitude').val(latitude);
+          $('#latitude').val(latitude);
+
+
+          $('#longitude').val(longitude);
+          // alert(mesg+' latitude:- '+latitude+' longitude:-'+longitude);
+        });
+      });
+ </script>
+ @stop
