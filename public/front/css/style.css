@@ -10841,3 +10841,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-image: -o-linear-gradient(45deg, #333, #000);
   background-image: linear-gradient(45deg, #333, #000);
 }
+.bg-info-light {
+  background-color: rgba(2, 182, 179, 0.12) !important;
+  color: #1db9aa !important;
+}

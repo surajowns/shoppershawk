@@ -263,19 +263,19 @@
                               <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD<img src="assets/img/icon/papyel.png" alt=""></label>
                               
                               <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" />
-                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">PayPal <img src="assets/img/icon/papyel.png" alt=""></label>
+                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online <img src="assets/img/icon/papyel.png" alt=""></label>
                              <br>
                               @if($errors->first('order_type'))
                               <span class="text-danger">Please Select Payment Method</span>
                               @endif
-                              <div id="collapsedefult" class="collapse one" data-parent="#accordion">
+                              <!-- <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                  <div class="card-body1">
-                                    <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    <p>account.</p>
                                  </div>
-                              </div>
+                              </div> -->
                            </div>
                            <div class="order_button">
-                              <button type="submit">Proceed to PayPal</button>
+                              <button type="submit">Proceed to Pay</button>
                            </div>
                         </div>
                      </form>

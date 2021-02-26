@@ -66,7 +66,7 @@ class OrderController extends Controller
                   }
                   Cart::clear();
                   CartModel::where('user_id',$user['id'])->delete();
-                  return redirect('user/thanku')->with('order_no',$order_no);
+                  return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
                  // return redirect('',compact('order_no'));
                  //return back()->with('success','order placed');

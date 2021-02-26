@@ -41,7 +41,7 @@
                             <p>You will receive an order confirmation email with details of your order and a link to track your process.</p>
                         </div>
                         <div class="order_button mt-20">
-                                    <button class="btn btn-primary">Track Order</button><br></br>
+                                <a href="{{url('/order-details/'.$order['id'])}}"><button class="btn btn-primary">Track Order</button></a><br></br>
                                 <a href="{{url('/')}}">Continue Shopping</a>    
                                 </div>
                     </div>

@@ -462,7 +462,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                         </div>
                                         <div class="list-group-item p-3 bg-white">
                                             <div class="row no-gutters">
-                                                <div class="col-md-12 mb-4 text-center">
+                                                <div class="col-md-12 mb-5 text-center">
                                                     <ol class="progtrckr" data-progtrckr-steps="5">
                                                         <li class="{{$orders['status'] <=7 ? 'progtrckr-done' : 'progtrckr-todo'}}">Pending</li>
                                                         <li class="{{$orders['status'] >=2 && $orders['status'] <=7 ? 'progtrckr-done' : 'progtrckr-todo'}}">Confirm</li>
