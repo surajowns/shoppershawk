@@ -52,5 +52,16 @@ class UserController extends Controller
             } 
     }
 
+    public function OrderDetails(Request $request,$order_id=null)
+    {
+       
+
+        $orders=Order::with('users','status')->where('id',$order_id)->first();
+        $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$order_id)->get();
+        $status=Status::get();
+        return view('front.common.orderdetails',compact('orders','orderdetails','status'));
+
+    }
+
 
 }

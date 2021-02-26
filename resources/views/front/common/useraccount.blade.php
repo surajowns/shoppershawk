@@ -66,7 +66,7 @@
 												<td>{{date('d M Y H:i A',strtotime($value['created_at']))}}</td>
 												<td>₹{{number_format($value['total_amount'])}}</td>
 												<td>
-                                                   <a href="{{url('admin/orders/viewdetails/'.$value['id'])}}" class="btn btn-sm bg-info-light"><i class="fa fa-eye mr-1"></i> View</a>
+                                                   <a href="{{url('/order-details/'.$value['id'])}}" class="btn btn-sm bg-info-light"><i class="fa fa-eye mr-1"></i>View</a>
                                                    <a href="{{url('admin/orders/invoice/'.$value['id'])}}" class="btn btn-sm bg-info-light"><i class="fa fa-download"></i>Invoice</a>
                                                 </td>
 
