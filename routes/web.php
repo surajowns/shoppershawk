@@ -145,7 +145,14 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
      Route::post('orders/item_status','OrderController@updateitem_status')->name('update order item status');
 
      Route::any('/orders/{status}','OrderController@OrderbyStatus')->name('Order list According to status');
+    
 
+     //CMS
+
+     Route::any('add-page','CMSController@addStaticPage')->name('Add new page');
+     Route::any('/cmspages','CMSController@index')->name('View page');
+     Route::any('/edit-page/{id}','CMSController@editCMS')->name('Edit page');
+     Route::any('/delete-page/{id}','CMSController@deletePage')->name('Delete page');
   
 
 

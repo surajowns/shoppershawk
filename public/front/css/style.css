@@ -4282,7 +4282,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (max-width: 767px) {
   .product_carousel .product_thumb a img {
-    width: 100%;
+    /* width: 100%; */
   }
 }
 .product_carousel .col-lg-3 {

@@ -262,6 +262,9 @@
 	<script>
         CKEDITOR.replace('comment' );
     </script>
+	<script>
+        CKEDITOR.replace('description' );
+    </script>
 
 </body>
 </html>

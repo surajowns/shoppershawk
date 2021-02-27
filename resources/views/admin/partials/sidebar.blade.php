@@ -39,8 +39,8 @@
 						<li class="{{Request::segment(2)=='social_links'?'active':''}}">
 							<a href="{{url('admin/social_links')}}"><i class="fas fa-link"></i> <span>Social Links</span></a>
 						</li>
-						<li>
-							<a href="{{url('admin/under-construction')}}"><i class="fas fa-wallet"></i> <span> Content Management</span></a>
+						<li class="{{Request::segment(2)=='cmspages'?'active':''}}">
+							<a href="{{url('admin/cmspages')}}"><i class="fas fa-wallet"></i> <span> Content Management</span></a>
 						</li>
 						<li class="{{Request::segment(2)=='role'?'active':''}}">
 							<a href="{{url('/admin/role')}}"><i class="fas fa-user"></i><span>Role</span></a>

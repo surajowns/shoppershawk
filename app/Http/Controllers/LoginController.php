@@ -62,7 +62,7 @@ class LoginController extends Controller
 
                     Session::put('logid',Auth::User()['id']) ; 
                   
-                    return redirect('/home')->with('success', 'Login Successfully');
+                    return back()->with('success', 'Login Successfully');
                     
                 }
                 else{
