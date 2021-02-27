@@ -151,7 +151,9 @@
                                 </p>
                                 <p>
                                     <label>Password <span>*</span></label >
-                                    <input type="password" name="password" required>
+                                    <input id="password-field" type="password" name="password" class="form-control" required>
+                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
                                 </p>
                                 <div class="login_submit">
                                     <a href="#">Lost your password?</a>
@@ -163,7 +165,7 @@
 
                                 </div>
                                 <div class="login_submit mb-4">
-                                    <a href="{{url('register')}}">New to Shoppershawk? Create an account</a>
+                                    <a href="{{url('register')}}">New to Shoppershawk ? Registe</a>
                                 </div>
                             </form>
                         </div>

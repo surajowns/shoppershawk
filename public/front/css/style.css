@@ -10845,3 +10845,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-color: rgba(2, 182, 179, 0.12) !important;
   color: #1db9aa !important;
 }
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+  right: 10px;
+  top: 0px;
+  cursor: pointer;
+}

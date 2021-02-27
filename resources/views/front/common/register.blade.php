@@ -170,19 +170,24 @@
 
                                 <p>
                                     <label>Enter Password <span>*</span></label>
-                                    <input type="password" name="password" id="password"  placeholder="Enter Password" required>
+
+                                    <input type="password" name="password" id="password-field" class="form-control" placeholder="Enter Password" required>
+                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
                                 </p>
                                 </div>
                                 <div class="col-sm-6">
                                 <p>
                                     <label>Confirm Password <span>*</span></label>
-                                    <input type="password" name="c_password"   placeholder="Enter Confirm password"required>
+                                    <input id="password-field1" type="password" name="c_password"  class="form-control"  placeholder="Enter Confirm password" required>
+                                    <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
                                 </p>
 
                                 </div>
                                 </div>
                                 <div class="login_submit">
-                                <a class="login_submit" href="{{url('/login')}}">Existing User? Log in</a>
+                                <a class="login_submit" href="{{url('/login')}}">Already Have an Account ? Log in</a>
 
                                     <button type="submit">Register</button>
                                 </div>
@@ -269,7 +274,7 @@
                 },
                 c_password: {
                     required: true,
-                    equalTo : "#password",
+                    equalTo : "#password-field",
                     
                 },
             },
