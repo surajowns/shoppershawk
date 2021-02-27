@@ -162,7 +162,9 @@
                                     <button type="submit">login</button>
 
                                 </div>
-
+                                <div class="login_submit mb-4">
+                                    <a href="{{url('register')}}">New to Shoppershawk? Create an account</a>
+                                </div>
                             </form>
                         </div>
                     </div>

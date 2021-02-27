@@ -178,9 +178,12 @@
                                     <label>Confirm Password <span>*</span></label>
                                     <input type="password" name="c_password"   placeholder="Enter Confirm password"required>
                                 </p>
+
                                 </div>
                                 </div>
                                 <div class="login_submit">
+                                <a class="login_submit" href="{{url('/login')}}">Existing User? Log in</a>
+
                                     <button type="submit">Register</button>
                                 </div>
                             </form>
