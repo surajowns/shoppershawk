@@ -60,20 +60,18 @@
                                     <li class="menu-item-has-children">
                                         <a href="#">Category</a>
                                     </li>
+                                    
                                     <li class="menu-item-has-children">
-                                        <a href="#">blog</a>
+                                        <a href="{{url('/user/account')}}">my account</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="my-account.html">my account</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="contact.html">Contact Us</a>
+                                        <a href="#">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="Offcanvas_footer">
                                 <span>
-                                    <a href="#"><i class="fa fa-envelope-o"></i>info@Shoppershawk.com</a>
+                                    <a href="{{url('/')}}"><i class="fa fa-envelope-o"></i>info@Shoppershawk.com</a>
                                 </span>
                                 <ul>
                                     <li class="facebook">

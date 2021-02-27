@@ -63,11 +63,9 @@
                                     <li class="menu-item-has-children">
                                         <a href="#">Category</a>
                                     </li>
+                                  
                                     <li class="menu-item-has-children">
-                                        <a href="#">blog</a>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="my-account.html">my account</a>
+                                        <a href="{{url('/user/account')}}">my account</a>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="contact.html">Contact Us</a>
