@@ -60,6 +60,8 @@
                                     <div class="product_variant quantity">
                                         <!-- <label>quantity</label> -->
                                         <!-- <input min="1" max="100" value="1" type="number"> -->
+                                        <a href="{{url('ajax/addtocart/'.$product['id'])}}" class="button cart btn-lg" role="button">Buy Now</a>
+
                                         <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a>
 
                                     </div>

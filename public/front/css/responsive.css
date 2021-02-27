@@ -25,6 +25,9 @@
 		bottom: -65px !important;
 		left: 23% !important;
 	}
+	.mob-none{
+		display: none !important;
+	}
 }
 
 @media only screen and (max-width: 479px) {
@@ -32,5 +35,8 @@
 	ol.progtrckr li:before {
 		bottom: -65px  !important;
 		left: 23% !important;
+	}
+	.mob-none{
+		display: none !important;
 	}
 }

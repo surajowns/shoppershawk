@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-lg-3 col-md-12">
         <!--sidebar widget start-->
-        <aside class="sidebar_widget">
+        <aside class="sidebar_widget mob-none">
             <div class="widget_list widget_categories">
                 <h3>Product categories</h3>
               
