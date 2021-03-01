@@ -1,4 +1,4 @@
-<?php $pages=App\CMSMOdel::get(); ?>
+<?php $pages=App\CMSModel::get(); ?>
 <footer class="footer_widgets">
     <div class="footer_top">
         <div class="container">
