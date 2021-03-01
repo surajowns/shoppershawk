@@ -476,34 +476,28 @@ ol.progtrckr li.progtrckr-todo:before {
                                                         @endif
                                                     </ol>
                                                 </div>
-                                                <div class="table-responsive">
-									<table class="table table-hover table-center mb-0 datatable">
-										<thead>
-											<tr>
-												
-												<th>Product Image</th>
-												<th>Product Name</th>
-												<th>Price</th>
-												<th>Qauntity</th>
-												<th>Total Amount</th>
-                                                
-											</tr>
-										</thead>
-										<tbody>
-                                            
-										@foreach($orderdetails as $value )
-											<tr>
-												<td><img src="{{url('public/product_image/'.$value['products'][0]['productImage'][0]['image'])}}" alt="" width="100",height="100"></td>
-												<td>{{$value['products'][0]['name']}}</td>
-												<td>₹{{number_format($value['price'])}}</td>
-												<td>{{$value['quantity']}}</td>
-
-												<td>₹{{number_format($value['total_amount'])}}</td>
-											</tr>
-											@endforeach
-										</tbody>
-									</table>
-								</div>
+                                                @foreach($orderdetails as $value )
+                                                <div class="row no-gutters mt-3">
+                                                    <div class="col-3 col-md-1">
+                                                        <img class="img-fluid pr-3" src="{{url('public/product_image/'.$value['products'][0]['productImage'][0]['image'])}}" alt="">
+                                                    </div>
+                                                    <div class="col-9 col-md-8 pr-0 pr-md-3">
+                                                        <h6 class="text-charcoal mb-2 mb-md-1">
+                                                            <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="text-charcoal">{{$value['products'][0]['name']}}</a>
+                                                        </h6>
+                                                        <ul class="list-unstyled text-pebble mb-2 small">
+                                                            <li class=""><b>Price:</b> ₹{{number_format($value['price']),2}}</li>
+                                                            <li class=""><b>Quantity:</b>{{$value['quantity']}}</li>
+                                                        </ul>
+                                                        <h6 class="text-charcoal text-left mb-0 mb-md-2"><b>₹{{number_format($value['total_amount']),2}}</b></h6>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 hidden-sm-down">
+                                                        <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="btn btn-secondary w-100 mb-2">Buy It Again</a>
+                                                        <!-- <a href="" class="btn btn-secondary w-100">Request a Return</a> -->
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                    
                                             </div>
                                         </div>
                                         <div class="list-group-item p-3 bg-snow" style="position: relative;">
@@ -511,18 +505,22 @@ ol.progtrckr li.progtrckr-todo:before {
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-20 w-100"><b>Billing Address</b></h6>
                                                    
-                                                    <p>{{$orders['billing_address']}}</p> 
-                                                </div>
+                                                    <p>Address:&nbsp;&nbsp;{{ucfirst($orders['billing_address'])}}</p> 
+                                                    <p>Pincode:&nbsp;&nbsp;{{ucfirst($orders['billing_pincode'])}}</p> 
+                                                    <p>Landmark:&nbsp;&nbsp;{{ucfirst($orders['billing_landmark'])}}</p>
+                                                    </div>
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-20 w-100"><b>Shipping Address</b></h6>
                                                     @if($orders['shipping_name'])
                                                         
-                                                        <p>Address:{{$orders['shipping_address']}}</p> 
-                                                     
+                                                    <p>Address:&nbsp;&nbsp;{{ucfirst($orders['shipping_address'])}}</p> 
+                                                    <p>Pincode:&nbsp;&nbsp;{{ucfirst($orders['shipping_pincode'])}}</p> 
+                                                    <p>Landmark:&nbsp;&nbsp;{{ucfirst($orders['shipping_landmark'])}}</p>                                                     
                                                         @else
                                                  
-                                                        <p>{{$orders['billing_address']}}</p> 
-                                                        
+                                                        <p>Address:&nbsp;&nbsp;{{ucfirst($orders['billing_address'])}}</p> 
+                                                        <p>Pincode:&nbsp;&nbsp;{{ucfirst($orders['billing_pincode'])}}</p> 
+                                                        <p>Landmark:&nbsp;&nbsp;{{ucfirst($orders['billing_landmark'])}}</p>                                                        
                                                         @endif
                                                 </div>
                                             </div>

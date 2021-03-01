@@ -25,7 +25,7 @@
                                             <tbody>
                                             @foreach($products as $details)
                                                 <tr>
-                                                    <td class="product_remove"><a href="{{url('user/wishlist/'.$details['id'])}}">X</a></td>
+                                                    <td class="product_remove"><a href="{{url('user/wishlist/'.$details['id'])}}"><i class="fa fa-trash-o"></i></a></td>
                                                     <td class="product_thumb"><a href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$details['product_image'][0]['image'])}}" alt=""></a></td>
                                                     <td class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{$details['name']}}</a></td>
                                                     <td class="product-price">₹{{number_format($details['selling_price'],2)}}</td>
