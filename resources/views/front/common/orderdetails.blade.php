@@ -467,7 +467,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                                         <li class="{{$orders['status'] <=7 ? 'progtrckr-done' : 'progtrckr-todo'}}">Pending</li>
                                                         <li class="{{$orders['status'] >=2 && $orders['status'] <=7 ? 'progtrckr-done' : 'progtrckr-todo'}}">Confirm</li>
                                                         <li class="{{$orders['status'] >=3 && $orders['status'] <=7 ? 'progtrckr-done':'progtrckr-todo'}}">Inprogress</li>
-                                                        <li class="{{$orders['status'] >=4 && $orders['status'] <=7 ?'progtrckr-done':'progtrckr-todo'}}">Completed</li>
+                                                        <li class="{{$orders['status'] >=4 && $orders['status'] <=7 ?'progtrckr-done':'progtrckr-todo'}}">Delivered</li>
                                                         @if($orders['status']==5)
                                                         <li class="{{$orders['status'] ==5 ?'progtrckr-done':'progtrckr-todo'}}">Cancel</li>
                                                         @endif
