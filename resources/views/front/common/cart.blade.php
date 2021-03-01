@@ -105,7 +105,7 @@
             @else
             <div class="row">
                 <div class="col-sm-12 text-center">
-                   <img src="{{url('/public/front/img/emptycart.jpg')}}" alt="">
+                   <img src="{{url('/public/front/img/emptycart.png')}}" alt="">
                 </div>
             </div>
             @endif

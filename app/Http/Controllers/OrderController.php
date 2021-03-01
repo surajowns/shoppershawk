@@ -12,6 +12,7 @@ use validator;
 use DB;
 use Cart;
 use Product;
+use Carbon;
 class OrderController extends Controller
 {
        public function createOrder(Request $request)
@@ -43,8 +44,12 @@ class OrderController extends Controller
              $data['total_amount']=$total-Session::get('discount');
              $data['coupon'] = Session::get('coupon');
              $data['discount'] =  Session::get('discount');
-            
- 
+             $data['created_at']=date('Y-m-d h:i:s');
+             $date = Carbon\Carbon::now('Asia/Kolkata');
+             $created_at= $date->toDateTimeString();
+             $data['created_at']=$created_at;
+             $data['updated_at']=$created_at;
+
              $order=Order::insert($data);
              if($order){
                   $order_id= Order::orderBy('id', 'DESC')->first();
