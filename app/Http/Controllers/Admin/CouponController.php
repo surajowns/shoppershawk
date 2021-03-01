@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\CouponModel;
+use  Validator;
 
 class CouponController extends Controller
 {
@@ -29,10 +30,10 @@ class CouponController extends Controller
         if($request->isMethod('post')){
             $validatedData = $request->validate([
                 'title' => 'required',
-                'code' => 'required',
+                'code' => 'required|unique:coupons',
                 'discount' => 'required',
                 'starting_at' => 'required',
-                'end_at' => 'required',
+                'end_at' => 'required|after_or_equal:starting_at',
                 'notes' => 'required',
             ]);
 

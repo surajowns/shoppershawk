@@ -191,7 +191,7 @@ google.maps.event.addDomListener(window, 'load', function () {
      var options = {
           componentRestrictions: {country: "IND"}
         };
-        var places = new google.maps.places.Autocomplete(document.getElementById('address_id','latitude','longitude'),'');
+        var places = new google.maps.places.Autocomplete(document.getElementById('address_id','latitude','longitude'),options);
         google.maps.event.addListener(places, 'place_changed', function () {
           var place = places.getPlace();
           var address = place.formatted_address;

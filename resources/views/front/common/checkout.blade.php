@@ -453,7 +453,7 @@ google.maps.event.addDomListener(window, 'load', function () {
      var options = {
           componentRestrictions: {country: "IND"}
         };
-        var places = new google.maps.places.Autocomplete(document.getElementById('billing_address','shipping_address','latitude','longitude'),'');
+        var places = new google.maps.places.Autocomplete(document.getElementById('billing_address','shipping_address','latitude','longitude'),options);
         google.maps.event.addListener(places, 'place_changed', function () {
           var place = places.getPlace();
           var billing_address = place.formatted_address;
