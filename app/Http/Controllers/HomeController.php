@@ -11,6 +11,7 @@ use Auth;
 use App\CouponModel;
 use Cart;
 use Session;
+use App\CMSModel;
 
 class HomeController extends Controller
 {
@@ -146,4 +147,14 @@ class HomeController extends Controller
           }
         }
     }
+
+    //information page
+      public function Pages(Request $request,$page=null)
+      {    
+          $slug=$page;
+          $page=CMSModel::where('slug',$slug)->first();
+          return view('front.pages.informationpage',compact('page','slug'));
+      }
+
+
 }

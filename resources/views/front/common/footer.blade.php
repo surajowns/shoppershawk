@@ -1,3 +1,4 @@
+<?php $pages=App\CMSMOdel::get(); ?>
 <footer class="footer_widgets">
     <div class="footer_top">
         <div class="container">
@@ -23,11 +24,11 @@
                         <h3>Information</h3>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">About Us</a></li>
+                              @foreach($pages as $page)
+                                <li><a href="{{url('/pages/'.$page->slug)}}">{{$page->title}}</a></li>
+                                @endforeach
                                 <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
+                               
                             </ul>
                         </div>
                     </div>

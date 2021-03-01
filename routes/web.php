@@ -63,6 +63,12 @@ Route::any('/user/createorder/','OrderController@createOrder')->name('create ord
    Route::get('/user/thanku',function(){
       return view('front.common.thanku');
   });
+ 
+  //pages
+  Route::any('/pages/{page}','HomeController@Pages')->name('Pages');
+
+
+
 
 ///Admin section start
 

@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-3 col-form-label text-right">Slug</label>
+                            <label for="example-text-input" class="col-sm-3 col-form-label text-right">Banner</label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="page_image" type="file">
                                 <span class="text-danger">{{$errors->first('page_image')}}</span>
