@@ -12,6 +12,7 @@ use App\CouponModel;
 use Cart;
 use Session;
 use App\CMSModel;
+use App\BannerModel;
 
 class HomeController extends Controller
 {
@@ -54,7 +55,36 @@ class HomeController extends Controller
     public function ProuctList(Request $request,$slug=null)
     {   
        try{
+         $filter=$request->filterby;
         $user=Auth::user();
+          if($filter){
+            if(is_numeric($_GET['cat'])){
+              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+  
+            }
+          else{
+              $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
+              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+            }
+            if(isset($_GET['subcat'])){
+               $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
+               $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+            }
+            $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
+            $i=0;foreach($category as $cat){
+            $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
+            $i++;
+            }
+            $singleaddbanner=BannerModel::where('type',2)->first();
+            if(isset($_GET['cat'])){
+              return view('front.common.productlist',compact('product','category','singleaddbanner'));
+    
+            }else{
+              return view('errors.404');
+            }
+          }
+
+
           if(is_numeric($_GET['cat'])){
             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->where('status',1)->paginate(32);
 
@@ -72,8 +102,9 @@ class HomeController extends Controller
         $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
         $i++;
         }
+        $singleaddbanner=BannerModel::where('type',2)->first();
         if(isset($_GET['cat'])){
-          return view('front.common.productlist',compact('product','category'));
+          return view('front.common.productlist',compact('product','category','singleaddbanner'));
 
         }else{
           return view('errors.404');

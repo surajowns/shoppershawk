@@ -62,6 +62,7 @@ class UserController extends Controller
         return view('front.common.orderdetails',compact('orders','orderdetails','status'));
 
     }
+    
 
 
 }

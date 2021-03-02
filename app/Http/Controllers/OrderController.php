@@ -65,7 +65,7 @@ class OrderController extends Controller
                         $ordersdetails->price=$details['price'];
                         $ordersdetails->quantity=$details['quantity'];
                         $ordersdetails->total_amount=$details['quantity']*$details['price'];
-                        $ordersdetails->status=1;
+                        $ordersdetails->status=2;
                         $ordersdetails->save();
 
                   }

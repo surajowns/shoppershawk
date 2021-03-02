@@ -492,8 +492,15 @@ ol.progtrckr li.progtrckr-todo:before {
                                                         <h6 class="text-charcoal text-left mb-0 mb-md-2"><b>₹{{number_format($value['total_amount']),2}}</b></h6>
                                                     </div>
                                                     <div class="col-12 col-md-3 hidden-sm-down">
-                                                        <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="btn btn-secondary w-100 mb-2">Buy It Again</a>
-                                                        <!-- <a href="" class="btn btn-secondary w-100">Request a Return</a> -->
+                                                       @if($value['status'] >=4 && $value['status'] <=7)
+                                                        <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="btn btn-secondary w-100 mb-2" >Buy It Again</a>
+                                                       @endif
+                                                       @if($value['status'] <=3)
+                                                        <a href="" class="btn  w-100" onclick="alert('Do You want to cancel this product from the Order')">Cancel</a>
+                                                        @endif
+                                                        @if($orders['status'] >= 6 && $orders['status'] <=7)
+                                                        <a href="" class="btn btn-primary w-100">Return</a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 @endforeach
