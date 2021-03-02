@@ -85,7 +85,7 @@
             <div class="niceselectoption">
                 <?php 
                    $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";
-                  echo $subcat;
+                  
                 ?>
             {{ Form::open(array('url' => '/products/'.'?cat='.$_GET['cat'].$subcat)) }}
 
