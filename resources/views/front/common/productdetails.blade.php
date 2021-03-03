@@ -45,16 +45,17 @@
 
                                         <?php  $avgrating = 0; ?>
                                              @if(count($product->productRating)>0)
+
                                                       @foreach($product->productRating as $avg_rating) 
                                                            <?php  $avgrating= $avgrating + $avg_rating['rating']/count($product->productRating) ?>
                                                       @endforeach
                                                     <li>
                                                         <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
                                                     </li>
-                                                    
+                                                    <li class="review"><a href="#">(1 customer review )</a></li>
+
                                                 @endif
                                            
-                                            <li class="review"><a href="#">(1 customer review )</a></li>
                                         </ul>
                                     </div>
                                     <div class="price_box">
