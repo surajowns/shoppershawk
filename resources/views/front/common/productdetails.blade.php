@@ -41,11 +41,19 @@
                                    
                                     <div class="product_rating">
                                         <ul>
-                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+
+
+                                        <?php  $avgrating = 0; ?>
+                                             @if(count($product->productRating)>0)
+                                                      @foreach($product->productRating as $avg_rating) 
+                                                           <?php  $avgrating= $avgrating + $avg_rating['rating']/count($product->productRating) ?>
+                                                      @endforeach
+                                                    <li>
+                                                        <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
+                                                    </li>
+                                                    
+                                                @endif
+                                           
                                             <li class="review"><a href="#">(1 customer review )</a></li>
                                         </ul>
                                     </div>
@@ -116,7 +124,6 @@
                                         <div class="reviews_wrapper">
                                         <!-- {{$product}} -->
                                         @foreach($product->productRating  as  $value)
-                                           {{$value->rating}}
                                             <!-- <h2>1 review for Donec eu furniture</h2> -->
                                             <div class="reviews_comment_box">
                                                 <div class="comment_thmb">
@@ -130,12 +137,15 @@
                                                     <div class="reviews_meta">
                                                         <div class="product_rating">
                                                             <ul>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                            <?php for ($i=1; $i <= 5; $i++) { 
+                                                                    if($value->rating>=$i){
+                                                                 ?>
+                                                                <li><a href="#"><i class="ion-android-star-outline text-warning"></i></a></li>
+
+                                                            <?php }else{ ?>
+                                                                <li><a href="#"><i class="ion-android-star-outline text-secondary"></i></a></li>
+
+                                                            <?php }}?>
                                                             </ul>
                                                         </div>
                                                         <p><strong>{{$value->users->name}} </strong>-&nbsp;{{date('M d,Y',strtotime($value->created_at))}}</p>
