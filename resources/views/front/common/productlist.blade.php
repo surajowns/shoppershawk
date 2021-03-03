@@ -74,19 +74,10 @@
             <div class="shop_toolbar_btn">
                 <button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>
                 <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
-                <!-- <a href="">All</a> -->
-                <!-- <a href="{{URL::current()}}">Price:Low to High</a>
-                <a href="{{URL::current()}}">Price:Highto  Low</a> -->
-
-
-                <!-- <a href=""></a> -->
             </div>
 
             <div class="niceselectoption">
-                <?php 
-                   $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";
-                  
-                ?>
+                <?php $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";  ?>
             {{ Form::open(array('url' => '/products/'.'?cat='.$_GET['cat'].$subcat)) }}
 
             <select name = "filterby" class="form-control w-auto selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 

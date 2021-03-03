@@ -117,7 +117,7 @@ class HomeController extends Controller
     {
 
       $user=Auth::user();
-      $product=Product::with('productImage','wishlist','productRating')->where('slug',$slug)->where('status',1)->first();
+      $product=Product::with('productImage','wishlist','productRating','productRating.users')->where('slug',$slug)->where('status',1)->first();
       $relatedproducts=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$product['supercategory_id'])->where('status',1)->get()->toArray();
       return view('front.common.productdetails',compact('product','relatedproducts'));
 

@@ -54,7 +54,7 @@
                                         <span class="current_price">₹{{number_format($product['selling_price'],2)}}</span>
                                     </div>
                                     <div class="product_desc">
-                                        <p>{{ucfirst($product['description'])}} </p>
+                                        <p>{!!ucfirst($product['description']) !!}   </p>
                                     </div>
                                   
                                     <div class="product_variant quantity">
@@ -102,7 +102,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="info" role="tabpanel">
                                         <div class="product_info_content">
-                                        {{ucfirst($product['description'])}}                                        
+                                        {!!ucfirst($product['description']) !!}                                        
                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -114,15 +114,23 @@
 
                                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                                         <div class="reviews_wrapper">
-                                            <h2>1 review for Donec eu furniture</h2>
+                                        <!-- {{$product}} -->
+                                        @foreach($product->productRating  as  $value)
+                                           {{$value->rating}}
+                                            <!-- <h2>1 review for Donec eu furniture</h2> -->
                                             <div class="reviews_comment_box">
                                                 <div class="comment_thmb">
-                                                    <img src="assets/img/blog/comment2.jpg" alt="">
+                                                    @if($value->users->profile_image)
+                                                    <img src="{{url('public/profile/'.$value->users->profile_image)}}" alt="" width="100",height="100">
+                                                    @else
+                                                      <img src="{{url('public/front/img/comment2.jpg')}}" alt="">
+                                                     @endif
                                                 </div>
                                                 <div class="comment_text">
                                                     <div class="reviews_meta">
                                                         <div class="product_rating">
                                                             <ul>
+                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                                 <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                                 <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                                 <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
@@ -130,12 +138,13 @@
                                                                 <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                             </ul>
                                                         </div>
-                                                        <p><strong>admin </strong>- September 12, 2018</p>
-                                                        <span>roadthemes</span>
+                                                        <p><strong>{{$value->users->name}} </strong>-&nbsp;{{date('M d,Y',strtotime($value->created_at))}}</p>
+                                                        <span>{{$value->review}}</span>
                                                     </div>
                                                 </div>
 
                                             </div>
+                                        @endforeach
                                             <div class="comment_title">
                                                 <h2>Add a review </h2>
                                                 <p>Your email address will not be published. Required fields are marked </p>

@@ -600,9 +600,9 @@
     /*---slider-range here---*/
     $( "#slider-range" ).slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [ 0, 500 ],
+        min:100,
+        max: 100000,
+        values: [ 0, 100000 ],
         slide: function( event, ui ) {
         $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
        }
