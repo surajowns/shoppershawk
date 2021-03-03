@@ -37,7 +37,7 @@
                             <div class="product_d_right">
                                 <form action="#">
 
-                                    <h3><a href="javascript:void(0)">{{$product['name']}}</a></h3>
+                                    <h3><a href="javascriptvoid(0)">{{$product['name']}}</a></h3>
                                    
                                     <div class="product_rating">
                                         <ul>
@@ -52,7 +52,7 @@
                                                     <li>
                                                         <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
                                                     </li>
-                                                    <li class="review"><a href="#">(1 customer review )</a></li>
+                                                    <li class="review"><a href="javascript:void(0)">({{count($product->productRating)}} customer review )</a></li>
 
                                                 @endif
                                            
@@ -71,7 +71,7 @@
                                         <!-- <input min="1" max="100" value="1" type="number"> -->
                                         <a href="{{url('ajax/addtocart/'.$product['id'])}}" class="button cart btn-lg" role="button">Buy Now</a>
 
-                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a>
+                                        <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a>
 
                                     </div>
                                     <div class=" product_d_action">
@@ -104,7 +104,7 @@
                                             <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews (1)</a>
+                                            <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews ({{count($product->productRating)}})</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -171,21 +171,32 @@
                                                 </ul>
                                             </div>
                                             <div class="product_review_form">
-                                                <form action="#">
+                                                <form action="{{url('/user/createreview')}}" method="post">
+                                                @csrf
                                                     <div class="row">
+                                                       <div  class="col-12">
+                                                       <div class="stars">
+  
+                                                                <input class="star star-5" id="star-5" type="radio" value="5" name="rating"/>
+                                                                <label class="star star-5" for="star-5"></label>
+                                                                <input class="star star-4" id="star-4" type="radio" value="4" name="rating"/>
+                                                                <label class="star star-4" for="star-4"></label>
+                                                                <input class="star star-3" id="star-3" type="radio" value="3" name="rating"/>
+                                                                <label class="star star-3" for="star-3"></label>
+                                                                <input class="star star-2" id="star-2" type="radio" value="2" name="rating"/>
+                                                                <label class="star star-2" for="star-2"></label>
+                                                                <input class="star star-1" id="star-1" type="radio" value="1" name="rating"/>
+                                                                <label class="star star-1" for="star-1"></label>
+                                                         
+                                                            </div>
+                                                            <input type="hidden" name="product_id" value="{{$product['id']}}">
+                                                       </div>
                                                         <div class="col-12">
-                                                            <label for="review_comment">Your review </label>
-                                                            <textarea name="comment" id="review_comment"></textarea>
+                                                            <label for="review_comment">Your review</label>
+                                                            <textarea name="review" id="review_comment" required></textarea>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <label for="author">Name</label>
-                                                            <input id="author" type="text">
-
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <label for="email">Email </label>
-                                                            <input id="email" type="text">
-                                                        </div>
+                                             
+                                                    
                                                     </div>
                                                     <button type="submit">Submit</button>
                                                 </form>
@@ -265,7 +276,7 @@
                                     </div>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
+                                    <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
                                 </div>
 
                             </div>

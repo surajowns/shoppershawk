@@ -34,6 +34,16 @@ Route::any('/order-details/{order_id}','UserController@OrderDetails')->name('Ord
 Route::any('/{slug}','HomeController@ProuctList')->name('Product list');
 Route::any('/product_details/{slug}','HomeController@ProuctDetails')->name('Product details');
 
+//Filter by Price
+
+Route::any('price_filter','HomeController@Filterprice')->name('Produdt filter by price');
+ 
+//review by user
+ 
+Route::any('/user/createreview','RatingController@Createreview')->name('Review by users');
+
+
+
 //User Cart
 
 Route::any('ajax/add_to_cart','CartController@AddtoCart')->name('Add to cart');
