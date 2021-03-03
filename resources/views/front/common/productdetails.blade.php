@@ -149,8 +149,12 @@
                                                             <?php }}?>
                                                             </ul>
                                                         </div>
-                                                        <p><strong>{{$value->users->name}} </strong>-&nbsp;{{date('M d,Y',strtotime($value->created_at))}}</p>
+                                                        <p><strong>{{$value->users->name}}  </strong>-&nbsp;{{date('M d,Y',strtotime($value->created_at))}}</p>
                                                         <span>{{$value->review}}</span>
+                                                        <br><br>
+                                                        @if($value->comment)
+                                                        <p><strong>Shoppershawk </strong>-&nbsp;{{date('M d,Y',strtotime($value->updated_at))}}</p>{!! $value->comment !!}
+                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -162,13 +166,13 @@
                                             </div>
                                             <div class="product_rating mb-10">
                                                 <h3>Your rating</h3>
-                                                <ul>
+                                                <!-- <ul>
                                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
                                                     <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                             <div class="product_review_form">
                                                 <form action="{{url('/user/createreview')}}" method="post">
