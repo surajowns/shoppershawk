@@ -162,7 +162,6 @@
                                         @endforeach
                                             <div class="comment_title">
                                                 <h2>Add a review </h2>
-                                                <p>Your email address will not be published. Required fields are marked </p>
                                             </div>
                                             <div class="product_rating mb-10">
                                                 <h3>Your rating</h3>
@@ -183,15 +182,16 @@
   
                                                                 <input class="star star-5" id="star-5" type="radio" value="5" name="rating"/>
                                                                 <label class="star star-5" for="star-5"></label>
-                                                                <input class="star star-4" id="star-4" type="radio" value="4" name="rating"/>
+                                                                <input class="star star-4" id="star-4" type="radio" value="4" name="rating" />
                                                                 <label class="star star-4" for="star-4"></label>
-                                                                <input class="star star-3" id="star-3" type="radio" value="3" name="rating"/>
+                                                                <input class="star star-3" id="star-3" type="radio" value="3" name="rating" />
                                                                 <label class="star star-3" for="star-3"></label>
-                                                                <input class="star star-2" id="star-2" type="radio" value="2" name="rating"/>
+                                                                <input class="star star-2" id="star-2" type="radio" value="2" name="rating" />
                                                                 <label class="star star-2" for="star-2"></label>
-                                                                <input class="star star-1" id="star-1" type="radio" value="1" name="rating"/>
+                                                                <input class="star star-1" id="star-1" type="radio" value="1" name="rating" checked />
                                                                 <label class="star star-1" for="star-1"></label>
-                                                         
+                                                                <span class="text-danger">{{$errors->first('rating')}}</span>
+
                                                             </div>
                                                             <input type="hidden" name="product_id" value="{{$product['id']}}">
                                                        </div>
