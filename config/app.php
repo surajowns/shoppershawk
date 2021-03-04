@@ -178,6 +178,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
         Darryldecode\Cart\CartServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+
 
 
 
@@ -236,7 +238,9 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
 
 
 

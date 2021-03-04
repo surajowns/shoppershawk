@@ -162,6 +162,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
      Route::any('/orders/{status}','OrderController@OrderbyStatus')->name('Order list According to status');
     
+    //orderInvoice
+    Route::any('/orders/orderInvoice/{id}','OrderController@orderInvoice')->name('Generate order invoice');
+
+
 
      //CMS
 

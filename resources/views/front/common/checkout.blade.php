@@ -163,6 +163,28 @@
                            </div>
                            <div class="col-12 mb-20">
                               <input id="address" type="checkbox" data-target="createp_account" />
+                              <label class="righ_0" for="address" data-bs-toggle="collapse" data-bs-target="#useinvoice" aria-controls="collapseOne">Use GST Invoice</label>
+                              <span class="text-danger">{{$errors->first('gst_no')}}</span>
+                              <br>
+                              <span class="text-danger">{{$errors->first('bussiness_name')}}</span>
+
+
+                              <div id="useinvoice" class="collapse one" data-parent="#accordion">
+                                 <div class="row">
+                                    <div class="col-lg-6 mb-20">
+                                       <label>GST Number<span>*</span></label>
+                                       <input  type="text" name="gst_no">
+                                    </div>
+                                    <div class="col-lg-6 mb-20">
+                                       <label>Bussines Name<span>*</span></label>
+                                       <input  type="text" name="bussiness_name" value="" >
+                                    </div>
+                                    <span>Incorrect GSTIN details will lead to order cancellation</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-12 mb-20">
+                              <input id="address" type="checkbox" data-target="createp_account" />
                               <label class="righ_0" for="address" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
                               <div id="collapsetwo" class="collapse one" data-parent="#accordion">
                                  <div class="row">
@@ -341,7 +363,9 @@
 
 <script>
 $(document).ready(function(){
-
+   $.validator.addMethod("regex", function(value, element, regexpr) {          
+     return regexpr.test(value);
+   }, "Please enter a valid pasword.");
 
      if ($("#checkout_form").length > 0) {
 $("#checkout_form").validate({
@@ -382,6 +406,16 @@ $("#checkout_form").validate({
             maxlength:6,
             number:true,
         },
+        gst_no:{
+            required:true,
+            minlength:15,
+            maxlength:15,
+            regex :/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
+           
+        },
+        bussiness_name:{
+           required:true,
+        },
         shipping_name: {
             required: true,
             maxlength: 50
@@ -419,7 +453,17 @@ $("#checkout_form").validate({
         },  
     },
     messages: {
+      gst_no:{
+         required:"Please fill out this field.",
+         minlength:"GSTIN must be 15 characters",
+         maxlength:"GSTIN must be 15 characters",
+         regex :"GST state code should match the delivery address…",
 
+
+      },
+      bussiness_name:{
+         required:"Please fill out this field.",
+      },
       shipping_name: {
             required:true,
         },

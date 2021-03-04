@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderDetails;
 use App\Status;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -46,5 +47,16 @@ class OrderController extends Controller
            $status=Status::get();
            return view('admin.orders.orderdetails',compact('orders','orderdetails','status'));
            //dd($orderdetais);
+    }
+
+    public function orderInvoice(Request $request,$id=null)
+    {
+        //   dd($id);
+           $orders=Order::with('users','status')->where('id',$id)->first();
+           $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
+           $status=Status::get();
+           $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.orderinvoice',compact('orders','orderdetails','status'));
+         return $pdf->download('invoice.pdf');
+
     }
 }

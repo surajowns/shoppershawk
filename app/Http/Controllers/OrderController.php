@@ -15,14 +15,26 @@ use Product;
 use Carbon;
 class OrderController extends Controller
 {
+
+     public function __construct()
+     {
+         $this->middleware('UserSession');
+     }
        public function createOrder(Request $request)
        {
             $user=Auth::user();
+            if($request->gst_no != ''){
+               $validatedData = $request->validate([
+                    'gst_no' => 'required|min:15|max:15',
+                    'bussiness_name'=>'required'
+                ]);   
+              }
             if($user){
             $validatedData = $request->validate([
                   'order_type' => 'required',
                   'billing_state'=>'required'
               ]);
+             
 
             try{
              

@@ -76,8 +76,11 @@
 												</td>
 												<td>{{date('l h:i A',strtotime($value['updated_at']?$value['updated_at']:$value['created_at']))}}</td>
 												<td><a href="{{url('admin/orders/viewdetails/'.$value['id'])}}" class="btn btn-sm bg-info-light">
-														<i class="far fa-eye mr-1"></i> View
-													</a></td>
+														<i class="far fa-eye mr-1"></i> View</a>
+														<a href="{{url('admin/orders/orderInvoice/'.$value['id'])}}" class="btn btn-sm bg-info-light">
+														<i class="fa fa-download" aria-hidden="true"></i>Invoice</a>
+													
+													</td>
 											</tr>
 											@endforeach
 										</tbody>

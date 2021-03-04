@@ -55,6 +55,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-body">
+                              <span class="float-left">GST:&nbsp;{{$orders['gst_no']}}</span>  <span class="float-right">Bussines Name:&nbsp;{{$orders['bussiness_name']}}</span> 
+                            </div>
+                         </div>
+                     </div>
+                </div>            
+
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
