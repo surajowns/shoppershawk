@@ -40,6 +40,7 @@
 										<thead>
 											<tr>
 												<th>#</th>
+												<th>Order No</th>
 												<th>Date</th>
 												<th>User</th>
 												<th>Price</th>
@@ -54,6 +55,7 @@
 										@foreach($orders as $value )
 											<tr>
 												<td>{{$loop->iteration}}</td>
+												<td>{{$value['order_no']}}</td>
 												<td>{{date('d M Y h:i A',strtotime($value['created_at']))}}</td>
 												<td>
 													<span class="table-avatar">
