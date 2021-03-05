@@ -13,7 +13,7 @@ if (! function_exists('OrderEmail')) {
     function OrderEmail($user,$order_no,$orders) {
              
         $to_name =$user['name'];
-        $to_email ="pramod@besthawk.com";
+        $to_email =$user['email'];
         $data = array('user'=>$user,'order_no'=>$order_no,'orders'=>$orders);
       
         Mail::send('front.pages.orderemail', $data, function($message) use ($to_name, $to_email) {
