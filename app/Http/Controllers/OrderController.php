@@ -22,6 +22,7 @@ class OrderController extends Controller
      }
        public function createOrder(Request $request)
        {
+       
             $user=Auth::user();
             if($request->gst_no != ''){
                $validatedData = $request->validate([
@@ -35,7 +36,7 @@ class OrderController extends Controller
                   'billing_state'=>'required'
               ]);
              
-
+              DB::beginTransaction();
             try{
              
              $data=$request->except('_token');
@@ -83,18 +84,24 @@ class OrderController extends Controller
                   }
                   Cart::clear();
                   CartModel::where('user_id',$user['id'])->delete();
-                  return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
-
-                 // return redirect('',compact('order_no'));
-                 //return back()->with('success','order placed');
-                  // return view('front.thanku',compact('order_id'));
+                
              }
              else {
                   return back()->with('error','something went wrong');
              }
+             DB::commit();
+             $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
+             $emailsent= OrderEmail($user,$order_no,$orders);
+             if($emailsent){
+              return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+
+             }else{
+              return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+
+             }
               }catch(\Exception $e){
-                  // dd($e->getMessage());
-                  return back()->with('error',$e->getMessage());
+                DB::rollback();    
+                return back()->with('error',$e->getMessage());
           } 
       }
        else {
