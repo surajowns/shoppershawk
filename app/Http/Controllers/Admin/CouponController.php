@@ -58,7 +58,7 @@ class CouponController extends Controller
                 'code' => 'required',
                 'discount' => 'required',
                 'starting_at' => 'required',
-                'end_at' => 'required',
+                'end_at' => 'required|after_or_equal:starting_at',
                 'notes' => 'required',
             ]);
             $data=$request->except('_token');

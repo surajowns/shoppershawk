@@ -64,8 +64,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="shop_banner_thumb">
-                        <img id="singleadd" src="{{url('public/banner/'.$singleaddbanner['banner_image'])}}" alt="">
-                    </div>
+                   <a href="{{$singleaddbanner['link']}}"><img id="singleadd" src="{{url('public/banner/'.$singleaddbanner['banner_image'])}}" alt=""></a>                    </div>
                 </div>
             </div>
         </div>

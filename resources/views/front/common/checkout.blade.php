@@ -343,6 +343,11 @@
                                    <td>₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
+                                   @if(session()->has('discount')  && session()->has('coupon'))
+                                     {{Session::put('discount_amount',Session::get('discount'))}}
+                                     {{Session::put('code',Session::get('coupon'))}}
+                                   @endif
+                                  
                                     <th colspan="2">Order Total</th>
                                     <td><strong>₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
                                  </tr>

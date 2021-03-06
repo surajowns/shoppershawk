@@ -146,43 +146,43 @@ class HomeController extends Controller
       return view('front.common.productlist',compact('product'));
     }
 
-    public function applycoupon(Request $request)
-    {
-          $user=Auth::user();
-          $date=Date('Y-m-d');
-          $validator = Validator::make($request->all(), [
-            'code'=>'required',    
-        ]); 
-        if ($validator->fails()) {
-            return back()->with(['error'=>$validator->messages()->first()]);
+    // public function applycoupon(Request $request)
+    // {
+    //       $user=Auth::user();
+    //       $date=Date('Y-m-d');
+    //       $validator = Validator::make($request->all(), [
+    //         'code'=>'required',    
+    //     ]); 
+    //     if ($validator->fails()) {
+    //         return back()->with(['error'=>$validator->messages()->first()]);
 
-        }
-     $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
-    //  dd($coupon);
+    //     }
+    //  $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
+    // //  dd($coupon);
     
-     if($coupon == null){
-        return back()->with(['error'=>"Invalid Coupon"]);
-       }
-       else{
-        $discount=$coupon['discount'];
-        $coupon_code=$coupon['code'];
-       $minimum_amount=$coupon['minimum_amount'];
-        $cartDetails=Cart::getContent()->toArray();
-        // dd($cartDetails);
-        $item_total=0;
-        foreach($cartDetails as $details){
-            $item_total= $item_total + $details['price']*$details['quantity'];            
-          }
-          $item_total;
-          if($minimum_amount <= $item_total){
-             Session::put('coupon',$coupon_code);
-             Session::put('discount',$discount);
-            return back()->with(['success'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
-          }else{
-            return back()->with(['error'=>"Coupon not  available for this order"]);
-          }
-        }
-    }
+    //  if($coupon == null){
+    //     return back()->with(['error'=>"Invalid Coupon"]);
+    //    }
+    //    else{
+    //     $discount=$coupon['discount'];
+    //     $coupon_code=$coupon['code'];
+    //    $minimum_amount=$coupon['minimum_amount'];
+    //     $cartDetails=Cart::getContent()->toArray();
+    //     // dd($cartDetails);
+    //     $item_total=0;
+    //     foreach($cartDetails as $details){
+    //         $item_total= $item_total + $details['price']*$details['quantity'];            
+    //       }
+    //       $item_total;
+    //       if($minimum_amount <= $item_total){
+    //          Session::put('coupon',$coupon_code);
+    //          Session::put('discount',$discount);
+    //         return back()->with(['success'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
+    //       }else{
+    //         return back()->with(['error'=>"Coupon not  available for this order"]);
+    //       }
+    //     }
+    // }
 
     //information page
       public function Pages(Request $request,$page=null)

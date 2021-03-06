@@ -8,11 +8,12 @@ use App\OrderDetails;
 use Session;
 use Auth;
 use App\CartModel;
-use validator;
+use Validator;
 use DB;
 use Cart;
 use Product;
 use Carbon;
+use App\CouponModel;
 class OrderController extends Controller
 {
 
@@ -20,8 +21,46 @@ class OrderController extends Controller
      {
          $this->middleware('UserSession');
      }
+     public function applycoupon(Request $request)
+     {
+           $user=Auth::user();
+           $date=Date('Y-m-d');
+           $validator = Validator::make($request->all(), [
+             'code'=>'required',    
+         ]); 
+         if ($validator->fails()) {
+             return back()->with(['error'=>$validator->messages()->first()]);
+ 
+         }
+      $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
+     //  dd($coupon);
+     
+      if($coupon == null){
+         return back()->with(['error'=>"Invalid Coupon"]);
+        }
+        else{
+         $discount=$coupon['discount'];
+         $coupon_code=$coupon['code'];
+        $minimum_amount=$coupon['minimum_amount'];
+         $cartDetails=Cart::getContent()->toArray();
+         // dd($cartDetails);
+         $item_total=0;
+         foreach($cartDetails as $details){
+             $item_total= $item_total + $details['price']*$details['quantity'];            
+           }
+           $item_total;
+           if($minimum_amount <= $item_total){
+              Session::put('coupon',$coupon_code);
+              Session::put('discount',$discount);
+             return back()->with(['success'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
+           }else{
+             return back()->with(['error'=>"Coupon not  available for this order"]);
+           }
+         }
+     }
+
        public function createOrder(Request $request)
-       {
+       {   
        
             $user=Auth::user();
             if($request->gst_no != ''){
@@ -38,25 +77,30 @@ class OrderController extends Controller
              
               DB::beginTransaction();
             try{
-             
+               // dd(Session::all());
              $data=$request->except('_token');
 
              $cartsdetails=CartModel::where('user_id',$user->id)->get();
              $total=0;
              $quantity=0;
+             $discount=0;
              foreach($cartsdetails as $value){
                    $quantity= $quantity+$value['quantity'];
                  $total=$total+$value['quantity']*$value['price'] ;  
              }
-
+     
+             $discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+     
              $data['price']=$total;
              $data['user_id']=$user['id'];
              $data['price']=$total;
              $data['quantity']=$quantity;
              $data['status']=1;
-             $data['total_amount']=$total-Session::get('discount');
-             $data['coupon'] = Session::get('coupon');
-             $data['discount'] =  Session::get('discount');
+             $data['total_amount']=$total - $discount;
+             $data['coupon'] =session()->has('code')?Session::get('code'):'';
+             $data['discount'] = $discount;
+           
+
              $data['created_at']=date('Y-m-d h:i:s');
              $date = Carbon\Carbon::now('Asia/Kolkata');
              $created_at= $date->toDateTimeString();
@@ -82,6 +126,8 @@ class OrderController extends Controller
                         $ordersdetails->save();
 
                   }
+                  Session::forget('code'); 
+                  Session::forget('discount_amount') ; 
                   Cart::clear();
                   CartModel::where('user_id',$user['id'])->delete();
                 
@@ -93,7 +139,7 @@ class OrderController extends Controller
           //    $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
           //    $emailsent= OrderEmail($user,$order_no,$orders);
           //    if($emailsent){
-          //     return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+             return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
           //    }else{
           //     return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);

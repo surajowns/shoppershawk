@@ -66,7 +66,7 @@ Route::any('/ajax/search','HomeController@Search')->name('Search product');
 Route::any('/ajax/multisearch','HomeController@MultiSearch')->name('Search product');
 
 // Apply Coupon
-Route::any('/user/coupon/','HomeController@applycoupon')->name('Apply Coupon');
+Route::any('/user/coupon/','OrderController@applycoupon')->name('Apply Coupon');
 
 Route::any('/user/createorder/','OrderController@createOrder')->name('create order');
 
