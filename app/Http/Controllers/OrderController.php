@@ -90,15 +90,15 @@ class OrderController extends Controller
                   return back()->with('error','something went wrong');
              }
              DB::commit();
-             $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
-             $emailsent= OrderEmail($user,$order_no,$orders);
-             if($emailsent){
-              return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+          //    $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
+          //    $emailsent= OrderEmail($user,$order_no,$orders);
+          //    if($emailsent){
+          //     return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
-             }else{
-              return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+          //    }else{
+          //     return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
-             }
+          //    }
               }catch(\Exception $e){
                 DB::rollback();    
                 return back()->with('error',$e->getMessage());
