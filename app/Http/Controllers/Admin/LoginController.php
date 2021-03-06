@@ -16,6 +16,7 @@ use App\BrandModel;
 use App\Product;
 use App\LoginLogModel;
 use Mail;
+use App\Order;
 
 class LoginController extends Controller
 {
@@ -114,8 +115,9 @@ class LoginController extends Controller
         $categories=CategoryModel::get()->count();
         $brand=BrandModel::get()->count();
         $products=Product::get()->count();
-
-        return view('admin.index.dashboard',compact('user','categories','brand','products'));
+        $totalorders=Order::get()->count();
+        $orders=Order::with('users')->orderBy('id','DESC')->get()->take(5);
+        return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders'));
     }
     
     public function logout()

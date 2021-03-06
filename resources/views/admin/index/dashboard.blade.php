@@ -69,7 +69,7 @@
 					<i class="far fa-credit-card"></i>
 				</span>
 				<div class="dash-widget-info">
-					<h3>11378</h3>
+					<h3>{{$totalorders}}</h3>
 					<h6 class="text-muted">Orders</h6>
 				</div>
 			</div>
