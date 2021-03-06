@@ -11,7 +11,7 @@ use App\CartModel;
 use Validator;
 use DB;
 use Cart;
-use Product;
+use App\Product;
 use Carbon;
 use App\CouponModel;
 class OrderController extends Controller
@@ -124,6 +124,7 @@ class OrderController extends Controller
                         $ordersdetails->total_amount=$details['quantity']*$details['price'];
                         $ordersdetails->status=2;
                         $ordersdetails->save();
+                        Product::where('id',$details['product_id'])->decrement('qty',$details['quantity']);
 
                   }
                   Session::forget('code'); 

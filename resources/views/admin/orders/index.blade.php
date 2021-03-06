@@ -45,6 +45,7 @@
 												<th>User</th>
 												<th>Price</th>
 												<th>Qauntity</th>
+												<th>Discount</th>
 												<th>Total Amount</th>
 												<th>Status</th>
 												<th>Updated</th>
@@ -66,7 +67,8 @@
 												<td>₹{{number_format($value['price'])}}</td>
 												<td>{{$value['quantity']}}</td>
 
-												<td>₹{{number_format($value['total_amount'])}}</td>
+												<td>₹{{number_format($value['discount'],2)}}</td>
+												<td>₹{{number_format($value['total_amount'],2)}}</td>
 												<td>
 														{{ Form::open(array('url' => 'admin/orders/updatestatus')) }}
 														<input type = "hidden" name = "order_id" value = "{{$value['id']}}" >
