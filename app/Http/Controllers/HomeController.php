@@ -55,31 +55,9 @@ class HomeController extends Controller
     public function ProuctList(Request $request,$slug=null)
     {   
        try{
-        $filter=$request->filterby;
+         $filter=$request->filterby;
         $user=Auth::user();
-           
-         if($request->isMethod('get')){
-          //  dd($request->all());
-            if($request->cat){
-             
-                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
-                //  dd($product);
-              }else{
-                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
-              }
-              $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
-              $i=0;foreach($category as $cat){
-              $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
-              $i++;
-              }
-              $singleaddbanner=BannerModel::where('type',2)->first();
-            
-                return view('front.common.productlist',compact('product','category','singleaddbanner'));
-      
-            
-            }
-
-          elseif($filter){
+          if($filter){
             if(is_numeric($_GET['cat'])){
               $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
   
@@ -150,39 +128,17 @@ class HomeController extends Controller
 
     }
     public function Search(Request  $request)
-    {      
-
-     
-      // if($request->isMethod('post')){
-       
-      //   if($request->cat){
-      //       $product=Product::with('category')->where('supercategory_id',$request->cat)->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+    {       
           
-      //      }else{
-      //        $product=Product::with('category')->OrWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
-      //     }
-      //     $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
-      //     $i=0;foreach($category as $cat){
-      //     $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
-      //     $i++;
-      //     }
-      //     $singleaddbanner=BannerModel::where('type',2)->first();
-         
-      //       return view('front.common.productlist',compact('product','category','singleaddbanner'));
-  
-         
-      //   }
        if($request->cat){
-            $result=Product::with('category')->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+         $result=Product::with('category')->where('supercategory_id',$request->cat)->where('name','like','%'.$request->keywords.'%')->get();
           }
           else{
-           $result=Product::with('category')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->get();
  
           }
           return response()->json($result);
     }
-
-
     public function MultiSearch(Request $request)
     {
       $user=Auth::user();
