@@ -61,10 +61,10 @@ class HomeController extends Controller
          if($request->isMethod('post')){
            
             if($request->cat){
-                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(32);
+                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
               
               }else{
-                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(32);
+                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
               }
               $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
               $i=0;foreach($category as $cat){
@@ -77,9 +77,6 @@ class HomeController extends Controller
       
             
             }
-
-
-
 
           if($filter){
             if(is_numeric($_GET['cat'])){
@@ -155,27 +152,27 @@ class HomeController extends Controller
     {      
 
      
-      if($request->isMethod('post')){
+      // if($request->isMethod('post')){
        
-        if($request->cat){
-            $product=Product::with('category')->where('supercategory_id',$request->cat)->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+      //   if($request->cat){
+      //       $product=Product::with('category')->where('supercategory_id',$request->cat)->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
           
-           }else{
-             $product=Product::with('category')->OrWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
-          }
-          $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
-          $i=0;foreach($category as $cat){
-          $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
-          $i++;
-          }
-          $singleaddbanner=BannerModel::where('type',2)->first();
+      //      }else{
+      //        $product=Product::with('category')->OrWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+      //     }
+      //     $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
+      //     $i=0;foreach($category as $cat){
+      //     $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
+      //     $i++;
+      //     }
+      //     $singleaddbanner=BannerModel::where('type',2)->first();
          
-            return view('front.common.productlist',compact('product','category','singleaddbanner'));
+      //       return view('front.common.productlist',compact('product','category','singleaddbanner'));
   
          
-        }
+      //   }
        if($request->cat){
-            $result=Product::with('category')->orWhere('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+            $result=Product::with('category')->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
           }
           else{
            $result=Product::with('category')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();

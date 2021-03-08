@@ -294,7 +294,7 @@ $.ajax({
         // alert(cat);
         if(keywords!=''){
         $.ajax({
-        Type:"POST",
+        Type:"get",
         url : '{{url("ajax/search")}}',
         dataType:'json',
         cache: false,
