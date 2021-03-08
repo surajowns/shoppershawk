@@ -42,7 +42,7 @@
                         <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
-                               <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
+                               <option value="{{$catonly['id']}}" @if( $catonly['id'] == $cat){{'selected'}} @endif>{{$catonly['name']}}</option>
                              @endforeach 
                         </select>
                     </div>
