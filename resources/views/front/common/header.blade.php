@@ -34,9 +34,10 @@
         </div>
         <div class="column2 col-lg-6">
             <!-- desktop search -->
+            <?php $cat=isset($_GET['cat'])?$_GET['cat']:''; ?>
             <div class="search_container">
-                <form  action="{{url('/products/'.'?cat=')}}" method="get">
-                   <!-- @csrf -->
+                <form  action="{{url('/products/'.'?cat='.$cat)}}" method="post">
+                   @csrf
                     <div class="hover_category ">
                         <select class="select_option" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
