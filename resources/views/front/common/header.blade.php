@@ -36,10 +36,10 @@
             <!-- desktop search -->
             <?php $cat=isset($_GET['cat'])?$_GET['cat']:''; ?>
             <div class="search_container">
-                <form  action="{{url('/products/'.'?cat='.$cat)}}" method="post">
+                <form  action="{{url('/products/'.'?cat='.$cat)}}" method="get">
                    @csrf
                     <div class="hover_category ">
-                        <select class="select_option" name="cat" id="categor" >
+                        <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
                                <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>

@@ -58,11 +58,12 @@ class HomeController extends Controller
         $filter=$request->filterby;
         $user=Auth::user();
            
-         if($request->isMethod('post')){
-           
+         if($request->isMethod('get')){
+          //  dd($request->all());
             if($request->cat){
+             
                  $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
-              
+                //  dd($product);
               }else{
                  $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->paginate(100);
               }
@@ -78,7 +79,7 @@ class HomeController extends Controller
             
             }
 
-          if($filter){
+          elseif($filter){
             if(is_numeric($_GET['cat'])){
               $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
   
