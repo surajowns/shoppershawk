@@ -129,21 +129,57 @@ class HomeController extends Controller
     }
     public function Search(Request  $request)
     {       
+      $user=Auth::user();
+      if($request->isMethod('post')){
+        if($request->select){
+         $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->select)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
           
+        }else{
+         $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+        }
+        $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
+        $i=0;foreach($category as $cat){
+        $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
+        $i++;
+        }
+        $singleaddbanner=BannerModel::where('type',2)->first();
+        if(isset($_GET['cat'])){
+          return view('front.common.productlist',compact('product','category','singleaddbanner'));
+
+        }else{
+          return view('errors.404');
+        }
+   }
        if($request->cat){
-         $result=Product::with('category')->where('supercategory_id',$request->cat)->where('name','like','%'.$request->keywords.'%')->get();
+         $result=Product::with('category')->orWhere('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->where('model_no','like','%'.$request->keywords.'%')->get();
           }
           else{
-           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->get();
+           $result=Product::with('category')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
  
           }
           return response()->json($result);
     }
     public function MultiSearch(Request $request)
     {
+      
       $user=Auth::user();
-      $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('slug','like','%'.$request->keywords.'%')->where('status',1)->get();
-      return view('front.common.productlist',compact('product'));
+      if($request->isMethod('post')){
+        if($request->select){
+         $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->select)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+          
+        }else{
+         $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+        }
+        $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
+        $i=0;foreach($category as $cat){
+        $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
+        $i++;
+        }
+        $singleaddbanner=BannerModel::where('type',2)->first();
+          return view('front.common.productlist',compact('product','category','singleaddbanner'));
+
+       
+   }
     }
 
     // public function applycoupon(Request $request)

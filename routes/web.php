@@ -63,7 +63,7 @@ Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->n
 Route::any('/user/wishlist_details','WishlistController@index')->name('wishlist details');
 
 Route::any('/ajax/search','HomeController@Search')->name('Search product');
-Route::any('/ajax/multisearch','HomeController@MultiSearch')->name('Search product');
+Route::any('/user/search','HomeController@MultiSearch')->name('Search product');
 
 // Apply Coupon
 Route::any('/user/coupon/','OrderController@applycoupon')->name('Apply Coupon');

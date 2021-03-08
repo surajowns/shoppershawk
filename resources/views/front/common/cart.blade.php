@@ -54,7 +54,7 @@
                     <div class="coupon_area">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <div class="coupon_code left">
+                                <!-- <div class="coupon_code left">
                                     <h3>Coupon</h3>
                                     <div class="coupon_inner">
                                      <form action="{{url('/user/coupon/')}}" method="post" >
@@ -65,7 +65,7 @@
                                     </form>
                                        
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="coupon_code right">

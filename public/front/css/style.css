@@ -10894,3 +10894,14 @@ label.star:before {
   content: '\f006';
   font-family: FontAwesome;
 }
+.hover_category .selectoption {
+  border: 0;
+  background: inherit;
+  height: 54px;
+  line-height: 54px;
+  padding-left: 25px;
+  padding-right: 40px;
+  font-size: 14px;
+  min-width: 180px;
+  border-radius: 4px 0 0 4px;
+}

@@ -272,6 +272,7 @@ $.ajax({
         cache: false,
         data: {cat:cat,keywords:keywords},
         success: function(response){
+            $('.list_details').css("display", "block");
             var rows='';
                     $.each(response,function(key,value){
                         var newurl = "{{url('/products/'.'?cat=')}}"+value.category.slug;
@@ -281,6 +282,9 @@ $.ajax({
             $('.list_details').html(rows)
         }
      })
+    }
+    else{
+        $('.list_details').css("display", "none");
     }
     });
     });
