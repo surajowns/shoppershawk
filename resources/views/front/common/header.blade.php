@@ -34,20 +34,18 @@
         </div>
         <div class="column2 col-lg-6">
             <!-- desktop search -->
-            <?php $cat=isset($_GET['cat'])?$_GET['cat']:''; ?>
             <div class="search_container">
-                <form  action="{{url('/products/'.'?cat='.$cat)}}" method="get">
-                   @csrf
+                <form>
                     <div class="hover_category ">
-                        <select class="selectoption" name="cat" id="categor" >
+                        <select class="select_option" name="select" id="categor" required>
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
-                               <option value="{{$catonly['id']}}" @if( $catonly['id'] == $cat){{'selected'}} @endif>{{$catonly['name']}}</option>
+                               <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
                              @endforeach 
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." type="text" name="keywords" class="sample_search" />
+                        <input placeholder="Search product..." type="text" class="sample_search" />
                         <button type="submit">Search</button>
                     </div>
                    
@@ -68,10 +66,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="search_container-1">
-            <form action="{{url('/products/'.'?cat=')}}" method="post">
-            @csrf
+            <form>
                 <div class="search_box">
-                    <input placeholder="Search products..." name="keywords" type="text" class="sample_search">
+                    <input placeholder="Search product..." type="text" class="sample_search">
                     <button type="submit">Search</button>
                 </div>
             </form>
