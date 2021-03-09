@@ -38,7 +38,7 @@
                 <form action="{{url('/products/'.'?cat=')}}" method="get">
                 @csrf
                     <div class="hover_category ">
-                        <select class="selectoption" name="select" id="categor" >
+                        <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
                                <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." name="keywords" type="text" class="sample_search" />
+                        <input placeholder="Search product..." name="keywords" type="text" class="sample_search" required />
                         <button type="submit">Search</button>
                     </div>
                    
@@ -67,12 +67,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="search_container-1">
-            <form>
-                <div class="search_box">
-                    <input placeholder="Search product..." type="text" class="sample_search">
-                    <button type="submit">Search</button>
-                </div>
-            </form>
+            <form action="{{url('/products/'.'?cat=')}}" method="get">
+                @csrf
+                    <div class="hover_category ">
+                        <select class="selectoption" name="cat" id="categor" >
+                            <option selected value="">All Categories</option>
+                             @foreach($categories as $catonly)
+                               <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
+                             @endforeach 
+                        </select>
+                    </div>
+                    <div class="search_box">
+                        <input placeholder="Search product..." name="keywords" type="text" class="sample_search" required />
+                        <button type="submit">Search</button>
+                    </div>
+                   
+                </form>
                  <ul class="list_details"></ul>
         </div>
         </div>
