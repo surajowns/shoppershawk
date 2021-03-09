@@ -35,8 +35,8 @@
         <div class="column2 col-lg-6">
             <!-- desktop search -->
             <div class="search_container">
-                <form action="{{url('/products/'.'?cat=')}}" method="get">
-                @csrf
+                <form action="{{url('/products/'.'?cat=')}}" method="post">
+                {!! csrf_field() !!}
                     <div class="hover_category ">
                         <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>

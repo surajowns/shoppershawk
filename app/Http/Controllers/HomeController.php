@@ -146,7 +146,7 @@ class HomeController extends Controller
     {       
           
        if($request->cat){
-         $result=Product::with('category')->where('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+         $result=Product::with('category')->orWhere('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
           }
           else{
            $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
