@@ -275,7 +275,7 @@ $.ajax({
             $('.list_details').css("display", "block");
             var rows='';
                     $.each(response,function(key,value){
-                        var newurl = "{{url('/products/'.'?cat=')}}"+value.category.slug;
+                        var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
                        
                         rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
                     });
