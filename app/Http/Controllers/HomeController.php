@@ -84,7 +84,7 @@ class HomeController extends Controller
             }
           }
           if(is_numeric($_GET['cat']) && $request->keywords ){
-            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('slug','like' ,'%'.$request->keywords.'%')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->where('status',1)->paginate(32);
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('slug','like' ,'%'.$request->keywords.'%')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->where('status',1)->paginate(32);
 
           }
 
