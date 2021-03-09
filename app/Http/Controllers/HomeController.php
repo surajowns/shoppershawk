@@ -59,16 +59,16 @@ class HomeController extends Controller
         $user=Auth::user();
           if($filter){
             if(is_numeric($_GET['cat'])){
-              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->orderBy('selling_price',$filter)->where('status',1)->paginate(100);
   
             }
           else{
               $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
-              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(100);
             }
             if(isset($_GET['subcat'])){
                $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
-               $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(32);
+               $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->orderBy('selling_price',$filter)->where('status',1)->paginate(100);
             }
             $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
             $i=0;foreach($category as $cat){
@@ -83,13 +83,19 @@ class HomeController extends Controller
               return view('errors.404');
             }
           }
-          if(is_numeric($_GET['cat']) && $request->keywords ){
-            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$request->cat)->orWhere('slug','like' ,'%'.$request->keywords.'%')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->where('status',1)->paginate(32);
+          if($request->cat && $request->keywords ){
+          
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('supercategory_id',$request->cat)->orWhere('slug','like' ,'%'.$request->keywords.'%')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->paginate(100);
+
+          }
+          if($request->keywords ){
+          // dd($request->keywords);
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('slug','like' ,'%'.$request->keywords.'%')->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->paginate(100);
 
           }
 
           if(is_numeric($_GET['cat'])){
-            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('brand', 'like','%'. $_GET['cat'].'%')->orWhere('supercategory_id', 'like','%'.$request->cat.'%')->where('slug',isset($request->keywords)?$request->keywords:'')->orWhere('name',isset($request->keywords)?$request->keywords:'')->where('status',1)->paginate(32);
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('brand', 'like','%'. $_GET['cat'].'%')->orWhere('supercategory_id', 'like','%'.$request->cat.'%')->where('slug',isset($request->keywords)?$request->keywords:'')->orWhere('name',isset($request->keywords)?$request->keywords:'')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->paginate(100);
 
           }
         else{
@@ -100,16 +106,16 @@ class HomeController extends Controller
                 $category =CategoryModel::where('status',1)->where('id',$request->cat)->first();
 
             }
-              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('slug','like', '%'.$keywords.'%')->orWhere('name','like','%'.$keywords.'%')->orWhere('model_no','like','%'.$keywords.'%')->where('status',1)->paginate(32);
+              $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('slug','like', '%'.$keywords.'%')->orWhere('name','like','%'.$keywords.'%')->orWhere('model_no','like','%'.$keywords.'%')->where('status',1)->paginate(100);
 
              }else{
                   $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
-                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('supercategory_id',isset($category['id'])?$category['id']:'')->orWhere('slug',$_GET['cat'])->orWhere('name',$_GET['cat'])->orWhere('slug',isset($keywords)?$keywords:'')->orWhere('name',isset($keywords)?$keywords:'')->orWhere('model_no',isset($keywords)?$keywords:'')->where('status',1)->paginate(32);
+                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('supercategory_id',isset($category['id'])?$category['id']:'')->orWhere('slug',$_GET['cat'])->orWhere('name',$_GET['cat'])->orWhere('slug',isset($keywords)?$keywords:'')->orWhere('name',isset($keywords)?$keywords:'')->orWhere('model_no',isset($keywords)?$keywords:'')->where('status',1)->paginate(100);
              }
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
-             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(32);
+             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(100);
           }
         $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
         $i=0;foreach($category as $cat){
@@ -146,10 +152,10 @@ class HomeController extends Controller
     {       
           
        if($request->cat){
-         $result=Product::with('category')->orWhere('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+         $result=Product::with('category')->orWhere('supercategory_id',$request->cat)->orWhere('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->get();
           }
           else{
-           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->get();
+           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->get();
  
           }
           return response()->json($result);
