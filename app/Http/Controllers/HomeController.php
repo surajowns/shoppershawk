@@ -86,14 +86,13 @@ class HomeController extends Controller
 
 
           if(is_numeric($_GET['cat'])){
-            dd('numeric');
             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('brand', 'like','%'. $_GET['cat'].'%')->where('status',1)->paginate(32);
 
           }
         else{
-          // dd('not numeric');
-            // $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
-            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('slug',$_GET['cat'])->where('status',1)->paginate(32);
+ 
+            $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
+            $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->orWhere('supercategory_id',isset($category['id'])?$category['id']:'')->orWhere('slug',$_GET['cat'])->where('status',1)->paginate(32);
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
@@ -112,6 +111,7 @@ class HomeController extends Controller
           return view('errors.404');
         }
       }catch(\Exception $e){
+        dd($e->getMessage());
           return view('errors.404');
       }
     }

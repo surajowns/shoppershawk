@@ -35,9 +35,10 @@
         <div class="column2 col-lg-6">
             <!-- desktop search -->
             <div class="search_container">
-                <form>
+                <form action="{{url('/products/'.'?cat=')}}" method="get">
+                @csrf
                     <div class="hover_category ">
-                        <select class="select_option" name="select" id="categor" required>
+                        <select class="selectoption" name="select" id="categor" >
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
                                <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
@@ -45,7 +46,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." type="text" class="sample_search" />
+                        <input placeholder="Search product..." name="keywords" type="text" class="sample_search" />
                         <button type="submit">Search</button>
                     </div>
                    
