@@ -124,7 +124,7 @@ class HomeController extends Controller
           return view('errors.404');
         }
       }catch(\Exception $e){
-        dd($e->getMessage());
+        // dd($e->getMessage());
           return view('errors.404');
       }
     }
