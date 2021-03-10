@@ -70,8 +70,8 @@
                                         <!-- <label>quantity</label> -->
                                         <!-- <input min="1" max="100" value="1" type="number"> -->
                                         <a href="{{url('ajax/addtocart/'.$product['id'])}}" class="button cart btn-lg" role="button">Buy Now</a>
-
-                                        <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a>
+                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a>
+                                        <!-- <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a> -->
 
                                     </div>
                                     <div class=" product_d_action">
@@ -280,9 +280,8 @@
                                     </div>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
+                                  <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
                                 </div>
-
                             </div>
                         </figure>
                     </article>
