@@ -33,18 +33,18 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="widget_list widget_filter">
-                <h3>Filter by price</h3>
+            <!-- <div class="widget_list widget_filter">
+                <h3>Filter by price</h3> -->
                 <?php $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";  ?>
               <!-- {{ Form::open(array('url' => '/products/'.'?cat='.$_GET['cat'].$subcat)) }} -->
-                    <form action="{{url('/products/'.'?cat='.$_GET['cat'].$subcat)}}" >
+                    <!-- <form action="{{url('/products/'.'?cat='.$_GET['cat'].$subcat)}}" >
                     @csrf
                     <div id="slider-range"></div>
                     <button type="submit">Filter</button>
                     <input type="text" name="text" id="amount" />
 
                 </form>
-            </div>
+            </div> -->
             <div class="widget_list tags_widget">
                 <h3>Product tags</h3>
                 <div class="tag_cloud">
