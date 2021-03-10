@@ -370,7 +370,7 @@
 $(document).ready(function(){
    $.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
-   }, "Please enter a valid pasword.");
+   }, "Please enter a valid GST no.");
 
      if ($("#checkout_form").length > 0) {
 $("#checkout_form").validate({
