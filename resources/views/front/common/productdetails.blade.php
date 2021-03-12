@@ -37,7 +37,7 @@
                             <div class="product_d_right">
                                 <form action="#">
 
-                                    <h3><a href="javascriptvoid(0)">{{$product['name']}}</a></h3>
+                                    <h3><a href="javascript:void(0)">{{$product['name']}}</a></h3>
                                    
                                     <div class="product_rating">
                                         <ul>

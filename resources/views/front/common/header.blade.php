@@ -35,13 +35,12 @@
         <div class="column2 col-lg-6">
             <!-- desktop search -->
             <div class="search_container">
-                <form action="{{url('/products/'.'?cat=')}}" method="post">
-                {!! csrf_field() !!}
+                <form action="{{url('/products/'.'?cat=')}}" method="get">
                     <div class="hover_category ">
                         <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
                              @foreach($categories as $catonly)
-                               <option value="{{$catonly['id']}}">{{$catonly['name']}}</option>
+                               <option value="{{$catonly['slug']}}">{{$catonly['name']}}</option>
                              @endforeach 
                         </select>
                     </div>
