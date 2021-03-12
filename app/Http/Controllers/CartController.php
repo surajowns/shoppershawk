@@ -22,6 +22,7 @@ class CartController extends Controller
     public function DirecttoCart(Request $request,$id=null)
     {
         $user=Auth::user();
+        //dd($user);
         $quantity = 1 ;
         $products=Product::with('productImage')->where('id',$id)->first()->toArray();
         $add  =  array('id'=>$id,
@@ -57,7 +58,7 @@ class CartController extends Controller
              $carts->save(); 
           }
         
-          return redirect('user/cart_details');
+          return redirect('user/checkout');
         // return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
 
     }

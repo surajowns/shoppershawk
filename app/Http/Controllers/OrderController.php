@@ -42,7 +42,11 @@ class OrderController extends Controller
          $discount=$coupon['discount'];
          $coupon_code=$coupon['code'];
         $minimum_amount=$coupon['minimum_amount'];
-         $cartDetails=Cart::getContent()->toArray();
+         if($user){
+          $cartDetails=CartModel::where('user_id',$user['id'])->get()->toArray();
+         }else{
+          $cartDetails=Cart::getContent()->toArray();
+         }
          // dd($cartDetails);
          $item_total=0;
          foreach($cartDetails as $details){

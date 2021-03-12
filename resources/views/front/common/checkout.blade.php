@@ -316,6 +316,15 @@
                                  </tr>
                               </thead>
                               <tbody>
+                                @if(Auth::check())
+                                 @foreach($details as $data)
+                                 <tr>
+                                    <td class="text-left"><strong>{{$data['products'][0]['name']}}</strong></td>
+                                    <td>{{number_format($data['quantity'])}}</td>
+                                    <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
+                                 </tr>
+                                 @endforeach
+                                 @else
                                  @foreach($details as $data)
                                  <tr>
                                     <td class="text-left"><strong>{{$data['name']}}</strong></td>
@@ -323,10 +332,39 @@
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
                                  @endforeach
+                                 @endif
                               </tbody>
                               <tfoot>
+                                @if(Auth::check())
+                                <tr>
+                                    <th colspan="2">Subtotal</th>
+                                    <td>₹{{number_format($subtotal,2)}}</td>
+                                 </tr>
                                  <tr>
-                                    <th colspan="2">Cart Subtotal</th>
+                                    <th colspan="2">Shipping</th>
+                                   
+                                    <td>
+                                       <strong>
+                                          <p class="cart_amount text-success">Free</p>
+                                       </strong>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                   <th colspan="2">Discount</th>
+                                   <td>₹{{number_format(Session::get('discount'),2)}}</td>
+                                 </tr>
+                                 <tr class="order_total">
+                                   @if(session()->has('discount')  && session()->has('coupon'))
+                                     {{Session::put('discount_amount',Session::get('discount'))}}
+                                     {{Session::put('code',Session::get('coupon'))}}
+                                   @endif
+                                  
+                                    <th colspan="2">Order Total</th>
+                                    <td><strong>₹{{number_format($subtotal-Session::get('discount'),2)}}</strong></td>
+                                 </tr>
+                                @else
+                                 <tr>
+                                    <th colspan="2">Subtotal</th>
                                     <td>₹{{number_format(Cart::getSubTotal(),2)}}</td>
                                  </tr>
                                  <tr>
@@ -351,6 +389,7 @@
                                     <th colspan="2">Order Total</th>
                                     <td><strong>₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
                                  </tr>
+                                 @endif
                               </tfoot>
                            </table>
                         </div>

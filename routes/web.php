@@ -51,7 +51,7 @@ Route::any('ajax/remove_cart','CartController@removecart')->name('Remove from ca
 Route::any('user/cart_details','CartController@index')->name('Cart Details');
 Route::any('user/updatecart','CartController@updateCart')->name('Update Cart');
 
-Route::any('ajax/addtocart/{id}','CartController@DirecttoCart')->name('Direct to  Cart');
+Route::any('ajax/addtocart/{id}','CartController@DirecttoCart')->name('Buy Now');
 
 
 ///User Checkout
