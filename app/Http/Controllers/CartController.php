@@ -13,10 +13,23 @@ use App\CartModel;
 class CartController extends Controller
 {
     public function index(Request $request)
-    {
-        $cartdetails=Cart::getContent()->toArray(); 
+    {   
+        $userdeta=Auth::user();
+        $subtotal=0;
+        if(!empty($userdeta)){
+               
+           $cartdetails=CartModel::with('products','products.productImage')->where('user_id',$userdeta['id'])->get()->toArray();
+        //    dd($cartdetails);
+            foreach($cartdetails as $data){
+                $subtotal=$subtotal+$data['quantity']*$data['price'];
+            }
+
+        }else{
+            $cartdetails=Cart::getContent()->toArray(); 
+        } 
+
        
-        return view('front/common/cart',compact('cartdetails'));
+        return view('front/common/cart',compact('cartdetails','subtotal'));
     }
 
     public function DirecttoCart(Request $request,$id=null)
