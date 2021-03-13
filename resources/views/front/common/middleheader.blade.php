@@ -1,10 +1,23 @@
 <?php 
     $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->limit(5)->get();
     $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
-
+ 
     $cartdetails=Cart::getContent()->toArray(); 
     $user=Auth::user();
+     
    
+    $subtotal=0;
+    if(!empty($user)){
+           
+        $cartdetails=App\CartModel::with('products','products.productImage')->where('user_id',$user['id'])->get()->toArray();
+        $totalincart=count($cartdetails);
+        foreach($cartdetails as $data){
+            $subtotal=$subtotal+$data['quantity']*$data['price'];
+        }
+
+    
+    }
+
     if(!empty($user)){
         $wishlist=App\Wishlist::where('user_id',$user->id)->get()->count();
 
@@ -55,8 +68,8 @@
                 <div class="mini_cart_wrapper">
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag"></i>
-                        <span class="cart_price">₹{{number_format(Cart::getSubTotal(),2)}} <i class="ion-ios-arrow-down"></i></span>
-                        <span class="cart_count">{{Cart::getContent()->count()}}</span>
+                        <span class="cart_price">@if(Auth::check())₹{{number_format($subtotal,2)}}@else₹{{number_format(Cart::getSubTotal(),2)}}@endif<i class="ion-ios-arrow-down"></i></span>
+                        <span class="cart_count">@if(Auth::check()){{$totalincart}}@else{{Cart::getContent()->count()}}@endif</span>
                     </a>
                 </div>
             </div>
@@ -75,6 +88,23 @@
             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
         </div>
     </div>
+    @if(Auth::check())
+    
+    @foreach($cartdetails as $details)
+    <div class="cart_item">
+        <div class="cart_img">
+            <a href="{{url('/product_details/'.$details['products'][0]['slug'])}}"><img src="{{url('public/product_image/',$details['products']['0']['product_image'][0]['image'])}}" alt="" /></a>
+        </div>
+        <div class="cart_info">
+            <a href="{{url('/product_details/'.$details['products'][0]['slug'])}}">{{$details['products'][0]['name']}}</a>
+            <p>Qty: {{$details['quantity']}} X <span> ₹{{number_format($details['price'],2)}} </span></p>
+        </div>
+        <div class="cart_remove">
+            <a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="ion-android-close"></i></a>
+        </div>
+    </div>
+    @endforeach
+    @else
     @foreach($cartdetails as $cart)
     <div class="cart_item">
         <div class="cart_img">
@@ -89,15 +119,15 @@
         </div>
     </div>
     @endforeach
-   
+   @endif
     <div class="mini_cart_table">
         <div class="cart_total">
             <span>Sub total:</span>
-            <span class="price">₹{{number_format(Cart::getSubTotal(),2)}}</span>
+            <span class="price">@if(Auth::check())₹{{number_format($subtotal,2)}}@else₹{{number_format(Cart::getSubTotal(),2)}}@endif</span>
         </div>
         <div class="cart_total mt-10">
             <span>total:</span>
-            <span class="price">₹{{number_format(Cart::getTotal(),2)}}</span>
+            <span class="price">@if(Auth::check())₹{{number_format($subtotal,2)}} @else ₹{{number_format(Cart::getTotal(),2)}} @endif</span>
         </div>
     </div>
     <div class="mini_cart_footer">
