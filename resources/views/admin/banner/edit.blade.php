@@ -67,7 +67,7 @@
     
     <div class="col-sm-12 text-center">
     <button class="btn btn-primary" type="submit">Edit Banner</button>
-                                <a href="{{url('/admin/banner')}}" class="btn btn-link">Cancel</a>			</div>
+                                <a href="{{url('/admin/banner')}}" class="btn btn-link">Back</a>			</div>
 </div>                                    
 </div>
 </div> 

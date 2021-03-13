@@ -27,6 +27,9 @@
 						<li  class="{{Request::segment(2)=='orders'?'active':''}}">
 							<a href="{{url('admin/orders')}}"><i class="far fa-calendar-check"></i> <span>Orders</span></a>
 						</li>
+						<li  class="{{Request::segment(2)=='notification'?'active':''}}">
+							<a href="{{url('admin/notification')}}"><i class="far fa-bell"></i></span><span>Notification</span></a>
+						</li>
 						<li>
 							<a href="{{url('admin/under-construction')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
 						</li>

@@ -14,6 +14,7 @@ use Cart;
 use App\Product;
 use Carbon;
 use App\CouponModel;
+use App\NotificationModel;
 class OrderController extends Controller
 {
 
@@ -81,7 +82,6 @@ class OrderController extends Controller
              
               DB::beginTransaction();
             try{
-               // dd(Session::all());
              $data=$request->except('_token');
 
              $cartsdetails=CartModel::where('user_id',$user->id)->get();
@@ -140,6 +140,8 @@ class OrderController extends Controller
              else {
                   return back()->with('error','something went wrong');
              }
+             $content="Order from ".$user['name']." with Order No  ".$order_no;
+             NotificationModel::insert(['user_id'=>$user['id'],'content'=>$content,'type'=>$order_no]);
              DB::commit();
           //    $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
           //    $emailsent= OrderEmail($user,$order_no,$orders);

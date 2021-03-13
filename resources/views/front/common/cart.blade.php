@@ -32,7 +32,7 @@
                                                 <td class="product_name"><a href="{{url('/product_details/'.$details['products'][0]['slug'])}}">{{$details['products'][0]['name']}}</a></td>
                                                 <td class="product-price">₹{{ number_format($details['price'],2)}}</td>
                                                 <td class="product_quantity">
-                                                <span class="input-number-decrement decrement" id="decrement" data-productid="{{$details['id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$details['quantity']}}" data-productid="{{$details['id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"><span class="input-number-increment increment" id="increment" data-productid="{{$details['id']}}">+</span>
+                                                <span class="input-number-decrement decrement" id="decrement" data-productid="{{$details['product_id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$details['quantity']}}" data-productid="{{$details['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"><span class="input-number-increment increment" id="increment" data-productid="{{$details['product_id']}}">+</span>
                                                  <!-- <input min="1" max="100" value="{{$details['quantity']}}" type="number"> -->
                                                 </td>
                                                 <td class="product_total">₹ {{number_format($details['quantity']*$details['price'],2)}}</td>

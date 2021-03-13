@@ -193,7 +193,14 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
       //forget password
       Route::any('/forget_passord','LoginController@ForgetPassword')->name('Forget Password');
       Route::any('/reset_password/{token}','LoginController@ResetPassword')->name('Reset Password');
-       
+      
+      //Notification
+
+      Route::any('notification','NotificationController@index')->name('notification');
+      Route::any('notification/seenORnotseen/{id}','NotificationController@ChangeSeen')->name('notification');
+
+
+
 
       Route::get('/under-construction',function(){
 

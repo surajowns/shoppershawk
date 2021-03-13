@@ -29,13 +29,17 @@
     text-align: right;
 }
 </style>
+<?php 
+   $notification=App\NotificationModel::with('users')->where('is_seen',0)->where('trash',0)->where('status',1)->get();
+
+?>
 <body>
 	<div class="main-wrapper">
 	
 		<!-- Header -->
 		<div class="header">
 			<div class="header-left"> 
-				<a href="index.html" class="logo logo-small">
+				<a href="{{url('admin/dashboard')}}" class="logo logo-small">
 					<img src="{{url('public/admin/assets/img/logo-icon.png')}}" alt="Logo" width="30" height="30">
 				</a>
 			</div>
@@ -50,7 +54,7 @@
 				<!-- Notifications -->
 				<li class="nav-item dropdown noti-dropdown">
 					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						<i class="far fa-bell"></i>  <span class="badge badge-pill"></span>
+						<i class="far fa-bell"></i>@if($notification->count()==0)@else<span class="badge badge-pill"></span>@endif
 					</a>
 					<div class="dropdown-menu dropdown-menu-right notifications">
 						<div class="topnav-dropdown-header">
@@ -59,129 +63,36 @@
 						</div>
 						<div class="noti-content">
 							<ul class="notification-list">
+							  @foreach($notification as $value)
+							 
 								<li class="notification-message">
-									<a href="admin-notification.html">
+									<a href="{{url('admin/notification/seenORnotseen/'.$value['id'])}}">
 										<div class="media">
 											<span class="avatar avatar-sm">
+											    @if($value->users[0]['profile_image'])
+												<img class="avatar-img rounded-circle" alt="" src="{{url('public/profile/'.$value->users[0]['profile_image'])}}">
+
+												@else
 												<img class="avatar-img rounded-circle" alt="" src="{{url('public/admin/images/'.Auth::User()->profile_image)}}">
+											    @endif
 											</span>
 											<div class="media-body">
 												<p class="noti-details">
-													<span class="noti-title">Thomas Herzberg have been subscribed</span>
+													<span class="noti-title">{{$value['content']}}</span>
 												</p>
 												<p class="noti-time">
-													<span class="notification-time">15 Sep 2020 10:20 PM</span>
+													<span class="notification-time">{{date('d M Y h:i A',strtotime($value['created_at']))}}</span>
 												</p>
 											</div>
 										</div>
 									</a>
 								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="" src="{{url('public/admin/images/'.Auth::User()->profile_image)}}">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Matthew Garcia have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">13 Sep 2020 03:56 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-03.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Yolanda Potter have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">12 Sep 2020 09:25 PM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-04.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Ricardo Flemings have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">11 Sep 2020 06:36 PM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-05.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Maritza Wasson have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">10 Sep 2020 08:42 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-06.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Marya Ruiz have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">9 Sep 2020 11:01 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-07.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Richard Hughes have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">8 Sep 2020 06:23 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
+								@endforeach
+							
 							</ul>
 						</div>
 						<div class="topnav-dropdown-footer">
-							<a href="admin-notification.html">View all Notifications</a>
+							<a href="{{url('/admin/notification')}}">View all Notifications</a>
 						</div>
 					</div>
 				</li>
