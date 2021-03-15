@@ -55,8 +55,8 @@ class OrderController extends Controller
            $orders=Order::with('users','status')->where('id',$id)->first();
            $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
            $status=Status::get();
-           $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.orderinvoice',compact('orders','orderdetails','status'));
-         return $pdf->download('invoice.pdf');
+           $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.invoice',compact('orders','orderdetails','status'));
+         return $pdf->download($orders['order_no'].'.pdf');
 
     }
 }

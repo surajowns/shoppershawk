@@ -399,7 +399,7 @@ footer {
             <td data-label="%" class="tableitem">20</td>
             <td data-label="Tax Amount" class="tableitem">9.32</td>
             <td data-label="AWT" class="tableitem">None</td>
-            <td data-label="Total" class="tableitem">{{number_format($value['total_amount'])}}</td>
+            <td data-label="Total" class="tableitem">{{number_format($value['total_amount'],2)}}</td>
           </tr>
           @endforeach
        
