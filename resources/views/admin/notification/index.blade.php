@@ -13,8 +13,8 @@
 				<!-- /Page Header -->
               
 				 @foreach($notification as $value)
-                 <a href="">
-				<div class="admin-noti-wrapper">
+                 <a href="{{url('admin/orders/viewdetails/'.substr($value['type'], strpos($value['type'], '#') + 1))}}">
+				 <div class="admin-noti-wrapper">
 					<div class="noti-list">
 						<div class="noti-avatar">
                         @if($value->users[0]['name'])

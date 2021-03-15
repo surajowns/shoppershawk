@@ -469,7 +469,7 @@ ol.progtrckr li.progtrckr-todo:before {
                                                         <li class="{{$orders['status'] >=3 && $orders['status'] <=7 ? 'progtrckr-done':'progtrckr-todo'}}">Inprogress</li>
                                                         <li class="{{$orders['status'] >=4 && $orders['status'] <=7 ?'progtrckr-done':'progtrckr-todo'}}">Delivered</li>
                                                         @if($orders['status']==5)
-                                                        <li class="{{$orders['status'] ==5 ?'progtrckr-done':'progtrckr-todo'}}">Cancel</li>
+                                                        <li class="{{$orders['status'] ==5 ?'progtrckr-done':'progtrckr-todo'}}">Cancelled</li>
                                                         @endif
                                                         @if($orders['status'] >= 6 && $orders['status'] <=7)
                                                         <li class="{{$orders['status'] >=6 && $orders['status'] <= 7?'progtrckr-done':'progtrckr-todo'}}">Return</li>
@@ -478,29 +478,26 @@ ol.progtrckr li.progtrckr-todo:before {
                                                 </div>
                                                 @foreach($orderdetails as $value )
                                                 <div class="row no-gutters mt-3">
+                                                    <div class="col-1"></div>
                                                     <div class="col-3 col-md-1">
                                                         <img class="img-fluid pr-3" src="{{url('public/product_image/'.$value['products'][0]['productImage'][0]['image'])}}" alt="">
                                                     </div>
-                                                    <div class="col-9 col-md-8 pr-0 pr-md-3">
+                                                    <div class="col-1"></div>
+                                                    <div class="col-4 col-md-6 pr-0 pr-md-3">
                                                         <h6 class="text-charcoal mb-2 mb-md-1">
                                                             <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="text-charcoal">{{$value['products'][0]['name']}}</a>
                                                         </h6>
                                                         <ul class="list-unstyled text-pebble mb-2 small">
-                                                            <li class=""><b>Price:</b> ₹{{number_format($value['price']),2}}</li>
-                                                            <li class=""><b>Quantity:</b>{{$value['quantity']}}</li>
+                                                            <li class=""><b>Price:</b>&nbsp;&nbsp; ₹{{number_format($value['price']),2}}</li>
+                                                            <li class=""><b>Quantity:</b>&nbsp;&nbsp;{{$value['quantity']}}</li>
                                                         </ul>
-                                                        <h6 class="text-charcoal text-left mb-0 mb-md-2"><b>₹{{number_format($value['total_amount']),2}}</b></h6>
+                                                        <h6 class="text-charcoal text-left mb-0 mb-md-2"><b>Total:</b><b>&nbsp;&nbsp;₹{{number_format($value['total_amount']),2}}</b></h6>
                                                     </div>
-                                                    <div class="col-12 col-md-3 hidden-sm-down">
-                                                       @if($value['status'] >=4 && $value['status'] <=7)
+                                                    <div class="col-3 col-md-3 hidden-sm-down">
+                                                       @if($orders['status'] >=4 && $orders['status'] <=7)
                                                         <a href="{{url('/product_details/'.$value['products'][0]['slug'])}}" class="btn btn-secondary w-100 mb-2" >Buy It Again</a>
                                                        @endif
-                                                       @if($value['status'] <=3)
-                                                        <a href="" class="btn  w-100" onclick="alert('Do You want to cancel this product from the Order')">Cancel</a>
-                                                        @endif
-                                                        @if($orders['status'] >= 6 && $orders['status'] <=7)
-                                                        <a href="" class="btn btn-primary w-100">Return</a>
-                                                        @endif
+                                                       
                                                     </div>
                                                 </div>
                                                 @endforeach

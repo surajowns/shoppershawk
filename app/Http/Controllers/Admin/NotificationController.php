@@ -10,7 +10,7 @@ class NotificationController extends Controller
 {
     public function index(Request $request)
     {
-        $notification=NotificationModel::with('users')->where('trash',0)->where('status',1)->orderBy('id','DESC')->get();
+        $notification=NotificationModel::with('users','order')->where('trash',0)->where('status',1)->orderBy('id','DESC')->get();
         return view('admin.notification.index',compact('notification'));
 
     }

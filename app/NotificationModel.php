@@ -15,7 +15,7 @@ class NotificationModel extends Model
     }
     public function  order()
     {
-        return $this->hasMany('App\Product','order','user_id');
+        return $this->hasMany('App\Order','order_no','type');
     }
 
 }

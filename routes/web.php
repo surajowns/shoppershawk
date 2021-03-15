@@ -198,6 +198,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
       Route::any('notification','NotificationController@index')->name('notification');
       Route::any('notification/seenORnotseen/{id}','NotificationController@ChangeSeen')->name('notification');
+      Route::any('notification/ordernotification/{id}','NotificationController@orderDetails')->name('notification orders details');
 
 
 
