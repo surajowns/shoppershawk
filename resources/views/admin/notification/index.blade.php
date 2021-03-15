@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Coupon')
+@section('title','Notification')
 @section('content')
 
 				<!-- Page Header -->
