@@ -26,8 +26,8 @@
                                         <tbody>
                                         @if(Auth::check())
                                         @foreach($cartdetails as $details)
-                                            <tr>
-                                                <td class="product_remove"><a href="javascript:void(0)" class="removecart" data-productid="{{$details['id']}}"><i class="fa fa-trash-o"></i></a></td>
+                                            <tr class="cart_table">
+                                                <td class="product_remove"><a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="fa fa-trash-o"></i></a></td>
                                                 <td class="product_thumb"><a href="{{url('/product_details/'.$details['products'][0]['slug'])}}"><img src="{{url('public/product_image/',$details['products']['0']['product_image'][0]['image'])}}" alt=""></a></td>
                                                 <td class="product_name"><a href="{{url('/product_details/'.$details['products'][0]['slug'])}}">{{$details['products'][0]['name']}}</a></td>
                                                 <td class="product-price">₹{{ number_format($details['price'],2)}}</td>
@@ -42,7 +42,7 @@
                                             @endforeach
                                         @else
                                         @foreach($cartdetails as $details)
-                                            <tr>
+                                            <tr class="cart_table">
                                                 <td class="product_remove"><a href="javascript:void(0)" class="removecart" data-productid="{{$details['id']}}"><i class="fa fa-trash-o"></i></a></td>
                                                 <td class="product_thumb"><a href="{{url('/product_details/'.$details['attributes']['slug'])}}"><img src="{{url('public/product_image/',$details['attributes']['image'])}}" alt=""></a></td>
                                                 <td class="product_name"><a href="{{url('/product_details/'.$details['attributes']['slug'])}}">{{$details['name']}}</a></td>

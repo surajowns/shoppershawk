@@ -65,9 +65,10 @@
                         <span class="wishlist_count">{{$wishlist}}</span>
                     </a>
                 </div>
+                <!-- class="{{Request::segment(2)=='cart_details'?'cartmodaldisplay':''}}" -->
                 <div class="mini_cart_wrapper">
                     <a href="javascript:void(0)">
-                        <i class="fa fa-shopping-bag"></i>
+                        <i class="fa fa-shopping-bag carttdetails"></i>
                         <span class="cart_price">@if(Auth::check())₹{{number_format($subtotal,2)}}@else₹{{number_format(Cart::getSubTotal(),2)}}@endif<i class="ion-ios-arrow-down"></i></span>
                         <span class="cart_count">@if(Auth::check()){{$totalincart}}@else{{Cart::getContent()->count()}}@endif</span>
                     </a>
@@ -100,7 +101,7 @@
             <p>Qty: {{$details['quantity']}} X <span> ₹{{number_format($details['price'],2)}} </span></p>
         </div>
         <div class="cart_remove">
-            <a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="ion-android-close"></i></a>
+            <a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="ion-android-close">12</i></a>
         </div>
     </div>
     @endforeach

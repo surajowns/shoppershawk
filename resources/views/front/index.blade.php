@@ -242,13 +242,33 @@ $.ajax({
         cache: false,
         data: {productid:productid},
         success: function(response){
-        //  console.log(response);
+         console.log(response);
          if(response.status == 'error'){
            
          }
         else{
+            //  alert(response.totalin_cart);
+            $( ".cart_item" ).remove();
+            $( ".cart_price" ).text('₹'+response.carttotal);
+            $( ".cart_count" ).text(response.totalin_cart);
+            $( ".price" ).text('₹'+response.carttotal);
+
+           
+            $( ".cart_close" ).after('<div class="cart_item"></div>');
+            var rows='';
+            $.each(response.data,function(key,value){
+                console.log(value.name);
+                      
+                        // var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
+                        var producturl="{{url('/product_details/')}}"+'/'+value.attributes.slug;
+                        var image="{{url('public/product_image/')}}"+'/'+value.attributes.image;
+
+                         rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+value.name+'</a><p>Qty:'+value.quantity+' X <span>'+value.price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+value.id+'"><i class="ion-android-close"></i></a></div></div>';
+
+                   
+                    });
+            $(rows).insertAfter(".cart_item");
             toastr.info('Added to cart');
-            location.reload();
            
          }
         }
@@ -259,8 +279,8 @@ $.ajax({
         var productid= $(this).data('productid');
         // alert()
         $(this).parent().prev().prev().parent().css("display","none");
-        // $(this).parent().prev().css("display","none");
-        // $(this).parent().css("display","none");
+        $(this).parent().prev().css("display","none");
+        $(this).parent().css("display","none");
 
 
         $.ajax({
@@ -274,8 +294,12 @@ $.ajax({
                     //toastr.warning("error");
                  }
                 else{
-                    //toastr.success('Remove from cart');
-                    location.reload();
+                    $( ".cart_price" ).text('₹'+response.carttotal);
+                    $( ".cart_count" ).text(response.totalin_cart);
+                    $( ".price" ).text('₹'+response.carttotal);
+
+                    toastr.info('Remove from cart');
+                   
                    
                  }
                 }

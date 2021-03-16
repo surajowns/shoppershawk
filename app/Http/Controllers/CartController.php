@@ -114,18 +114,52 @@ class CartController extends Controller
                 $carts->save(); 
              }
 
-           return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
+            
+             if(!empty($user)){
+                $carttotal=0;
+                $cartdetails=CartModel::with('products','products.productImage')->where('user_id',$user['id'])->get()->toArray();
+             //    dd($cartdetails);
+             $totalin_cart=0;
+                 foreach($cartdetails as $data){
+                     $totalin_cart= $totalin_cart+$data['quantity'];
+                     $carttotal=$carttotal+$data['quantity']*$data['price'];
+                 }
+     
+             }else{
+                 $cartdetails=Cart::getContent()->toArray(); 
+                 $carttotal=number_format(Cart::getSubTotal(),2);
+                 $totalin_cart=Cart::getContent()->count();
+             }
+             
+           return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>$carttotal,'data'=>$cartdetails,'redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
 
     public function removecart(Request $request)
     {    $user=Auth::user();
+        
         Cart::remove($request->productid);
         $check=CartModel::where('product_id',$request->productid)->first();
         if(!empty($check) && !empty($user)){
             CartModel::where('user_id',$user->id)->where('product_id',$check['product_id'])->delete();
            }
-        return response()->json(array('status'=>'success','msg'=>'success'));   
+           if(!empty($user)){
+            $carttotal=0;
+            $cartdetails=CartModel::with('products','products.productImage')->where('user_id',$user['id'])->get()->toArray();
+         //    dd($cartdetails);
+             $totalin_cart=0;
+             foreach($cartdetails as $data){
+                 $totalin_cart= $totalin_cart+$data['quantity'];
+                 $carttotal=$carttotal+$data['quantity']*$data['price'];
+             }
+ 
+         }else{
+             $cartdetails=Cart::getContent()->toArray(); 
+             $carttotal=number_format(Cart::getSubTotal(),2);
+             $totalin_cart=Cart::getContent()->count();
+         }
+
+        return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>$carttotal,'msg'=>'success'));   
 
     }
 
