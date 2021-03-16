@@ -16,7 +16,7 @@
 //     return view('welcome');
 // });
 Route::get('/',function(){
-    return view('admin.invoice.orderinvoice');
+    return view('front.common.comingsoon');
 });
 Route::get('/home','HomeController@index');
 Route::any('/register','HomeController@Register')->name('Register');

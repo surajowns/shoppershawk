@@ -10,7 +10,7 @@
 
         <link rel="stylesheet" href="{{url('public/comingsoon/css/fontawesome.min.css')}}" />
 
-        <link rel="stylesheet" href="{{url('/public/comingsoon/css/style.css')}}" />
+        <link rel="stylesheet" href="{{url('public/comingsoon/css/style.css')}}" />
 
         <link rel="stylesheet" href="{{url('public/comingsoon/css/responsive.css')}}" />
         <title>Shoopershawk - Coming Soon Templates</title>
