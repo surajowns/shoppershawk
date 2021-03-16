@@ -267,6 +267,9 @@ $.ajax({
                     $( ".cart_price" ).text('₹'+response.carttotal);
                     $( ".cart_count" ).text(response.totalin_cart);
                     $( ".price" ).text('₹'+response.carttotal);
+                    $( ".cart_amount" ).text('₹'+response.carttotal);
+
+
                     toastr.info('Remove from cart');
                    
                  }

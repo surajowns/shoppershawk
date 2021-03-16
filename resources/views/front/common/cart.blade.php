@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="cart_subtotal">
                                             <p>Shipping</p>
-                                            <p class="cart_amount text-success">Free</p>
+                                            <p class="shipping_cart_amount text-success">Free</p>
                                         </div>
                                         <div class="cart_subtotal">
                                             <p>Discount</p>
