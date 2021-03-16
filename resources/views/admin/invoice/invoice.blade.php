@@ -8,6 +8,24 @@
    </head>
    <body class="size-1140">
       <style type="text/css">
+       @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+* {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+}
+body {
+  background: #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+::selection {
+  background: #f31544;
+  color: #fff;
+}
+::moz-selection {
+  background: #f31544;
+  color: #fff;
+}
          table {
          border-collapse: collapse;
          width: 100%;
@@ -31,23 +49,14 @@
          width: 12%;
          margin-left: 5px;
          }
-         .break_img{
-         background: url('/img/restaurant-eating-set.svg');
-         width: 14px;
-         background-repeat: no-repeat;
-         background-size: contain;
-         height: 16px;
-         opacity: 9;
-         margin-right: 60px;
-         float: right;
-         }
+        
          @page {margin: 2.5cm 2cm 2cm;}
-         body{
+         /* body{
          width: auto;
          font-family: Georgia, serif;
          font-size: 14px;
          line-height: 1.42857143;
-         }
+         } */
       </style>
         <section class="user-dashbord">
             <div class="container">
@@ -89,26 +98,22 @@
                     <tbody>
                         <tr>
                             <td>
-                                    <address>
-                                    Name: {{$orders['shipping_name']?$orders['shipping_name']:$orders['billing_name']}}<br>
-                                    Email: {{$orders['shipping_email']?$orders['shipping_email']:$orders['billing_email']}}<br>
-                                    Phone: {{$orders['shipping_mobile']?$orders['shippingmobileile']:$orders['billing_mobile']}}<br>
-                                    Address:  {{$orders['shipping_address']?$orders['shipping_address']:$orders['billing_address']}}<br>
-                                    Landmark:  {{$orders['shipping_landmark']?$orders['shipping_landmark']:$orders['billing_landmark']}}<br>
-                                    State:  {{$orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']}}<br>
-                                    Pincode:  {{$orders['shipping_pincode']?$orders['shipping_pincode']:$orders['billing_pincode']}}<br>
-                                    </address>
+                                   <h5> Name: {{$orders['shipping_name']?$orders['shipping_name']:$orders['billing_name']}}</h5>
+                                   <h5> Email: {{$orders['shipping_email']?$orders['shipping_email']:$orders['billing_email']}}</h5>
+                                   <h5>  Phone: {{$orders['shipping_mobile']?$orders['shippingmobileile']:$orders['billing_mobile']}}</h5>
+                                   <h5>  Address:  {{$orders['shipping_address']?$orders['shipping_address']:$orders['billing_address']}}</h5>
+                                   <h5>  Landmark:  {{$orders['shipping_landmark']?$orders['shipping_landmark']:$orders['billing_landmark']}}</h5>
+                                   <h5> State:  {{$orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']}}</h5>
+                                   <h5>  Pincode:  {{$orders['shipping_pincode']?$orders['shipping_pincode']:$orders['billing_pincode']}}</h5>
                             </td>
                             <td>
-                                <address>
-                                   Name: {{$orders['billing_name']}}<br>
-                                    Email: {{$orders['billing_email']}}<br>
-                                    Phone: {{$orders['billing_mobile']}}<br>
-                                    Address:  {{$orders['billing_address']}}<br>
-                                    Landmark:  {{$orders['billing_landmark']}}<br>
-                                    State:  {{$orders['billing_state']}}<br>
-                                    Pincode:  {{$orders['billing_pincode']}}<br>
-                                </address>
+                                <h5>   Name: {{$orders['billing_name']}}</h5>
+                                <h5>    Email: {{$orders['billing_email']}}</h5>
+                                <h5>    Phone: {{$orders['billing_mobile']}}</h5>
+                                <h5>  Address:  {{$orders['billing_address']}}</h5>
+                                <h5>   Landmark:  {{$orders['billing_landmark']}}</h5>
+                                <h5>   State:  {{$orders['billing_state']}}</h5>
+                                <h5>    Pincode:  {{$orders['billing_pincode']}}</h5>
                             </td>
                         </tr>
                     </tbody>
@@ -116,6 +121,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                           <th>S.N</th>
                             <th>Product</th>
                             <th>Qty</th>
                             <th>Unit Price</th>
@@ -129,6 +135,7 @@
                     <tbody>
                         @foreach($orderdetails as $value)
                         <tr class="list-item">
+                        <td>{{$loop->iteration}}</td>
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
                             <td data-label="Unit Price" class="tableitem">{{$value['price']}}</td>
@@ -141,17 +148,15 @@
                          @endforeach
                         <tr>
                             <td colspan="6" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
-                            <td style="font-weight:bold;">Total Price: </td>
+                            <td style="font-weight:bold;" colspan="1">Total Price: </td>
                             <td style="font-weight:bold;">{{number_format($orders['total_amount'],2)}}</td>
                         </tr>                        
                     </tbody>
                 </table>
                 <div>
                     <div>
-                        <address>
-                            <h2 id="supplier">Shoppershawk</h2>
+                         <h2 id="supplier">Shoppershawk</h2>
                         <span id="address">Besthawk infosystem pvt ltd, sector-18, Noida</span><br><span id="country">India</span> - <span id="zip">201301</span><br><span id="tax_num">+91-8882137914</span><br>
-                        </address>
                     </div>
                 </div>
                 <br><br><br>

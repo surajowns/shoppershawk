@@ -43,9 +43,9 @@ $user=Auth::user();
                                 <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
                                 <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
                              @endif
-                                <div class="label_product">
+                                <!-- <div class="label_product">
                                     <span class="label_sale">Sale</span>
-                                </div>
+                                </div> -->
                                 <div class="action_links">
                                 <ul>
                                     @if(isset($user))

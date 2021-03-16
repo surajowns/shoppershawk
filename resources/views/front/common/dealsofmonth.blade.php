@@ -46,9 +46,9 @@
                                 <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
                                 <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
                              @endif
-                                <div class="label_product">
+                                <!-- <div class="label_product">
                                     <span class="label_sale">Sale</span>
-                                </div>
+                                </div> -->
                                 <div class="action_links">
                                     <ul>
                                     @if(isset($user))
@@ -91,12 +91,12 @@
                                         <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
                                         <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                     </div>
-                                    <div class="countdown_text">
+                                    <!-- <div class="countdown_text">
                                         <p><span>Hurry Up!</span> Offers ends in:</p>
-                                    </div>
-                                    <div class="product_timing">
+                                    </div> -->
+                                    <!-- <div class="product_timing">
                                         <div data-countdown="{{date('Y/m/d', strtotime($productdetails['created_at']))}}"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}" >Add to cart</a>
