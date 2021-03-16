@@ -109,9 +109,9 @@
                                 <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
                                 @break
                          @endforeach                             
-                            <div class="label_product">
+                            <!-- <div class="label_product">
                                 <span class="label_sale">Sale</span>
-                            </div>
+                            </div> -->
                             <div class="action_links">
                             <ul>
                                     @if(isset($user))
