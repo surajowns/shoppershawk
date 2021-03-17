@@ -90,6 +90,7 @@ class LoginController extends Controller
         Session::forget('logRole'); 
         Session::forget('logid') ;  
         Session::forget('discount');
+        Session::flush();
         return redirect('/home');
     }
 }

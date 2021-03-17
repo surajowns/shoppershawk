@@ -257,13 +257,24 @@ $.ajax({
             $( ".cart_close" ).after('<div class="cart_item"></div>');
             var rows='';
             $.each(response.data,function(key,value){
-                console.log(value.name);
                       
-                        // var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
+                     if('{{!empty(Auth::check())}}'){
+                       
+                        var producturl="{{url('/product_details/')}}"+'/'+value.products[0]['slug'];
+                        var image="{{url('public/product_image/')}}"+'/'+value.products[0]['product_image'][0]['image'];
+                        var product_id=value.id;
+                        var name=value.products[0]['name'];
+                        var quantity=value.quantity;
+                        var price =value.price;
+                      }else{
                         var producturl="{{url('/product_details/')}}"+'/'+value.attributes.slug;
                         var image="{{url('public/product_image/')}}"+'/'+value.attributes.image;
-
-                         rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+value.name+'</a><p>Qty:'+value.quantity+' X <span>'+value.price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+value.id+'"><i class="ion-android-close"></i></a></div></div>';
+                        var product_id=value.id;
+                        var name=value.name;
+                        var quantity=value.quantity;
+                        var price =value.price;
+                      }
+                         rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+name+'</a><p>Qty:'+quantity+' X <span>'+price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+product_id+'"><i class="ion-android-close"></i></a></div></div>';
 
                    
                     });
@@ -274,11 +285,11 @@ $.ajax({
         }
      })
     });
-    $('.removecart').click(function(){
+    $(document).on("click",".removecart",function() {
         
         var productid= $(this).data('productid');
         // alert()
-        $(this).parent().prev().prev().parent().css("display","none");
+        $(this).parent().prev().prev().parent().remove();
         $(this).parent().prev().css("display","none");
         $(this).parent().css("display","none");
 
@@ -290,7 +301,8 @@ $.ajax({
                 cache: false,
                 data: {productid:productid},
                 success: function(response){
-                 if(response.status == 'error'){
+                    if(response.totalin_cart == 0){
+                        location.reload();
                     //toastr.warning("error");
                  }
                 else{

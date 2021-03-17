@@ -121,17 +121,19 @@ class CartController extends Controller
              //    dd($cartdetails);
              $totalin_cart=0;
                  foreach($cartdetails as $data){
-                     $totalin_cart= $totalin_cart+$data['quantity'];
+                    //  $totalin_cart= $totalin_cart+$data['quantity'];
                      $carttotal=$carttotal+$data['quantity']*$data['price'];
+                     $totalin_cart++;
                  }
+
      
              }else{
                  $cartdetails=Cart::getContent()->toArray(); 
-                 $carttotal=number_format(Cart::getSubTotal(),2);
+                 $carttotal=Cart::getSubTotal();
                  $totalin_cart=Cart::getContent()->count();
              }
              
-           return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>$carttotal,'data'=>$cartdetails,'redirect'=>$request->producturl,'msg'=>'success'));   
+           return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>number_format($carttotal,2),'data'=>$cartdetails,'redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
 
@@ -149,17 +151,18 @@ class CartController extends Controller
          //    dd($cartdetails);
              $totalin_cart=0;
              foreach($cartdetails as $data){
-                 $totalin_cart= $totalin_cart+$data['quantity'];
+                //  $totalin_cart= $totalin_cart+$data['quantity'];
                  $carttotal=$carttotal+$data['quantity']*$data['price'];
+                 $totalin_cart++;
              }
  
          }else{
              $cartdetails=Cart::getContent()->toArray(); 
-             $carttotal=number_format(Cart::getSubTotal(),2);
+             $carttotal=Cart::getSubTotal();
              $totalin_cart=Cart::getContent()->count();
          }
 
-        return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>$carttotal,'msg'=>'success'));   
+        return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart,'carttotal'=>number_format($carttotal,2),'msg'=>'success'));   
 
     }
 
