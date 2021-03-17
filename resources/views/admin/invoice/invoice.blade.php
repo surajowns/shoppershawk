@@ -100,7 +100,7 @@ body {
                             <td>
                                    <h5> Name: {{$orders['shipping_name']?$orders['shipping_name']:$orders['billing_name']}}</h5>
                                    <h5> Email: {{$orders['shipping_email']?$orders['shipping_email']:$orders['billing_email']}}</h5>
-                                   <h5>  Phone: {{$orders['shipping_mobile']?$orders['shippingmobileile']:$orders['billing_mobile']}}</h5>
+                                   <h5>  Phone: {{$orders['shipping_mobile']?$orders['shipping_mobile']:$orders['billing_mobile']}}</h5>
                                    <h5>  Address:  {{$orders['shipping_address']?$orders['shipping_address']:$orders['billing_address']}}</h5>
                                    <h5>  Landmark:  {{$orders['shipping_landmark']?$orders['shipping_landmark']:$orders['billing_landmark']}}</h5>
                                    <h5> State:  {{$orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']}}</h5>
