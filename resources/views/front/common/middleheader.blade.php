@@ -101,7 +101,7 @@
             <p>Qty: {{$details['quantity']}} X <span> ₹{{number_format($details['price'],2)}} </span></p>
         </div>
         <div class="cart_remove">
-            <a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="ion-android-close">12</i></a>
+            <a href="javascript:void(0)" class="removecart" data-productid="{{$details['product_id']}}"><i class="ion-android-close"></i></a>
         </div>
     </div>
     @endforeach
