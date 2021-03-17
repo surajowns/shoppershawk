@@ -212,7 +212,7 @@
                             
                             var producturl="{{url('/product_details/')}}"+'/'+value.products[0]['slug'];
                             var image="{{url('public/product_image/')}}"+'/'+value.products[0]['product_image'][0]['image'];
-                            var product_id=value.id;
+                            var product_id=value.products[0]['id'];
                             var name=value.products[0]['name'];
                             var quantity=value.quantity;
                             var price =value.price;
@@ -224,7 +224,7 @@
                             var quantity=value.quantity;
                             var price =value.price;
                             }
-                                rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+value.name+'</a><p>Qty:'+value.quantity+' X <span>'+value.price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+value.id+'"><i class="ion-android-close"></i></a></div></div>';
+                            rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+name+'</a><p>Qty:'+quantity+' X <span>'+price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+product_id+'"><i class="ion-android-close"></i></a></div></div>';
 
                         
                         });

@@ -262,7 +262,7 @@ $.ajax({
                        
                         var producturl="{{url('/product_details/')}}"+'/'+value.products[0]['slug'];
                         var image="{{url('public/product_image/')}}"+'/'+value.products[0]['product_image'][0]['image'];
-                        var product_id=value.id;
+                        var product_id=value.products[0]['id'];
                         var name=value.products[0]['name'];
                         var quantity=value.quantity;
                         var price =value.price;
@@ -288,7 +288,6 @@ $.ajax({
     $(document).on("click",".removecart",function() {
         
         var productid= $(this).data('productid');
-        // alert()
         $(this).parent().prev().prev().parent().remove();
         $(this).parent().prev().css("display","none");
         $(this).parent().css("display","none");
@@ -301,6 +300,7 @@ $.ajax({
                 cache: false,
                 data: {productid:productid},
                 success: function(response){
+                    console.log(response);
                     if(response.totalin_cart == 0){
                         location.reload();
                     //toastr.warning("error");
