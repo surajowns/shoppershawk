@@ -182,198 +182,177 @@
             });
         </script>
         <script>
-        $(document).ready(function(){
-        
-        // $(".deals_of_the_month li:first a").addClass("active");
-        // $('.deals_of_the_month li:first a').attr('aria-selected', true);
-        // $('.dealsofthemonth').first().addClass('active show');
+            $(document).ready(function(){
+            $('.cart').click(function(){
 
-        // $(".new_arrival_product li:first a").addClass("active");
-        // $('.new_arrival_product li:first a').attr('aria-selected', true);
-        // $('.newarrivalproduct').first().addClass('active show');
+            var productid= $(this).data('productid');
 
-        // $(".featured_product li:first a").addClass("active");
-        // $('.featured_product li:first a').attr('aria-selected', true);
-        // $('.featuredproduct').first().addClass('active show');
-
-
-        // $(".best_selling_product li:first a").addClass("active");
-        // $('.best_selling_product li:first a').attr('aria-selected', true);
-        // $('.bestsellingproduct').first().addClass('active show');
-
-         
-
-$('.cart').click(function(){
-        
-var productid= $(this).data('productid');
-
-$.ajax({
-        Type:"GET",
-        url : '{{url("ajax/add_to_cart")}}',
-        dataType:'json',
-        cache: false,
-        data: {productid:productid},
-        success: function(response){
-         console.log(response);
-         if(response.status == 'error'){
-           
-         }
-        else{
-           
-            $( ".cart_item" ).remove();
-            $( ".cart_price" ).text('₹'+response.carttotal);
-            $( ".cart_count" ).text(response.totalin_cart);
-            $( ".price" ).text('₹'+response.carttotal);
-
-           
-            $( ".cart_close" ).after('<div class="cart_item"></div>');
-            var rows='';
-            $.each(response.data,function(key,value){
-                if('{{!empty(Auth::check())}}'){
-                       
-                       var producturl="{{url('/product_details/')}}"+'/'+value.products[0]['slug'];
-                       var image="{{url('public/product_image/')}}"+'/'+value.products[0]['product_image'][0]['image'];
-                       var product_id=value.id;
-                       var name=value.products[0]['name'];
-                       var quantity=value.quantity;
-                       var price =value.price;
-                     }else{
-                       var producturl="{{url('/product_details/')}}"+'/'+value.attributes.slug;
-                       var image="{{url('public/product_image/')}}"+'/'+value.attributes.image;
-                       var product_id=value.id;
-                       var name=value.name;
-                       var quantity=value.quantity;
-                       var price =value.price;
-                     }
-                         rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+value.name+'</a><p>Qty:'+value.quantity+' X <span>'+value.price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+value.id+'"><i class="ion-android-close"></i></a></div></div>';
-
-                   
-                    });
-            $(rows).insertAfter(".cart_item");
-            toastr.info('Added to cart');
-           
-         }
-        }
-     })
-    });
-    $(document).on("click",".removecart",function(){
-        
-        var productid= $(this).data('productid');
-        // alert()
-       
-        $(this).parent().prev().prev().parent().css("display","none");
-        $(this).parent().prev().css("display","none");
-        $(this).parent().css("display","none");
-        $(this).parent().parent().remove();
-
-        $.ajax({
-                Type:"GET",
-                url : '{{url("ajax/remove_cart")}}',
-                dataType:'json',
-                cache: false,
-                data: {productid:productid},
-                success: function(response){
-                    console.log(response);
-                 if(response.totalin_cart == 0){
-                    location.reload();
-                 }
-                else{
-                    $( ".cart_price" ).text('₹'+response.carttotal);
-                    $( ".cart_count" ).text(response.totalin_cart);
-                    $( ".price" ).text('₹'+response.carttotal);
-                    $( ".cart_amount" ).text('₹'+response.carttotal);
-
-
-                    toastr.info('Remove from cart');
-                   
-                 }
+            $.ajax({
+            Type:"GET",
+            url : '{{url("ajax/add_to_cart")}}',
+            dataType:'json',
+            cache: false,
+            data: {productid:productid},
+            success: function(response){
+                if(response.status == 'error'){
+                
                 }
-             })
+            else{
+                
+                $( ".cart_item" ).remove();
+                $( ".cart_price" ).text('₹'+response.carttotal);
+                $( ".cart_count" ).text(response.totalin_cart);
+                $( ".price" ).text('₹'+response.carttotal);
+
+                
+                $( ".cart_close" ).after('<div class="cart_item"></div>');
+                var rows='';
+                $.each(response.data,function(key,value){
+                    if('{{!empty(Auth::check())}}'){
+                            
+                            var producturl="{{url('/product_details/')}}"+'/'+value.products[0]['slug'];
+                            var image="{{url('public/product_image/')}}"+'/'+value.products[0]['product_image'][0]['image'];
+                            var product_id=value.id;
+                            var name=value.products[0]['name'];
+                            var quantity=value.quantity;
+                            var price =value.price;
+                            }else{
+                            var producturl="{{url('/product_details/')}}"+'/'+value.attributes.slug;
+                            var image="{{url('public/product_image/')}}"+'/'+value.attributes.image;
+                            var product_id=value.id;
+                            var name=value.name;
+                            var quantity=value.quantity;
+                            var price =value.price;
+                            }
+                                rows+='<div class="cart_item"><div class="cart_img"><a href="'+producturl+'"><img src="'+image+'" alt="" /></a></div><div class="cart_info"><a href="">'+value.name+'</a><p>Qty:'+value.quantity+' X <span>'+value.price+'</span></p></div><div class="cart_remove"><a href="javascript:void(0)" class="removecart" data-productid="'+value.id+'"><i class="ion-android-close"></i></a></div></div>';
+
+                        
+                        });
+                $(rows).insertAfter(".cart_item");
+                toastr.info('Added to cart');
+                
+                }
+            }
+            })
+            });
+            $(document).on("click",".removecart",function(){
+
+            var productid= $(this).data('productid');
+            // alert()
+
+            $(this).parent().prev().prev().parent().css("display","none");
+            $(this).parent().prev().css("display","none");
+            $(this).parent().css("display","none");
+            $(this).parent().parent().remove();
+
+            $.ajax({
+                    Type:"GET",
+                    url : '{{url("ajax/remove_cart")}}',
+                    dataType:'json',
+                    cache: false,
+                    data: {productid:productid},
+                    success: function(response){
+                        console.log(response);
+                        if(response.totalin_cart == 0){
+                        location.reload();
+                        }
+                    else{
+                        $( ".cart_price" ).text('₹'+response.carttotal);
+                        $( ".cart_count" ).text(response.totalin_cart);
+                        $( ".price" ).text('₹'+response.carttotal);
+                        $( ".cart_amount" ).text('₹'+response.carttotal);
+
+
+                        toastr.info('Remove from cart');
+                        
+                        }
+                    }
+                    })
+                });
+
             });
 
- });
-        
-        </script>
-        <script>
-    $(function () {
+            </script>
+            <script>
+            $(function () {
 
-    $(".sample_search").keyup(function () {
-        var  cat = $('#categor').val();
-        var   keywords  = $(this).val();
-        // alert(cat);
-        if(keywords!=''){
-        $.ajax({
-        Type:"get",
-        url : '{{url("ajax/search")}}',
-        dataType:'json',
-        cache: false,
-        data: {cat:cat,keywords:keywords},
-        success: function(response){
-            $('.list_details').css("display", "block");
-            var rows='';
-                    $.each(response,function(key,value){
-                        var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
-                       
-                        rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
-                    });
-            $('.list_details').html(rows)
-        }
-     })
-    }
-    else{
-        $('.list_details').css("display", "none");
-    }
-    });
-    });
-    $(document).ready(function(){
-
-$( ".increment" ).click(function() {
-    var value=$(this).prev().val()
-    var productid= $(this).data('productid');
-    value++;
-    $.ajax({
-            Type:"POST",
-            url : '{{url("/user/updatecart")}}',
+            $(".sample_search").keyup(function () {
+            var  cat = $('#categor').val();
+            var   keywords  = $(this).val();
+            // alert(cat);
+            if(keywords!=''){
+            $.ajax({
+            Type:"get",
+            url : '{{url("ajax/search")}}',
             dataType:'json',
-            cache: true,
-            data: {value:value,productid:productid},
+            cache: false,
+            data: {cat:cat,keywords:keywords},
             success: function(response){
-            if(response.status == 'error'){
-            toastr.warning("error");
+                $('.list_details').css("display", "block");
+                var rows='';
+                        $.each(response,function(key,value){
+                            var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
+                            
+                            rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
+                        });
+                $('.list_details').html(rows)
+            }
+            })
             }
             else{
-                location.reload();
-            
+            $('.list_details').css("display", "none");
             }
-            }
-        })       
-});
+            });
+            });
+            $(document).ready(function(){
 
-$( ".decrement" ).click(function() {
-    var value=$(this).next().val();
+            $( ".increment" ).click(function() {
+            var value=$(this).prev().val()
+            var productid= $(this).data('productid');
+            value++;
+            $.ajax({
+                Type:"POST",
+                url : '{{url("/user/updatecart")}}',
+                dataType:'json',
+                cache: true,
+                data: {value:value,productid:productid},
+                success: function(response){
+                if(response.status == 'error'){
+                toastr.warning("error");
+                }
+                else{
+                    location.reload();
+                
+                }
+                }
+            })       
+            });
 
-var productid= $(this).data('productid');
-value--;
-    $.ajax({
-            Type:"POST",
-            url : '{{url("/user/updatecart")}}',
-            dataType:'json',
-            cache: true,
-            data: {value:value,productid:productid},
-            success: function(response){
-            if(response.status == 'error'){
-                 toastr.warning("error");
-            }
-            else{
-                location.reload();
-            
-            }
-            }
-        })       
-});
-});
+            $( ".decrement" ).click(function() {
+            var value=$(this).next().val();
 
-</script>
+            var productid= $(this).data('productid');
+            value--;
+            $.ajax({
+                Type:"POST",
+                url : '{{url("/user/updatecart")}}',
+                dataType:'json',
+                cache: true,
+                data: {value:value,productid:productid},
+                success: function(response){
+                if(response.status == 'error'){
+                        toastr.warning("error");
+                }
+                else{
+                    location.reload();
+                
+                }
+                }
+            })       
+            });
+            });
 
-    </body>
-</html>
+            </script>
+
+            </body>
+            </html>
