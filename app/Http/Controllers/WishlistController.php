@@ -38,7 +38,7 @@ class WishlistController extends Controller
             Wishlist::where('user_id',$user['id'])->where('product_id',$product_id)->delete();
             $totalwishlist=Wishlist::where('user_id',$user['id'])->get()->count();
 
-            return response()->json(array('status'=>'remove','totalwishlist'=>$totalwishlist,'message'=>'Remove from Wishlist','removeclass'=>'ion-android-favorite-outline'));
+            return response()->json(array('status'=>'remove','totalwishlist'=>$totalwishlist,'message'=>'Remove from Wishlist','remoclass'=>'ion-android-favorite-outline'));
 
            }
           
@@ -48,7 +48,7 @@ class WishlistController extends Controller
         $wishlist->save();
         $totalwishlist=Wishlist::where('user_id',$user['id'])->get()->count();
 
-        return response()->json(array('status'=>'add','totalwishlist'=>$totalwishlist,'message'=>'Added to Wishlist','addclass'=>'ion-android-favorite'));
+        return response()->json(array('status'=>'add','totalwishlist'=>$totalwishlist,'message'=>'Added to Wishlist','adclass'=>'ion-android-favorite'));
         
         }
         else{

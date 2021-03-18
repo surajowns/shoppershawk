@@ -235,7 +235,7 @@
         var className=$(this).children().attr('class');
         var id=$(this).children().attr('id');
         $(this).children().removeClass(className);
-        alert(id);
+        // alert(id);
         $.ajax({
                 Type:"GET",
                 url :'{{url("user/wishlist/")}}',
@@ -245,19 +245,19 @@
                 success: function(response){
                  console.log(response);
                  if(response.status == 'add'){
-                    //  $(this).children().removeClass(className);
+                   
+
                     $('.wishlist_count').text(response.totalwishlist);
-                    $('#'+id).addClass(response.addclass);
+                    $('#'+id).addClass(response.adclass);
                     toastr.info(response.message);
                    
                  }else if(response.status == 'remove'){
-                    //  alert('removr');
+                   
                     // $(this).children().removeClass(className);
                      $('.wishlist_count').text(response.totalwishlist);
-                     $('#'+id).addClass(response.removeclass);
+                     $('#'+id).addClass(response.remoclass);
                     toastr.info(response.message);
                  }else{
-                  
                     window.location.href = "{{url('/login')}}";
                  }
                 }

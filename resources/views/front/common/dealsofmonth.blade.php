@@ -70,7 +70,7 @@
                                        @endif
                                     @else
                                        <li class="wishlist">
-                                            <!-- <a href="javascript:void(0)" data-tippy-placement="top" class="addtowishlist" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i id="{{'productid'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a> -->
+                                            <a href="javascript:void(0)" data-tippy-placement="top" class="addtowishlist" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i id="{{'productid'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
                                          </li>
                                     @endif
                                         <li class="compare">
