@@ -59,7 +59,7 @@ Route::any('ajax/addtocart/{id}','CartController@DirecttoCart')->name('Buy Now')
 Route::any('user/checkout','CheckoutController@Checkout')->name('Checkout Details');
 
 ///Wishlist
-Route::any('user/wishlist/{product_id}','WishlistController@CreateandUpdate')->name('Add and Remove from wishlist');
+Route::any('user/wishlist/','WishlistController@CreateandUpdate')->name('Add and Remove from wishlist');
 Route::any('/user/wishlist_details','WishlistController@index')->name('wishlist details');
 
 Route::any('/ajax/search','HomeController@Search')->name('Search product');

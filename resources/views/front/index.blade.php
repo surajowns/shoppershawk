@@ -229,7 +229,40 @@
         $('.best_selling_product li:first a').attr('aria-selected', true);
         $('.bestsellingproduct').first().addClass('active show');
 
-         
+        $(document).on("click",".addtowishlist",function(){
+                
+        var productid= $(this).data('productid');
+        var className=$(this).children().attr('class');
+        var id=$(this).children().attr('id');
+        $(this).children().removeClass(className);
+        alert(id);
+        $.ajax({
+                Type:"GET",
+                url :'{{url("user/wishlist/")}}',
+                dataType:'json',
+                cache: false,
+                data: {productid:productid},
+                success: function(response){
+                 console.log(response);
+                 if(response.status == 'add'){
+                    //  $(this).children().removeClass(className);
+                    $('.wishlist_count').text(response.totalwishlist);
+                    $('#'+id).addClass(response.addclass);
+                    toastr.info(response.message);
+                   
+                 }else if(response.status == 'remove'){
+                    //  alert('removr');
+                    // $(this).children().removeClass(className);
+                     $('.wishlist_count').text(response.totalwishlist);
+                     $('#'+id).addClass(response.removeclass);
+                    toastr.info(response.message);
+                 }else{
+                  
+                    window.location.href = "{{url('/login')}}";
+                 }
+                }
+             })
+            });   
 
 $('.cart').click(function(){
         
@@ -317,11 +350,10 @@ $.ajax({
                 }
              })
             });
-
- });
+        });
         
-        </script>
-        <script>
+    </script>
+    <script>
     $(function () {
 
     $(".sample_search").keyup(function () {

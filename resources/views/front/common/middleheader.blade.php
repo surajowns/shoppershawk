@@ -69,7 +69,7 @@
                 <div class="mini_cart_wrapper">
                     <a href="javascript:void(0)">
                         <i class="fa fa-shopping-bag carttdetails"></i>
-                        <span class="cart_price">@if(Auth::check())₹{{number_format($subtotal,2)}}@else₹{{number_format(Cart::getSubTotal(),2)}}@endif<i class="ion-ios-arrow-down"></i></span>
+                        <span class="cart_price">@if(Auth::check())₹{{number_format($subtotal,2)}} @else ₹{{number_format(Cart::getSubTotal(),2)}} @endif<i class="ion-ios-arrow-down"></i></span>
                         <span class="cart_count">@if(Auth::check()){{$totalincart}}@else{{Cart::getContent()->count()}}@endif</span>
                     </a>
                 </div>

@@ -9,10 +9,10 @@ use App\Product;
 
 class WishlistController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('UserSession');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('UserSession');
+    // }
     public function Index(Request $request)
     {  
         $user=Auth::user();
@@ -27,25 +27,32 @@ class WishlistController extends Controller
             return back()->with('error', 'Login first');
         }
     }
-    public function CreateandUpdate(Request $request,$product_id=null)
+    public function CreateandUpdate(Request $request)
     {  
+
+        $product_id=$request->productid;
        $user=Auth::user();
        if(!empty($user)){
-           $check=Wishlist::where('user_id',$user->id)->where('product_id',$product_id)->first();
+           $check=Wishlist::where('user_id',$user['id'])->where('product_id',$product_id)->first();
          if(!empty($check)){
-            Wishlist::where('user_id',$user->id)->where('product_id',$product_id)->delete();
-            return back()->with('success', 'Remove from Wishlist');
+            Wishlist::where('user_id',$user['id'])->where('product_id',$product_id)->delete();
+            $totalwishlist=Wishlist::where('user_id',$user['id'])->get()->count();
+
+            return response()->json(array('status'=>'remove','totalwishlist'=>$totalwishlist,'message'=>'Remove from Wishlist','removeclass'=>'ion-android-favorite-outline'));
 
            }
+          
         $wishlist = new Wishlist;
         $wishlist->user_id=$user['id'];
         $wishlist->product_id=$product_id;
         $wishlist->save();
-        return back()->with('success', 'Added to Wishlist');
+        $totalwishlist=Wishlist::where('user_id',$user['id'])->get()->count();
+
+        return response()->json(array('status'=>'add','totalwishlist'=>$totalwishlist,'message'=>'Added to Wishlist','addclass'=>'ion-android-favorite'));
         
         }
         else{
-            return back()->with('error', 'Login first');
+            return response()->json(array('status'=>'not_login'));
 
         }
       
