@@ -76,7 +76,7 @@
                                     </div>
                                     <div class=" product_d_action">
                                         <ul>
-                                            <li><a href="{{url('user/wishlist/'.$product['id'])}}" title="Add to wishlist">+ Add to Wishlist</a></li>
+                                            <li><a class="addtowishlist" href="javascript:void(0)" data-productid="{{$product['id']}}"  title="Add to wishlist">+ Add to Wishlist</a></li>
                                         </ul>
                                     </div>
                                    

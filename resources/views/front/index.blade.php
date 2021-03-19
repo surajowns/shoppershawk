@@ -235,7 +235,7 @@
         var className=$(this).children().attr('class');
         var id=$(this).children().attr('id');
         $(this).children().removeClass(className);
-        // alert(id);
+        alert(id);
         $.ajax({
                 Type:"GET",
                 url :'{{url("user/wishlist/")}}',
@@ -248,6 +248,7 @@
                    
 
                     $('.wishlist_count').text(response.totalwishlist);
+                    data('tippy').text("Remove from Wishlist");
                     $('#'+id).addClass(response.adclass);
                     toastr.info(response.message);
                    

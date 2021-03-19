@@ -183,6 +183,40 @@
         </script>
         <script>
             $(document).ready(function(){
+                $(document).on("click",".addtowishlist",function(){
+                
+                var productid= $(this).data('productid');
+                var className=$(this).children().attr('class');
+                var id=$(this).children().attr('id');
+                $(this).children().removeClass(className);
+                $.ajax({
+                        Type:"GET",
+                        url :'{{url("user/wishlist/")}}',
+                        dataType:'json',
+                        cache: false,
+                        data: {productid:productid},
+                        success: function(response){
+                         console.log(response);
+                         if(response.status == 'add'){
+                           
+        
+                            $('.wishlist_count').text(response.totalwishlist);
+                            // data('tippy').text("Remove from Wishlist");
+                            $('#'+id).addClass(response.adclass);
+                            toastr.info(response.message);
+                           
+                         }else if(response.status == 'remove'){
+                           
+                            // $(this).children().removeClass(className);
+                             $('.wishlist_count').text(response.totalwishlist);
+                             $('#'+id).addClass(response.remoclass);
+                            toastr.info(response.message);
+                         }else{
+                            window.location.href = "{{url('/login')}}";
+                         }
+                        }
+                     })
+                    });
             $('.cart').click(function(){
 
             var productid= $(this).data('productid');
