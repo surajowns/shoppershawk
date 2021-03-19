@@ -9,7 +9,7 @@
             <div class="single_categories_product">
                 <div class="categories_product_content">
                     <h4><a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a></h4>
-                    <p>12 Products</p>
+                    <p><?php  $products=App\Product::where('supercategory_id',$cat['id'])->get()->count();  echo $products;?> Products</p>
                 </div>
                 <div class="categories_product_thumb">
                     <a href="{{url('/products/'.'?cat='.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>

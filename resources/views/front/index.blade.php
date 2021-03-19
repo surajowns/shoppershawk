@@ -235,7 +235,6 @@
         var className=$(this).children().attr('class');
         var id=$(this).children().attr('id');
         $(this).children().removeClass(className);
-        alert(id);
         $.ajax({
                 Type:"GET",
                 url :'{{url("user/wishlist/")}}',
@@ -248,13 +247,15 @@
                    
 
                     $('.wishlist_count').text(response.totalwishlist);
-                    data('tippy').text("Remove from Wishlist");
+                    $('.addtowishlist').data('tippy','Remove from Wishlist');
+                    // data('tippy').text("Remove from Wishlist");
                     $('#'+id).addClass(response.adclass);
                     toastr.info(response.message);
                    
                  }else if(response.status == 'remove'){
                    
                     // $(this).children().removeClass(className);
+                    $('.addtowishlist').data('tippy','Add to Wishlist');
                      $('.wishlist_count').text(response.totalwishlist);
                      $('#'+id).addClass(response.remoclass);
                     toastr.info(response.message);
