@@ -17,6 +17,7 @@ use App\Product;
 use App\LoginLogModel;
 use Mail;
 use App\Order;
+use App\Status;
 
 class LoginController extends Controller
 {
@@ -117,7 +118,8 @@ class LoginController extends Controller
         $products=Product::get()->count();
         $totalorders=Order::get()->count();
         $orders=Order::with('users')->orderBy('id','DESC')->get()->take(5);
-        return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders'));
+         $status=Status::get();
+        return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders','status'));
     }
     
     public function logout()

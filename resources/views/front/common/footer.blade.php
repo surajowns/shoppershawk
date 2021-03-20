@@ -72,7 +72,7 @@
                                     <p>
                                         Hotline Free 24/7: <br />
                                         <strong><a href="tel:+0120-2512786;">+0120-2512786</a></strong>
-                                        <strong><a href="mailto:info@besthawk.com;">info@Shoppershawk.com</a></strong>
+                                        <strong><a href="mailto:info@besthawk.com;">care@shoppershawk.com</a></strong>
                                     </p>
                                 </div>
                             </div>

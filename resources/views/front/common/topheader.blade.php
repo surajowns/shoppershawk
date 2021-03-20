@@ -8,9 +8,9 @@
         <div class="col-lg-8 col-md-7">
             <div class="header_top_settings text-right">
                 <ul>
-                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="{{url('/user/account')}}">Track Your Order</a></li>
                     <li>Hotline: <a href="tel:+0120-2512786">+0120-2512786</a></li>
-                    <li><a href="mailto:info@besthawk.com;">info@Shoppershawk.com</a></li>
+                    <li><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></li>
                    @if(!Auth::check())
                     <li><a href="{{url('/login')}}">Login</a></li>
                     <li><a href="{{url('/register')}}">Register</a></li>

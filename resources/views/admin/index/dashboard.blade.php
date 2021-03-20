@@ -108,74 +108,30 @@
 					<tr>
 						<th>Customer</th>
 						<th>Date</th>
-						<th>Product</th>
+						
 						<th>Status</th>
-						<th>Price</th>
+						<th>Order Amount</th>
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($orders as $value)
+					
 					<tr>
 						<td class="text-nowrap">
-							<img class="avatar-xs rounded-circle" src="assets/img/customer/user-05.jpg" alt="User Image"> Annette Silva
+							<img class="avatar-xs rounded-circle" src="{{url('public/profile/'.$value->users[0]['profile_image'])}}" alt="User Image">{{$value->users[0]['name']}}
 						</td>
-						<td class="text-nowrap">9 Sep 2020</td>
-						<td>Hp core i5 generation</td>
-						<td>
-							<span class="badge bg-success inv-badge">Deliverd</span>
+						<td class="text-nowrap">{{date('d M Y h:i A',strtotime($value['created_at']))}}</td>
+					
+						<td> 
+							@foreach($status as $row)
+							<span class="badge {{$row['id']==1?'bg-danger':($row['id']==2?'btn-warning':($row['id']==3?'btn btn-info':($row['id']==4?'btn-info':($row['id']==5?'btn-info':($row['id']==5?'btn-info':'')))))}} inv-badge">{{$row['id']==$value->status?$row['name']:''}}</span>
+							@endforeach
 						</td>
 						<td>
-							<div class="font-weight-600">₹21,000</div>
+							<div class="font-weight-600">₹{{number_format($value['total_amount'],2)}}</div>
 						</td>
 					</tr>
-					<tr>
-						<td class="text-nowrap">
-							<img class="avatar-xs rounded-circle" src="assets/img/customer/user-06.jpg" alt="User Image"> Stephen Wilson</td>
-						<td class="text-nowrap">8 Sep 2020</td>
-						<td>Hp core i5 generation</td>
-						<td>
-							<span class="badge bg-danger inv-badge">Pending</span>
-						</td>
-						<td>
-							<div class="font-weight-600">₹21,000</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-nowrap">
-							<img class="avatar-xs rounded-circle" src="assets/img/customer/user-07.jpg" alt="User Image"> Ryan Rodriguez</td>
-						<td class="text-nowrap">7 Sep 2020</td>
-						<td>Hp core i5 generation</td>
-						<td>
-							<span class="badge bg-success inv-badge">Deliverd</span>
-						</td>
-						<td>
-							<div class="font-weight-600">₹21,000</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-nowrap">
-							<img class="avatar-xs rounded-circle" src="assets/img/customer/user-08.jpg" alt="User Image"> Lucile Devera
-						</td>
-						<td class="text-nowrap">6 Sep 2020</td>
-						<td>Hp core i5 generation</td>
-						<td>
-							<span class="badge bg-danger inv-badge">Pending</span>
-						</td>
-						<td>
-							<div class="font-weight-600">₹21,000</div>
-						</td>
-					</tr>
-					<tr>
-						<td class="text-nowrap">
-							<img class="avatar-xs rounded-circle" src="assets/img/customer/user-09.jpg" alt="User Image"> Roland Storey</td>
-						<td class="text-nowrap">5 Sep 2020</td>
-						<td>Hp core i5 generation</td>
-						<td>
-							<span class="badge bg-success inv-badge">Deliverd</span>
-						</td>
-						<td>
-							<div class="font-weight-600">₹21,000</div>
-						</td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>
