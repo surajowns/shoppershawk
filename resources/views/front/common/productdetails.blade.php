@@ -51,8 +51,9 @@
                         </div>
                         <div class="price_box">
                            <span class="old_price">₹{{number_format($product['price'],2)}}</span>
-                           <span class="current_price">₹{{number_format($product['selling_price'],2)}}</span>
+                           <span class="current_price">₹{{number_format($product['selling_price'],2)}}</span>&nbsp;&nbsp;<span class="perc_discount">({{number_format((($product['price']-$product['selling_price'])/$product['price'])*100,2)}}% off)</span>
                         </div>
+                       
                        
                         <div class="product_desc">
                            <p>{!!ucfirst($product['description']) !!}   </p>
@@ -259,7 +260,10 @@
                         <h4 class="product_name"><a href="{{url('/product_details/'.$productdetails['slug'])}}">{{$productdetails['name']}}</a></h4>
                         <div class="price_box">
                            <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
-                           <span class="current_price">₹{{number_format($productdetails['price'],2)}}</span>
+                           <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
+                        </div>
+                        <div class="price_box">
+                            <span class="current_price">{{number_format((($productdetails['price']-$productdetails['selling_price'])/$productdetails['price'])*100,2)}}% off</span>
                         </div>
                      </div>
                      <div class="add_to_cart">

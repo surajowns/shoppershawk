@@ -97,6 +97,9 @@
                                             <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
                                             <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                         </div>
+                                        <div class="price_box">
+                                        <span class="current_price">{{number_format((($productdetails['price']-$productdetails['selling_price'])/$productdetails['price'])*100,2)}}% off</span>
+                                    </div>
                                     </div>
                                     @if($productdetails['qty'] != 0)
                                      <div class="add_to_cart">
