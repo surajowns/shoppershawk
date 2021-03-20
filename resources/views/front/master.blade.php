@@ -189,6 +189,8 @@
                 var className=$(this).children().attr('class');
                 var id=$(this).children().attr('id');
                 $(this).children().removeClass(className);
+                $(this).closest("tr").remove();
+
                 $.ajax({
                         Type:"GET",
                         url :'{{url("user/wishlist/")}}',
@@ -197,6 +199,9 @@
                         data: {productid:productid},
                         success: function(response){
                          console.log(response);
+                         if(response.totalwishlist == 0){
+                             location.reload();
+                           }
                          if(response.status == 'add'){
                            
         
@@ -217,10 +222,9 @@
                         }
                      })
                     });
-            $('.cart').click(function(){
-
+        $(document).on("click",".cart",function(){
             var productid= $(this).data('productid');
-
+            $(this).closest("tr").remove();
             $.ajax({
             Type:"GET",
             url : '{{url("ajax/add_to_cart")}}',

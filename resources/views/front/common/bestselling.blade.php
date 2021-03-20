@@ -38,8 +38,8 @@ $avgrating=0;
                             <div class="product_carousel small_p_container small_product_column3 owl-carousel">
                      @foreach($product as $productdetails)
                          @if($category['id']==$productdetails['supercategory_id'])
-                            <div class="product_items">
-                                    <figure class="single_product">
+                            <div class="product_items {{$productdetails['qty']==0?'not_in_stock':''}}">
+                                    <figure class="single_product ">
                                         <div class="product_thumb">
                                         @if(!empty($productdetails['product_image']))
                                            <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img class="best-selling" src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
@@ -66,11 +66,18 @@ $avgrating=0;
                                                 <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
                                                 <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                             </div>
+                                            @if($productdetails['qty'] != 0)
                                             <div class="product_cart_button">
                                                 <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}"><i class="fa fa-shopping-bag"></i></a>
                                             </div>
+                                            @else
+                                            @endif
+
                                         </div>
                                     </figure>
+                                    @if($productdetails['qty']==0)
+                                      <div class="outofstock"><p class="sold-label">Sold Out</p></div>
+                                  @endif
                                 </div>
                                 @endif
                               @endforeach  

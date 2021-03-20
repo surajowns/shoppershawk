@@ -62,7 +62,7 @@
                                 <div class="checkout_info coupon_info">
                                     <form action="{{url('/user/coupon/')}}" method="post" >
                                     @csrf
-                                        <input placeholder="Coupon code" type="text" name="code">
+                                        <input placeholder="Coupon code" type="text" name="code" required>
                                         <button type="submit">Apply coupon</button>
                                         <span class="text-danger">{{$errors->first('code')}}</span>
                                     </form>
@@ -282,10 +282,10 @@
                            <div class="panel-default">
 
                               <input id="payment_defult" name="order_type" value="cod" type="radio" data-target="createp_account" />
-                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD<img src="assets/img/icon/papyel.png" alt=""></label>
+                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD</label>
                               
                               <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" />
-                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online <img src="assets/img/icon/papyel.png" alt=""></label>
+                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online</label>
                              <br>
                               @if($errors->first('order_type'))
                               <span class="text-danger">Please Select Payment Method</span>
@@ -337,7 +337,7 @@
                               <tfoot>
                                 @if(Auth::check())
                                 <tr>
-                                    <th colspan="2">Subtotal</th>
+                                    <th colspan="2" class="text-right">Subtotal</th>
                                     <td>₹{{number_format($subtotal,2)}}</td>
                                  </tr>
                                  <tr>

@@ -45,7 +45,7 @@
                
                 <div class="product_items">
 
-                        <article class="single_product">
+                        <article class="single_product {{$productdetails['qty']==0?'not_in_stock':''}}" >
                             <figure >
                                 <div class="product_thumb">
                                 @if(!empty($productdetails['product_image']))
@@ -57,7 +57,7 @@
                                     </div> -->
                                     <div class="action_links">
                                     <ul>
-                                    @if(isset($user))
+                                    <!-- @if(isset($user))
                                         @if(!empty($productdetails['wishlist']))
                                            @foreach($productdetails['wishlist'] as $val)
                                            
@@ -78,7 +78,7 @@
                                        <li class="wishlist">
                                             <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                          </li>
-                                    @endif
+                                    @endif -->
                                         <li class="compare">
                                             <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                                         </li>
@@ -98,12 +98,18 @@
                                             <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
                                         </div>
                                     </div>
-                                    <div class="add_to_cart">
-                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
-                                    </div>
+                                    @if($productdetails['qty'] != 0)
+                                     <div class="add_to_cart">
+                                        <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}" >Add to cart</a>
+                                     </div>
+                                @endif
                                 </div>
                             </figure>
+                            @if($productdetails['qty']==0)
+                                 <div class="outofstock"><p class="sold-label">Sold Out</p></div>
+                        @endif
                         </article>
+                      
                       
                     </div>
                     @endif

@@ -234,6 +234,7 @@
         var productid= $(this).data('productid');
         var className=$(this).children().attr('class');
         var id=$(this).children().attr('id');
+        $(this).parent().remove();
         $(this).children().removeClass(className);
         $.ajax({
                 Type:"GET",
@@ -247,15 +248,13 @@
                    
 
                     $('.wishlist_count').text(response.totalwishlist);
-                    $('.addtowishlist').data('tippy','Remove from Wishlist');
-                    // data('tippy').text("Remove from Wishlist");
                     $('#'+id).addClass(response.adclass);
                     toastr.info(response.message);
                    
                  }else if(response.status == 'remove'){
                    
-                    // $(this).children().removeClass(className);
-                    $('.addtowishlist').data('tippy','Add to Wishlist');
+                   
+
                      $('.wishlist_count').text(response.totalwishlist);
                      $('#'+id).addClass(response.remoclass);
                     toastr.info(response.message);
@@ -266,10 +265,9 @@
              })
             });   
 
-$('.cart').click(function(){
+$(document).on("click",".cart",function(){
         
 var productid= $(this).data('productid');
-
 $.ajax({
         Type:"GET",
         url : '{{url("ajax/add_to_cart")}}',
@@ -282,7 +280,6 @@ $.ajax({
            
          }
         else{
-            //  alert(response.totalin_cart);
             $( ".cart_item" ).remove();
             $( ".cart_price" ).text('₹'+response.carttotal);
             $( ".cart_count" ).text(response.totalin_cart);

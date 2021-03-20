@@ -39,7 +39,7 @@
                 <div class="product_carousel product_style product_column5 owl-carousel">
                 @foreach($product as $productdetails)
                    @if($category['id']==$productdetails['supercategory_id'])
-                    <article class="single_product">
+                    <article class="single_product {{$productdetails['qty']==0?'not_in_stock':''}}"  >
                         <figure>
                             <div class="product_thumb">
                             @if(!empty($productdetails['product_image']))
@@ -51,15 +51,15 @@
                                 </div> -->
                                 <div class="action_links">
                                     <ul>
-                                    @if(isset($user))
+                                    <!-- @if(isset($user))
                                         @if(!empty($productdetails['wishlist']))
                                            @foreach($productdetails['wishlist'] as $val)
                                            
                                                     <li class="wishlist">
                                                     @if($val['user_id'] == $user->id )
                                                         <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top"   data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite"></i></a>
-                                                        <!-- @else -->
-                                                          <!-- <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}"  data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a> -->
+                                                        @else
+                                                          <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}"  data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
                                                      @endif
                                                     </li>
                                             @endforeach
@@ -72,7 +72,7 @@
                                        <li class="wishlist">
                                             <a href="javascript:void(0)" data-tippy-placement="top" class="addtowishlist" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
                                          </li>
-                                    @endif
+                                    @endif -->
                                         <li class="compare">
                                             <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                                         </li>
@@ -98,11 +98,16 @@
                                         <div data-countdown="{{date('Y/m/d', strtotime($productdetails['created_at']))}}"></div>
                                     </div> -->
                                 </div>
+                                @if($productdetails['qty'] != 0)
                                 <div class="add_to_cart">
                                     <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}" >Add to cart</a>
                                 </div>
+                                @endif
                             </div>
                         </figure>
+                        @if($productdetails['qty']==0)
+                                 <div class="outofstock"><p class="sold-label">Sold Out</p></div>
+                        @endif
                     </article>
                     @endif
                     @endforeach 

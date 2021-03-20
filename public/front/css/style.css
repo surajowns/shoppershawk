@@ -10908,3 +10908,24 @@ label.star:before {
 .cartmodaldisplay{
   display: none;
 }
+.outofstock{
+  /* display: none; */
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 72px solid #fe0000;
+  border-right: 80px solid transparent;
+  position: absolute;
+  transition: 0.3s;
+}
+.not_in_stock{
+  opacity:0.4;
+}
+.sold-label {
+  line-height: 15px;
+  color: #fff;
+  top: -65px;
+  position: absolute;
+  left: 6px;
+  font-family: 'OpenSans-Semibold';
+}
