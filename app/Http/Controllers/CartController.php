@@ -93,12 +93,12 @@ class CartController extends Controller
                                 
            );
            Cart::add($add); 
-           $check=Wishlist::where('user_id',$user['id'])->where('product_id',$request->productid)->first();
+           $check=Wishlist::where('user_id',isset($user['id'])?$user['id']:'')->where('product_id',$request->productid)->first();
            if(!empty($check) && !empty($user)){
                Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
               }
             
-              $checkcart=CartModel::where('user_id',$user->id)->where('product_id',$request->productid)->first();
+              $checkcart=CartModel::where('user_id',isset($user['id'])?$user['id']:'')->where('product_id',$request->productid)->first();
             //   dd($checkcart);
             if(!empty($checkcart) && !empty($user)){
                  $quantity=$quantity+$checkcart['quantity'];
