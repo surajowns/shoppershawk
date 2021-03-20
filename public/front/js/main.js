@@ -37,7 +37,6 @@
     /*---slider activation---*/
     $('.slider3_carousel').owlCarousel({
         animateOut: 'fadeOut',
-        autoplay: true,
 		loop: true,
         nav: false,
         autoplay: true,
