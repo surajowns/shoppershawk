@@ -375,14 +375,14 @@
                                 @else
                                  <tr>
                                     <th colspan="2">Subtotal</th>
-                                    <td>₹{{number_format(Cart::getSubTotal(),2)}}</td>
+                                    <td class="cart_amount">₹{{number_format(Cart::getSubTotal(),2)}}</td>
                                  </tr>
                                  <tr>
                                     <th colspan="2">Shipping</th>
                                    
                                     <td>
                                        <strong>
-                                          <p class="cart_amount text-success">Free</p>
+                                          <p class="shipping_cart_amount text-success">Free</p>
                                        </strong>
                                     </td>
                                  </tr>
@@ -397,7 +397,7 @@
                                    @endif
                                   
                                     <th colspan="2">Order Total</th>
-                                    <td><strong>₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
+                                    <td><strong class="cart_amount">₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
                                  </tr>
                                  @endif
                               </tfoot>
