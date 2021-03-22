@@ -311,24 +311,34 @@
                               <thead>
                                  <tr>
                                     <th>Product</th>
-                                    <th>Quantity</th>
+                                    <th>Price/Quantity</th>
                                     <th>Total</th>
                                  </tr>
                               </thead>
                               <tbody>
                                 @if(Auth::check())
                                  @foreach($details as $data)
-                                 <tr>
-                                    <td class="text-left"><strong>{{$data['products'][0]['name']}}</strong></td>
-                                    <td>{{number_format($data['quantity'])}}</td>
+                                 <tr class="cart_table">
+                                    <td class="text-left">
+                                       <strong>{{$data['products'][0]['name']}}</strong>
+                                    </td>
+                                    <td class="product_quantity">
+                                        <p><a href="javascript:void(0)" class="removecart" data-productid="{{$data['product_id']}}"><i class="fa fa-trash-o"></i></a>₹ {{number_format($data['price'],2)}}</p>
+                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['product_id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$data['quantity']}}" data-productid="{{$data['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['product_id']}}">+</span>
+                                    </td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
                                  @endforeach
                                  @else
                                  @foreach($details as $data)
                                  <tr>
-                                    <td class="text-left"><strong>{{$data['name']}}</strong></td>
-                                    <td>{{number_format($data['quantity'])}}</td>
+                                    <td class="text-left">
+                                       <strong>{{$data['name']}}</strong>
+                                    </td>
+                                    <td class="product_quantity">
+                                        <p> <a href="javascript:void(0)" class="removecart" data-productid="{{$data['id']}}"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;₹ {{number_format($data['price'],2)}}</p>
+                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$data['quantity']}}" data-productid="{{$data['id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['id']}}">+</span>
+                                    </td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
                                  @endforeach
@@ -561,5 +571,28 @@ google.maps.event.addDomListener(window, 'load', function () {
         });
       });
  </script>
+<script>
+    $('.input-number').keyup(function(){
+        var value=$(this).val();
+        var productid= $(this).data('productid');
+    // value++;
+    $.ajax({
+            Type:"POST",
+            url : '{{url("/user/updatecart")}}',
+            dataType:'json',
+            cache: true,
+            data: {value:value,productid:productid},
+            success: function(response){
+            if(response.status == 'error'){
+            toastr.warning("error");
+            }
+            else{
+                location.reload();
+            
+            }
+            }
+        })
+    })
 
+</script>
 @stop

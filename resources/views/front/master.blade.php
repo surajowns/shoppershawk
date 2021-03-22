@@ -278,9 +278,10 @@
             var productid= $(this).data('productid');
             // alert()
 
-            $(this).parent().prev().prev().parent().css("display","none");
-            $(this).parent().prev().css("display","none");
-            $(this).parent().css("display","none");
+            // $(this).parent().prev().prev().parent().css("display","none");
+            // $(this).parent().prev().css("display","none");
+            // $(this).parent().css("display","none");
+            $(this).closest("tr").remove();
             $(this).parent().parent().remove();
 
             $.ajax({
@@ -292,7 +293,7 @@
                     success: function(response){
                         console.log(response);
                         if(response.totalin_cart == 0){
-                        location.reload();
+                            window.location.href = "{{url('user/cart_details')}}";
                         }
                     else{
                         $( ".cart_price" ).text('₹'+response.carttotal);
