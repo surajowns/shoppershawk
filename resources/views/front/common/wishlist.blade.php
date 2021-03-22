@@ -37,7 +37,9 @@
                                                         @endif
                                                     </td>
                                                     <td class="product_total">
-                                                    <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
+                                                    @if($details['qty'] != 0)
+                                                       <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
+                                                    @endif
                                                     </td>
 
 

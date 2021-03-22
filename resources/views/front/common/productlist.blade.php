@@ -101,7 +101,7 @@
         
            @foreach($product as $details)
              <div class="col-lg-3 col-md-4 col-12 ">
-                <article class="single_product">
+                <article class="single_product {{$details['qty']==0?'not_in_stock':''}}">
                     <figure>
                         <div class="product_thumb">
                         @foreach($details->productImage as $image)
@@ -174,9 +174,11 @@
                                         <span class="current_price">{{number_format((($details['price']-$details['selling_price'])/$details['price'])*100,2)}}% off</span>
                                     </div>
                             </div>
+                            @if($details['qty'] != 0)
                             <div class="add_to_cart">
                               <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
                             </div>
+                            @endif
                         </div>
                         <div class="product_content list_content">
                             <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
@@ -201,18 +203,50 @@
                             <div class="product_desc">
                             {!! ucfirst($details['description']) !!}
                             </div>
+                            @if($details['qty'] !=0)
                             <div class="add_to_cart">
                             <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
                             </div>
+                            @endif
                             <div class="action_links">
-                                <ul>
-                                    <li class="wishlist">
-                                       <a href="{{url('user/wishlist/'.$details['id'])}}" title="Add to Wishlist"><i class="ion-android-favorite-outline"></i> Add to Wishlist</a>
-                                       </li>  
-                                 </ul>
+                            <ul>
+                                    @if(isset($user))
+                                        @if(count($details->wishlist)>0)
+                                           @foreach($details->wishlist as $val)
+                                           
+                                                    <li class="wishlist">
+                                                    @if($val['user_id'] == $user->id )
+                                                        <a class="addtowishlist" href="javascript:void(0)"   data-productid="{{$details['id']}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$details['id']}}" class="ion-android-favorite"></i></a>
+                                                        @else
+                                                          <a class="addtowishlist" href="javascript:void(0)"   data-productid="{{$details['id']}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$details['id']}}" class="ion-android-favorite-outline"></i></a>
+                                                     @endif
+                                                    </li>
+                                            @endforeach
+                                        @else
+                                         <li class="wishlist">
+                                            <a class="addtowishlist" href="javascript:void(0)"    data-productid="{{$details['id']}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$details['id']}}" class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                       @endif
+                                    @else
+                                       <li class="wishlist">
+                                            <a class="addtowishlist" href="javascript:void(0)"   data-productid="{{$details['id']}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$details['id']}}" class="ion-android-favorite-outline"></i></a>
+                                         </li>
+                                    @endif
+                                        <li class="compare">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
+                                        </li>
+                                        <li class="quick_button">
+                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$details['slug']}}" data-tippy="quick view">
+                                                <i class="ion-ios-search-strong"></i>
+                                            </a> -->
+                                        </li>
+                                    </ul>
                             </div>
                         </div>
                     </figure>
+                    @if($details['qty']==0)
+                                 <div class="outofstock"><p class="sold-label">Sold Out</p></div>
+                        @endif
                 </article>
              </div>
             @endforeach

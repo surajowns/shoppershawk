@@ -35,38 +35,38 @@
                                         <span class="label_sale">Sale</span>
                                     </div> -->
                                     <div class="action_links">
-                                    <ul>
-                                    @if(isset($user))
-                                        @if(!empty($productdetails['wishlist']))
-                                           @foreach($productdetails['wishlist'] as $val)
-                                                    <li class="wishlist">
-                                                    @if($val['user_id'] == $user->id )
-                                                        <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite"></i></a>
-                                                        @else
-                                                          <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                                     @endif
-                                                    </li>
-                                            @endforeach
-                                        @else
-                                         <li class="wishlist">
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                       @endif
-                                    @else
-                                       <li class="wishlist">
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                    @endif
-                                        <li class="compare">
-                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
-                                        </li>
-                                        <li class="quick_button">
-                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a> -->
-                                        </li>
-                                    </ul>
-                                    </div>
+                        <ul>
+                           @if(isset($user))
+                           @if(!empty($productdetails['wishlist']))
+                           @foreach($productdetails['wishlist']  as $val)
+                           <li class="wishlist">
+                              @if($val['user_id'] == $user->id )
+                              <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite"></i></a>
+                              @else
+                              <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
+                              @endif
+                           </li>
+                           @endforeach
+                           @else
+                           <li class="wishlist">
+                              <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
+                           </li>
+                           @endif
+                           @else
+                           <li class="wishlist">
+                              <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
+                           </li>
+                           @endif
+                           <li class="compare">
+                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
+                           </li>
+                           <li class="quick_button">
+                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
+                                 <i class="ion-ios-search-strong"></i>
+                                 </a> -->
+                           </li>
+                        </ul>
+                     </div>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_content_inner">

@@ -6133,7 +6133,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 20px;
+  padding: 20px 0;
 }
 @media only screen and (max-width: 767px) {
   .grid_list .single_product {
@@ -6464,7 +6464,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 @media only screen and (max-width: 767px) {
   .product_variant.quantity {
@@ -10931,4 +10931,62 @@ label.star:before {
 }
 .perc_discount{
  color:#c40316;
+}
+.button-buynow {
+  display: inline-flex;
+  height: 50px;
+  width: 200px;
+  border: 2px solid #c40316;
+  margin: 20px 20px 20px 0px;
+  color: #c40316;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+/* Third Button */
+
+#button-3 {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#button-3 a {
+  position: relative;
+  transition: all .45s ease-Out;
+  font-weight: 600;
+}
+
+#circle {
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  line-height: 40px;
+  border-radius: 50%;
+  background: #c40316;
+  color:#fff !important;
+  position: absolute;
+  transition: all .5s ease-Out;
+  top: 20px;
+  left: 70px;
+}
+
+#button-3:hover #circle {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+  top: -70px;
+  left: -70px;
+
+}
+
+#button-3:hover a {
+  color: #fff !important;
 }
