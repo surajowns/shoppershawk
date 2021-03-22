@@ -40,7 +40,7 @@
         <label for="inputEmail3" class="col-sm-3 col-form-label">Type</label>
         <div class="col-sm-9">
             <select name="type" id="" class="form-control" required>
-            <option value="">--Select Type--</option>
+            <option value="5">--Select Type--</option>
                 @foreach($type as $key=>$value)
                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                 @endforeach
@@ -95,14 +95,23 @@
     </div>
     <div class="form-group row">
         <label for="example-text-input" class="col-sm-3 col-form-label">Selling Price</label>
+       
         <div class="col-sm-9">
+           <span>Including GST</span>
             <input class="form-control" type="text" name="selling_price" value="" id="selling_price" required placeholder="Enter Selling price" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" autocomplete="off">
             <span class="text-danger">{{$errors->first('selling_price')}}</span>
         </div>
         
     </div>
     <div class="form-group row">
-        <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
+        <label for="example-text-input" class="col-sm-3 col-form-label">IGST In %</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" name="gst" value="" id="gst" required placeholder="Enter IGST " oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" autocomplete="off">
+            <span class="text-danger">{{$errors->first('gst')}}</span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-3 col-form-label">In Stock</label>
         <div class="col-sm-9">
             <input class="form-control" type="text" name="qty" value="" id="title" placeholder="Enter Qty" required  required autocomplete="off">
             <span class="text-danger">{{$errors->first('qty')}}</span>
@@ -131,19 +140,19 @@
         <span class="text-danger">{{$errors->first('product_image')}}</span>
     </div>
 </div>
-<div class="form-group row">
+<!-- <div class="form-group row">
     <label for="example-text-input" class="col-sm-3 col-form-label">Variant Image</label>
     <div class="col-sm-9">
         <input class="form-control" name="image[0][]" type="file" value="" id="image" multiple required placeholder="Enter ">
         <span class="text-danger">{{$errors->first('image')}}</span>
     </div>
-</div>
+</div> -->
 
 <div class="form-group row">
     
     <div class="col-sm-12 text-center">
     <button class="btn btn-primary" type="submit">Add Product</button>
-                                <a href="{{url('/admin/product')}}" class="btn btn-link">Cancel</a>			</div>
+                                <a href="{{url('/admin/product')}}" class="btn btn-link">Back</a></div>
 </div>                                    
 </div>
 </div> 

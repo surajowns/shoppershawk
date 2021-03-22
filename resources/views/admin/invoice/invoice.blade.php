@@ -125,29 +125,23 @@ body {
                             <th>Product</th>
                             <th>Qty</th>
                             <th>Unit Price</th>
-                            <th>Gross Amount</th>
-                            <th>Discount</th>
-                            <th>Taxable Value</th>
-                            <th>IGST</th>
+                            <th>IGST (Included)</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($orderdetails as $value)
                         <tr class="list-item">
-                        <td>{{$loop->iteration}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
                             <td data-label="Unit Price" class="tableitem">{{$value['price']}}</td>
-                            <td data-label="Taxable Amount" class="tableitem">46.6</td>
-                            <td data-label="Tax Code" class="tableitem">DP20</td>
-                            <td data-label="%" class="tableitem">20</td>
-                            <td data-label="Tax Amount" class="tableitem">9.32</td>
+                            <td data-label="gst" class="tableitem">{{$value['products'][0]['gst']}}&nbsp;%</td>
                             <td data-label="Total" class="tableitem">{{number_format($value['total_amount'])}}</td>
                         </tr>
                          @endforeach
                         <tr>
-                            <td colspan="6" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
+                            <td colspan="4" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
                             <td style="font-weight:bold;" colspan="1">Total Price: </td>
                             <td style="font-weight:bold;">{{number_format($orders['total_amount'],2)}}</td>
                         </tr>                        
@@ -165,7 +159,7 @@ body {
                 <footer>
                 <div id="legalcopy" class="clearfix">
                     <p class="col-right">Our mailing address is:
-                        <span class="email"><a href="mailto:info@shoppershawk.com">info@shoppershawk.com</a></span>
+                        <span class="email"><a href="mailto:care@shoppershawk.com">care@shoppershawk.com</a></span>
                     </p>
                 </div>
                 </footer>

@@ -55,6 +55,7 @@ class ProductController extends Controller
                 'category_id'=>'required|numeric',
                 'price'=>'required|numeric',
                 'selling_price'=>'required|numeric',
+                'gst'=>'required|numeric',
                 'specification'=>'required',
                 'description'=>'required',
                 'qty'=>'required|numeric',
@@ -70,6 +71,7 @@ class ProductController extends Controller
                 $product->category_id = $request->category_id;
                 $product->price = $request->price;
                 $product->selling_price = $request->selling_price;
+                $product->gst = $request->gst;
                 $product->type = $request->type;        
                 $product->specification = $request->specification;
                 $product->description = $request->description;

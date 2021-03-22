@@ -8,7 +8,7 @@
 <div class="page-header">
     <div class="row">
         <div class="col">
-            <h3 class="page-title">Edit Product</h3>
+            <h3 class="page-title">Update Product</h3>
         </div>
     </div>
 </div>
@@ -105,13 +105,21 @@
     <div class="form-group row">
         <label for="example-text-input" class="col-sm-3 col-form-label">Selling Price</label>
         <div class="col-sm-9">
+        <span>Including GST</span>
             <input class="form-control" type="text" name="selling_price" value="{{$product['selling_price']}}" id="title" required placeholder="Enter Selling price" onkeyup = "convertToSlug()" autocomplete="off">
             <span class="text-danger">{{$errors->first('selling_price')}}</span>
         </div>
         
     </div>
     <div class="form-group row">
-        <label for="example-text-input" class="col-sm-3 col-form-label">Quantity</label>
+        <label for="example-text-input" class="col-sm-3 col-form-label">IGST In %</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" name="gst" value="{{$product['gst']}}" id="gst" required placeholder="Enter IGST " oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" autocomplete="off">
+            <span class="text-danger">{{$errors->first('gst')}}</span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-3 col-form-label">In Stock</label>
         <div class="col-sm-9">
             <input class="form-control" type="text" name="qty" value="{{$product['qty']}}" id="title" placeholder="Enter Qty" required  required autocomplete="off">
             <span class="text-danger">{{$errors->first('qty')}}</span>
@@ -145,7 +153,7 @@
     
     <div class="col-sm-12 text-center">
     <button class="btn btn-primary" type="submit">Edit Product</button>
-                                <a href="{{url('/admin/product')}}" class="btn btn-link">Cancel</a>			</div>
+                                <a href="{{url('/admin/product')}}" class="btn btn-link">Back</a></div>
 </div>                                    
 </div>
 </div> 
