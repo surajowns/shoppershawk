@@ -124,9 +124,9 @@ body {
                            <th>S.N</th>
                             <th>Product</th>
                             <th>Qty</th>
-                            <th>Unit Price</th>
+                            <th>Unit Price(INR)</th>
                             <th>IGST (Included)</th>
-                            <th>Total</th>
+                            <th>Total(INR)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -142,7 +142,7 @@ body {
                          @endforeach
                         <tr>
                             <td colspan="4" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
-                            <td style="font-weight:bold;" colspan="1">Total Price: </td>
+                            <td style="font-weight:bold;" colspan="1">Total Price (INR): </td>
                             <td style="font-weight:bold;">{{number_format($orders['total_amount'],2)}}</td>
                         </tr>                        
                     </tbody>
