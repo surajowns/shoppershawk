@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Best Hawk'),
+    'name' => env('APP_NAME', 'ShoppersHawk'),
 
     /*
     |--------------------------------------------------------------------------

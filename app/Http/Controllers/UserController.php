@@ -25,7 +25,9 @@ class UserController extends Controller
     }
     
     public function UpdateProfile(Request $request)
-    {
+    {   
+        $user=Auth::user();
+     
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                     'email' => 'required',
@@ -33,6 +35,11 @@ class UserController extends Controller
             ]);
 
             try{
+                 $checked=User::where('id','!=',$user['id'])->where('email',$request->email)->first();
+                 if(!empty($checked)){
+                    return back()->with('error','Email already exist');
+                 }
+
                 $data=  request()->except('_token');
 
                 if($request->hasFile('profile_image')){
