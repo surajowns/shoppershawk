@@ -64,7 +64,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td align="left" style="font-size: 18px; color: #f15a25;"><strong>Order Detail</strong></td>
-                                                           <td align="right">Status:Pending</td>
+                                                           <td align="right"></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left">Order ID:{{$order_no}}<strong></strong></td>
@@ -77,7 +77,7 @@
                                         <tr>
                                             <td>
                                                 <table width="600" border="0" cellpadding="10" cellspacing="0" style="border:1px solid #ccc">
-                                                    <thead style="text-transform:uppercase;color:#222;background:#f15a25">
+                                                    <thead style="text-transform:uppercase;color:#222;background:#333">
                                                         <tr>
                                                             <th colspan="2" align="left" style="border-right:1px solid #ccc;color:#fff;">Product</th>
                                                             <th width="100" style="color:#fff;">Price</th>

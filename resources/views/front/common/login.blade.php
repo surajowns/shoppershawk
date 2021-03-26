@@ -163,7 +163,7 @@
 
                                 </div>
                                 <div class="login_submit mb-4">
-                                    <a href="{{url('register')}}">New to Shoppershawk ? Registe</a>
+                                    <a href="{{url('register')}}">New to Shoppershawk ? Register</a>
                                 </div>
                             </form>
                         </div>
