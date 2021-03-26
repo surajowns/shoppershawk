@@ -2,6 +2,7 @@
   $user=Auth::user();
   $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->whereIn('id',Session::get('last'))->get()->toArray();
 ?>
+@if(!empty($product))
 <div class="product_area">
     <div class="container">
         <div class="row">
@@ -91,6 +92,7 @@
         
     </div>
 </div>
+@endif
 <!--modal start-->
 
 <!--end modal-->
