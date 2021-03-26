@@ -81,16 +81,16 @@
                                     </div>
                                     </div>
                                     @if($productdetails['qty'] > 0)
-                                            <div class="product_cart_button">
-                                                <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}"><i class="fa fa-shopping-bag"></i></a>
-                                            </div>
-                                         @else
-                                     @endif
+                                    <div class="add_to_cart">
+                                       <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}">Add to cart</a>
+                                    </div>
+                                    @else
+                                   @endif
                                 </div>
                             </figure>
-                             @if($productdetails['qty'] <= 0)
-                                 <div class="outofstock"><p class="sold-label">Sold Out</p></div>
-                             @endif
+                              @if($productdetails['qty'] <= 0)
+                                      <div class="outofstock"><p class="sold-label">Sold Out</p></div>
+                              @endif
                         </article>
                       
                     </div>
