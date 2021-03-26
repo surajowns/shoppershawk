@@ -6,7 +6,7 @@
         @if(!empty(Cart::getContent()->toArray() && !empty($cartdetails)))
             <div class="shopping_cart_area">
                
-             <div class="col-sm-3 p-3 mb-2 bg-gradient-warning text-dark"><h3>My Cart ({{Cart::getContent()->count()}})</h3></div>
+             <div class="col-sm-3 p-3 mb-2 bg-gradient-warning text-dark"><h3>My Cart </h3></div>
                 <!-- <form action="#"> -->
                     <div class="row">
                         <div class="col-12">
