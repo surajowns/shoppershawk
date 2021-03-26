@@ -58,7 +58,7 @@
                         <div class="product_desc">
                            <p>{!!ucfirst($product['description']) !!}   </p>
                         </div>
-                        @if($product['qty'] != 0)
+                        @if($product['qty'] > 0)
                         <div class="product_variant quantity">
                            <!-- <label>quantity</label> -->
                            <!-- <input min="1" max="100" value="1" type="number"> -->
