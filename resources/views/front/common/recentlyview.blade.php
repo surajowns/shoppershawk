@@ -1,7 +1,8 @@
 <?php
   $user=Auth::user();
+  $lastview=array();
   $lastview=Session::get('last');
-  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->whereIn('id',isset($lastview)?$lastview:'')->get()->toArray();
+  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->whereIn('id',isset($lastview)?$lastview:explode(',',$lastview))->get()->toArray();
 ?>
 @if(!empty($product))
 <div class="product_area">
