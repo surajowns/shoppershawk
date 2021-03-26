@@ -101,7 +101,7 @@
         
            @foreach($product as $details)
              <div class="col-lg-3 col-md-4 col-12 ">
-                <article class="single_product {{$details['qty']==0?'not_in_stock':''}}">
+                <article class="single_product {{$details['qty']<=0?'not_in_stock':''}}">
                     <figure>
                         <div class="product_thumb">
                         @foreach($details->productImage as $image)
@@ -174,7 +174,7 @@
                                         <span class="current_price">{{number_format((($details['price']-$details['selling_price'])/$details['price'])*100,2)}}% off</span>
                                     </div>
                             </div>
-                            @if($details['qty'] != 0)
+                            @if($details['qty'] > 0)
                             <div class="add_to_cart">
                               <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
                             </div>
@@ -203,7 +203,7 @@
                             <div class="product_desc">
                             {!! ucfirst($details['description']) !!}
                             </div>
-                            @if($details['qty'] !=0)
+                            @if($details['qty']>0)
                             <div class="add_to_cart">
                             <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$details['id']}}">Add to cart</a>
                             </div>
@@ -244,7 +244,7 @@
                             </div>
                         </div>
                     </figure>
-                    @if($details['qty']==0)
+                    @if($details['qty'] <= 0)
                                  <div class="outofstock"><p class="sold-label">Sold Out</p></div>
                         @endif
                 </article>

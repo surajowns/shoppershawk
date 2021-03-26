@@ -36,7 +36,7 @@ $user=Auth::user();
                 <div class="product_carousel product_style product_column5 owl-carousel">
                 @foreach($newarrivalproduct as $productdetails)
                    @if($val['id']==$productdetails['supercategory_id'])
-                    <article class="single_product {{$productdetails['qty']==0?'not_in_stock':''}}">
+                    <article class="single_product {{$productdetails['qty']<=0?'not_in_stock':''}}">
                         <figure>
                             <div class="product_thumb">
                             @if(!empty($productdetails['product_image']))
@@ -92,14 +92,14 @@ $user=Auth::user();
                                         <span class="current_price">{{number_format((($productdetails['price']-$productdetails['selling_price'])/$productdetails['price'])*100,2)}}% off</span>
                                     </div>
                                 </div>
-                                @if($productdetails['qty'] != 0)
+                                @if($productdetails['qty'] > 0)
                                 <div class="add_to_cart">
                                     <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$productdetails['id']}}" >Add to cart</a>
                                 </div>
                                 @endif
                             </div>
                         </figure>
-                        @if($productdetails['qty']==0)
+                        @if($productdetails['qty'] <= 0)
                                  <div class="outofstock"><p class="sold-label">Sold Out</p></div>
                         @endif
                     </article>
