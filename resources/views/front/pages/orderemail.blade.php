@@ -95,7 +95,7 @@
                                                         <tr>
                                                             <td valign="top" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
                                                             @foreach($value->productImage as $proimage)
-                                                                <img src="{{url('public/product_image/'.$proimage->image)}}" width="70" >
+                                                                <img src="{{url('public/product_image/'.urlencode($proimage->image))}}" width="70" >
                                                                 @break
                                                              @endforeach
                                                             </td>
