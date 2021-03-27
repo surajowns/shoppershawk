@@ -13,5 +13,10 @@ class OrderDetails extends Model
       {
          return $this->hasMany('App\Product','id','product_id');
       }
+      public function productImage()
+    {
+        return $this->hasMany('App\ProductImage','product_id','product_id');
+ 
+    }
       
     }

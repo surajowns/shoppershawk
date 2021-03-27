@@ -82,6 +82,7 @@
                                                             <th colspan="2" align="left" style="border-right:1px solid #ccc;color:#fff;">Product</th>
                                                             <th width="100" style="color:#fff;">Price</th>
                                                             <th style="border-right:1px solid #ccc;color:#fff;">Quantity</th>
+                                                            <th style="border-right:1px solid #ccc;color:#fff;">IGST</th>
                                                             <th width="100" style="color:#fff;">Total Price</th>
 
                                                         </tr>
@@ -92,12 +93,15 @@
                                                        @foreach($orders->orderdetails as $value)
                                                     
                                                         <tr>
-                                                        <td valign="top" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
-                                                                <img src="{{url('public/product_image/')}}}" width="70" >
+                                                            <td valign="top" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
+                                                            @foreach($value->productImage as $proimage)
+                                                                <img src="{{url('public/product_image/'.$proimage['image'])}}}" width="70" >
+                                                                @break
+                                                                @endforeach
                                                             </td>
                                                             <td valign="top" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
                                                                 @foreach($value->products as $data)
-                                                                <strong>{{$data['name']}}</strong>
+                                                                <strong>{{ucfirst($data['name'])}}</strong>
                                                                 @endforeach
                                                                 <br>
                                                               
@@ -109,6 +113,12 @@
                                                             </td>
                                                             <td align="center" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><p>₹{{number_format($value['price'],2)}}</p></td>
                                                             <td align="center" style="border-right:1px solid #ccc;border-top:1px solid #ccc">{{$value['quantity']}}</td>
+                                                            <td align="center" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
+                                                               @foreach($value->products as $data)
+                                                                  {{$data['gst']}}
+                                                                  @endforeach
+                                                                 </td>
+
                                                             <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;">
                                                             <p>₹ {{number_format($value['quantity']*$value['price'],2)}}</p>
                                                             </td>
@@ -117,12 +127,12 @@
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <td colspan="4" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Subtotal:</strong></td>
+                                                            <td colspan="5" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Subtotal:</strong></td>
                                                             <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹ {{number_format($orders['price'],2)}}</strong></td>
                                                         </tr>
                                                         
                                                         <tr>
-                                                        <td colspan="4" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Total:</strong></td>
+                                                        <td colspan="5" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Total:</strong></td>
                                                             <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹{{number_format($orders['total_amount'],2)}}</strong></td>
                                                         </tr>
                                                     </tfoot>

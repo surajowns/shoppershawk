@@ -143,7 +143,8 @@ class OrderController extends Controller
              $content="Order from ".$user['name']." with Order No  ".$order_no;
              NotificationModel::insert(['user_id'=>$user['id'],'content'=>$content,'type'=>$order_no]);
              DB::commit();
-             $orders=Order::with('orderdetails','orderdetails.products')->orderBy('id','DESC')->first();
+             $orders=Order::with('orderdetails','orderdetails.products','orderdetails.productImage')->orderBy('id','DESC')->first();
+            
               $emailsent= OrderEmail($user,$order_no,$orders);
              if($emailsent){
              return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
