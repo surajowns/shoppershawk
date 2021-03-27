@@ -149,7 +149,7 @@
                                                                 <p>Team,
                                                                     <br> <a href="#" target="_blank" >Shoppershawk</a> </p>
                                                             </td>
-                                                            <td align="right" valign="top"><span><strong>Delivery Address</strong><br>{{isset($orders['shipping_address'])?$orders['shipping_address']:$orders['billing_address']}}&nbsp;&nbsp;{{isset($orders['shipping_landmark'])?$orders['shipping_landmark']:$orders['billing_landmark']}}&nbsp;&nbsp;{{isset($orders['shipping_pincode'])?$orders['shipping_pincode']:$orders['billing_pincode']}}<br></span>
+                                                            <td align="right" valign="top"><span><strong>Delivery Address</strong><br>{{isset($orders['shipping_address'])?$orders['shipping_address']:$orders['billing_address']}}&nbsp;&nbsp;{{isset($orders['shipping_state'])?$orders['shipping_state']:$orders['billing_state']}}&nbsp;&nbsp;{{isset($orders['shipping_landmark'])?$orders['shipping_landmark']:$orders['billing_landmark']}}&nbsp;&nbsp;{{isset($orders['shipping_pincode'])?$orders['shipping_pincode']:$orders['billing_pincode']}}<br></span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
