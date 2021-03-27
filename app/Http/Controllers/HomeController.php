@@ -165,7 +165,10 @@ class HomeController extends Controller
 
       $user=Auth::user();
        $lastview=array();
-       array_unshift($lastview,Product::where('slug',$slug)->where('status',1)->pluck('id'));
+        $product_id=Product::where('slug',$slug)->where('status',1)->pluck('id')->toArray();
+        
+        array_unshift($lastview,implode($product_id));
+
        Session::push('last',$lastview);
      
       $product=Product::with(['productImage','wishlist','productRating'=>function($query){$query->select('*')->where('status',1);},'productRating.users'])->where('slug',$slug)->where('status',1)->first();

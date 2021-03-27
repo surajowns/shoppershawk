@@ -28,7 +28,7 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
-    background: #f15a25;
+    background: #c40316;
     margin: 3px;
     border-radius: 50px;
 }
@@ -49,9 +49,9 @@
                                 </td>
                             </tr>
                         </table>
-                        <table border="0" cellpadding="5" cellspacing="0" width="600" style="background: #fff; border:1px solid #ddd;">
+                        <table border="0" cellpadding="5" cellspacing="0" width="600" style="background: #fff; border:1px solid #c40316;">
                             <tr>
-                                <td align="center" style="font-size: 24px; font-weight: bold; color: #f15a25; letter-spacing: 1px; border-bottom:2px solid #f15a25; padding: 15px;"> Order Confirmation</td>
+                                <td align="center" style="font-size: 24px; font-weight: bold; color: #c40316; letter-spacing: 1px; border-bottom:2px solid #c40316; padding: 15px;"> Order Confirmation</td>
                             </tr>
                             <tr>
                                 <td>
@@ -63,7 +63,7 @@
                                                 <table border="0" cellpadding="0" cellspacing="0" width="600">
                                                     <tbody>
                                                         <tr>
-                                                            <td align="left" style="font-size: 18px; color: #f15a25;"><strong>Order Detail</strong></td>
+                                                            <td align="left" style="font-size: 18px; color: #c40316;"><strong>Order Detail</strong></td>
                                                            <td align="right"></td>
                                                         </tr>
                                                         <tr>
@@ -139,7 +139,7 @@
                                                                 <p>Team,
                                                                     <br> <a href="#" target="_blank" >Shoppershawk</a> </p>
                                                             </td>
-                                                            <td align="right" valign="top"><span><strong>Delivery Address</strong><br>{{$orders['billing_address']}}<br></span>
+                                                            <td align="right" valign="top"><span><strong>Delivery Address</strong><br>{{isset($orders['shipping_address'])?$orders['shipping_address']:$orders['billing_address']}}&nbsp;&nbsp;{{isset($orders['shipping_landmark'])?$orders['shipping_landmark']:$orders['billing_landmark']}}&nbsp;&nbsp;{{isset($orders['shipping_pincode'])?$orders['shipping_pincode']:$orders['billing_pincode']}}<br></span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -156,7 +156,7 @@
                                                                 <span><strong>Download Mobile App</strong></span>
                                                                 <div class="stores-icons">
                                                                 
-                                                                </div></p>
+                                                                </div>
                                                                 
                                                             </td>
                                                             <td align="right" valign="top"><span><strong>Social Media</strong></span>
