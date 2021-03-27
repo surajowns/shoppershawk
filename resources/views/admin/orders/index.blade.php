@@ -64,7 +64,7 @@
 														<a href="javascript:void(0);">{{$value['users'][0]['name']}}</a>
 													</span>
 												</td>
-												<td>₹{{number_format($value['price'])}}</td>
+												<td>₹{{number_format($value['price'],2)}}</td>
 												<td>{{$value['quantity']}}</td>
 
 												<td>₹{{number_format($value['discount'],2)}}</td>
