@@ -135,13 +135,14 @@ body {
                             <td>{{$loop->iteration}}</td>
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
-                            <td data-label="Unit Price" class="tableitem">{{$value['price']}}</td>
+                            <td data-label="Unit Price" class="tableitem">{{number_format($value['price'],2)}}</td>
                             <td data-label="gst" class="tableitem">{{$value['products'][0]['gst']}}&nbsp;%</td>
-                            <td data-label="Total" class="tableitem">{{number_format($value['total_amount'])}}</td>
+                            <td data-label="Total" class="tableitem">{{number_format($value['total_amount'],2)}}</td>
                         </tr>
                          @endforeach
                         <tr>
-                            <td colspan="4" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
+                            <td colspan="2" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
+                            <td colspan="2" style="font-weight:bold;">Discount: {{number_format($orders['discount'],2)}}</td>
                             <td style="font-weight:bold;" colspan="1">Total Price (INR): </td>
                             <td style="font-weight:bold;">{{number_format($orders['total_amount'],2)}}</td>
                         </tr>                        
