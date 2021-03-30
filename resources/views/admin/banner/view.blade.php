@@ -81,5 +81,4 @@
 <script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
 <script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
 <script src="{{url('public/admin/assets/js/admin.js')}}"></script>
-<script>
 @stop

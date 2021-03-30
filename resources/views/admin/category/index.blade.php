@@ -47,7 +47,7 @@
                                <td class="text-right">
                                     <a href="{{url('admin/category/edit-category/'.$cat['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
                                     <a class="text-danger btn btn-sm bg-danger-light mr-2" href="{{url('admin/category/delete-category/'.$cat['id'])}}"onclick="return confirm('Are you sure you want to delete?');"> <i class="far fa-trash-alt mr-1"></i>Deleted</a></td>
-                                </td>
+                            
                           
                         </tr>
                         @endforeach
