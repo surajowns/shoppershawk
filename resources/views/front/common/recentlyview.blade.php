@@ -19,7 +19,7 @@
         </div>
         <div class="tab-content">
 
-                <div class="product_carousel product_style product_column5 owl-carousel">
+                <div class="product_carousel product_style recentlyview  owl-carousel">
              
                 @foreach($product as $productdetails)
                 

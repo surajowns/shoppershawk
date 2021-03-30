@@ -112,6 +112,33 @@
 		  }
     });
     
+
+    $('.recentlyview').on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
+		loop: true,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 8000,
+        dots:false,
+        navText: ['<i class="ion-ios-arrow-back"></i>','<i class="ion-ios-arrow-forward"></i>'],
+        responsiveClass:true,
+		responsive:{
+				0:{
+				items:1,
+			},
+            768:{
+				items:3,
+			},
+            992:{
+				items:4,
+			},
+           1200:{
+				items:5,
+			},
+
+		  }
+    });
+    
     
     function checkClasses(){
         var total = $('.product_column5 .owl-stage .owl-item.active').length;
