@@ -129,7 +129,7 @@
       <!-- Slimscroll JS -->
       <script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
       <!-- Custom JS -->
-	  @if(Request::segment(2)=='dashboard' or substr(Request::segment(3),0,3)=='add' )
+	  @if(Request::segment(2)=='dashboard' or substr(Request::segment(3),0,3)=='add' or Request::segment(2)=='rating' or Request::segment(2)=='notification' )
       <script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 	  @endif
       <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
