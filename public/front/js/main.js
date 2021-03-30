@@ -115,7 +115,7 @@
 
     $('.recentlyview').on('changed.owl.carousel initialized.owl.carousel', function (event) {
         $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
-		loop: true,
+		loop: false,
         nav: true,
         autoplay: true,
         autoplayTimeout: 8000,
