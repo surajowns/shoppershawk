@@ -183,11 +183,11 @@ class HomeController extends Controller
                
            $subcategory =CategoryModel::where('status',1)->where('slug',$request->cat)->first();
             //  dd($subcategory);
-           $result=Product::with('category')->where('supercategory_id',$subcategory['id'])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('slug','like','%'.$request->keywords.'%')->get();
+           $result=Product::with('category')->where('supercategory_id',$subcategory['id'])->where('name','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('slug','like','%'.$request->keywords.'%')->where('status',1)->get();
           }
           else{
 
-           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('slug','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->get();
+           $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('slug','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->get();
  
           }
           return response()->json($result);
