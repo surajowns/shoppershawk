@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{url('public/comingsoon/css/style.css')}}" />
 
         <link rel="stylesheet" href="{{url('public/comingsoon/css/responsive.css')}}" />
-        <title>Shoopershawk - Coming Soon Templates</title>
+        <title>Shoopershawk - Coming Soon </title>
         <link rel="icon" type="image/png" href="{{url('public/comingsoon/img/favicon.png')}}" />
     </head>
     <body>
