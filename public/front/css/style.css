@@ -11061,3 +11061,13 @@ label.star:before {
   justify-content: center;
   overflow: hidden;
 }
+
+#billing_state,#shipping_state{
+  border: 1px solid #ebebeb;
+    background: none;
+    height: 40px;
+    width: 100%;
+    padding: 0 20px;
+    color: #222222;
+    box-shadow: none;
+}

@@ -102,7 +102,7 @@
                            </div>
                            <div class="col-6 mb-20">
                               <label>State<span>*</span></label>
-                                 <select name="billing_state" id="billing_state" class="niceselect_option" required>
+                                 <select name="billing_state" id="billing_state" class="form-control" required>
                                  <option value="">Select State</option>
                                  <option value="Andhra Pradesh">Andhra Pradesh</option>
                                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="col-6 mb-20">
                                     <label>State<span>*</span></label>
-                                 <select name="shipping_state" id="shipping_state" class="niceselect_option">
+                                 <select name="shipping_state" id="shipping_state" class="form-control">
                                  <option value="">Select State</option>
                                  <option value="Andhra Pradesh">Andhra Pradesh</option>
                                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -323,7 +323,7 @@
                                        <strong>{{$data['products'][0]['name']}}</strong>
                                     </td>
                                     <td class="product_quantity">
-                                        <p><a href="javascript:void(0)" class="removecart" data-productid="{{$data['product_id']}}"><i class="fa fa-trash-o"></i></a>₹ {{number_format($data['price'],2)}}</p>
+                                        <p><a href="javascript:void(0)" class="removecart" data-productid="{{$data['product_id']}}"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>₹ {{number_format($data['price'],2)}}</p>
                                        <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['product_id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$data['quantity']}}" data-productid="{{$data['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['product_id']}}">+</span>
                                     </td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
@@ -518,8 +518,11 @@ $("#checkout_form").validate({
       bussiness_name:{
          required:"Please fill out this field.",
       },
+      billing_state: {
+            required: "Please select state ",
+        },
       shipping_name: {
-            required:true,
+            required:"Please fill out this field.",
         },
        
         shipping_email: {
@@ -528,11 +531,11 @@ $("#checkout_form").validate({
             maxlength: "The email name should less than or equal to 50 characters",
         },
         shipping_country: {
-            required:true,
+            required:"Please select country",
             maxlength:"The mobile number should not be greater than 10 digit"
         },
         shipping_state:{
-            require :true,
+            require :"Please select state" ,
         }
 
     },
