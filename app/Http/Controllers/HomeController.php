@@ -13,6 +13,7 @@ use Cart;
 use Session;
 use App\CMSModel;
 use App\BannerModel;
+use DB;
 
 class HomeController extends Controller
 {
@@ -247,6 +248,29 @@ class HomeController extends Controller
           $page=CMSModel::where('slug',$slug)->first();
           return view('front.pages.informationpage',compact('page','slug'));
       }
+
+      public function ContactUs(Request $request)
+      {
+          
+
+          if ($request->isMethod('post')) {
+              $validator = Validator::make($request->all(), [
+                      'email' => 'required',
+                      'name'	=> 'required',
+              ]);
+               
+
+         try{
+              $data=$request->except('_token');
+              DB::table('inquiry')->insert($data);
+              return back()->with(['success'=>"We will contact you soon"]);
+
+            }catch(\Exception $e){
+                return back()->with(['error'=>$e->getMessage()]);
+           }
+        }
+        return view('front.common.contactus');
+     }
 
 
 }

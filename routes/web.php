@@ -42,6 +42,7 @@ Route::any('price_filter','HomeController@Filterprice')->name('Produdt filter by
  
 Route::any('/user/createreview','RatingController@Createreview')->name('Review by users');
 
+Route::any('/user/contactus','HomeController@ContactUs')->name('Contact Us');
 
 
 //User Cart
@@ -199,6 +200,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
       Route::any('notification','NotificationController@index')->name('notification');
       Route::any('notification/seenORnotseen/{id}','NotificationController@ChangeSeen')->name('notification');
       Route::any('notification/ordernotification/{id}','NotificationController@orderDetails')->name('notification orders details');
+
+      
+      Route::any('contactus','ContactUsController@Index')->name('Enquiry List');
+      Route::any('contactus/delete/{id}','ContactUsController@deleteenquiry')->name('Enquiry List');
 
 
 

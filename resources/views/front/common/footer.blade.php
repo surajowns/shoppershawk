@@ -27,7 +27,7 @@
                               @foreach($pages as $page)
                                 <li><a href="{{url('/pages/'.$page->slug)}}">{{$page->title}}</a></li>
                                 @endforeach
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="{{url('/user/contactus')}}">Contact Us</a></li>
                                
                             </ul>
                         </div>
@@ -72,7 +72,7 @@
                                     <p>
                                         Hotline Free 24/7: <br />
                                         <strong><a href="tel:+0120-2512786;">+0120-2512786</a></strong>
-                                        <strong><a href="mailto:info@besthawk.com;">care@shoppershawk.com</a></strong>
+                                        <strong><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></strong>
                                     </p>
                                 </div>
                             </div>
