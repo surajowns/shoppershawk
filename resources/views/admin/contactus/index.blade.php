@@ -32,6 +32,7 @@
                                 <th>Email</th>
                                 <th>Subject</th>
                                 <th>Message</th>
+                                <th>Received On</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,6 +45,7 @@
                                <td>{{$value->email}}</td>
                                <td>{{$value->subject}}</td>
                                <td>{{$value->message}}</td>
+                               <td>{{date('d M Y h:i A',strtotime($value->created_at))}}</td>
                                <td><a class="text-danger btn btn-sm bg-danger-light mr-2" href="{{url('admin/contactus/delete/'.$value->id)}}"onclick="return confirm('Are you sure you want to delete?');"> <i class="far fa-trash-alt mr-1"></i>Deleted</a></td>
                         </tr>
                         @endforeach
