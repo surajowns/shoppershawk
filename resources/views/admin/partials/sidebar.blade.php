@@ -31,7 +31,7 @@
 							<a href="{{url('admin/notification')}}"><i class="far fa-bell"></i></span><span>Notification</span></a>
 						</li>
 						<li  class="{{Request::segment(2)=='contactus'?'active':''}}">
-							<a href="{{url('admin/contactus')}}"><i class="far fa-bell"></i></span><span>Enquiry List</span></a>
+							<a href="{{url('admin/contactus')}}"><i class="fa fa-inbox" aria-hidden="true"></i></span><span>Enquiry List</span></a>
 						</li>
 						<li>
 							<a href="{{url('admin/under-construction')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>

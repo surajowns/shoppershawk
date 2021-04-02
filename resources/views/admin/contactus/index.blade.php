@@ -1,19 +1,19 @@
 @extends('admin.layouts.master')
-@section('title','Contact Us')
+@section('title','Inquiry list')
 @section('content')
 <!-- Page Header -->
 <div class="page-header">
     <div class="row">
         <div class="col">
-            <h3 class="page-title">Enquiry</h3>
+            <h3 class="page-title">Inquiry List</h3>
         </div>
         <div class="col-auto text-right">
             <!-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                 <i class="fas fa-filter"></i>
             </a> -->
-            <a href="{{url('admin/category/add-category')}}" class="btn btn-primary add-button ml-3">
+            <!-- <a href="{{url('admin/category/add-category')}}" class="btn btn-primary add-button ml-3"> -->
                 <!-- <i class="fas fa-plus"></i> -->
-            </a>
+           <!-- </a> -->
         </div>
     </div>
 </div>
