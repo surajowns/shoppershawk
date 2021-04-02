@@ -8,9 +8,10 @@ use App\CMSModel;
 use Image;
 class CMSController extends Controller
 {
+   
     public function __construct()
     {
-        // $this->middleware('adminauth');
+        $this->middleware('CheckSession');
     }
 
     /**

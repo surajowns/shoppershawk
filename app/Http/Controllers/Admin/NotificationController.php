@@ -8,6 +8,11 @@ use App\NotificationModel;
 
 class NotificationController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('CheckSession');
+    }
     public function index(Request $request)
     {
         $notification=NotificationModel::with('users','order')->where('trash',0)->where('status',1)->orderBy('id','DESC')->get();

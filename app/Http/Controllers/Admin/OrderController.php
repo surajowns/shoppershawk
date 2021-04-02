@@ -11,6 +11,12 @@ use PDF;
 
 class OrderController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('CheckSession');
+    }
+    
     public function Index(Request $request)
     {
        
