@@ -2,7 +2,7 @@
     "use strict";
     jQuery(document).on("ready", function () {
         function makeTimer() {
-            var endTime = new Date("April 01, 2021 17:00:00 PDT");
+            var endTime = new Date("April 15, 2021  UTC");
             var endTime = Date.parse(endTime) / 1000;
             var now = new Date();
             var now = Date.parse(now) / 1000;
