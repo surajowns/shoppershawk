@@ -21,6 +21,9 @@
 .my-float{
 	margin-top:9px;
 }
+a.float:hover {
+    color: #fff !important;
+}
 </style>
 <div class="product_page_bg">
    <div class="container">
