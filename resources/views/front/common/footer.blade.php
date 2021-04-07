@@ -71,7 +71,7 @@
                                 <div class="contact_text">
                                     <p>
                                         Hotline Free 24/7: <br />
-                                        <strong><a href="tel:+0120-2512786;">+0120-2512786</a></strong>
+                                        <strong><a href="tel:+0120-2514786;">+0120-2514786</a></strong>
                                         <strong><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></strong>
                                     </p>
                                 </div>

@@ -64,7 +64,8 @@
                            <!-- <input min="1" max="100" value="1" type="number"> -->
                            <div class="button-buynow" id="button-3">
                               <div id="circle"></div>
-                            <a href="{{url('ajax/addtocart/'.$product['id'])}}">Buy Now</a>
+                              <a href="tel:+0120-2512786" >Call Us</a>
+                               <!-- <a href="{{url('ajax/addtocart/'.$product['id'])}}">Buy Now</a> -->
                            </div>
 
                            <div class="button-buynow1" id="button-4">
