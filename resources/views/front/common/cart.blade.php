@@ -3,7 +3,7 @@
 @section('content')
 <div class="cart_page_bg">
         <div class="container">
-        @if(!empty(Cart::getContent()->toArray() && !empty($cartdetails)))
+        @if(!empty(Cart::getContent()->toArray() || !empty($cartdetails)))
             <div class="shopping_cart_area">
                
              <div class="col-sm-3 p-3 mb-2 bg-gradient-warning text-dark"><h3>My Cart </h3></div>
@@ -128,7 +128,7 @@
                                         </div>
                                         @endif
                                         <div class="checkout_btn">
-                                         <a href="tel:+0120-2512786" class="btn btn-lg btn-block">Call Us</a>
+                                         <a href="tel:+0120-2512786" class="btn btn-lg btn-block">Call Us 0120-2512786</a>
                                             <!-- <a href="{{url('/user/checkout')}}">Proceed to Checkout</a> -->
                                         </div>
                                     </div>

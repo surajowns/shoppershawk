@@ -2,6 +2,26 @@
 @section('title','Product Details')
 @section('content')
 <?php $user=Auth::user();?>
+<style>
+.float{
+	/* position:fixed; */
+	width:50px;
+	height:50px;
+	/* bottom:40px; */
+	/* right:40px; */
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:9px;
+}
+</style>
 <div class="product_page_bg">
    <div class="container">
       <div class="product_details_wrapper mb-55">
@@ -64,7 +84,7 @@
                            <!-- <input min="1" max="100" value="1" type="number"> -->
                            <div class="button-buynow" id="button-3">
                               <div id="circle"></div>
-                              <a href="tel:+0120-2512786" >Call Us</a>
+                              <a href="tel:+0120-2512786" >Call Us 0120-2512786</a>
                                <!-- <a href="{{url('ajax/addtocart/'.$product['id'])}}">Buy Now</a> -->
                            </div>
 
@@ -72,6 +92,10 @@
                              <div id="circle1"></div>
                                <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a>
                            </div>
+
+                           <a href="https://api.whatsapp.com/send?phone=+91-8920213321&text=Hello Mam/Sir, I have a query..........." class="float" target="_blank">
+                              <i class="fa fa-whatsapp my-float"></i>
+                           </a>
 
                            <!-- <a href="{{url('ajax/addtocart/'.$product['id'])}}" class="button cart btn-lg" role="button">Buy Now</a> -->
                            <!-- <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a> -->
