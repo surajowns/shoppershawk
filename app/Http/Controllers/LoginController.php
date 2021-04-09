@@ -61,7 +61,7 @@ class LoginController extends Controller
 
 
                     Session::put('logid',Auth::User()['id']) ; 
-                    return redirect('/home')->with('success', 'Login Successfully');
+                    return redirect('/')->with('success', 'Login Successfully');
 
                     // return back()->with('success', 'Login Successfully');
                     
@@ -91,6 +91,6 @@ class LoginController extends Controller
         Session::forget('logid') ;  
         Session::forget('discount');
         Session::flush();
-        return redirect('/home');
+        return redirect('/');
     }
 }

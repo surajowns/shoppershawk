@@ -15,10 +15,10 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',function(){
-    return view('front.common.comingsoon');
-});
-Route::get('/home','HomeController@index');
+// Route::get('/',function(){
+//     return view('front.common.comingsoon');
+// });
+Route::get('','HomeController@index');
 Route::any('/register','HomeController@Register')->name('Register');
 Route::get('/login','HomeController@Login')->name('Login page');
 Route::post('/user/verifyuser','LoginController@validateUser')->name('Verify User');
