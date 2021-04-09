@@ -35,7 +35,7 @@
         <div class="column2 col-lg-6">
             <!-- desktop search -->
             <div class="search_container">
-                <form action="{{url('/products/'.'?cat=')}}" method="get">
+                <form action="{{url('/products/'.'?cat=')}}" method="get" autocomplete="off">
                     <div class="hover_category ">
                         <select class="selectoption" name="cat" id="categor" >
                             <option selected value="">All Categories</option>
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." name="keywords" value="{{isset($_GET['keywords'])?$_GET['keywords']:''}}" type="text" class="sample_search" required />
+                        <input placeholder="Search product..." name="keywords" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?$_GET['cat']:'')}}" type="text" class="sample_search" required />
                         <button type="submit">Search</button>
                     </div>
                    
@@ -66,7 +66,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="search_container-1">
-            <form action="{{url('/products/'.'?cat=')}}" method="get">
+            <form action="{{url('/products/'.'?cat=')}}" method="get" autocomplete="off">
                 @csrf
                     <div class="hover_category ">
                         <select class="selectoption" name="cat" id="categor" >
@@ -77,7 +77,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." name="keywords" type="text" value="{{isset($_GET['keywords'])?$_GET['keywords']:''}}"  class="sample_search" required />
+                        <input placeholder="Search product..." name="keywords" type="text" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?$_GET['cat']:'')}}"  class="sample_search" required />
                         <button type="submit">Search</button>
                     </div>
                    

@@ -57,21 +57,21 @@
                                     <li class="menu-item-has-children active">
                                         <a href="{{url('/home')}}">Home</a>
                                     </li>
-                                    <li class="menu-item-has-children">
+                                    <!-- <li class="menu-item-has-children">
                                         <a href="#">Category</a>
-                                    </li>
+                                    </li> -->
                                   
                                     <li class="menu-item-has-children">
                                         <a href="{{url('/user/account')}}">my account</a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">Contact Us</a>
+                                        <a href="{{url('user/contactus')}}">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="Offcanvas_footer">
                                 <span>
-                                    <a href="{{url('/')}}"><i class="fa fa-envelope-o"></i>info@Shoppershawk.com</a>
+                                    <a href="{{url('/')}}"><i class="fa fa-envelope-o"></i>care@Shoppershawk.com</a>
                                 </span>
                                 <ul>
                                     <li class="facebook">
