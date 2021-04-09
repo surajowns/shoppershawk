@@ -4415,13 +4415,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   visibility: visible;
 }
 .small_p_container .product_content {
-  width: 62%;
+  width:75%;
   padding-left: 15px;
   text-align: left;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .small_p_container .product_content {
-    width: 66%;
+    width:75%;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -4436,12 +4436,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .small_p_container .product_thumb {
-  width: 38%;
+  width:25%;
   padding: 0;
 }
 @media only screen and (max-width: 767px) {
   .small_p_container .product_thumb {
-    width: 29%;
+    width: 25%;
   }
 }
 .small_p_container .product_name h4 {
