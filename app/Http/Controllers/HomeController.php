@@ -132,7 +132,7 @@ class HomeController extends Controller
                   // dd($product);
                   $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
                   // dd($category);
-                  $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',isset($category['id'])?$category['id']:'')->orWhere('slug','like','%'.$_GET['cat'].'%')->orWhere('name','like','%'.$_GET['cat'].'%')->orWhere('model_no','like','%'.$_GET['cat'].'%')->where('status',1)->paginate(100);
+                  $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->where('supercategory_id',isset($category['id'])?$category['id']:'')->orWhere('slug','like','%'.$_GET['cat'].'%')->orWhere('name','like','%'.$_GET['cat'].'%')->orWhere('model_no','like','%'.$_GET['cat'].'%')->paginate(100);
                   
                 }
                
@@ -140,7 +140,7 @@ class HomeController extends Controller
           }
           if(isset($_GET['subcat'])){
              $subcategory =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['subcat'].'%')->first();
-             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->where('status',1)->paginate(100);
+             $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('status',1)->where('supercategory_id',$category['id'])->where('category_id',$subcategory['id'])->paginate(100);
           }
         $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
         $i=0;foreach($category as $cat){
