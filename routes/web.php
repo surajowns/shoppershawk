@@ -85,7 +85,7 @@ Route::any('/user/createorder/','OrderController@createOrder')->name('create ord
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
-    Route::get('/login','LoginController@adminLogin');
+    Route::get('/loginn','LoginController@adminLogin');
     Route::post('/validate','LoginController@validateUser');
     Route::get('/dashboard', 'LoginController@dashboard')->middleware('CheckSession');
     Route::any('/logout','LoginController@logout');
