@@ -32,7 +32,7 @@
 					<div class="login-right-wrap">
 						<div class="account-header">
 							<div class="account-logo text-center mb-4">
-								<a href="index.html">
+								<a href="{{url('/')}}">
 									<img src="{{url('public/admin/assets/img/logo-icon.png')}}" alt="" class="img-fluid">
 								</a>
 							</div>
