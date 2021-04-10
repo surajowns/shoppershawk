@@ -1,4 +1,9 @@
-<?php $pages=App\CMSModel::get(); ?>
+<?php 
+
+  $pages=App\CMSModel::get();
+  $sociallinks=App\SocialLinksModel::where('status',1)->get();
+
+?>
 <footer class="footer_widgets">
     <div class="footer_top">
         <div class="container">
@@ -24,9 +29,11 @@
                         <h3>Information</h3>
                         <div class="footer_menu">
                             <ul>
+                            @if(count($pages)>0)
                               @foreach($pages as $page)
                                 <li><a href="{{url('/pages/'.$page->slug)}}">{{$page->title}}</a></li>
                                 @endforeach
+                             @endif   
                                 <li><a href="{{url('/user/contactus')}}">Contact Us</a></li>
                                
                             </ul>
@@ -80,10 +87,14 @@
 
                         <div class="footer_social">
                             <ul>
+                             @if(count($sociallinks)>0)
+                               @foreach($sociallinks as $row)
                                 <li>
-                                    <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                                    <a class="{{strtolower($row->title)}}" href="{{$row->links}}"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
                                 </li>
-                                <li>
+                                @endforeach
+                                @endif
+                                <!-- <li>
                                     <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
                                 </li>
                                 <li>
@@ -91,7 +102,7 @@
                                 </li>
                                 <li>
                                     <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
