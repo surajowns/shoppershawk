@@ -128,8 +128,8 @@
                                         </div>
                                         @endif
                                         <div class="checkout_btn">
-                                         <a href="tel:+0120-2512786" class="btn btn-lg btn-block">Call Us 0120-2512786</a>
-                                            <!-- <a href="{{url('/user/checkout')}}">Proceed to Checkout</a> -->
+                                         <!-- <a href="tel:+0120-2512786" class="btn btn-lg btn-block">Call Us 0120-2512786</a> -->
+                                            <a href="{{url('/user/checkout')}}">Proceed to Checkout</a>
                                         </div>
                                     </div>
                                 </div>
