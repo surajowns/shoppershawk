@@ -49,7 +49,7 @@
                         @if(session('success'))
                                     <p class="text-center text-success">{{session('success')}}</p>
                         @endif
-						<form id="resetpasswordform" action="{{url('admin/reset_password/'.$user['token'])}}" method="post" enctype="multipart/form-data">
+						<form id="resetpasswordform" action="" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
  
 							<div class="form-group mb-4">
