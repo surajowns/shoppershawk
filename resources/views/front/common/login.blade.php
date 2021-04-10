@@ -154,7 +154,7 @@
 
                                 </p>
                                 <div class="login_submit">
-                                    <a href="#">Lost your password?</a>
+                                    <a href="{{url('/user/forgetpassword')}}">Lost your password?</a>
                                     <label for="remember" >
                                         <input  name="remember" id="remember" type="checkbox" checked>
                                         Remember me

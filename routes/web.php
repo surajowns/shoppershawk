@@ -24,6 +24,12 @@ Route::get('/login','HomeController@Login')->name('Login page');
 Route::post('/user/verifyuser','LoginController@validateUser')->name('Verify User');
 Route::any('/user/logout','LoginController@logout')->name('User Logout');
 
+Route::any('/user/forgetpassword','LoginController@ForgetPassword')->name('Forget Password');
+
+Route::any('/user/resetpassword/{token}','LoginController@ResetPassword')->name('Reset Password');
+
+
+
 Route::any('/user/account','UserController@Index')->name('User Account');
 Route::any('/user/profile','UserController@UpdateProfile')->name('User Profile Update');
 Route::any('/order-details/{order_id}','UserController@OrderDetails')->name('Order Product details');

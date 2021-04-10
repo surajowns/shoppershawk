@@ -23,4 +23,19 @@ if (! function_exists('OrderEmail')) {
     }
 }
 
+if (! function_exists('ForgetPasswordEmail')) {
+  function ForgetPasswordEmail($user,$token) {
+           
+      $to_name =$user['name'];
+      $to_email =$user['email'];
+      $data = array('user'=>$user,'token'=>$token);
+    
+      Mail::send('front.pages.passwordresetemail', $data, function($message) use ($to_name, $to_email) {
+      $message->to($to_email, $to_name)->subject('Reset Password Link');
+      $message->from('care@shoppershawk.com','Shoppershawk');
+      });
+  }
+}
+
+
 ?>
