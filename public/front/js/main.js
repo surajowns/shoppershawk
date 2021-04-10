@@ -87,7 +87,7 @@
        $('.product_column5').on('changed.owl.carousel initialized.owl.carousel', function (event) {
         $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
         autoplay: true,
-		loop:false,
+		loop:true,
         nav: true,
         autoplay: false,
         autoplayTimeout: 8000,
@@ -163,7 +163,7 @@
        $('.product_column4').on('changed.owl.carousel initialized.owl.carousel', function (event) {
         $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
         autoplay: true,
-		loop: false,
+		loop:true,
         nav: true,
         autoplay: false,
         autoplayTimeout: 8000,
@@ -215,7 +215,7 @@
        $('.product_column3').on('changed.owl.carousel initialized.owl.carousel', function (event) {
         $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
         autoplay: true,
-		loop:false,
+		loop:true,
         nav: true,
         autoplay: false,
         autoplayTimeout: 8000,
