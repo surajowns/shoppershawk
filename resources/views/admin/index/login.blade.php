@@ -56,7 +56,7 @@ function showPosition(position) {
 					<div class="login-right-wrap">
 						<div class="account-header">
 							<div class="account-logo text-center mb-4">
-								<a href="{{url('public/admin/login')}}">
+								<a href="{{url('/admin/login')}}">
 									<img src="{{url('public/admin/assets/img/logo-icon.png')}}" alt="" class="img-fluid">
 								</a>
 							</div>
