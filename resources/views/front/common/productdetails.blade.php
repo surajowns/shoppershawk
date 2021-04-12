@@ -88,7 +88,7 @@ a.float:hover {
                            <div class="button-buynow" id="button-3">
                               <div id="circle"></div>
                               <!-- <a href="tel:+0120-2512786" >Call Us 0120-2512786</a> -->
-                               <a href="{{url('ajax/addtocart/'.$product['id'])}}">Buy Now</a>
+                               <a href="{{url('ajax/addtocart/'.$product['id'])}}">Buy Now 12344</a>
                            </div>
 
                            <div class="button-buynow1" id="button-4">
