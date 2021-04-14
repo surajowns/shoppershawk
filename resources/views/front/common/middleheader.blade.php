@@ -41,7 +41,10 @@
 
                 @foreach($categories as $cat)
                         <li>
-                            <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a>
+                            <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">
+                            <img src="{{url('public/category/'.$cat['image'])}}" alt="">
+                            <br>
+                            {{$cat['name']}}</a>
                             <!-- <ul class="sub_menu">
                                 @foreach($subcategories as $subcat)
                                 @if($cat['id']==$subcat['parent_id']) 
