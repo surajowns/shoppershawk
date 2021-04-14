@@ -31,6 +31,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Brand</th>
                                 <th>Model No.</th>
                                 <th>Price</th>
@@ -49,8 +50,9 @@
 
                                <td>{{$loop->iteration}}</td>
                                <td style="width: 345px !important; overflow: auto;display: flex;">{{$product['name']}}</td>
+                               <td>{{$product['category']['name']}}</td>
                                <td>{{$product['product_brand']['name']}}</td>
-                                 <td>{{$product['model_no']}}</td>
+                               <td>{{$product['model_no']}}</td>
                                <td>{{$product['price']}}</td>
                                <td>{{$product['selling_price']}}</td>
                                <td>{{$product['qty']}}</td>
