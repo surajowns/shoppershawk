@@ -42,7 +42,7 @@
                 @foreach($categories as $cat)
                         <li>
                             <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">
-                            <img src="{{url('public/category/'.$cat['image'])}}" alt="">
+                            <img src="{{url('public/category/'.$cat['image'])}}" alt="" width='50'>
                             <br>
                             {{$cat['name']}}</a>
                             <!-- <ul class="sub_menu">
