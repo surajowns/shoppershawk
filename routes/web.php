@@ -88,7 +88,7 @@ Route::any('/user/createorder/','OrderController@createOrder')->name('create ord
   Route::get('user/payment', 'RazorpayController@pay')->name('pay');
 
   // route for make payment request using post method
-  Route::post('dopayment', 'RazorpayController@dopayment')->name('dopayment');
+  Route::post('user/dopayment', 'RazorpayController@dopayment')->name('dopayment');
 
 
 
