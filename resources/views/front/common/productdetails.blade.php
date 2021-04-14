@@ -96,7 +96,7 @@ a.float:hover {
                                <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a>
                            </div>
 
-                           <a href="https://api.whatsapp.com/send?phone=+91-8920213321&text=Hello Mam/Sir, I have a query..........." class="float" target="_blank">
+                           <a href="https://api.whatsapp.com/send?phone=+91-8920213321&text=Hello Mam/Sir, I have a query........... {{Request::fullUrl()}}" class="float" target="_blank">
                               <i class="fa fa-whatsapp my-float"></i>
                            </a>
 
