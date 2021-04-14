@@ -36,12 +36,13 @@
                                 <th>Price</th>
                                 <th>Selling Price</th>
                                 <th>In Stock</th>
+                                <th>Product Type</th>
                                 <th>Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                       
+                        
                         @foreach($data as $product)
                         
                         <tr>
@@ -53,6 +54,7 @@
                                <td>{{$product['price']}}</td>
                                <td>{{$product['selling_price']}}</td>
                                <td>{{$product['qty']}}</td>
+                               <td>{{$product['product_type']['name']}}</td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/products/'.$product['id'].'/'.$product['status'])}}">{{$product['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">
                                     <a href="{{url('admin/product/edit-product/'.$product['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>

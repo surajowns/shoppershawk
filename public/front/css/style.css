@@ -1130,6 +1130,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: relative;
   color: #222222;
 }
+.main_menu nav > ul > li > a img{
+ width: 50px;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main_menu nav > ul > li > a {
     font-size: 13px;
