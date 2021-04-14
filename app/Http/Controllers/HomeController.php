@@ -38,7 +38,7 @@ class HomeController extends Controller
             $data['role']=2;
             
             User::create($data); 
-            return redirect('/home')->with('success','You are registered successfully');
+            return redirect('/')->with('success','You are registered successfully');
 
           }catch(\Exception $e){
             dd($e->getMessage());
