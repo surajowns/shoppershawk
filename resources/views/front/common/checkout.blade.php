@@ -281,11 +281,11 @@
                         <div class="payment_method">
                            <div class="panel-default">
 
-                              <input id="payment_defult" name="order_type" value="cod" type="radio" data-target="createp_account" />
-                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD</label>
+                              <!-- <input id="payment_defult" name="order_type" value="cod" type="radio" data-target="createp_account" /> -->
+                              <!-- <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD</label> -->
                               
-                              <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" />
-                              <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online</label>
+                              <!-- <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" /> -->
+                              <!-- <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online</label> -->
                              <br>
                               @if($errors->first('order_type'))
                               <span class="text-danger">Please Select Payment Method</span>
@@ -297,7 +297,7 @@
                               </div> -->
                            </div>
                            <div class="order_button">
-                              <button type="submit">Proceed to Pay</button>
+                              <button id="paybtn" type="submit">Proceed to Pay</button>
                            </div>
                         </div>
                      </form>
@@ -540,6 +540,8 @@ $("#checkout_form").validate({
 
     },
 })
+}else{
+
 }
 });
 </script>
@@ -597,5 +599,67 @@ google.maps.event.addDomListener(window, 'load', function () {
         })
     })
 
+</script>
+<script>
+    $('#rzp-footer-form').submit(function (e) {
+        var button = $(this).find('button');
+        var parent = $(this);
+        button.attr('disabled', 'true').html('Please Wait...');
+        $.ajax({
+            method: 'get',
+            url: this.action,
+            data: $(this).serialize(),
+            complete: function (r) {
+                console.log('complete');
+                console.log(r);
+            }
+        })
+        return false;
+    })
+</script>
+
+<script>
+    function padStart(str) {
+        return ('0' + str).slice(-2)
+    }
+
+    function demoSuccessHandler(transaction) {
+        // You can write success code here. If you want to store some data in database.
+        $("#paymentDetail").removeAttr('style');
+        $('#paymentID').text(transaction.razorpay_payment_id);
+        var paymentDate = new Date();
+        $('#paymentDate').text(
+                padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
+                );
+
+        $.ajax({
+            method: 'post',
+            url: "{!!route('dopayment')!!}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "razorpay_payment_id": transaction.razorpay_payment_id
+            },
+            complete: function (r) {
+                console.log('complete');
+                console.log(r);
+            }
+        })
+    }
+</script>
+<script>
+    var options = {
+        key: "{{ env('RAZORPAY_KEY') }}",
+        amount: '247500',
+        name: 'Shoppershawk',
+        description: 'Order Id:',
+        image: '{{url("public/front/img/logo/logo.png")}}',
+        handler: demoSuccessHandler
+    }
+</script>
+<script>
+    window.r = new Razorpay(options);
+    document.getElementById('paybtn').onclick = function () {
+        r.open()
+    }
 </script>
 @stop

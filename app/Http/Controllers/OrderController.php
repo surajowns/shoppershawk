@@ -76,7 +76,7 @@ class OrderController extends Controller
               }
             if($user){
             $validatedData = $request->validate([
-                  'order_type' => 'required',
+                  // 'order_type' => 'required',
                   'billing_state'=>'required'
               ]);
              
