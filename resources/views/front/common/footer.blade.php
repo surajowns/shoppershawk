@@ -115,7 +115,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
-                        <p>Copyright &copy; 2021 <a href="javascript:void(0)">BestHawk Infosystem Pvt. Ltd.</a> All Right Reserved.</p>
+                        <p>Copyright &copy; 2021 <a href="javascript:void(0)">Best Hawk Infosystem Pvt. Ltd.</a> All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

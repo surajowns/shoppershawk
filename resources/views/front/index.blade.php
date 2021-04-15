@@ -20,6 +20,8 @@
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     </head>
     <body>
         <!--Offcanvas menu area start-->
@@ -184,7 +186,25 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-        
+        <div class="newletter-popup">
+            <div id="boxes" class="newletter-container">
+                <div id="dialog" class="window">
+                    <div id="popup2">
+                        <span class="b-close"><span>close</span></span>
+                    </div>
+                    <div class="box">
+                        <div class="newletter-title">
+                            <h2>Sale Starting on 20th April</h2>
+                        </div>
+                        <div class="box-content newleter-content">
+                           <img src="{{url('public/newsletter/sale.jpeg')}}" alt="" width="400">
+                        </div>
+                        <!-- /.box-content -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
         <!--news letter popup start-->
 
         <!-- JS

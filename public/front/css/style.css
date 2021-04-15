@@ -9976,7 +9976,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*  23. newsletter popup css here */
 .newletter-popup {
   background: #fff;
-  top: 50% !important;
+  top: 35% !important;
   margin-top: -179px;
   position: fixed !important;
   padding: 50px;
@@ -9994,6 +9994,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 30px;
   text-transform: uppercase;
   margin: 0 0 30px;
+  color: #c40316;
+  font-family: 'Righteous', cursive;
 }
 @media only screen and (max-width: 767px) {
   #boxes .newletter-title h2 {
