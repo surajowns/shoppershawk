@@ -4,9 +4,12 @@
     <head>
          <?php 
             
-             $product=App\Product::where('slug',Request::segment(2))->pluck('id');
-             $Productimg=App\ProductImage::whereIn('product_id',$product)->first();
-         
+             $product=App\Product::where('slug',Request::segment(2))->first();
+            //  dd( $product);
+            if(!empty($product)){
+             $Productimg=App\ProductImage::where('product_id',$product['id'])->first();
+             }
+            //  dd($Productimg);
          
          ?>
         <meta charset="utf-8" />
@@ -20,15 +23,15 @@
         <meta property="og:title" content="{{Request::segment(2)}}">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{Request::url()}}">
-        <meta property="og:image" content="{{url('public/product_image/'.$Productimg['image'])}}">
+        <meta property="og:image" content="{{url('public/product_image/'. (isset($Productimg)?$Productimg['image']:''))}}">
         <meta property="og:image:width" content="600">
         <meta property="og:image:height" content="600">
         <meta property="og:description" content="{{Request::segment(2)}}">
         <meta property="og:site_name" content="https://shoppershawk.com/">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{Request::segment(2)}}">
-        <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="{{url('public/product_image/'.$Productimg['image'])}}">
+        <meta name="twitter:description" content="{{isset($product)?$product['description']:''}}">
+        <meta name="twitter:image" content="{{url('public/product_image/'. (isset($Productimg)?$Productimg['image']:''))}}">
             
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
