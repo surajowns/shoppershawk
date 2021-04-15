@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post" action="{{url('/user/dopayment/')}}" id="checkout_form">
+                     <form method="post"  id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -601,7 +601,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 
 </script>
 <script>
-    $('#rzp-footer-form').submit(function (e) {
+    $('#').submit(function (e) {
         var button = $(this).find('button');
         var parent = $(this);
        // button.attr('disabled', 'true').html('Please Wait...');

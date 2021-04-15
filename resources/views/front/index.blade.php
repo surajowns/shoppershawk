@@ -7,6 +7,11 @@
         <title>Shoppershawk</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Mobile App & Web Development, Digital Marketing Agency DUBAI" />
+	<meta property="og:description" content="SVASTECH is the leading Mobile App & Web Development and Digital Marketing agency Dubai 	who believes in collaboration, cooperation and productivity." />
+	<meta property="og:image" content="{{url('public/front/img/logo/logo.png')}}" />
+	<meta name="twitter:title" content="Mobile App & Web Development, Digital Marketing Agency DUBAI" />
+<meta name="twitter:description" content="SVASTECH is the leading Mobile App & Web Development and Digital Marketing agency Dubai 	who believes in collaboration, cooperation and productivity." />
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
 
