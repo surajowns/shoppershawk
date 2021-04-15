@@ -7,11 +7,6 @@
         <title>Shoppershawk</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Mobile App & Web Development, Digital Marketing Agency DUBAI" />
-	    <meta property="og:description" content="SVASTECH is the leading Mobile App & Web Development and Digital Marketing agency Dubai 	who believes in collaboration, cooperation and productivity." />
-	    <meta property="og:image" content="images/logos/logo.png" />
-	    <meta name="twitter:title" content="Mobile App & Web Development, Digital Marketing Agency DUBAI" />
-        <meta name="twitter:description" content="SVASTECH is the leading Mobile App & Web Development and Digital Marketing agency Dubai 	who believes in collaboration, cooperation and productivity." />
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
 
@@ -26,9 +21,6 @@
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- Include whatever JQuery which you are using -->
-<!-- Other js and css scripts -->
     </head>
     <body>
         <!--Offcanvas menu area start-->
@@ -176,8 +168,6 @@
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 
         @yield('javascript')
         <script>
