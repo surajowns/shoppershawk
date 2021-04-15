@@ -601,24 +601,6 @@ google.maps.event.addDomListener(window, 'load', function () {
 
 </script>
 <script>
-    $('#').submit(function (e) {
-        var button = $(this).find('button');
-        var parent = $(this);
-       // button.attr('disabled', 'true').html('Please Wait...');
-        $.ajax({
-            method: 'get',
-            url: this.action,
-            data: $(this).serialize(),
-            complete: function (r) {
-                console.log('complete');
-                console.log(r);
-            }
-        })
-        return false;
-    })
-</script>
-
-<script>
     function padStart(str) {
         return ('0' + str).slice(-2)
     }
@@ -657,7 +639,38 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 </script>
 <script>
-    window.r = new Razorpay(options);
+    $('#checkout_form').submit(function (e) {
+        var button = $(this).find('button');
+        var parent = $(this);
+        //alert($(this).serialize())
+        // button.attr('disabled', 'true').html('Please Wait...');
+        $.ajax({
+            method: 'post',
+            url:'{{url("/user/dopayment")}}',
+            data: $(this).serialize(),
+            complete: function (r) {
+               if(r.statusText==='Bad Request'){
+                  toastr.error(r.responseJSON.error);
+               }else if(r.responseJSON.error){
+                  toastr.error(r.responseJSON.error);
+                
+               }else{
+                  console.log('dfdf');
+                  console.log('complete');
+                  console.log(r);
+                   window.r = new Razorpay(options);
+                    r.open();
+               }
+               
+            }
+        })
+        return false;
+    })
+</script>
+
+
+<script>
+   // window.r = new Razorpay(options);
    //  document.getElementById('paybtn').onclick = function () {
    //      r.open()
    //  }

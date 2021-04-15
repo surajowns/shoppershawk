@@ -42,12 +42,7 @@ class RazorpayController extends Controller
         // dd($request->all());
 
         $user=Auth::user();
-        if($request->gst_no != ''){
-            $validator = Validator::make($request->all(), [
-                'gst_no' => 'required|min:15|max:15',
-                'bussiness_name'=>'required'
-            ]);   
-          }
+        
         if($user){
         $validator = Validator::make($request->all(), [
             'billing_name' => 'required',
@@ -124,7 +119,7 @@ class RazorpayController extends Controller
             
          }
          else {
-              return back()->with('error','something went wrong');
+              return response()->json(['error'=>'something went wrong']);
          }
          $content="Order from ".$user['name']." with Order No  ".$order_no;
          NotificationModel::insert(['user_id'=>$user['id'],'content'=>$content,'type'=>$order_no]);
@@ -133,16 +128,16 @@ class RazorpayController extends Controller
         
           $emailsent= OrderEmail($user,$order_no,$orders);
          if($emailsent){
-         return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+         return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
          }else{
-         return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
+         return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
          }
-          }catch(\Exception $e){
+        }catch(\Exception $e){
             DB::rollback();    
-            return back()->with('error',$e->getMessage());
-      } 
+            return response()->json(['error'=>$e->getMessage()]);
+       } 
     }else {
         return response()->json(['error'=>'login first']);
       }
