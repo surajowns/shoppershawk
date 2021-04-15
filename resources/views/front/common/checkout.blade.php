@@ -301,6 +301,12 @@
                            </div>
                         </div>
                      </form>
+                     <div id="paymentDetail" style="display: none">
+                <center>
+                    <div>paymentID: <span id="paymentID"></span></div>
+                    <div>paymentDate: <span id="paymentDate"></span></div>
+                </center>
+            </div>
                   </div>
                </div>
                <div class="col-lg-6 col-md-6">
@@ -607,16 +613,18 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function demoSuccessHandler(transaction) {
         // You can write success code here. If you want to store some data in database.
+        console.log(transaction);
         $("#paymentDetail").removeAttr('style');
         $('#paymentID').text(transaction.razorpay_payment_id);
+
         var paymentDate = new Date();
         $('#paymentDate').text(
                 padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
                 );
-
+         
         $.ajax({
             method: 'post',
-            url: "{!!route('dopayment')!!}",
+            url: "{{url('user/orderupdate')}}",
             data: {
                 "_token": "{{ csrf_token() }}",
                 "razorpay_payment_id": transaction.razorpay_payment_id
@@ -631,9 +639,9 @@ google.maps.event.addDomListener(window, 'load', function () {
 <script>
     var options = {
         key: "{{ env('RAZORPAY_KEY') }}",
-        amount: '247500',
-        name: 'Shoppershawk',
-        description: 'Order Id:',
+        amount: parseInt($('.cart_amount').last().text().slice(1)*100),
+        name: 'SHOPPERSHAWK',
+        description: 'SHOP EASY PAY EASY',
         image: '{{url("public/front/img/logo/logo.png")}}',
         handler: demoSuccessHandler
     }
@@ -658,8 +666,9 @@ google.maps.event.addDomListener(window, 'load', function () {
                   console.log('dfdf');
                   console.log('complete');
                   console.log(r);
-                   window.r = new Razorpay(options);
-                    r.open();
+                  //  window.r = new Razorpay(options);
+                  var rzp = new Razorpay(options);
+                  rzp.open();
                }
                
             }

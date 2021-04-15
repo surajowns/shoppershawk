@@ -144,4 +144,9 @@ class RazorpayController extends Controller
                 
 
     }
+
+    public function Orderupdate(Request $request)
+    {
+         return response()->json(['status'=>'success']);
+    }
 }
