@@ -58,7 +58,7 @@
                             <div id="menu" class="text-left">
                                 <ul class="offcanvas_main_menu">
                                     <li class="menu-item-has-children active">
-                                        <a href="{{url('/home')}}">Home</a>
+                                        <a href="{{url('/')}}">Home</a>
                                     </li>
                                     <!-- <li class="menu-item-has-children">
                                         <a href="#">Category</a>
