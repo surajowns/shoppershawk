@@ -20,7 +20,7 @@
         <meta name="title" content="">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <meta property="og:title" content="{{Request::segment(2)}}">
+        <meta property="og:title" content="{{Request::segment(2)}}.'ddfff'">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{Request::url()}}">
         <meta property="og:image" content="{{url('public/product_image/'. (isset($Productimg)?$Productimg['image']:''))}}">
@@ -29,7 +29,7 @@
         <meta property="og:description" content="{{isset($product)?$product['description']:''}}">
         <meta property="og:site_name" content="https://shoppershawk.com/">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{Request::segment(2)}}">
+        <meta name="twitter:title" content="{{Request::segment(2)}}.'1234566'">
         <meta name="twitter:description" content="{{isset($product)?$product['description']:''}}">
         <meta name="twitter:image" content="{{url('public/product_image/'. (isset($Productimg)?$Productimg['image']:''))}}">
             
