@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post" action="{{url('/user/createorder/')}}" id="checkout_form">
+                     <form method="post" action="{{url('/user/dopayment/')}}" id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -297,7 +297,7 @@
                               </div> -->
                            </div>
                            <div class="order_button">
-                              <button id="paybtn" type="submit">Proceed to Pay</button>
+                              <button  type="submit">Proceed to Pay</button>
                            </div>
                         </div>
                      </form>
@@ -604,7 +604,7 @@ google.maps.event.addDomListener(window, 'load', function () {
     $('#rzp-footer-form').submit(function (e) {
         var button = $(this).find('button');
         var parent = $(this);
-        button.attr('disabled', 'true').html('Please Wait...');
+       // button.attr('disabled', 'true').html('Please Wait...');
         $.ajax({
             method: 'get',
             url: this.action,
@@ -658,8 +658,8 @@ google.maps.event.addDomListener(window, 'load', function () {
 </script>
 <script>
     window.r = new Razorpay(options);
-    document.getElementById('paybtn').onclick = function () {
-        r.open()
-    }
+   //  document.getElementById('paybtn').onclick = function () {
+   //      r.open()
+   //  }
 </script>
 @stop

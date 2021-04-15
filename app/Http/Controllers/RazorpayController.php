@@ -15,6 +15,7 @@ use App\Product;
 use Carbon;
 use App\CouponModel;
 use App\NotificationModel;
+use App\User;
 
 class RazorpayController extends Controller
 {
@@ -39,6 +40,15 @@ class RazorpayController extends Controller
     public function dopayment(Request $request)
     {
         // dd($request->all());
+
+        $user=Auth::user();
+        if($request->gst_no != ''){
+            $validator = Validator::make($request->all(), [
+                'gst_no' => 'required|min:15|max:15',
+                'bussiness_name'=>'required'
+            ]);   
+          }
+        if($user){
         $validator = Validator::make($request->all(), [
             'billing_name' => 'required',
             'billing_email'=>'required',
@@ -56,106 +66,86 @@ class RazorpayController extends Controller
                  'status' => 400,
             ],400);
         }
+        DB::beginTransaction();
         try{
+         $data=$request->except('_token');
 
-        $user= User::where('id',$request->user_id)->first();
-        // dd($user);
-        if(!$user)
-        {
-            return response()->json([
-                'message' => 'user not exist',
-                 'status' => 400,
-            ],400);            
-        }
-        $address = DeliveryAddressModel::where('id',$request->address_id)->first();
-        // dd($address);
-        if(!$address)
-        {
-            return response()->json([
-                'message' => 'address id not exist',
-                 'status' => 400,
-            ],400);            
-        }
-        $cart=CartModel::where('user_id',$request->user_id)->get();
-            // dd(count($cart));
-        if(count($cart)<0)
-        {
-            return response()->json([
-                'message' => 'cart is empty',
-                 'status' => 400,
-            ],400);            
-        }
-        $grand_total=0;
-        $total_item_price=0;
-        $quantity=0;
-        $restaurant_id=0;
-        $discount=0;
-        $shipping=0;
-        $coupon='dvs';
-        foreach($cart as $details){
-          $total_item_price= $total_item_price + $details['price']*$details['quantity'];
-          $quantity=$quantity+ $details['quantity'];
-          $restaurant_id=$details['restaurant_id'];
+         $cartsdetails=CartModel::where('user_id',$user->id)->get();
+         $total=0;
+         $quantity=0;
+         $discount=0;
+         foreach($cartsdetails as $value){
+               $quantity= $quantity+$value['quantity'];
+             $total=$total+$value['quantity']*$value['price'] ;  
+         }
+ 
+         $discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+ 
+         $data['price']=$total;
+         $data['user_id']=$user['id'];
+         $data['price']=$total;
+         $data['quantity']=$quantity;
+         $data['status']=1;
+         $data['total_amount']=$total - $discount;
+         $data['coupon'] =session()->has('code')?Session::get('code'):'';
+         $data['discount'] = $discount;
+       
 
-          
-        }
-        $total_items=count($cart);
-        // print_r($cart);
-        $grand_total= $grand_total+ $total_item_price+  $shipping;
-       $order=new Order;
-       $order->user_id=$request->user_id;;
-       $order->restaurant_id=$restaurant_id;
-       $order->type=$request->type;
-       $order->total_items= $quantity;
-       $order->mobile_number=$user->mobile;
-       $order->pincode=$address->pin_code;
-       $order->address_id=$request->address_id;
-       $order->status=0;
-       $order->price=$total_item_price;
-       $order->discount=$discount;
-       $order->total_price=$grand_total;
-       $order->coupon=$coupon;
+         $data['created_at']=date('Y-m-d h:i:s');
+         $date = Carbon\Carbon::now('Asia/Kolkata');
+         $created_at= $date->toDateTimeString();
+         $data['created_at']=$created_at;
+         $data['updated_at']=$created_at;
 
-       $order->save();
-       if($order->save()){
-           Order::where('id',$order->id)->update(['order_no'=> "VT000".$order->id]);
-        foreach($cart as $row){
+         $order=Order::insert($data);
+         if($order){
+              $order_id= Order::orderBy('id', 'DESC')->first();
+              $order_no='SHOPPERSHAWK#'.$order_id['id'];
+              Order::where('id',$order_id['id'])->update(['order_no'=>$order_no]);
+              $cartsdetails=CartModel::where('user_id',$user->id)->get();
 
-            $Orderdetail=array(
-               "order_id"=>$order->id,
-                "user_id"=>$request->user_id,
-                "restaurant_id"=>$restaurant_id,
-                "item_id"=>$row['item_id'],
-                "quantity"=>$row['quantity'],
-                "price"=>$row['price'],
-                "total_price"=>$row['price']*$row['quantity'],
-            );
-            Orderdetail::create($Orderdetail);
+              foreach($cartsdetails as $details){
+                    $ordersdetails=new OrderDetails;
+                    $ordersdetails->user_id=$user['id'];
+                    $ordersdetails->order_id=$order_id['id'];
+                    $ordersdetails->product_id=$details['product_id'];
+                    $ordersdetails->price=$details['price'];
+                    $ordersdetails->quantity=$details['quantity'];
+                    $ordersdetails->total_amount=$details['quantity']*$details['price'];
+                    $ordersdetails->status=2;
+                    $ordersdetails->save();
+                    Product::where('id',$details['product_id'])->decrement('qty',$details['quantity']);
 
-            $userOrder=Order::where('id',$order->id)->first();
-            $order_no=$userOrder['order_no'];
-            $vendor=VendorModel::where('id',$restaurant_id)->first();
-            $venoderDetails=User::where('id',$vendor['user_id'])->first();
-            $userMobile=$user['mobile'].',';
-            $vendorMobile=$venoderDetails['mobile'].',';
-            $adminDetails=adminDetails();
-            $admin_nunber=$adminDetails->mobile;
-            $mobile_number=$user['mobile'].','.$venoderDetails['mobile'].','.$admin_nunber;
+              }
+              Session::forget('code'); 
+              Session::forget('discount_amount') ; 
+              Cart::clear();
+              CartModel::where('user_id',$user['id'])->delete();
+            
+         }
+         else {
+              return back()->with('error','something went wrong');
+         }
+         $content="Order from ".$user['name']." with Order No  ".$order_no;
+         NotificationModel::insert(['user_id'=>$user['id'],'content'=>$content,'type'=>$order_no]);
+         DB::commit();
+         $orders=Order::with('orderdetails','orderdetails.products','orderdetails.productImage')->orderBy('id','DESC')->first();
+        
+          $emailsent= OrderEmail($user,$order_no,$orders);
+         if($emailsent){
+         return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
-            $this->sendSms($mobile_number, $order_no);
-            // $result=$this->orderEmail($userOrder,$userOrderItems,$address,$user, $vendor);
+         }else{
+         return redirect('user/thanku')->with(['order_no'=>$order_no,'order_id'=>$order_id['id']]);
 
-        }
-        CartModel::where('user_id',$request->user_id)->delete();
-
-        return response()->json(['message' =>'Your order successfully placed. We will deliver your order soon.','status' => 200]);
-
-       }
-
-
-        }catch(\Exception $e){
-            return response()->json(['data' => $e->getMessage(),'status' => 400]);
-        }
+         }
+          }catch(\Exception $e){
+            DB::rollback();    
+            return back()->with('error',$e->getMessage());
+      } 
+    }else {
+        return response()->json(['error'=>'login first']);
+      }
                 
 
     }
