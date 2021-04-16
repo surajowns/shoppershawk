@@ -639,7 +639,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 <script>
     var options = {
         key: "{{ env('RAZORPAY_KEY') }}",
-        amount: parseInt($('.cart_amount').last().text().slice(1)*100),
+        amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
         name: 'SHOPPERSHAWK',
         description: 'SHOP EASY PAY EASY',
         image: '{{url("public/front/img/logo/logo.png")}}',
