@@ -5,8 +5,10 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title>Shoppershawk</title>
-        <meta name="description" content="" />
+        <meta name="description" content="We are excited to announce the release of our #shoppershawk retail outlet to extraordinary our products/services, and we believe that #shoppershawk will help you enjoy your experience with us even more." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="title" content="Shoppershawk retail outlet to extraordinary our products/services">
+
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
 
