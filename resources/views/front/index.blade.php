@@ -199,7 +199,7 @@
                     </div>
                     <div class="box">
                         <div class="newletter-title">
-                            <h2>Sale Starting on 20th April</h2>
+                            <!-- <h2>Sale Starting on 20th April</h2> -->
                         </div>
                         <div class="box-content newleter-content">
                            <img src="{{url('public/newsletter/sale.jpeg')}}" alt="" width="400">

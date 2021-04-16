@@ -9975,13 +9975,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*modal css end*/
 /*  23. newsletter popup css here */
 .newletter-popup {
-  background: #fff;
-  top: 35% !important;
-  margin-top: -179px;
-  position: fixed !important;
-  padding: 50px;
-  text-align: center;
-  display: none;
+    background: #fff;
+    top: 50% !important;
+    margin-top: -179px;
+    position: fixed !important;
+    padding: 0px;
+    text-align: center;
+    display: none;
 }
 @media only screen and (max-width: 767px) {
   .newletter-popup {
