@@ -55,7 +55,7 @@ class CartController extends Controller
             Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
            }
          
-           $checkcart=CartModel::where('product_id',$id)->first();
+           $checkcart=CartModel::where('user_id',$user->id)->where('product_id',$id)->first();
          //   dd($checkcart);
          if(!empty($checkcart) && !empty($user)){
               $quantity=$quantity+$checkcart['quantity'];
