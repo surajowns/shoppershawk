@@ -5,17 +5,13 @@
          <?php 
             
              $product=App\Product::where('slug',Request::segment(2))->first();
-            //  dd( $product);
             if(!empty($product)){
              $Productimg=App\ProductImage::where('product_id',$product['id'])->first();
              }
-            //  dd($Productimg);
-         
          ?>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title>Shoppershawk</title>
-        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="title" content="{{Request::segment(2)}}">
         <meta name="description" content="{{isset($product)?$product['description']:''}}">
@@ -46,10 +42,9 @@
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
-        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- Include whatever JQuery which you are using -->
-<!-- Other js and css scripts -->
+
+        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
     </head>
     <body>
         <!--Offcanvas menu area start-->
@@ -197,8 +192,6 @@
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 
         @yield('javascript')
         <script>
