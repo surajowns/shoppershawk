@@ -66,7 +66,7 @@ a.float:hover {
                               <?php  $avgrating= $avgrating + $avg_rating['rating']/count($product->productRating) ?>
                               @endforeach
                               <li>
-                                 <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
+                                 <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star"></i></a>
                               </li>
                               <li class="review"><a href="javascript:void(0)">({{count($product->productRating)}} customer review )</a></li>
                               @endif
