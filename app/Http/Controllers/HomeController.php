@@ -176,8 +176,13 @@ class HomeController extends Controller
        Session::push('last',$lastview);
      
       $product=Product::with(['productImage','wishlist','productRating'=>function($query){$query->select('*')->where('status',1);},'productRating.users'])->where('slug',$slug)->where('status',1)->first();
+      if($product)
+    {
       $relatedproducts=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$product['supercategory_id'])->where('status',1)->where('qty','!=',0)->get()->toArray();
       return view('front.common.productdetails',compact('product','relatedproducts'));
+    }else{
+        return redirect('/');
+    }
 
     }
     public function Search(Request  $request)

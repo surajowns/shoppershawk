@@ -34,6 +34,7 @@ class CartController extends Controller
 
     public function DirecttoCart(Request $request,$id=null)
     {
+        try{
         $user=Auth::user();
         //dd($user);
         $quantity = 1 ;
@@ -54,9 +55,10 @@ class CartController extends Controller
         if(!empty($check) && !empty($user)){
             Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
            }
-         
+           if(!empty($user)){
            $checkcart=CartModel::where('user_id',$user->id)->where('product_id',$id)->first();
          //   dd($checkcart);
+           }
          if(!empty($checkcart) && !empty($user)){
               $quantity=$quantity+$checkcart['quantity'];
               CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$quantity]);
@@ -72,6 +74,9 @@ class CartController extends Controller
           }
         
           return redirect('user/checkout');
+        }catch(\Exception $e){
+            return back()->with('error',$e->getMessage());
+        }
         // return response()->json(array('status'=>'success','redirect'=>$request->producturl,'msg'=>'success'));   
 
     }
