@@ -172,7 +172,7 @@ a.float:hover {
                                              <?php for ($i=1; $i <= 5; $i++) { 
                                                 if($value->rating>=$i){
                                                 ?>
-                                             <li><a href="#"><i class="ion-android-star-outline text-warning"></i></a></li>
+                                             <li><a href="#"><i class="ion-android-star text-warning"></i></a></li>
                                              <?php }else{ ?>
                                              <li><a href="#"><i class="ion-android-star-outline text-secondary"></i></a></li>
                                              <?php }}?>

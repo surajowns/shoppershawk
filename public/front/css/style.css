@@ -11076,3 +11076,6 @@ label.star:before {
     color: #222222;
     box-shadow: none;
 }
+.comment_thmb img {width: 55px;
+  height: 55px;
+  border-radius: 70px;}
