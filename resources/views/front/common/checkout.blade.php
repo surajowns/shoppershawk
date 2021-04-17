@@ -616,7 +616,7 @@ google.maps.event.addDomListener(window, 'load', function () {
         console.log(transaction);
         $("#paymentDetail").removeAttr('style');
         $('#paymentID').text(transaction.razorpay_payment_id);
-
+         console.log(transaction)
         var paymentDate = new Date();
         $('#paymentDate').text(
                 padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
@@ -627,9 +627,12 @@ google.maps.event.addDomListener(window, 'load', function () {
             url: "{{url('user/orderupdate')}}",
             data: {
                 "_token": "{{ csrf_token() }}",
-                "razorpay_payment_id": transaction.razorpay_payment_id
+                "payment_id": transaction.razorpay_payment_id,
+                "order_id": transaction.razorpay_payment_id,
+                "payment_status": transaction.razorpay_payment_id,
             },
             complete: function (r) {
+                 
                 console.log('complete');
                 console.log(r);
             }
@@ -637,14 +640,14 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 </script>
 <script>
-    var options = {
-        key: "{{ env('RAZORPAY_KEY') }}",
-        amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
-        name: 'SHOPPERSHAWK',
-        description: 'SHOP EASY PAY EASY',
-        image: '{{url("public/front/img/logo/logo.png")}}',
-        handler: demoSuccessHandler
-    }
+   //  var options = {
+   //      key: "{{ env('RAZORPAY_KEY') }}",
+   //      amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
+   //      name: 'SHOPPERSHAWK',
+   //      description: 'SHOP EASY PAY EASY',
+   //      image: '{{url("public/front/img/logo/logo.png")}}',
+   //      handler: demoSuccessHandler
+   //  }
 </script>
 <script>
     $('#checkout_form').submit(function (e) {
@@ -667,6 +670,16 @@ google.maps.event.addDomListener(window, 'load', function () {
                   console.log('complete');
                   console.log(r);
                   //  window.r = new Razorpay(options);
+                  var options = {
+                  key: "{{ env('RAZORPAY_KEY') }}",
+                  amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
+                  name: 'SHOPPERSHAWK',
+                  description: 'SHOP EASY PAY EASY',
+                  image: '{{url("public/front/img/logo/logo.png")}}',
+                  handler: demoSuccessHandler
+                }
+
+
                   var rzp = new Razorpay(options);
                   rzp.open();
                }

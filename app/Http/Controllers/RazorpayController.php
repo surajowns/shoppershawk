@@ -16,6 +16,7 @@ use Carbon;
 use App\CouponModel;
 use App\NotificationModel;
 use App\User;
+use App\Transaction;
 
 class RazorpayController extends Controller
 {
@@ -147,6 +148,9 @@ class RazorpayController extends Controller
 
     public function Orderupdate(Request $request)
     {
-         return response()->json(['status'=>'success']);
+          
+          $data=$request->except('_token');
+          Transaction::insert($data);
+          return response()->json(['status'=>'success']);
     }
 }
