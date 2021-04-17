@@ -43,4 +43,15 @@
 		width: 100%;
 		height: auto !important;
 	}
+	.float{
+		/* position:fixed; */
+		width:120px !important;
+		height:50px !important;
+	}
+	.button-buynow1 {
+		width: 260px !important;
+	}
+	.button-buynow, .button-buynow1 {
+		margin: 20px 10px 20px 0px;}
+
 }
