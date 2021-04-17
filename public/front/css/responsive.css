@@ -53,5 +53,8 @@
 	}
 	.button-buynow, .button-buynow1 {
 		margin: 20px 10px 20px 0px;}
+		.comment_thmb img {
+			width: 70px !important;
+		}
 
 }
