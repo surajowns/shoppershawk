@@ -8,6 +8,11 @@
             if(!empty($product)){
              $Productimg=App\ProductImage::where('product_id',$product['id'])->first();
              }
+            
+             $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
+             $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+           
+
          ?>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -45,8 +50,6 @@
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
-<<<<<<< HEAD
-=======
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9S15Q3GME"></script>
 <script>
@@ -56,7 +59,6 @@
 
   gtag('config', 'G-P9S15Q3GME');
 </script>
->>>>>>> bd5102ba6d1ad03d588a28f84aa7cbd9c2b680f1
     </head>
     <body>
         <!--Offcanvas menu area start-->
