@@ -8,6 +8,11 @@
             if(!empty($product)){
              $Productimg=App\ProductImage::where('product_id',$product['id'])->first();
              }
+            
+             $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
+             $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+           
+
          ?>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -76,7 +81,7 @@
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+0120-2512786">+0120-2512786</a></li>
+                                    <li>Hotline: <a href="tel:+91 120-2514786">+91 120-2514786</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
@@ -93,9 +98,24 @@
                                     <li class="menu-item-has-children active">
                                         <a href="{{url('/')}}">Home</a>
                                     </li>
-                                    <!-- <li class="menu-item-has-children">
-                                        <a href="#">Category</a>
-                                    </li> -->
+                                    <li class="menu-item-has-children"><span class="menu-expand"><i class="fa fa-angle-down"></i></span>
+                                    <a href="javascript:void(0)">Category</a>
+                                    <ul class="sub-menu" style="display: none;">
+                                    @foreach($categories as $cat)
+                                        <li class="menu-item-has-children"><span class="menu-expand"><i class="fa fa-angle-down"></i></span>
+                                            <a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a>
+                                            <ul class="sub-menu" style="display: none;">
+                                            @foreach($subcategories as $subcat)
+                                                 @if($cat['id']==$subcat['parent_id']) 
+                                                <li><a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a></li>
+                                                @endif
+                                            @endforeach    
+                                             
+                                            </ul>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                                   
                                     <li class="menu-item-has-children">
                                         <a href="{{url('/user/account')}}">my account</a>

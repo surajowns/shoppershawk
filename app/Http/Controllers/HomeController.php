@@ -20,7 +20,9 @@ class HomeController extends Controller
    
     public function index(Request $request)
     {
-         return view('front.index');
+      $categories=CategoryModel::where('parent_id',0)->where('status',1)->get();
+      $subcategories=CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+         return view('front.index',compact('categories','subcategories'));
     }
     public function Register(Request $request)
     {
