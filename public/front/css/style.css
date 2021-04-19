@@ -2235,6 +2235,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .categories_menu_toggle > ul > li {
   position: relative;
+  list-style: none;
 }
 .categories_menu_toggle > ul > li > a {
   font-size: 14px;
