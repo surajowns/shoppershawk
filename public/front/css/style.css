@@ -141,7 +141,7 @@ img {
 }
 
 ul {
-  list-style: outside none none;
+  /* list-style: outside none none; */
   margin: 0;
   padding: 0;
 }
@@ -614,6 +614,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .offcanvas_main_menu li {
   position: relative;
+  list-style: none;
 }
 .offcanvas_main_menu li:last-child {
   margin: 0;
@@ -2234,6 +2235,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .categories_menu_toggle > ul > li {
   position: relative;
+  list-style: none;
 }
 .categories_menu_toggle > ul > li > a {
   font-size: 14px;
@@ -2360,6 +2362,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .categories_menu_toggle > ul > li ul.categories_mega_menu > li {
   /* paddin g: 0 15px; */
   width:100%;
+  list-style: none;
   /* float: left; */
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5272,6 +5275,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .footer_menu ul li {
   margin-bottom: 12px;
+  list-style: none;
 }
 .footer_menu ul li:last-child {
   margin-bottom: 0;
@@ -5541,6 +5545,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .widget_list > ul > li {
   border-bottom: 1px solid #ebebeb;
+  list-style: none;
 }
 .widget_list > ul > li:first-child a {
   padding-top: 10;
@@ -5588,6 +5593,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .widget_list > ul > li ul li {
   border-bottom: 1px solid #ebebeb;
+  list-style: none;
 }
 .widget_list > ul > li ul li:first-child {
   border-top: 1px solid #ebebeb;
@@ -6893,6 +6899,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .single-zoom-thumb ul li {
   border: 1px solid #ddd;
+  list-style: none;
 }
 .single-zoom-thumb ul li a {
   width: 100%;
@@ -7883,6 +7890,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .contact_message ul li {
   padding: 13px 0;
   border-top: 1px solid #ebebeb;
+  list-style: none;
 }
 .contact_message ul li:last-child {
   padding-bottom: 0;
@@ -9985,7 +9993,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (max-width: 767px) {
   .newletter-popup {
-    padding: 30px 20px;
+    /* padding: 30px 20px; */
     width: 95%;
   }
 }
@@ -10827,6 +10835,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   left: 180px;
   background: #ffffff;
   z-index: 9999;
+  list-style: none;
 }
 
 .list_details li a:hover{
@@ -11076,3 +11085,6 @@ label.star:before {
     color: #222222;
     box-shadow: none;
 }
+.comment_thmb img {width: 55px;
+  height: 55px;
+  border-radius: 70px;}

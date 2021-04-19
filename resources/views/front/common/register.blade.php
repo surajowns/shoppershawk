@@ -19,6 +19,13 @@
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
+        <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P9S15Q3GME');
+</script>
     </head>
     <body>
         <!--Offcanvas menu area start-->
@@ -40,7 +47,7 @@
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+0120-2512786">+0120-2512786</a></li>
+                                    <li>Hotline: <a href="tel:+91 120-2514786">+91 120-2514786</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())

@@ -160,7 +160,7 @@
                                                            <?php  $avgrating= $avgrating + $avg_rating['rating']/count($details->productRating) ?>
                                                       @endforeach
                                                     <li>
-                                                        <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star-outline"></i></a>
+                                                        <a href="#">{{number_format($avgrating,1)}}<i class="ion-android-star"></i></a>
                                                     </li>
                                                     
                                                 @endif
