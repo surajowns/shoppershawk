@@ -56,7 +56,7 @@
         <div class="column3 col-lg-3 col-md-6">
             <div class="header_bigsale">
                 <div class="btn-my">
-                    Sale Starting on 20th April
+                    Flash Sale Deal !!!
                     <div class="btn2-my"></div>
                 </div>
             </div>
