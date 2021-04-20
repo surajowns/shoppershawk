@@ -169,4 +169,11 @@ class RazorpayController extends Controller
           return response()->json(['status'=>'success']);
     }
 
+    public function WebhookSuccess(Request $request )
+    {
+         dd($request->all());
+          
+
+    }
+
 }
