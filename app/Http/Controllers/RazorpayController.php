@@ -24,18 +24,33 @@ class RazorpayController extends Controller
     //  {
     //      $this->middleware('UserSession');
     //  }
-    public function pay() {
-       return view('front.payment.pay');
-    }
+    public function razorpay(Request $request)
+    {       
+        $amount=$request->amount;
+        return view('admin.pages.payment',compact('amount'));
+    } 
 
-    // public function dopayment(Request $request) {
-    //     //Input items of form
-    //     $input = $request->all();
-    // //    dd($input);
-    //     // Please check browser console.
-    //     return $input;
-      
-    // }
+    public function payment(Request $request)
+    {        
+        $name = $request->input('name');
+        $amount = $request->input('amount');
+
+        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+        $order  = $api->order->create(array('receipt' => '123', 'amount' => 200 * 100 , 'currency' => 'INR')); // Creates order
+        $orderId = $order['id']; 
+
+        $user_pay = new Transaction();
+    
+        // $user_pay->name = $name;
+        $user_pay->amount = $amount;
+        $user_pay->payment_id = $orderId;
+        $user_pay->save();
+
+        $data = array(
+            'order_id' => $orderId,
+            'amount' => $amount
+        );
+    }
 
 
     public function dopayment(Request $request)
@@ -153,4 +168,5 @@ class RazorpayController extends Controller
           Transaction::insert($data);
           return response()->json(['status'=>'success']);
     }
+
 }

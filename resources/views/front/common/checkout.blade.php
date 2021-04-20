@@ -613,10 +613,10 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function demoSuccessHandler(transaction) {
         // You can write success code here. If you want to store some data in database.
-        console.log(transaction);
+       // console.log(transaction);
         $("#paymentDetail").removeAttr('style');
         $('#paymentID').text(transaction.razorpay_payment_id);
-         console.log(transaction)
+         //console.log(transaction)
         var paymentDate = new Date();
         $('#paymentDate').text(
                 padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
@@ -633,8 +633,8 @@ google.maps.event.addDomListener(window, 'load', function () {
             },
             complete: function (r) {
                  
-                console.log('complete');
-                console.log(r);
+               // console.log('complete');
+               // console.log('dd'+r);
             }
         })
     }
@@ -666,9 +666,8 @@ google.maps.event.addDomListener(window, 'load', function () {
                   toastr.error(r.responseJSON.error);
                 
                }else{
-                  console.log('dfdf');
-                  console.log('complete');
-                  console.log(r);
+                  //console.log('complete');
+                 // console.log(r);
                   //  window.r = new Razorpay(options);
                   var options = {
                   key: "{{ env('RAZORPAY_KEY') }}",
@@ -678,8 +677,6 @@ google.maps.event.addDomListener(window, 'load', function () {
                   image: '{{url("public/front/img/logo/logo.png")}}',
                   handler: demoSuccessHandler
                 }
-
-
                   var rzp = new Razorpay(options);
                   rzp.open();
                }
