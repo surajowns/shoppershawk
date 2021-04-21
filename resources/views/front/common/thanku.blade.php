@@ -36,6 +36,7 @@
                         <div class="order-deliverd">
                             <img src="{{url('public/front/img/deliverd.gif')}}" style="border-radius: 50%;">
                             <h3 class="pt-3">YOUR ORDER HAS BEEN RECEIVED</h3>
+                            <p></p>
                             <p>Thank you for your payment, it’s processing</p>
                             <p>Your order No is :&nbsp;<b>{{isset($order['order_no'])?$order['order_no']:''}}</b></p>
                             <p>You will receive an order confirmation email with details of your order and a link to track your process.</p>

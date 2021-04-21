@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post"  id="checkout_form">
+                     <form method="post"   id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -300,13 +300,9 @@
                               <button  type="submit">Proceed to Pay</button>
                            </div>
                         </div>
+                        <input  type="hidden" name="payment_id" id="paymentID" value="">
+
                      </form>
-                     <div id="paymentDetail" style="display: none">
-                <center>
-                    <div>paymentID: <span id="paymentID"></span></div>
-                    <div>paymentDate: <span id="paymentDate"></span></div>
-                </center>
-            </div>
                   </div>
                </div>
                <div class="col-lg-6 col-md-6">
@@ -611,12 +607,10 @@ google.maps.event.addDomListener(window, 'load', function () {
         return ('0' + str).slice(-2)
     }
 
-    function demoSuccessHandler(transaction) {
-        // You can write success code here. If you want to store some data in database.
-       // console.log(transaction);
+    function SuccessHandler(transaction) {
+      
         $("#paymentDetail").removeAttr('style');
-        $('#paymentID').text(transaction.razorpay_payment_id);
-         //console.log(transaction)
+        $('#paymentID').val(transaction.razorpay_payment_id);
         var paymentDate = new Date();
         $('#paymentDate').text(
                 padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
@@ -625,36 +619,20 @@ google.maps.event.addDomListener(window, 'load', function () {
         $.ajax({
             method: 'post',
             url: "{{url('user/orderupdate')}}",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "payment_id": transaction.razorpay_payment_id,
-                "order_id": transaction.razorpay_payment_id,
-                "payment_status": transaction.razorpay_payment_id,
-            },
+            data: $("#checkout_form").serialize(),
             complete: function (r) {
-                 
-               // console.log('complete');
-               // console.log('dd'+r);
+               var data=$.parseJSON(r.responseText);
+                if(data['status']==="authorized"){
+                  window.location.href="{{url('/user/thanku')}}"
+                }
             }
         })
     }
 </script>
 <script>
-   //  var options = {
-   //      key: "{{ env('RAZORPAY_KEY') }}",
-   //      amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
-   //      name: 'SHOPPERSHAWK',
-   //      description: 'SHOP EASY PAY EASY',
-   //      image: '{{url("public/front/img/logo/logo.png")}}',
-   //      handler: demoSuccessHandler
-   //  }
-</script>
-<script>
     $('#checkout_form').submit(function (e) {
         var button = $(this).find('button');
         var parent = $(this);
-        //alert($(this).serialize())
-        // button.attr('disabled', 'true').html('Please Wait...');
         $.ajax({
             method: 'post',
             url:'{{url("/user/dopayment")}}',
@@ -662,22 +640,29 @@ google.maps.event.addDomListener(window, 'load', function () {
             complete: function (r) {
                if(r.statusText==='Bad Request'){
                   toastr.error(r.responseJSON.error);
-               }else if(r.responseJSON.error){
-                  toastr.error(r.responseJSON.error);
-                
-               }else{
-                  //console.log('complete');
-                 // console.log(r);
-                  //  window.r = new Razorpay(options);
+                  }else{
                   var options = {
                   key: "{{ env('RAZORPAY_KEY') }}",
                   amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
                   name: 'SHOPPERSHAWK',
                   description: 'SHOP EASY PAY EASY',
                   image: '{{url("public/front/img/logo/logo.png")}}',
-                  handler: demoSuccessHandler
+                  handler: SuccessHandler
                 }
                   var rzp = new Razorpay(options);
+                  rzp.on('payment.failed', function (response){
+                     console.log('failed');
+                     console.log(response);
+                  });
+                  rzp.on('payment.captured', function (response){
+                     console.log('captured');
+                     console.log(response);
+                  });
+                  rzp.on('order.paid', function (response){
+                     console.log('captured');
+                     console.log(response);
+                  });
+           
                   rzp.open();
                }
                
@@ -685,13 +670,5 @@ google.maps.event.addDomListener(window, 'load', function () {
         })
         return false;
     })
-</script>
-
-
-<script>
-   // window.r = new Razorpay(options);
-   //  document.getElementById('paybtn').onclick = function () {
-   //      r.open()
-   //  }
 </script>
 @stop
