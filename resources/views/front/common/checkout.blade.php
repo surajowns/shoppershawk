@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post"   id="checkout_form">
+                     <form method="post"  action="{{url('/user/dopayment')}}"  id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -630,12 +630,12 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 </script>
 <script>
-    $('#checkout_form').submit(function (e) {
+    $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
         var parent = $(this);
         $.ajax({
             method: 'post',
-            url:'{{url("/user/dopayment")}}',
+            url:this.action,
             data: $(this).serialize(),
             complete: function (r) {
                if(r.statusText==='Bad Request'){
