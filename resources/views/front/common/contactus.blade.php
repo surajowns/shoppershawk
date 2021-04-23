@@ -16,7 +16,7 @@
                               </p>
                             <ul>
                                 <li><i class="fa fa-fax"></i> Address : N-12 & 13, First Floor, Opposite HSBC Bank,Noida, Uttar Pradesh</li>
-                                <li><i class="fa fa-phone"></i> <a href="tel:+0120-2512786;">+0120-2512786</a></li>
+                                <li><i class="fa fa-phone"></i> <a href="tel:+91 120-2514786;">+91 120-2514786</a></li>
                                 <li><i class="fa fa-envelope-o"></i><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></li>
                             </ul>
                         </div>
