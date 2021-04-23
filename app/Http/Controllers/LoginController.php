@@ -15,7 +15,8 @@ class LoginController extends Controller
     public function validateUser(Request $request)
     {
         
-
+        $url=explode('/',url()->previous());
+        $redirectto=end($url);
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                     'email' => 'required',
@@ -62,7 +63,11 @@ class LoginController extends Controller
 
 
                     Session::put('logid',Auth::User()['id']) ; 
-                    return redirect('/')->with('success', 'Login Successfully');
+                    if($redirectto==="checkout"){
+                        return redirect('user/checkout')->with('success', 'Login Successfully');
+                     }else{
+                        return redirect('/')->with('success', 'Login Successfully');
+                    }
 
                     // return back()->with('success', 'Login Successfully');
                     
@@ -89,7 +94,7 @@ class LoginController extends Controller
         
         Auth::logout();
         Session::forget('logRole'); 
-        Session::forget('logid') ;  
+        Session::forget('logid');  
         Session::forget('discount');
         Session::flush();
         return redirect('/');

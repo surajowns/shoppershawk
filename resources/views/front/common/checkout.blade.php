@@ -11,9 +11,9 @@
                   <h3> 
                      <i class="fa fa-file-o" aria-hidden="true"></i>
                      Returning customer?
-                     <a class="Returning" href="#checkout_login" data-bs-toggle="collapse" aria-expanded="true">Click here to login</a>     
+                     <a class="Returning" href="javascript:void(0)" data-bs-toggle="collapse" aria-expanded="true">Click here to login</a>     
                   </h3>
-                  <div id="checkout_login" class="collapse" data-parent="#accordion">
+                  <div id="checkout_login" class="collapse {{Auth::check()?:'show'}}" data-parent="#accordion">
                      <div class="checkout_info">
                         <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>
                         <div class="account_form login">
@@ -297,7 +297,7 @@
                               </div> -->
                            </div>
                            <div class="order_button">
-                              <button  type="submit">Proceed to Pay</button>
+                              <button  type="submit"  {{Auth::check()?:'disabled'}} >Proceed to Pay</button>
                            </div>
                         </div>
                         <input  type="hidden" name="payment_id" id="paymentID" value="">
