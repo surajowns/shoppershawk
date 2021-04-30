@@ -22,7 +22,12 @@
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="profile-img">
+                                                        @if(isset($user['profile_image']))
                                                             <img src="{{url('public/profile/'.$user['profile_image'])}}" width="100%">
+                                                          @else
+                                                          <img src="{{url('public/profile/profile.png')}}" width="100%">
+
+                                                          @endif  
                                                         </div>
                                                     </div>
                                                     <div class="col-md-9">
