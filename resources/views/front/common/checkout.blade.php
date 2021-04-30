@@ -75,7 +75,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post"  action="{{url('/user/dopayment')}}"  id="checkout_form">
+                     <form method="post"  action="{{url('/user/payment')}}"  id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -566,15 +566,12 @@ google.maps.event.addDomListener(window, 'load', function () {
 
           var latitude = place.geometry.location.lat();
           var longitude = place.geometry.location.lng();
-          // var mesg = address;
         
-          // var suburb = address.split(',');
           $('#latitude').val(latitude);
           $('#latitude').val(latitude);
 
 
           $('#longitude').val(longitude);
-          // alert(mesg+' latitude:- '+latitude+' longitude:-'+longitude);
         });
       });
  </script>
@@ -622,7 +619,7 @@ google.maps.event.addDomListener(window, 'load', function () {
             data: $("#checkout_form").serialize(),
             complete: function (r) {
                var data=$.parseJSON(r.responseText);
-                if(data['status']==="authorized"){
+                if(data['status']==="authorized" || data['status']==="captured"){
                   window.location.href="{{url('/user/thanku')}}"
                 }
             }
@@ -638,6 +635,8 @@ google.maps.event.addDomListener(window, 'load', function () {
             url:this.action,
             data: $(this).serialize(),
             complete: function (r) {
+               console.log(r.responseJSON.order_id);
+            
                if(r.statusText==='Bad Request'){
                   toastr.error(r.responseJSON.error);
                   }else{
@@ -647,6 +646,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                   name: 'SHOPPERSHAWK',
                   description: 'SHOP EASY PAY EASY',
                   image: '{{url("public/front/img/logo/logo.png")}}',
+                  order_id:r.responseJSON.order_id,
                   handler: SuccessHandler
                 }
                   var rzp = new Razorpay(options);

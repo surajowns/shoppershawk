@@ -33,30 +33,33 @@ class RazorpayController extends Controller
 
     public function payment(Request $request)
     {        
-        $name = $request->input('name');
-        $amount = $request->input('amount');
-
+        $user=Auth::user();
+        try{
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-        $order  = $api->order->create(array('receipt' => '123', 'amount' => 200 * 100 , 'currency' => 'INR')); // Creates order
+        $cartsdetails=CartModel::where('user_id',$user->id)->get();
+        $total=0;
+        $quantity=0;
+        $discount=0;
+        $total_amount=0;
+        foreach($cartsdetails as $value){
+              $quantity= $quantity+$value['quantity'];
+            $total=$total+$value['quantity']*$value['price'] ;  
+        }
+        $discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+        $total_amount=$total - $discount;
+        $order_id= Order::orderBy('id', 'DESC')->first();
+        $order  = $api->order->create(array('receipt' =>$order_id['id']+1, 'amount' => $total_amount * 100 , 'currency' => 'INR')); // Creates order
         $orderId = $order['id']; 
-
-        $user_pay = new Transaction();
-    
-        // $user_pay->name = $name;
-        $user_pay->amount = $amount;
-        $user_pay->payment_id = $orderId;
-        $user_pay->save();
-
-        $data = array(
-            'order_id' => $orderId,
-            'amount' => $amount
-        );
+        $amount=['amount'];
+        return response()->json(['amount'=>$amount,'order_id'=>$orderId]);
+        }catch(\Exception $e){
+                 return response()->json(['error'=>$e->getMessage()]);
+            }
     }
 
 
     public function dopayment(Request $request)
     {
-        // dd($request->all());
 
         $user=Auth::user();
         
@@ -165,13 +168,11 @@ class RazorpayController extends Controller
     public function Orderupdate(Request $request)
     {
           
-        //dd($request->all());
         $user=Auth::user();
         $input = $request->except('_token');        
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
         $payment = $api->payment->fetch($input['payment_id']);
-      // print_r($payment);
-        if(count($input)  && !empty($input['payment_id']) &&  $payment['status']==='authorized') 
+        if(count($input)  && !empty($input['payment_id']) && ($payment['status']==='captured' || $payment['status']==='authorized')) 
         {
             try 
             {
@@ -205,9 +206,7 @@ class RazorpayController extends Controller
                      $created_at= $date->toDateTimeString();
                      $data['created_at']=$created_at;
                      $data['updated_at']=$created_at;
-            //dd($data);
                      $order=Order::insert($data);
-                    // print_r($order);
                      if($order){
                           $order_id= Order::orderBy('id', 'DESC')->first();
                           $order_no='SHOPPERSHAWK#'.$order_id['id'];
@@ -233,8 +232,8 @@ class RazorpayController extends Controller
                           CartModel::where('user_id',$user['id'])->delete();
                           $order=Order::orderBy('id','DESC')->first();
                           $transaction =new Transaction;
-                          // $data=$request->except('_token');
                           $transaction->payment_id=$payment['id'];
+                          $transaction->pay_order_id=$payment['order_id'];
                           $transaction->bank_transaction_id=isset($payment['acquirer_data']['bank_transaction_id'])?$payment['acquirer_data']['bank_transaction_id']:'';
                           $transaction->upi_transaction_id=isset($payment['acquirer_data']['upi_transaction_id'])?$payment['acquirer_data']['upi_transaction_id']:'';
                           $transaction->payment_email=$payment['email'];
@@ -244,13 +243,8 @@ class RazorpayController extends Controller
                           $transaction->amount=$payment['amount'];
                           $transaction->method=$payment['method'];
                           $transaction->bank=$payment['bank'];
-                           $transaction->save();
-                          //Transaction::insert($data);
+                          $transaction->save();
                           Order::where('id',$order_id['id'])->update(['order_type'=>$payment['method']]);
-
-                          //\Session::put('success', 'Payment successful, your order will be despatched in the next 48 hours.');
-                         // return response()->json(['status'=>'success']);
-                        
                      }
                      else {
                           return response()->json(['error'=>'something went wrong']);
@@ -268,9 +262,6 @@ class RazorpayController extends Controller
                        return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id'],'status'=>$payment['status']]);
             
                      }
-                   
-                //$response = $api->payment->fetch($input['payment_id'])->capture(array('amount'=>$payment['amount'])); 
-                
             } 
             catch (\Exception $e) 
             {
