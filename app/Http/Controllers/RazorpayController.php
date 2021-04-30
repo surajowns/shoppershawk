@@ -37,6 +37,10 @@ class RazorpayController extends Controller
         try{
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
         $cartsdetails=CartModel::where('user_id',$user->id)->get();
+        if(count($cartsdetails)==0){
+            return response()->json(['error'=>'cartisempty']);
+
+        }
         $total=0;
         $quantity=0;
         $discount=0;

@@ -635,8 +635,10 @@ google.maps.event.addDomListener(window, 'load', function () {
             url:this.action,
             data: $(this).serialize(),
             complete: function (r) {
-               console.log(r.responseJSON.order_id);
-            
+               console.log(r);
+               if(r.responseJSON.error==="cartisempty"){
+                  window.location.href="{{url('/')}}"  
+               }
                if(r.statusText==='Bad Request'){
                   toastr.error(r.responseJSON.error);
                   }else{
