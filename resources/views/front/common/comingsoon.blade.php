@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{url('public/comingsoon/css/style.css')}}" />
 
         <link rel="stylesheet" href="{{url('public/comingsoon/css/responsive.css')}}" />
-        <title>Shoopershawk - Coming Soon </title>
+        <title>Shoopershawk - Updating  </title>
         <link rel="icon" type="image/png" href="{{url('public/comingsoon/img/favicon.png')}}" />
     </head>
     <body>
@@ -39,15 +39,15 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 dis-mob">
                             	<div class="">
                                  <div class="main-banner-content">
-                                    <h1>Something big is coming soon</h1>
+                                    <h1>We will back soon</h1>
                                 </div>
                                 
                                 <div class="count-down-timer">
                                     <div id="timer">
-                                        <div id="days"></div>
-                                        <div id="hours"></div>
-                                        <div id="minutes"></div>
-                                        <div id="seconds"></div>
+                                        <div id="dys"></div>
+                                        <div id="hurs"></div>
+                                        <div id="miutes"></div>
+                                        <div id="sconds"></div>
                                     </div>
                                 </div>   
                                 </div>
