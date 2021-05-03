@@ -22,4 +22,9 @@ class Order extends Model
         return $this->hasMany('App\OrderDetails','order_id','id');
  
      }
+     public function additionalCharges()
+     {
+        return $this->hasMany('App\Transaction','order_id','id');
+ 
+     }
 }

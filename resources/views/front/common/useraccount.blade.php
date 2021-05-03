@@ -59,12 +59,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                               
                                              	@foreach($orders as $value )
 											<tr>
 												<td>{{$value['order_no']}}</td>
 												<td>{{date('d M Y H:i A',strtotime($value['created_at']))}}</td>
-												<td>₹{{number_format($value['total_amount'])}}</td>
+												<td>₹{{isset($value['additional_charges'][0])?number_format($value['additional_charges'][0]['amount'],2):number_format($value['total_amount'],2)}}</td>
 												<td>
                                                    <a href="{{url('/order-details/'.$value['id'])}}" class="btn btn-sm bg-info-light"><i class="fa fa-eye mr-1"></i>View</a>
                                                 </td>

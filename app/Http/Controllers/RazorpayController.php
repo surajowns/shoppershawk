@@ -244,7 +244,7 @@ class RazorpayController extends Controller
                           $transaction->contact=$payment['contact'];
                           $transaction->order_id=$order['id'];
                           $transaction->payment_status=$payment['status'];
-                          $transaction->amount=$payment['amount'];
+                          $transaction->amount=$payment['amount']/100;
                           $transaction->method=$payment['method'];
                           $transaction->bank=$payment['bank'];
                           $transaction->save();

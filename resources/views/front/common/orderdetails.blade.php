@@ -431,13 +431,14 @@ ol.progtrckr li.progtrckr-todo:before {
                             <h2 class="text-charcoal hidden-sm-down">Order Details</h2>
                             <div class="row">
                                 <div class="col-12">
+                                <div class="col-6 col-md">
+                                                    <h5 class="text-charcoal mb-0 w-100">Order Number</h5>
+                                                    <a href="" class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{$orders['order_no']}}</a>
+                                                </div>
                                     <div class="list-group mb-5">
                                         <div class="list-group-item p-3 bg-snow" style="position: relative;">
                                             <div class="row w-100">
-                                                <div class="col-6 col-md">
-                                                    <h6 class="text-charcoal mb-0 w-100">Order Number</h6>
-                                                    <a href="" class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{$orders['order_no']}}</a>
-                                                </div>
+                                               
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-0 w-100">Date</h6>
                                                     <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{date('d M Y h:i A',strtotime($orders['created_at']))}}</p>
@@ -451,8 +452,12 @@ ol.progtrckr li.progtrckr-todo:before {
                                                     <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['discount'],2)}}</p>
                                                 </div>
                                                 <div class="col-6 col-md">
+                                                    <h6 class="text-charcoal mb-0 w-100">Additional charges</h6>
+                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['additionalCharges']['0']['amount']-$orders['total_amount'],2)}}</p>
+                                                </div>
+                                                <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-0 w-100">Total</h6>
-                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['total_amount'],2)}}</p>
+                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['additionalCharges']['0']['amount'],2)}}</p>
                                                 </div>
                                                 
                                                 <div class="col-12 col-md-3">

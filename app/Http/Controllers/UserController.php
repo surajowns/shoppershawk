@@ -19,7 +19,7 @@ class UserController extends Controller
     public function Index(Request $request)
     {
          $user=Auth::user();
-         $orders=Order::with('users','status')->where('user_id',$user['id'])->orderBy('id','DESC')->get()->toArray();
+         $orders=Order::with('users','status','additionalCharges')->where('user_id',$user['id'])->orderBy('id','DESC')->get()->toArray();
          $status=Status::get();
          return view('front.common.useraccount',compact('user','orders','status'));
     }
@@ -63,7 +63,7 @@ class UserController extends Controller
     {
        
 
-        $orders=Order::with('users','status')->where('id',$order_id)->first();
+        $orders=Order::with('users','status','additionalCharges')->where('id',$order_id)->first();
         $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$order_id)->get();
         $status=Status::get();
         return view('front.common.orderdetails',compact('orders','orderdetails','status'));

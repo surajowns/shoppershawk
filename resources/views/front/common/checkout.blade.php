@@ -630,6 +630,8 @@ google.maps.event.addDomListener(window, 'load', function () {
     $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
         var parent = $(this);
+        button.attr('disabled', 'true').html('Please Wait...');
+
         $.ajax({
             method: 'post',
             url:this.action,
