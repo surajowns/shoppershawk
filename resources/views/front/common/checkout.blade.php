@@ -627,6 +627,12 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 </script>
 <script>
+   $('#modal-close').click(function() {
+      alert('ddd');
+        var button = $('#modal-close').find('button');
+        button.attr('disabled', 'false').html('Proceed to Pay');
+    });
+
     $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
         var parent = $(this);
@@ -644,31 +650,31 @@ google.maps.event.addDomListener(window, 'load', function () {
                if(r.statusText==='Bad Request'){
                   toastr.error(r.responseJSON.error);
                   }else{
-                  var options = {
-                  key: "{{ env('RAZORPAY_KEY') }}",
-                  amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
-                  name: 'SHOPPERSHAWK',
-                  description: 'SHOP EASY PAY EASY',
-                  image: '{{url("public/front/img/logo/logo.png")}}',
-                  order_id:r.responseJSON.order_id,
-                  handler: SuccessHandler
-                }
-                  var rzp = new Razorpay(options);
-                  rzp.on('payment.failed', function (response){
-                     console.log('failed');
-                     console.log(response);
-                  });
-                  rzp.on('payment.captured', function (response){
-                     console.log('captured');
-                     console.log(response);
-                  });
-                  rzp.on('order.paid', function (response){
-                     console.log('captured');
-                     console.log(response);
-                  });
-           
-                  rzp.open();
-               }
+                     var options = {
+                     key: "{{ env('RAZORPAY_KEY') }}",
+                     amount: parseInt($('.cart_amount').last().text().slice(1).replace(/,/g, '')*100),
+                     name: 'SHOPPERSHAWK',
+                     description: 'SHOP EASY PAY EASY',
+                     image: '{{url("public/front/img/logo/logo.png")}}',
+                     order_id:r.responseJSON.order_id,
+                     handler: SuccessHandler
+                     }
+                     var rzp = new Razorpay(options);
+                     rzp.on('payment.failed', function (response){
+                        console.log('failed');
+                        console.log(response);
+                     });
+                     rzp.on('payment.captured', function (response){
+                        console.log('captured');
+                        console.log(response);
+                     });
+                     rzp.on('order.paid', function (response){
+                        console.log('captured');
+                        console.log(response);
+                     });
+            
+                     rzp.open();
+                  }
                
             }
         })

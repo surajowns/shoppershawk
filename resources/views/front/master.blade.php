@@ -47,7 +47,7 @@
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="{{url('public/front/js/checkout.js')}}"></script>
 
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
