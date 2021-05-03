@@ -90,7 +90,7 @@
                              @if(count($sociallinks)>0)
                                @foreach($sociallinks as $row)
                                 <li>
-                                    <a class="{{strtolower($row->title)}}" href="{{$row->links}}"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
+                                    <a class="{{strtolower($row->title)}}" href="{{$row->links}}" target="_blank"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
                                 </li>
                                 @endforeach
                                 @endif
@@ -115,7 +115,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
-                        <p>Copyright &copy; 2021 <a href="javascript:void(0)">Best Hawk Infosystem Pvt. Ltd.</a> All Right Reserved.</p>
+                        <p>Copyright &copy; 2021 <a href="https://www.besthawk.com/" target="_blank">Best Hawk Infosystem Pvt. Ltd.</a> All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
