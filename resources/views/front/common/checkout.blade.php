@@ -297,7 +297,7 @@
                               </div> -->
                            </div>
                            <div class="order_button">
-                              <button  type="submit"  {{Auth::check()?:'disabled'}} >Proceed to Pay</button>
+                              <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Proceed to Pay</button>
                            </div>
                         </div>
                         <input  type="hidden" name="payment_id" id="paymentID" value="">
@@ -627,11 +627,7 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 </script>
 <script>
-   $('#modal-close').click(function() {
-      alert('ddd');
-        var button = $('#modal-close').find('button');
-        button.attr('disabled', 'false').html('Proceed to Pay');
-    });
+  
 
     $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
