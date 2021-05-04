@@ -24,20 +24,21 @@ class OrderController extends Controller
      }
      public function applycoupon(Request $request)
      {
+       //dd($request->all());
            $user=Auth::user();
            $date=Date('Y-m-d');
            $validator = Validator::make($request->all(), [
              'code'=>'required',    
          ]); 
          if ($validator->fails()) {
-             return back()->with(['error'=>$validator->messages()->first()]);
+             return response()->json(['status'=>'error','msg'=>$validator->messages()->first()]);
  
          }
       $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
      //  dd($coupon);
      
       if($coupon == null){
-         return back()->with(['error'=>"Invalid Coupon"]);
+         return response()->json(['status'=>'error','msg'=>'Invalid Coupon']);
         }
         else{
          $discount=$coupon['discount'];
@@ -57,13 +58,12 @@ class OrderController extends Controller
            if($minimum_amount <= $item_total){
               Session::put('coupon',$coupon_code);
               Session::put('discount',$discount);
-             return back()->with(['success'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
+             return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
            }else{
-             return back()->with(['error'=>"Coupon not  available for this order"]);
+             return response()->json(['status'=>'error','msg'=>"Coupon not  available for this order"]);
            }
          }
      }
-
        public function createOrder(Request $request)
        {   
        
