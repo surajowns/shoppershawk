@@ -447,9 +447,9 @@ $("#checkout_form").validate({
         billing_address: {
             required: true,
         },
-        billing_landmark: {
-            required: true,
-        },
+      //   billing_landmark: {
+      //       required: true,
+      //   },
         billing_mobile: {
             required: true,
             minlength:10,
