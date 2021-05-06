@@ -966,7 +966,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: inline-block;
   font-size: 14px;
   line-height: 50px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin-right: 20px;
   padding-right: 20px;
   position: relative;

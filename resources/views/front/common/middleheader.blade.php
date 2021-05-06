@@ -1,5 +1,5 @@
 <?php 
-    $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->limit(5)->get();
+    $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->limit(6)->get();
     $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
  
     $cartdetails=Cart::getContent()->toArray(); 

@@ -212,7 +212,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-        <!-- <div class="newletter-popup">
+         <div class="newletter-popup">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">
@@ -220,17 +220,18 @@
                     </div>
                     <div class="box">
                         <div class="newletter-title">
-                            <h2>Sale Starting on 20th April</h2>
                         </div>
                         <div class="box-content newleter-content">
-                           <img src="{{url('public/newsletter/sale.jpeg')}}" alt="" width="400">
+                        <a href="https://shoppershawk.com/product_details/fire-boltt-blast-1400">
+                           <img src="{{url('public/newsletter/sale.jpg')}}" alt="" width="400">
+                           </a>
                         </div>
-                     /.box-content
+                     <!-- //.box-content -->
                     </div>
                 </div>
             </div>
-             /.box 
-        </div> -->
+             <!-- /.box  -->
+        </div> 
         <!--news letter popup start-->
 
         <!-- JS

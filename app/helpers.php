@@ -18,7 +18,7 @@ if (! function_exists('OrderEmail')) {
       
         Mail::send('front.pages.orderemail', $data, function($message) use ($to_name, $to_email) {
         $message->to($to_email, $to_name)->subject('Order Confirmation ');
-        $message->from('care@shoppershawk.com','Shoppershawk');
+        $message->from('care@shoppershawk.com','Shoppers Hawk');
         });
     }
 }
@@ -32,7 +32,7 @@ if (! function_exists('ForgetPasswordEmail')) {
     
       Mail::send('front.pages.passwordresetemail', $data, function($message) use ($to_name, $to_email) {
       $message->to($to_email, $to_name)->subject('Reset Password Link');
-      $message->from('care@shoppershawk.com','Shoppershawk');
+      $message->from('care@shoppershawk.com','Shoppers Hawk');
       });
   }
 }
