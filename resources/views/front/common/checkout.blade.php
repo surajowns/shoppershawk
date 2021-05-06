@@ -60,12 +60,12 @@
                             </h3>
                              <div id="checkout_coupon" class="collapse" data-parent="#accordion">
                                 <div class="checkout_info coupon_info">
-                                    <form action="{{url('/user/coupon/')}}" method="post" >
+                                    <div>
                                     @csrf
-                                        <input placeholder="Coupon code" type="text" name="code" required>
-                                        <button type="submit">Apply coupon</button>
-                                        <span class="text-danger">{{$errors->first('code')}}</span>
-                                    </form>
+                                        <input placeholder="Coupon code" type="text" name="code" id="coupon" required>
+                                        <button id="addcoupon">Apply coupon</button>
+                                        <span class="text-danger" id="coupon_error">{{$errors->first('code')}}</span>
+                                    </div>
                                 </div>
                             </div>    
                   </div>
@@ -296,11 +296,12 @@
                                  </div>
                               </div> -->
                            </div>
+                           <input  type="hidden" name="pay_coupon" id="pay_coupon" value="">
+
                            <div class="order_button">
                               <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Proceed to Pay</button>
                            </div>
                         </div>
-                        <input  type="hidden" name="payment_id" id="paymentID" value="">
 
                      </form>
                   </div>
@@ -363,7 +364,7 @@
                                  </tr>
                                  <tr>
                                    <th colspan="2">Discount</th>
-                                   <td>₹{{number_format(Session::get('discount'),2)}}</td>
+                                   <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
                                    @if(session()->has('discount')  && session()->has('coupon'))
@@ -390,7 +391,7 @@
                                  </tr>
                                  <tr>
                                    <th colspan="2">Discount</th>
-                                   <td>₹{{number_format(Session::get('discount'),2)}}</td>
+                                   <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
                                    @if(session()->has('discount')  && session()->has('coupon'))
@@ -575,6 +576,43 @@ google.maps.event.addDomListener(window, 'load', function () {
         });
       });
  </script>
+ <script>
+$(document).on("click","#addcoupon",function() {
+        var pay_coupon= $('#pay_coupon').val();
+        var code= $('#coupon').val();
+         if(code===''){
+            $('#coupon_error').text('This field is required !'); 
+            return;
+         }
+         // if(pay_coupon != ''){
+         //    $('#coupon_error').text('You have already used a coupon!'); 
+         //    return;
+         // }
+        $.ajax({
+                Type:"POST",
+                url : "{{url('/user/coupon/')}}",
+                data: {code:code},
+                success: function(response){
+                    console.log(response);
+                    if(response.status==="error"){
+                       $('#coupon_error').text(response.msg);
+                    }else{
+                     $('#pay_coupon').val(response.coupon);
+                     var coupon_discount=response.discount;
+                     $('#coupon_error').text(response.msg);
+                     $('.coupon_discount').text('-₹'+parseFloat(response.discount).toFixed(2));
+                     var cart_amount =parseFloat($('.cart_amount').last().text().slice(1).replace(/,/g, ''));
+                      //alert(parseFloat(cart_amount)) ;   
+                      $('.cart_amount').last().text('₹'+ parseFloat(cart_amount - response.discount).toFixed(2));
+
+                    }
+                 
+                }
+             })
+          
+        });
+        
+    </script>
 <script>
     $('.input-number').keyup(function(){
         var value=$(this).val();
@@ -592,7 +630,6 @@ google.maps.event.addDomListener(window, 'load', function () {
             }
             else{
                 location.reload();
-            
             }
             }
         })
@@ -606,8 +643,8 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function SuccessHandler(transaction) {
       
-        $("#paymentDetail").removeAttr('style');
-        $('#paymentID').val(transaction.razorpay_payment_id);
+        //$("#paymentDetail").removeAttr('style');
+      //   $('#paymentID').val(transaction.razorpay_payment_id);
         var paymentDate = new Date();
         $('#paymentDate').text(
                 padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
@@ -632,7 +669,7 @@ google.maps.event.addDomListener(window, 'load', function () {
     $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
         var parent = $(this);
-        button.attr('disabled', 'true').html('Please Wait...');
+       // button.attr('disabled', 'true').html('Please Wait...');
 
         $.ajax({
             method: 'post',
@@ -645,6 +682,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                }
                if(r.statusText==='Bad Request'){
                   toastr.error(r.responseJSON.error);
+
                   }else{
                      var options = {
                      key: "{{ env('RAZORPAY_KEY') }}",
@@ -677,4 +715,5 @@ google.maps.event.addDomListener(window, 'load', function () {
         return false;
     })
 </script>
+
 @stop

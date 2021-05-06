@@ -39,7 +39,6 @@ class RazorpayController extends Controller
         $cartsdetails=CartModel::where('user_id',$user->id)->get();
         if(count($cartsdetails)==0){
             return response()->json(['error'=>'cartisempty']);
-
         }
         $total=0;
         $quantity=0;
@@ -49,7 +48,11 @@ class RazorpayController extends Controller
               $quantity= $quantity+$value['quantity'];
             $total=$total+$value['quantity']*$value['price'] ;  
         }
-        $discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+        //$discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+        if($request->input('pay_coupon') != ""){
+            $coupon=CouponModel::where('code',$request->pay_coupon)->where('status',1)->first();
+            $discount=$coupon['discount'];
+        }
         $total_amount=$total - $discount;
         $order_id= Order::orderBy('id', 'DESC')->first();
         $order  = $api->order->create(array('receipt' =>$order_id['id']+1, 'amount' => $total_amount * 100 , 'currency' => 'INR')); // Creates order

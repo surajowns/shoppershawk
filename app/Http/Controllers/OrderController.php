@@ -20,12 +20,14 @@ class OrderController extends Controller
 
      public function __construct()
      {
-         $this->middleware('UserSession');
+         //$this->middleware('UserSession');
      }
      public function applycoupon(Request $request)
      {
-       //dd($request->all());
            $user=Auth::user();
+           if(empty($user)){
+             return response()->json(['status'=>'error','msg'=>'Login first']);
+           }
            $date=Date('Y-m-d');
            $validator = Validator::make($request->all(), [
              'code'=>'required',    
@@ -56,8 +58,8 @@ class OrderController extends Controller
            }
            $item_total;
            if($minimum_amount <= $item_total){
-              Session::put('coupon',$coupon_code);
-              Session::put('discount',$discount);
+              //Session::put('coupon',$coupon_code);
+              //Session::put('discount',$discount);
              return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
            }else{
              return response()->json(['status'=>'error','msg'=>"Coupon not  available for this order"]);
