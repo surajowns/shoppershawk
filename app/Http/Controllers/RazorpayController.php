@@ -48,7 +48,8 @@ class RazorpayController extends Controller
               $quantity= $quantity+$value['quantity'];
             $total=$total+$value['quantity']*$value['price'] ;  
         }
-        //$discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+       $discount=session()->has('coupon')?Session::get('coupon'):0;
+        //dd($discount);
         if($request->input('pay_coupon') != ""){
             $coupon=CouponModel::where('code',$request->pay_coupon)->where('status',1)->first();
             $discount=$coupon['discount'];

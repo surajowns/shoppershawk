@@ -58,14 +58,25 @@ class OrderController extends Controller
            }
            $item_total;
            if($minimum_amount <= $item_total){
-              //Session::put('coupon',$coupon_code);
-              //Session::put('discount',$discount);
+              Session::put('coupon',$coupon_code);
+              Session::put('discount',$discount);
              return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
            }else{
              return response()->json(['status'=>'error','msg'=>"Coupon not  available for this order"]);
            }
          }
      }
+     public function removeCoupon(Request $request)
+     {
+        try{
+         Session::forget('coupon');
+         Session::forget('discount'); 
+         return response()->json(['status'=>'success','msg'=>'Removed']);
+        }catch(\Exception $e){
+          return response()->json(['status'=>'success','error',$e->getMessage()]);
+       }
+     }
+
        public function createOrder(Request $request)
        {   
        

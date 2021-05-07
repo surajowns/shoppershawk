@@ -63,7 +63,7 @@
                                     <div>
                                     @csrf
                                         <input placeholder="Coupon code" type="text" name="code" id="coupon" required>
-                                        <button id="addcoupon">Apply coupon</button>
+                                        <button id="{{session()->has('coupon')?'removecoupon':'addcoupon'}}">{{session()->has('coupon')?'Remove Coupon':'Apply coupon'}}</button>
                                         <span class="text-danger" id="coupon_error">{{$errors->first('code')}}</span>
                                     </div>
                                 </div>
@@ -296,7 +296,7 @@
                                  </div>
                               </div> -->
                            </div>
-                           <input  type="hidden" name="pay_coupon" id="pay_coupon" value="">
+                           <input  type="hidden" name="pay_coupon" id="pay_coupon" value="{{Session::has('coupon')?Session::get('coupon'):''}}">
 
                            <div class="order_button">
                               <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Proceed to Pay</button>
@@ -363,7 +363,7 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                   <th colspan="2">Discount</th>
+                                   <th colspan="2" class="coupon_applied">Discount @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
                                    <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
@@ -390,7 +390,7 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                   <th colspan="2">Discount</th>
+                                   <th colspan="2" class="coupon_applied">Discount  @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
                                    <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
@@ -600,10 +600,52 @@ $(document).on("click","#addcoupon",function() {
                      $('#pay_coupon').val(response.coupon);
                      var coupon_discount=response.discount;
                      $('#coupon_error').text(response.msg);
+                     var coupon=response.coupon;
+                     
                      $('.coupon_discount').text('-₹'+parseFloat(response.discount).toFixed(2));
+                     $('.coupon_applied').text('Discount '+'(' + response.coupon + ')');
+                     $("#addcoupon").text("Remove Coupon");
+                     $('#addcoupon').attr('id','removecoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').last().text().slice(1).replace(/,/g, ''));
-                      //alert(parseFloat(cart_amount)) ;   
-                      $('.cart_amount').last().text('₹'+ parseFloat(cart_amount - response.discount).toFixed(2));
+                     $('.cart_amount').last().text('₹'+ parseFloat(cart_amount - response.discount).toFixed(2));
+
+                    }
+                 
+                }
+             })
+          
+        });
+        
+    </script>
+     <script>
+$(document).on("click","#removecoupon",function() {
+        var pay_coupon= $('#pay_coupon').val();
+        var code= $('#coupon').val();
+         // if(code===''){
+         //    $('#coupon_error').text('This field is required !'); 
+         //    return;
+         // }
+         // if(pay_coupon != ''){
+         //    $('#coupon_error').text('You have already used a coupon!'); 
+         //    return;
+         // }
+        $.ajax({
+                Type:"POST",
+                url : "{{url('/user/removecoupon/')}}",
+                data: {code:code},
+                success: function(response){
+                    console.log(response);
+                    if(response.status==="error"){
+                       $('#coupon_error').text(response.msg);
+                    }else{
+                     $('#pay_coupon').val('');
+                     $('#coupon_error').text(response.msg);
+                     $('.coupon_discount').text('₹'+ '00.00');
+                     $('.coupon_applied').text('Discount');
+                     $("#removecoupon").text("Apply Coupon");
+                     $('#removecoupon').attr('id','addcoupon'); 
+                     var cart_amount =parseFloat($('.cart_amount').text().slice(1).replace(/,/g, ''));
+                     $('.cart_amount').last().text('₹'+ parseFloat(cart_amount).toFixed(2));
 
                     }
                  

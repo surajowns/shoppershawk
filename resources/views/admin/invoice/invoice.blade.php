@@ -63,7 +63,7 @@ body {
                  <h1 class="text-center">Tax Invoice</h1>
                 <table class="table">
                 <th><img src="http://shoppershawk.com/public/front/img/logo/logo.png" alt="Logo" /></th>
-                <th><h5>GSTIN:COMPANY GSTNO</h5></th>
+                <th><h5>@if($orders['gst_no'] !=null )GSTIN:{{$orders['gst_no']}} @endif</h5></th>
                 </table>
                 <table class="table">
                     <thead>
@@ -142,9 +142,11 @@ body {
                          @endforeach
                         <tr>
                             <td colspan="2" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
-                            <td colspan="2" style="font-weight:bold;">Discount: {{number_format($orders['discount'],2)}}</td>
+                            <td  style="font-weight:bold;">Discount: {{number_format($orders['discount'],2)}}</td>
+                            <td  style="font-weight:bold;">Additinal charges: {{number_format($additinal_charges,2)}}</td>
+
                             <td style="font-weight:bold;" colspan="1">Total Price (INR): </td>
-                            <td style="font-weight:bold;">{{number_format($orders['total_amount'],2)}}</td>
+                            <td style="font-weight:bold;">{{number_format($transaction_amount,2)}}</td>
                         </tr>                        
                     </tbody>
                 </table>

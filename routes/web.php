@@ -74,6 +74,8 @@ Route::any('/user/search','HomeController@MultiSearch')->name('Search product');
 
 // Apply Coupon
 Route::any('/user/coupon/','OrderController@applycoupon')->name('Apply Coupon');
+Route::any('/user/removecoupon/','OrderController@removeCoupon')->name('Remove Coupon');
+
 
 Route::any('/user/createorder/','OrderController@createOrder')->name('create order');
 
