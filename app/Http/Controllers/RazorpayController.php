@@ -50,8 +50,8 @@ class RazorpayController extends Controller
         }
        $discount=session()->has('coupon')?Session::get('coupon'):0;
         //dd($discount);
-        if($request->input('pay_coupon') != ""){
-            $coupon=CouponModel::where('code',$request->pay_coupon)->where('status',1)->first();
+        if($request->input('coupon') != ""){
+            $coupon=CouponModel::where('code',$request->coupon)->where('status',1)->first();
             $discount=$coupon['discount'];
         }
         $total_amount=$total - $discount;
@@ -261,10 +261,11 @@ class RazorpayController extends Controller
                      NotificationModel::insert(['user_id'=>$user['id'],'content'=>$content,'type'=>$order_no]);
                      DB::commit();
                      $orders=Order::with('orderdetails','orderdetails.products','orderdetails.productImage')->orderBy('id','DESC')->first();
-                    
+                     Session::forget('coupon');
+                     Session::forget('discount');
                       $emailsent= OrderEmail($user,$order_no,$orders);
                      if($emailsent){
-                     return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id'],'status'=>$payment['status']]);
+                       return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id'],'status'=>$payment['status']]);
             
                      }else{
                        return response()->json(['order_no'=>$order_no,'order_id'=>$order_id['id'],'status'=>$payment['status']]);

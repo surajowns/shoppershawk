@@ -62,7 +62,7 @@
                                 <div class="checkout_info coupon_info">
                                     <div>
                                     @csrf
-                                        <input placeholder="Coupon code" type="text" name="code" id="coupon" required>
+                                        <input placeholder="Coupon code" type="text" name="code" id="coupon"  style="display:{{Session::has('coupon')?'none':'initial'}}">
                                         <button id="{{session()->has('coupon')?'removecoupon':'addcoupon'}}">{{session()->has('coupon')?'Remove Coupon':'Apply coupon'}}</button>
                                         <span class="text-danger" id="coupon_error">{{$errors->first('code')}}</span>
                                     </div>
@@ -296,7 +296,8 @@
                                  </div>
                               </div> -->
                            </div>
-                           <input  type="hidden" name="pay_coupon" id="pay_coupon" value="{{Session::has('coupon')?Session::get('coupon'):''}}">
+                           <input  type="hidden" name="coupon" id="coupon" value="{{Session::has('coupon')?Session::get('coupon'):''}}">
+                           <input  type="hidden" name="payment_id" id="paymentID" value="">
 
                            <div class="order_button">
                               <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Proceed to Pay</button>
@@ -578,16 +579,13 @@ google.maps.event.addDomListener(window, 'load', function () {
  </script>
  <script>
 $(document).on("click","#addcoupon",function() {
-        var pay_coupon= $('#pay_coupon').val();
+        var coupon= $('#coupon').val();
         var code= $('#coupon').val();
          if(code===''){
             $('#coupon_error').text('This field is required !'); 
             return;
          }
-         // if(pay_coupon != ''){
-         //    $('#coupon_error').text('You have already used a coupon!'); 
-         //    return;
-         // }
+        
         $.ajax({
                 Type:"POST",
                 url : "{{url('/user/coupon/')}}",
@@ -597,13 +595,14 @@ $(document).on("click","#addcoupon",function() {
                     if(response.status==="error"){
                        $('#coupon_error').text(response.msg);
                     }else{
-                     $('#pay_coupon').val(response.coupon);
+                     $('#coupon').val(response.coupon);
                      var coupon_discount=response.discount;
                      $('#coupon_error').text(response.msg);
                      var coupon=response.coupon;
                      
                      $('.coupon_discount').text('-₹'+parseFloat(response.discount).toFixed(2));
                      $('.coupon_applied').text('Discount '+'(' + response.coupon + ')');
+                     $("#coupon").css("display",'none');
                      $("#addcoupon").text("Remove Coupon");
                      $('#addcoupon').attr('id','removecoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').last().text().slice(1).replace(/,/g, ''));
@@ -619,16 +618,8 @@ $(document).on("click","#addcoupon",function() {
     </script>
      <script>
 $(document).on("click","#removecoupon",function() {
-        var pay_coupon= $('#pay_coupon').val();
+        var coupon= $('#coupon').val();
         var code= $('#coupon').val();
-         // if(code===''){
-         //    $('#coupon_error').text('This field is required !'); 
-         //    return;
-         // }
-         // if(pay_coupon != ''){
-         //    $('#coupon_error').text('You have already used a coupon!'); 
-         //    return;
-         // }
         $.ajax({
                 Type:"POST",
                 url : "{{url('/user/removecoupon/')}}",
@@ -638,17 +629,17 @@ $(document).on("click","#removecoupon",function() {
                     if(response.status==="error"){
                        $('#coupon_error').text(response.msg);
                     }else{
-                     $('#pay_coupon').val('');
+                     $('#coupon').val('');
                      $('#coupon_error').text(response.msg);
                      $('.coupon_discount').text('₹'+ '00.00');
                      $('.coupon_applied').text('Discount');
+                     $("#coupon").css("display",'initial');
                      $("#removecoupon").text("Apply Coupon");
                      $('#removecoupon').attr('id','addcoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').text().slice(1).replace(/,/g, ''));
                      $('.cart_amount').last().text('₹'+ parseFloat(cart_amount).toFixed(2));
 
                     }
-                 
                 }
              })
           
@@ -686,11 +677,11 @@ $(document).on("click","#removecoupon",function() {
     function SuccessHandler(transaction) {
       
         //$("#paymentDetail").removeAttr('style');
-      //   $('#paymentID').val(transaction.razorpay_payment_id);
-        var paymentDate = new Date();
-        $('#paymentDate').text(
-                padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
-                );
+        $('#paymentID').val(transaction.razorpay_payment_id);
+       // var paymentDate = new Date();
+      //   $('#paymentDate').text(
+      //           padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
+      //           );
          
         $.ajax({
             method: 'post',
