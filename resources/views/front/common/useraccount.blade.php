@@ -116,7 +116,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="address">
+                                <div class="tab-pane" id="addressess">
                                     <p>The following addresses will be used on the checkout page by default.</p>
                                     <h4 class="billing-address">Billing address</h4>
                                     <a href="#" class="view">Edit</a>
@@ -131,6 +131,58 @@
                                     </address>
                                         <p>Bangladesh</p>
                                 </div>
+                                <div class="tab-pane" id="address">
+                                        <div class="wrapper">
+                                            <div class="content u-sizeViewHeightMin100">
+                                                <div class="shareUrl u-verticalGrid u-marginAuto u-size1040">
+                                                    <header class="shareUrl-header">
+                                                        <h1 class="shareUrl-headerText text-light">Click to Copy Invite Link</h1>
+                                                    </header>
+                                                    <div class="shareUrl-body">
+                                                        <div class="container">
+                                                            <!-- COPY INPUT -->
+                                                            <input class="shareUrl-input js-shareUrl" type="text" readonly="readonly" />
+                                                            <p class="shareUrl-subtext text-light">Click above to copy the link.</p>
+
+                                                            <div class="social-links">
+                                                                <a class="social-links__a social-links--whatsapp" href="#"> <span>Whatsapp</span></a><a class="social-links__a social-links--viber" href="#"> <span>Viber</span></a>
+                                                                <a class="social-links__a social-links--telegram" href="#"> <span>Telegram</span></a><a class="social-links__a social-links--skype" href="#"> <span>Skype</span></a>
+                                                                <a class="social-links__a social-links--messenger" href="#"> <span>Messenger</span></a><a class="social-links__a social-links--line" href="#"> <span>line</span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <h3 class="mt-3">My Referrals</h3>
+                                            <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S.no</th>
+                                                        <th>Name</th>
+                                                        <th>Phone No.</th>
+                                                        <th>Email Address</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if(!empty($referral_user))
+                                                     @foreach($referral_user as $val)
+                                                      <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{$val->name}}</td>
+                                                        <td><span class="success">{{$val->mobile}}</span></td>
+                                                        <td>{{$val->email}}</td>
+                                                        <td>{{date('d M Y',strtotime($val->created_at))}}</td>
+                                                     </tr>
+                                                    @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 <div class="tab-pane fade" id="account-details">
                                     <h3>Account details </h3>
                                     <div class="login">
@@ -213,4 +265,17 @@ google.maps.event.addDomListener(window, 'load', function () {
         });
       });
  </script>
+ <script>
+            (function () {
+                function copy(element) {
+                    return function () {
+                        document.execCommand("copy", false, element.select());
+                    };
+                }
+                var shareUrl = document.querySelector(".js-shareUrl");
+                var copyShareUrl = copy(shareUrl);
+                shareUrl.value = "{{isset($refferal['link'])?$refferal['link']:'No Referral Link Available'}}";
+                shareUrl.addEventListener("click", copyShareUrl, false);
+            })();
+        </script>
  @stop

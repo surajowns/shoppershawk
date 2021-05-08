@@ -9,6 +9,8 @@ use Session;
 use Cart;
 use App\CartModel;
 use App\User;
+use DB;
+use App\Refferal;
 
 class LoginController extends Controller
 {
@@ -177,7 +179,47 @@ class LoginController extends Controller
                 return view('front.pages.resetpassword',compact('user'));
             }
     }
+    public function referalRegister(Request $request)
+    {
+      $url=explode('=',url()->full());
+      $referrer_id=end($url);
+      if($request->isMethod('post')){
+        $validatedData = $request->validate([
+          'name' => 'required',
+          'email' => 'required|unique:users',
+          'mobile' => 'required|unique:users',
+          'password'=>'required',
+          ]);
+           DB::beginTransaction();
+          try{
+            $data=$request->except('_token');
+            $password=bcrypt($request->password);
+            $data['password']=$password;
+            $data['referrer_id']= $referrer_id;
+            $data['role']=2;
+            
+            User::create($data); 
+           
+            $refferal_link=url("/register/reff=$request->name");
+             $user=User::orderBy('id','DESC')->first();
+             $refferals = new Refferal;
+             $refferals->user_id= $user['id'];
+             $refferals->referrer_id=$request->name;
+             $refferals->link= $refferal_link;
+             $refferals->save();
+         
+             DB::commit();
+            return redirect('/')->with('success','You are registered successfully');
 
+          }catch(\Exception $e){
+             DB::rollback(); 
+            return back()->with('error',$e->getMessage());
+
+          }
+
+        }
+        return view('front.pages.register');
+    }
 
 
 

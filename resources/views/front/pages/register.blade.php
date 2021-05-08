@@ -135,6 +135,10 @@
             <div class="customer_login">
                 <div class="row">
                     <!--login area start-->
+                    <?php   $url=explode('=',url()->full());
+                            $referrer_id=end($url); 
+                      
+                      ?>
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6 col-md-6">
                        <div class="account_form register">
@@ -149,7 +153,10 @@
                                     <input type="text" name="name"   placeholder="Enter Name" required>
                                 </p>
                                 </div>
+                                <input type="hidden" name="referrer_id"  value="{{$referrer_id}}"  placeholder="" >
+
                                 <div class="col-sm-6">
+
                                 <p>
                                     <label>Mobile Number<span>*</span></label>
                                     <input type="text" name="mobile"  placeholder="Enter Mobile no." required>

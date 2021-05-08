@@ -96,6 +96,8 @@ Route::any('/user/createorder/','OrderController@createOrder')->name('create ord
   Route::any('user/payment/callback', 'RazorpayController@WebhookSuccess');
 
 
+//REfferal link generate
+Route::any('/register/{reff}','LoginController@referalRegister')->name('Refferal Register');
 
 
 
