@@ -144,11 +144,11 @@
                                                             <input class="shareUrl-input js-shareUrl" type="text" readonly="readonly" />
                                                             <p class="shareUrl-subtext text-light">Click above to copy the link.</p>
 
-                                                            <div class="social-links">
+                                                            <!-- <div class="social-links">
                                                                 <a class="social-links__a social-links--whatsapp" href="#"> <span>Whatsapp</span></a><a class="social-links__a social-links--viber" href="#"> <span>Viber</span></a>
                                                                 <a class="social-links__a social-links--telegram" href="#"> <span>Telegram</span></a><a class="social-links__a social-links--skype" href="#"> <span>Skype</span></a>
                                                                 <a class="social-links__a social-links--messenger" href="#"> <span>Messenger</span></a><a class="social-links__a social-links--line" href="#"> <span>line</span></a>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>
