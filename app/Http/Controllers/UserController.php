@@ -10,6 +10,7 @@ use Auth;
 use Validator;
 use Session;
 use App\User;
+use App\Refferal;
 class UserController extends Controller
 {
     public function __construct()
@@ -21,7 +22,10 @@ class UserController extends Controller
          $user=Auth::user();
          $orders=Order::with('users','status','additionalCharges')->where('user_id',$user['id'])->orderBy('id','DESC')->get()->toArray();
          $status=Status::get();
-         return view('front.common.useraccount',compact('user','orders','status'));
+         $refferal=Refferal::where('user_id',$user['id'])->first();
+
+         $referral_user=User::where('referrer_id',isset($refferal['referrer_id'])?$refferal['referrer_id']:'')->get();
+         return view('front.common.useraccount',compact('user','orders','status','refferal','referral_user'));
     }
     
     public function UpdateProfile(Request $request)

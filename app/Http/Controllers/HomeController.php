@@ -14,6 +14,8 @@ use Session;
 use App\CMSModel;
 use App\BannerModel;
 use DB;
+use App\Refferal;
+use Str;
 
 class HomeController extends Controller
 {
@@ -33,6 +35,7 @@ class HomeController extends Controller
           'mobile' => 'required|unique:users',
           'password'=>'required',
           ]);
+          DB::beginTransaction();
           try{
             $data=$request->except('_token');
             $password=bcrypt($request->password);
@@ -40,10 +43,20 @@ class HomeController extends Controller
             $data['role']=2;
             
             User::create($data); 
+            $refferal_code=Str::random(10);
+            
+            $refferal_link=url("/register/reff=$refferal_code");
+             $user=User::orderBy('id','DESC')->first();
+             $refferals = new Refferal;
+             $refferals->user_id= $user['id'];
+             $refferals->referrer_id=$refferal_code;
+             $refferals->link= $refferal_link;
+             $refferals->save();
+             DB::commit();
             return redirect('/')->with('success','You are registered successfully');
 
           }catch(\Exception $e){
-            dd($e->getMessage());
+             DB::rollback(); 
             return back()->with('error',$e->getMessage());
 
           }

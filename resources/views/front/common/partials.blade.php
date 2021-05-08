@@ -4,7 +4,7 @@
 
         <!-- <li><a href="#downloads" data-toggle="tab" class="nav-link">My Cart</a></li> -->
         <li> <a href="#orders" data-toggle="tab" class="nav-link">My Orders</a></li>
-        <!-- <li><a href="#address" data-toggle="tab" class="nav-link">Manage Address</a></li> -->
+        <li><a href="#address" data-toggle="tab" class="nav-link">My Referrals</a></li>
         <li><a href="#account-details" data-toggle="tab" class="nav-link">Manage details</a></li>
     </ul>
     <ul>
