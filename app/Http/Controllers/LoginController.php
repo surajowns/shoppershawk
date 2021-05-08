@@ -11,6 +11,7 @@ use App\CartModel;
 use App\User;
 use DB;
 use App\Refferal;
+use Str;
 
 class LoginController extends Controller
 {
@@ -199,12 +200,12 @@ class LoginController extends Controller
             $data['role']=2;
             
             User::create($data); 
-           
-            $refferal_link=url("/register/reff=$request->name");
+            $refferal_code=Str::random(10);
+            $refferal_link=url("/register/reff=$refferal_code");
              $user=User::orderBy('id','DESC')->first();
              $refferals = new Refferal;
              $refferals->user_id= $user['id'];
-             $refferals->referrer_id=$request->name;
+             $refferals->referrer_id=$refferal_code;
              $refferals->link= $refferal_link;
              $refferals->save();
          
