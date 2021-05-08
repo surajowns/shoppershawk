@@ -39,7 +39,6 @@ class HomeController extends Controller
             $data=$request->except('_token');
             $password=bcrypt($request->password);
             $data['password']=$password;
-            $data['referrer_id']= $referrer_id;
             $data['role']=2;
             
             User::create($data); 
