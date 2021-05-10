@@ -24,7 +24,7 @@ if (! function_exists('OrderEmail')) {
 }
 
 if (! function_exists('ForgetPasswordEmail')) {
-  function ForgetPasswordEmail($user,$token) {
+  function ForgetPasswordEmail($user,$referral_link) {
            
       $to_name =$user['name'];
       $to_email =$user['email'];
@@ -32,6 +32,20 @@ if (! function_exists('ForgetPasswordEmail')) {
     
       Mail::send('front.pages.passwordresetemail', $data, function($message) use ($to_name, $to_email) {
       $message->to($to_email, $to_name)->subject('Reset Password Link');
+      $message->from('care@shoppershawk.com','Shoppers Hawk');
+      });
+  }
+}
+
+if (! function_exists('UserRegisterEmail')) {
+  function UserRegisterEmail($user,$refferal_code) {
+           
+      $to_name =$user['name'];
+      $to_email =$user['email'];
+      $data = array('user'=>$user,'refferal_code'=>$refferal_code);
+    
+      Mail::send('front.pages.welcomemail', $data, function($message) use ($to_name, $to_email) {
+      $message->to($to_email, $to_name)->subject('Welcome mail');
       $message->from('care@shoppershawk.com','Shoppers Hawk');
       });
   }
