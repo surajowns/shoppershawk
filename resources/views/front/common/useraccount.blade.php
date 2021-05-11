@@ -313,7 +313,7 @@
                                                                 <a class="twitter" href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{$refferal['link']}}" target="blank"><i class="fa fa-twitter"></i></a>
 
                                                                 <!-- google plus -->
-                                                                <a class="googleplus" href="https://plus.google.com/share?url={{$refferal['link']}}" target="blank"><i class="fa fa-envelope"></i></a>
+                                                                <a class="googleplus" href="sms://+2348106247369?body=I%27m%20interested%20in%20your%20product.%20Please%20contact%20me" target="blank"><i class="fa fa-envelope"></i></a>
 
                                                                 <!-- linkedin -->
                                                                 <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-linkedin"></i></a>
