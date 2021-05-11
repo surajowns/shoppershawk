@@ -5,8 +5,23 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title>Shoppershawk</title>
-        <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="title" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
+        <meta name="description" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
+        <meta name="keywords" content="">
+        <meta property="og:title" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{Request::url()}}">
+        <meta property="og:image" content="{{url('public/front/img/logo/logo.png')}}">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="600">
+        <meta property="og:description" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
+        <meta property="og:site_name" content="https://shoppershawk.com/">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{Request::segment(2)}}">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="{{url('public/front/img/logo/logo.png')}}">
+           
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
 
