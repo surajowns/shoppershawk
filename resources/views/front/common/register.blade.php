@@ -12,7 +12,7 @@
         <meta property="og:title" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{Request::url()}}">
-        <meta property="og:image" content="{{url('public/front/img/logo/logo.png'}}">
+        <meta property="og:image" content="{{url('public/front/img/logo/logo.png')}}">
         <meta property="og:image:width" content="600">
         <meta property="og:image:height" content="600">
         <meta property="og:description" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
@@ -20,7 +20,7 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{Request::segment(2)}}">
         <meta name="twitter:description" content="">
-        <meta name="twitter:image" content="{{url('public/front/img/logo/logo.png'}}">
+        <meta name="twitter:image" content="{{url('public/front/img/logo/logo.png')}}">
            
 
         <!-- Favicon -->

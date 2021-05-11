@@ -317,7 +317,7 @@
 
                                                                 <!-- linkedin -->
                                                                 <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-linkedin"></i></a>
-                                                                <a class="whatsapp" href="https://api.whatsapp.com/send?phone={{$user['mobile']}}&text={{isset($refferal['link'])?$refferal['link']:''}}" target="blank"><i class="fa fa-whatsapp"></i></a>
+                                                                <a class="whatsapp" href="https://api.whatsapp.com/send?phone=+91{{$user['mobile']}}&text={{$refferal['link']}}" target="blank"><i class="fa fa-whatsapp"></i></a>
 
                                                                 </div>
 
