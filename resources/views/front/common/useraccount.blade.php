@@ -306,20 +306,20 @@
        
                                                             <div id="share">
 
-<!-- facebook -->
-<a class="facebook" href="https://www.facebook.com/share.php?u={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-facebook"></i></a>
+                                                                <!-- facebook -->
+                                                                <a class="facebook" href="https://www.facebook.com/share.php?u=https://shoppershawk.com/product_details/lenovo-tab-m10-hd-x-505x-2gb-ram-32gb-rom&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-facebook"></i></a>
 
-<!-- twitter -->
-<a class="twitter" href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{$refferal['link']}}" target="blank"><i class="fa fa-twitter"></i></a>
+                                                                <!-- twitter -->
+                                                                <a class="twitter" href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{$refferal['link']}}" target="blank"><i class="fa fa-twitter"></i></a>
 
-<!-- google plus -->
-<a class="googleplus" href="https://plus.google.com/share?url={{$refferal['link']}}" target="blank"><i class="fa fa-envelope"></i></a>
+                                                                <!-- google plus -->
+                                                                <a class="googleplus" href="https://plus.google.com/share?url={{$refferal['link']}}" target="blank"><i class="fa fa-envelope"></i></a>
 
-<!-- linkedin -->
-<a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-linkedin"></i></a>
-<a class="whatsapp" href="https://api.whatsapp.com/send?phone={{$user['mobile']}}&text={{isset($refferal['link'])?$refferal['link']:''}}" target="blank"><i class="fa fa-whatsapp"></i></a>
+                                                                <!-- linkedin -->
+                                                                <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-linkedin"></i></a>
+                                                                <a class="whatsapp" href="https://api.whatsapp.com/send?phone={{$user['mobile']}}&text={{isset($refferal['link'])?$refferal['link']:''}}" target="blank"><i class="fa fa-whatsapp"></i></a>
 
-</div>
+                                                                </div>
 
                                                         </div>
                                                     </div>
