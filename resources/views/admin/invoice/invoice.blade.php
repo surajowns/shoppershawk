@@ -152,8 +152,8 @@ body {
                 </table>
                 <div>
                     <div>
-                         <h2 id="supplier">Shoppershawk</h2>
-                        <span id="address">Besthawk infosystem pvt ltd, sector-18, Noida</span><br><span id="country">India</span> - <span id="zip">201301</span><br><span id="tax_num">+91-8882137914</span><br>
+                         <h2 id="supplier">Shoppers Hawk</h2>
+                        <span id="address">Besthawk infosystem pvt ltd, sector-18, Noida</span><br><span id="country">India</span> - <span id="zip">201301</span><br><span id="tax_num">+91 120-2514786</span><br>
                     </div>
                 </div>
                 <br><br><br>

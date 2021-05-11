@@ -134,7 +134,7 @@
                                             <p class="cart_amount text-success">Free</p>
                                         </div>
                                         <div class="cart_subtotal">
-                                            <p>Discount</p>
+                                            <p>Discount &nbsp;({{$orders['coupon']}})</p>
                                             <p>₹{{number_format($orders['discount'],2)}}</p>
                                         </div>
                                         <!-- <a href="#">Calculate shipping</a> -->
