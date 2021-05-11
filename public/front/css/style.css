@@ -3776,7 +3776,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .home_section_bg {
   background: #F5F5F9;
-  padding: 60px 0 60px;
+  padding: 10px 0 60px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .home_section_bg {
@@ -7473,7 +7473,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* 14. checkout page css here */
 .checkout_page_bg {
   background: #F5F5F9;
-  padding: 60px 0 133px;
+  padding: 10px 0 133px;
 }
 @media only screen and (max-width: 767px) {
   .checkout_page_bg {
@@ -8200,7 +8200,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*  18. my account css here */
 .account_page_bg {
   background: #F5F5F9;
-  padding: 60px 0 60px;
+  padding: 10px 0 60px;
 }
 @media only screen and (max-width: 767px) {
   .account_page_bg {
