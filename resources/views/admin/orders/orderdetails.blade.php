@@ -138,10 +138,13 @@
                                             <p>₹{{number_format($orders['discount'],2)}}</p>
                                         </div>
                                         <!-- <a href="#">Calculate shipping</a> -->
-
+                                        <div class="cart_subtotal">
+                                            <p>Additinal charges</p>
+                                            <p>₹{{number_format($additinal_charges,2)}}</p>
+                                        </div>
                                         <div class="cart_subtotal">
                                             <p>Total</p>
-                                            <p class="cart_amount">₹{{number_format($orders['total_amount'],2)}}</p>
+                                            <p class="cart_amount">₹{{number_format($transaction_amount,2)}}</p>
                                         </div>
                                         
                                     </div>

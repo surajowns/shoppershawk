@@ -48,10 +48,13 @@ class OrderController extends Controller
     }
     public function orderDetails(Request $request,$id=null)
     {      
-           $orders=Order::with('users','status')->where('id',$id)->first();
+           $orders=Order::with('users','status','additionalCharges')->where('id',$id)->first();
+           $transaction_amount=$orders['additionalCharges'][0]['amount'];
+           $total_amount=$orders['total_amount'];
+           $additinal_charges=$transaction_amount-$total_amount;
            $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
            $status=Status::get();
-           return view('admin.orders.orderdetails',compact('orders','orderdetails','status'));
+           return view('admin.orders.orderdetails',compact('orders','orderdetails','status','additinal_charges','transaction_amount'));
            //dd($orderdetais);
     }
 
