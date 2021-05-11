@@ -210,6 +210,8 @@ class LoginController extends Controller
              $refferals->save();
          
              DB::commit();
+             UserRegisterEmail($user,$refferal_code);
+
             return redirect('/')->with('success','You are registered successfully');
 
           }catch(\Exception $e){
