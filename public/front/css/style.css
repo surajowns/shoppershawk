@@ -7168,7 +7168,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* 13. cart page css here */
 .cart_page_bg {
   background: #F5F5F9;
-  padding: 55px 0 133px;
+  padding:10px 0 133px;
 }
 @media only screen and (max-width: 767px) {
   .cart_page_bg {
@@ -7793,7 +7793,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* 22. wishlist css here */
 .wishlist_page_bg {
   background: #F5F5F9;
-  padding: 55px 0 133px;
+  padding:10px 0 133px;
 }
 @media only screen and (max-width: 767px) {
   .wishlist_page_bg {
