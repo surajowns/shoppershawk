@@ -307,7 +307,7 @@
                                                             <div id="share">
 
                                                                 <!-- facebook -->
-                                                                <a class="facebook" href="https://www.facebook.com/share.php?u=https://shoppershawk.com/product_details/lenovo-tab-m10-hd-x-505x-2gb-ram-32gb-rom&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-facebook"></i></a>
+                                                                <a class="facebook" href="https://www.facebook.com/share.php?u={{$refferal['link']}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="blank"><i class="fa fa-facebook"></i></a>
 
                                                                 <!-- twitter -->
                                                                 <a class="twitter" href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{$refferal['link']}}" target="blank"><i class="fa fa-twitter"></i></a>
