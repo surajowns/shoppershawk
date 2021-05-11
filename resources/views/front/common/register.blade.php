@@ -18,7 +18,7 @@
         <meta property="og:description" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
         <meta property="og:site_name" content="https://shoppershawk.com/">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{Request::segment(2)}}">
+        <meta name="twitter:title" content="Refer to your friends and Get Exciting deals on Laptop & Desktop">
         <meta name="twitter:description" content="">
         <meta name="twitter:image" content="{{url('public/front/img/logo/logo.png')}}">
            
