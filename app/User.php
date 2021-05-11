@@ -48,6 +48,10 @@ class User extends Authenticatable  implements JWTSubject
         {
             return $this->hasOne('App\Role','id','role');
         }
+        public function referrals()
+        {
+            return $this->hasOne('App\Refferal','referrer_id','referrer_id');
+        }
     
 
     public function getJWTIdentifier()

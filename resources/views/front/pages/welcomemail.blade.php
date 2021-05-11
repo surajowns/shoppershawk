@@ -202,7 +202,9 @@
                             </tr>
                             <tr>
                                 <td style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
-                                    <p style="margin: 0;">Thanks for choosing our product.</p>
+                                    <p style="margin: 0;">In case you need any further help, feel free to reach out to us at .</p>
+                                     <p><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></p>
+                                    <p>We look forward to building a great relationship with you! 😊😊😊</p>
                                 </td>
                             </tr>
                            
