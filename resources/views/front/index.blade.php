@@ -35,6 +35,7 @@
 </script>
     </head>
     <body>
+    <div id="dvLoading"></div>
         <!--Offcanvas menu area start-->
         
         <div class="off_canvars_overlay"></div>
@@ -212,7 +213,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-         <div class="newletter-popup">
+         <!-- <div class="newletter-popup">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">
@@ -225,13 +226,13 @@
                         <a href="https://shoppershawk.com/product_details/fire-boltt-blast-1400">
                            <img src="{{url('public/newsletter/sale.jpg')}}" alt="" width="400">
                            </a>
-                        </div>
+                        </div> -->
                      <!-- //.box-content -->
-                    </div>
+                    <!-- </div>
                 </div>
-            </div>
+            </div> -->
              <!-- /.box  -->
-        </div> 
+        <!-- </div>  -->
         <!--news letter popup start-->
 
         <!-- JS

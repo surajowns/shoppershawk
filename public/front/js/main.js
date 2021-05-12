@@ -900,3 +900,25 @@ $(".toggle-password").click(function() {
       input.attr("type", "password");
     }
   });
+  jQuery(window).on("load scroll", function() {
+    'use strict'; // Start of use strict
+    // Loader 
+     $('#dvLoading').fadeOut('slow', function () {
+            $(this).remove();
+        });
+	$('.google-map').on('click', function() {
+            $('.google-map').find('iframe').css("pointer-events", "auto");
+        });
+    //Animation Numbers	 
+    jQuery('.animateNumber').each(function() {
+        var num = jQuery(this).attr('data-num');
+        var top = jQuery(document).scrollTop() + (jQuery(window).height());
+        var pos_top = jQuery(this).offset().top;
+        if (top > pos_top && !jQuery(this).hasClass('active')) {
+            jQuery(this).addClass('active').animateNumber({
+                number: num
+            }, 2000);
+        }
+    });
+	  
+});

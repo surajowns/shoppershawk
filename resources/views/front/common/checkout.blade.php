@@ -690,6 +690,9 @@ $(document).on("click","#removecoupon",function() {
             complete: function (r) {
                var data=$.parseJSON(r.responseText);
                 if(data['status']==="authorized" || data['status']==="captured"){
+                  $('#dvLoading').fadeOut('slow', function () {
+                     $(this).remove();
+                  });
                   window.location.href="{{url('/user/thanku')}}"
                 }
             }
