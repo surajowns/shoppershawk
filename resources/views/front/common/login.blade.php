@@ -162,6 +162,7 @@
                                 </p>
                                 <div class="login_submit">
                                     <a href="{{url('/user/forgetpassword')}}">Lost your password?</a>
+                                    <a href="{{url('/redirect/google')}}">Google</a>
                                     <label for="remember" >
                                         <input  name="remember" id="remember" type="checkbox" checked>
                                         Remember me

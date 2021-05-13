@@ -101,6 +101,14 @@ Route::any('/register/{reff}','LoginController@referalRegister')->name('Refferal
 
 
 
+Route::any('/redirect/google','SocialAuthController@google')->name('google');
+Route::any('/google/callback','SocialAuthController@callback_google')->name('callback google');
+Route::any('/redirect/facebook','SocialAuthController@facebook')->name('facebook');
+Route::any('/facebook/callback','SocialAuthController@callback_fb')->name('callback facebook');
+
+
+
+
 ///Admin section start
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
