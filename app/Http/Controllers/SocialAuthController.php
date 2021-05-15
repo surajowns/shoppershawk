@@ -57,26 +57,23 @@ class SocialAuthController extends Controller
     }
     public function callback_fb(Request $request){
        
-        // if (!$request->has('code') || $request->has('denied')) {
-        //     return redirect('/login');
-        // }
-        // print_r($request->all());
-         
         $fb_user = Socialite::driver('facebook');
-        // dd($fb_user);
         $user = $this->findOrCreateFbUser($fb_user);
 
         $detail = User::where('id',$user->id)->first();
-                      dd($detail);
         if(!empty($detail)){
             if($detail->status != 1){
+               
                 return redirect('/')->with('error','Your account is not active. Please contact to admin for more information.');
                 Auth::logout();
                 Session::flush();
             } else{
+                
+                 Session::put('logid',$detail['id']);
+                Session::put('logRole',2);
                 auth()->login($detail);
              
-                    return redirect('/')->with('success','Login Successfully'.' '.ucfirst($detail['name']));
+                    return redirect('/')->with('success','Login Successfully');
    
             }
         }else{
@@ -90,7 +87,6 @@ class SocialAuthController extends Controller
         $fb_user = $user->stateless()->user();
      
         $fb_user = json_decode(json_encode($fb_user),true);
-        // dd($fb_user);
         if(!empty($fb_user)){
             $fb_name    = $fb_user['name'];
             $unique_id  = $fb_user['id'];
