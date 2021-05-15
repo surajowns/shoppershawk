@@ -63,11 +63,11 @@ class SocialAuthController extends Controller
         // print_r($request->all());
          
         $fb_user = Socialite::driver('facebook');
-        dd($fb_user);
+        // dd($fb_user);
         $user = $this->findOrCreateFbUser($fb_user);
 
         $detail = User::where('id',$user->id)->first();
-                dd($detail);
+                    //print_r($detail);
         if(!empty($detail)){
             if($detail->status != 1){
                 return redirect('/')->with('error','Your account is not active. Please contact to admin for more information.');
@@ -90,7 +90,7 @@ class SocialAuthController extends Controller
         $fb_user = $user->stateless()->user();
      
         $fb_user = json_decode(json_encode($fb_user),true);
-        dd('fb_user'.$fb_user);
+        // dd($fb_user);
         if(!empty($fb_user)){
             $fb_name    = $fb_user['name'];
             $unique_id  = $fb_user['id'];
@@ -98,7 +98,6 @@ class SocialAuthController extends Controller
             $fb_img     = '';
 
             $check_user = User::where('email',$email)->first();
-            dd($check_user);
             if(!empty($check_user)){
                
                 $check_user->name   = $fb_name;
@@ -123,10 +122,10 @@ class SocialAuthController extends Controller
             return redirect('/');
         }
        }catch(\Exception $e){
-           dd($e->getMessage());
-        return redirect('/')->with('success', $e->getMessage());
+           
+            return redirect('/')->with('success', $e->getMessage());
 
 
-     }
+         }
     }
 }
