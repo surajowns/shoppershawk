@@ -63,7 +63,7 @@ class SocialAuthController extends Controller
         // print_r($request->all());
          
         $fb_user = Socialite::driver('facebook');
-        // dd($fb_user);
+        dd($fb_user);
         $user = $this->findOrCreateFbUser($fb_user);
 
         $detail = User::where('id',$user->id)->first();
@@ -90,7 +90,7 @@ class SocialAuthController extends Controller
         $fb_user = $user->stateless()->user();
      
         $fb_user = json_decode(json_encode($fb_user),true);
-        // dd($fb_user);
+        dd('fb_user'.$fb_user);
         if(!empty($fb_user)){
             $fb_name    = $fb_user['name'];
             $unique_id  = $fb_user['id'];
