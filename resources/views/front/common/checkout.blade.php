@@ -38,7 +38,7 @@
                                  <input type="password" name="password" required>
                               </p>
                               <div class="login_submit">
-                                  <a href="{{url('register')}}">New to Shoppershawk ? Register</a>
+                                  <a href="{{url('/login')}}">New to Shoppershawk ? Register</a>
                                  <label for="remember" >
                                  <input  name="remember" id="remember" type="checkbox" checked>
                                  Remember me
