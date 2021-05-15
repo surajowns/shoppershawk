@@ -86,8 +86,7 @@
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
-                                <a class="btn btn-danger" href="{{url('/login')}}">Login</a>
-                                <a class="btn btn-danger" href="{{url('/register')}}">Register</a>
+                                <a class="btn btn-danger" href="{{url('/login')}}">Login|Register</a>
                                 @else
                                 <a href="{{url('/user/account')}}">Hi {{Auth::user()->name}}</a></li>
                                  <a class="btn btn-danger" href="{{url('/user/logout')}}">Logout</a></li>

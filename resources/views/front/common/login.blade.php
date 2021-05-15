@@ -202,12 +202,11 @@ input[type="checkbox"] {
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+0120-2512786">+0120-2512786</a></li>
+                                    <li>Hotline: <a href="tel:+0120-2512786">+91 120-2514786</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
-                                <a class="btn btn-danger" href="{{url('/login')}}">Login</a>
-                                <a class="btn btn-danger" href="{{url('/register')}}">Register</a>
+                                <a class="btn btn-danger" href="{{url('/login')}}">Login|Register</a>
                                 @else
                                 <a href="">Hi {{Auth::user()->name}}</a></li>
                                  <a class="btn btn-danger" href="{{url('/user/logout')}}">Logout</a></li>
