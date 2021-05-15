@@ -160,11 +160,12 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6 col-md-6">
                        <div class="account_form register">
-                            <h2>Register</h2>
+                            
                             <form action="" method="post" id="contact_form">
                             @include('message')
                             {{csrf_field()}}
                             <div class="row">
+                            <h2>Register</h2>
                             <div class="col-sm-6">
                             <p>
                                     <label>Name <span>*</span></label>
