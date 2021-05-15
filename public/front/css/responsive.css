@@ -17,6 +17,10 @@
 
 @media only screen and (max-width: 767px){
 	.search_container-1{display: block !important;}
+	.tab-login{padding: 10px !important;}
+	.tabs, .form, .form{width: 100% !important;}
+	.li-form {margin: 10px 12px 0 !important;}
+	.tabs{height: 50px !important;}
 }
 
 @media only screen and (max-width: 599px){
@@ -28,6 +32,10 @@
 	.mob-none{
 		display: none !important;
 	}
+	.tab-login{padding: 10px !important;}
+	.tabs, .form, .form{width: 100% !important;}
+	.li-form {margin: 10px 12px 0 !important;}
+	.tabs{height: 50px !important;}
 }
 
 @media only screen and (max-width: 479px) {
@@ -60,5 +68,9 @@
 		.shareUrl-input {
 			font-size:12px !important;
 		}
+		.tab-login{padding: 10px !important;}
+	.tabs, .form, .form{width: 100% !important;}
+	.li-form {margin: 10px 12px 0 !important;}
+	.tabs{height: 50px !important;}
 
 }
