@@ -23,7 +23,7 @@ class SocialAuthController extends Controller
             $googleUser = Socialite::driver('google')->user();
             $existUser = User::where('email',$googleUser->email)->first();
            
-            // echo "<pre>";print_r($existUser);exit;
+           // echo "<pre>";print_r($existUser);exit;
             if($existUser) {
                 Session::put('logid',$existUser['id']);
                 Session::put('logRole',$existUser['role']);
@@ -42,11 +42,15 @@ class SocialAuthController extends Controller
                 Session::put('logRole',2);
                 auth()->login($user);
             }
-            return redirect()->to('/');
+            return redirect('/')->with('success', 'Login Successfully');
+
         }
-        catch (Exception $e) {
-            return 'error';
-        }
+        catch(\Exception $e){
+           
+            return redirect('/')->with('success', $e->getMessage());
+
+
+         }
     }
     public function facebook(){
         return Socialite::driver('facebook')->redirect();      

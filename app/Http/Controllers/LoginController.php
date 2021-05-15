@@ -112,7 +112,7 @@ class LoginController extends Controller
          ]);
          $data=User::where('email',$request->email)->first();
          if($data==null){
-            return back()->with('error','invalid email');
+            return response()->json(['msg'=>'invalid email','status'=>'error']);
          }
          
          try{
@@ -123,14 +123,14 @@ class LoginController extends Controller
 
              $emailsent= ForgetPasswordEmail($user,$token);
              if($emailsent){
-                return back()->with('success','Password Reset Link sent to your email');
+                return response()->json(['msg'=>'Password Reset Link sent to your email','status'=>'success']);
              }
-             return back()->with('success','Password Reset Link sent to your email');
+             return response()->json(['msg'=>'Password Reset Link sent to your email','status'=>'success']);
 
             
          }catch(\Exception $e){
-            //  dd($e->getMessage());
-            return back()->with('error',$e->getMessage());
+             //dd($e->getMessage());
+            return response()->json(['msg'=>$e->getMessage(),'status'=>'error']);
         }
       }
       return view('front.pages.forgetpassword');

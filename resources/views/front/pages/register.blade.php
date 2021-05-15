@@ -129,8 +129,11 @@
 
                     <!--header middel start-->
                
-                    @include('front.common.middleheader')
-
+                    <div class="row text-center">
+                     <div class="col-xs-12 col-sm-12 col-md-12  col-lg-12">
+                       <a href="{{url('/')}}"><img src="{{url('public/front/img/logo/logo.png')}}" alt=""></a>
+                     </div>
+                    </div>
                     <!--header bottom satrt-->
 
                     <!--header bottom end-->
@@ -254,7 +257,22 @@
         <!--home section bg area end-->
 
         <!--footer area start-->
-          @include('front.common.footer')
+        <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright_area">
+                        <p>Copyright &copy; 2021 <a href="https://www.besthawk.com/" target="_blank">Best Hawk Infosystem Pvt. Ltd.</a> All Right Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer_payment" style="text-align: right;">
+                        <img src="{{url('public/front/img/icon/payment.png')}}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!--footer area end-->
 
 

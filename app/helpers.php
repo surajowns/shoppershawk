@@ -24,7 +24,7 @@ if (! function_exists('OrderEmail')) {
 }
 
 if (! function_exists('ForgetPasswordEmail')) {
-  function ForgetPasswordEmail($user,$referral_link) {
+  function ForgetPasswordEmail($user,$token) {
            
       $to_name =$user['name'];
       $to_email =$user['email'];

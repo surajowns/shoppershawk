@@ -12,8 +12,8 @@
                     <li>Hotline: <a href="tel:+91 120-2514786">+91 120-2514786</a></li>
                     <li><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></li>
                    @if(!Auth::check())
-                    <li><a href="{{url('/login')}}">Login</a></li>
-                    <li><a href="{{url('/register')}}">Register</a></li>
+                    <li><a href="{{url('/login')}}">Login/Register</a></li>
+                    <!-- <li><a href="{{url('/register')}}">Register</a></li> -->
                     @else
                     <li><a href="{{url('user/account')}}">Hi {{Auth::user()->name}}</a></li>
                     <li><a href="{{url('/user/logout')}}">Logout</a></li>

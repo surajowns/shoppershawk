@@ -23,8 +23,12 @@ class UserController extends Controller
          $orders=Order::with('users','status','additionalCharges')->where('user_id',$user['id'])->orderBy('id','DESC')->get()->toArray();
          $status=Status::get();
          $refferal=Refferal::where('user_id',$user['id'])->first();
-
-         $referral_user=User::where('referrer_id',isset($refferal['referrer_id'])?$refferal['referrer_id']:'')->get();
+          if(isset($refferal['referrer_id'])){
+            $referral_user=User::where('referrer_id',$refferal['referrer_id'])->get();
+          }else{
+               $referral_user=0;
+          }
+         
          return view('front.common.useraccount',compact('user','orders','status','refferal','referral_user'));
     }
     
@@ -42,6 +46,10 @@ class UserController extends Controller
                  $checked=User::where('id','!=',$user['id'])->where('email',$request->email)->first();
                  if(!empty($checked)){
                     return back()->with('error','Email already exist');
+                 }
+                 $checkedmob=User::where('id','!=',$user['id'])->where('mobile',$request->mobile)->first();
+                 if(!empty($checkedmob)){
+                    return back()->with('error','Mobile already exist');
                  }
 
                 $data=  request()->except('_token');

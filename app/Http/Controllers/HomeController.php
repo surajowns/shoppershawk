@@ -29,12 +29,19 @@ class HomeController extends Controller
     public function Register(Request $request)
     {
       if($request->isMethod('post')){
-        $validatedData = $request->validate([
-          'name' => 'required',
-          'email' => 'required|unique:users',
-          'mobile' => 'required|unique:users',
-          'password'=>'required',
-          ]);
+          $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'mobile' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'password'=>'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => $validator->messages()->first(),
+                 'status' => 400,
+            ],400);
+        }
+
           DB::beginTransaction();
           try{
             $data=$request->except('_token');
@@ -55,11 +62,11 @@ class HomeController extends Controller
              DB::commit();
              UserRegisterEmail($user,$refferal_code);
 
-            return redirect('/')->with('success','You are registered successfully');
+            return response()->json(['success'=>'You are registered successfully']);
 
           }catch(\Exception $e){
              DB::rollback(); 
-            return back()->with('error',$e->getMessage());
+            return response()->json(['error'=>$e->getMessage()]);
 
           }
 
