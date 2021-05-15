@@ -67,7 +67,7 @@ class SocialAuthController extends Controller
         $user = $this->findOrCreateFbUser($fb_user);
 
         $detail = User::where('id',$user->id)->first();
-                    //print_r($detail);
+                      dd($detail);
         if(!empty($detail)){
             if($detail->status != 1){
                 return redirect('/')->with('error','Your account is not active. Please contact to admin for more information.');
@@ -121,11 +121,11 @@ class SocialAuthController extends Controller
         } else{
             return redirect('/');
         }
-       }catch(\Exception $e){
+    } catch(\Exception $e){
            
-            return redirect('/')->with('success', $e->getMessage());
+        return redirect('/')->with('success', $e->getMessage());
 
 
-         }
+     }
     }
 }
