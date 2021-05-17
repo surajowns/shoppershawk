@@ -36,7 +36,7 @@ class OrderController extends Controller
              return response()->json(['status'=>'error','msg'=>$validator->messages()->first()]);
  
          }
-      $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('coupon_limit','>=',1)->where('end_at','>=',$date)->where('status',1)->first();
+      $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
       //dd($coupon);
       
      
@@ -44,35 +44,49 @@ class OrderController extends Controller
          return response()->json(['status'=>'error','msg'=>'Invalid Coupon']);
         }
         else{
-          $coupon->decrement('coupon_limit',1);
-         $discount=$coupon['discount'];
-         $coupon_code=$coupon['code'];
-        $minimum_amount=$coupon['minimum_amount'];
-         if($user){
-          $cartDetails=CartModel::where('user_id',$user['id'])->get()->toArray();
-         }else{
-          $cartDetails=Cart::getContent()->toArray();
-         }
-         // dd($cartDetails);
-         $item_total=0;
-         foreach($cartDetails as $details){
-             $item_total= $item_total + $details['price']*$details['quantity'];            
+              if($coupon['limit']==1){
+
+                     if($coupon['coupon_limit']>0){
+                      $coupon->decrement('coupon_limit',1);
+                      $discount=$coupon['discount'];
+                      $coupon_code=$coupon['code'];
+                      $minimum_amount=$coupon['minimum_amount'];
+                      }else{
+                           return response()->json(['status'=>'error','msg'=>'Invalid Coupon']);
+                        }
+                    }else{
+                          $discount=$coupon['discount'];
+                          $coupon_code=$coupon['code'];
+                          $minimum_amount=$coupon['minimum_amount'];
+                        }
+              if($user){
+                $cartDetails=CartModel::where('user_id',$user['id'])->get()->toArray();
+              }else{
+                $cartDetails=Cart::getContent()->toArray();
+              }
+          // dd($cartDetails);
+              $item_total=0;
+              foreach($cartDetails as $details){
+                  $item_total= $item_total + $details['price']*$details['quantity'];            
+                }
+              $item_total;
+              if($minimum_amount <= $item_total){
+                  Session::put('coupon',$coupon_code);
+                  Session::put('discount',$discount);
+                return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
+              }else{
+                return response()->json(['status'=>'error','msg'=>"Coupon not  available for this order"]);
+              }
            }
-           $item_total;
-           if($minimum_amount <= $item_total){
-              Session::put('coupon',$coupon_code);
-              Session::put('discount',$discount);
-             return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
-           }else{
-             return response()->json(['status'=>'error','msg'=>"Coupon not  available for this order"]);
-           }
-         }
      }
      public function removeCoupon(Request $request)
      {
         try{
           $date=Date('Y-m-d');
-         CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->increment('coupon_limit',1);
+          $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->first();
+          if($coupon['limit']==1){
+                $coupon->increment('coupon_limit',1);
+            }
          Session::forget('coupon');
          Session::forget('discount'); 
          return response()->json(['status'=>'success','msg'=>'Coupon removed successfull']);

@@ -54,8 +54,14 @@
 		<div class="form-group row">
 			<label for="example-text-input" class="col-sm-3 col-form-label">Limit</label>
 			<div class="col-sm-9">
+			<div>
+			<input type="checkbox" name="limit" id="limit" value="0">Select If Apply limit<br/>
+
+            </div>
+			<div id="nameField">
 				<input class="form-control" Type="number" name="coupon_limit" type="text" value="" id="coupon_limit" min="0" placeholder="Enter Coupon Limit ">
 				<span class="text-danger">{{$errors->first('coupon_limit')}}</span>
+			</div>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -97,7 +103,18 @@
 @endsection
 @section('javascript')
 <script src="{{url('public/front/js/jquery.validate.min.js')}}"></script>
-
+<script>
+$('#nameField').css('display','none'); // Hide the text input box in default
+  $("#limit").click(function(){
+   if($('#limit').prop('checked')) {
+	$('#limit').val(1);
+         $('#nameField').css('display','block');
+       } else {
+		$('#limit').val();
+         $('#nameField').css('display','none');
+       }
+	});
+</script>
 <script>
 $(document).ready(function(){
 
@@ -126,6 +143,10 @@ $("#coupon_form").validate({
 			number:true,
 			greaterThan:"#discount",
 		},
+		coupon_limit: {
+			required: true,
+			number:true,
+		},
 		starting_at: {
 			required: true,
 		},
@@ -150,9 +171,12 @@ $("#coupon_form").validate({
 			number: "Please enter valid amount",
 		},
 		minimum_amount: {
-			required: "Please enter valid email",
+			required: "Please enter valid amount",
 			number: "Please enter valid amount",
-			greaterThan: "Minimum amount is always greater than Discount",
+		},
+		coupon_limit: {
+			required: "Please enter valid number",
+			number: "Please enter valid amount",
 		},
 		starting_at: {
 			required: "Please enter valid date.",
