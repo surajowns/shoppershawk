@@ -36,13 +36,15 @@ class OrderController extends Controller
              return response()->json(['status'=>'error','msg'=>$validator->messages()->first()]);
  
          }
-      $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('end_at','>=',$date)->where('status',1)->first();
-     //  dd($coupon);
+      $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->where('coupon_limit','>=',1)->where('end_at','>=',$date)->where('status',1)->first();
+      //dd($coupon);
+      
      
       if($coupon == null){
          return response()->json(['status'=>'error','msg'=>'Invalid Coupon']);
         }
         else{
+          $coupon->decrement('coupon_limit',1);
          $discount=$coupon['discount'];
          $coupon_code=$coupon['code'];
         $minimum_amount=$coupon['minimum_amount'];
@@ -69,11 +71,13 @@ class OrderController extends Controller
      public function removeCoupon(Request $request)
      {
         try{
+          $date=Date('Y-m-d');
+         CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->increment('coupon_limit',1);
          Session::forget('coupon');
          Session::forget('discount'); 
-         return response()->json(['status'=>'success','msg'=>'Removed']);
+         return response()->json(['status'=>'success','msg'=>'Coupon removed successfull']);
         }catch(\Exception $e){
-          return response()->json(['status'=>'success','error',$e->getMessage()]);
+          return response()->json(['status'=>'error','msg',$e->getMessage()]);
        }
      }
 

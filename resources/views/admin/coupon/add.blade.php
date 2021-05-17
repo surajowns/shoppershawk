@@ -52,6 +52,13 @@
 			</div>
 		</div>
 		<div class="form-group row">
+			<label for="example-text-input" class="col-sm-3 col-form-label">Limit</label>
+			<div class="col-sm-9">
+				<input class="form-control" Type="number" name="coupon_limit" type="text" value="" id="coupon_limit" min="0" placeholder="Enter Coupon Limit ">
+				<span class="text-danger">{{$errors->first('coupon_limit')}}</span>
+			</div>
+		</div>
+		<div class="form-group row">
 			<label for="example-text-input" class="col-sm-3 col-form-label">Start Date</label>
 			<div class="col-sm-9">
 				<input class="form-control" name="starting_at" type="Date" value="" id="starting_at" required placeholder=" ">

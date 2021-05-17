@@ -15,7 +15,7 @@
                   </h3>
                   <div id="checkout_login" class="collapse {{Auth::check()?:'show'}}" data-parent="#accordion">
                      <div class="checkout_info">
-                        <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>
+                        <p>If you have shopped with us before, please enter your details in the boxes below.</p>
                         <div class="account_form login">
                            <h2>login</h2>
                            @if(session('failed'))
@@ -585,17 +585,22 @@ $(document).on("click","#addcoupon",function() {
                 success: function(response){
                     console.log(response);
                     if(response.status==="error"){
+                     $('#coupon_error').addClass('text-danger');
+                     $('#coupon_error').removeClass('text-success');
                        $('#coupon_error').text(response.msg);
                     }else{
                      $('#coupon').val(response.coupon);
                      var coupon_discount=response.discount;
+                     $('#coupon_error').removeClass('text-danger');
+                     $('#coupon_error').addClass('text-success');
+
                      $('#coupon_error').text(response.msg);
                      var coupon=response.coupon;
-                     
                      $('.coupon_discount').text('-₹'+parseFloat(response.discount).toFixed(2));
                      $('.coupon_applied').text('Discount '+'(' + response.coupon + ')');
                      $("#coupon_code").css("display",'none');
                      $("#addcoupon").text("Remove Coupon");
+                     
                      $('#addcoupon').attr('id','removecoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').last().text().slice(1).replace(/,/g, ''));
                      $('.cart_amount').last().text('₹'+ parseFloat(cart_amount - response.discount).toFixed(2));
@@ -610,7 +615,7 @@ $(document).on("click","#addcoupon",function() {
     </script>
      <script>
 $(document).on("click","#removecoupon",function() {
-        var coupon= $('#coupon').val();
+        //var coupon= $('#coupon').val();
         var code= $('#coupon').val();
         $.ajax({
                 Type:"POST",
@@ -619,9 +624,13 @@ $(document).on("click","#removecoupon",function() {
                 success: function(response){
                     console.log(response);
                     if(response.status==="error"){
+                     $('#coupon_error').removeClass('text-success');
+                     $('#coupon_error').addClass('text-danger');
                        $('#coupon_error').text(response.msg);
                     }else{
                      $('#coupon').val('');
+                     $('#coupon_error').removeClass('text-danger');
+                     $('#coupon_error').addClass('text-success');
                      $('#coupon_error').text(response.msg);
                      $('.coupon_discount').text('₹'+ '00.00');
                      $('.coupon_applied').text('Discount');
