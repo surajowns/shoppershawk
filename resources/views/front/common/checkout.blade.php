@@ -51,24 +51,7 @@
                   </div>
                </div>
                @endif
-               <div class="user-actions">
-                            <h3> 
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                                Apply Coupon Code?
-                                <a class="Returning" href="#checkout_coupon" data-bs-toggle="collapse"  aria-expanded="true">Click here to Apply your coupon code</a>     
-    
-                            </h3>
-                             <div id="checkout_coupon" class="collapse" data-parent="#accordion">
-                                <div class="checkout_info coupon_info">
-                                    <div>
-                                    @csrf
-                                        <input placeholder="Coupon code" type="text" name="code" id="coupon"  style="display:{{Session::has('coupon')?'none':'initial'}}">
-                                        <button id="{{session()->has('coupon')?'removecoupon':'addcoupon'}}">{{session()->has('coupon')?'Remove Coupon':'Apply coupon'}}</button>
-                                        <span class="text-danger" id="coupon_error">{{$errors->first('code')}}</span>
-                                    </div>
-                                </div>
-                            </div>    
-                  </div>
+              
                </div>
          </div>
          <div class="checkout_form">
@@ -311,6 +294,25 @@
                   <div class="checkout_form_right">
                         <h3>Your order</h3>
                         <div class="order_table table-responsive">
+                        <div class="user-actions">
+                            <h3> 
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                Apply Coupon Code?
+                                <a class="Returning" href="#checkout_coupon" data-bs-toggle="collapse"  aria-expanded="true">Click here to Apply your coupon code</a>     
+    
+                            </h3>
+                             <div id="checkout_coupon" class="collapse" data-parent="#accordion">
+                                <div class="checkout_info coupon_info">
+                                    <div>
+                                    @csrf
+                                        <input placeholder="Coupon code" type="text" name="code" id="coupon_code"  style="display:{{Session::has('coupon')?'none':'initial'}}">
+                                        <button id="{{session()->has('coupon')?'removecoupon':'addcoupon'}}">{{session()->has('coupon')?'Remove Coupon':'Apply coupon'}}</button>
+                                        <br><br>
+                                        <span class="text-danger" id="coupon_error">{{$errors->first('code')}}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                         </div>
                            <table>
                               <thead>
                                  <tr>
@@ -516,8 +518,6 @@ $("#checkout_form").validate({
          minlength:"GSTIN must be 15 characters",
          maxlength:"GSTIN must be 15 characters",
          regex :"GST state code should match the delivery address…",
-
-
       },
       bussiness_name:{
          required:"Please fill out this field.",
@@ -549,11 +549,7 @@ $("#checkout_form").validate({
 }
 });
 </script>
-
-
-
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
-
 <script>
 
 google.maps.event.addDomListener(window, 'load', function () {
@@ -571,21 +567,17 @@ google.maps.event.addDomListener(window, 'load', function () {
         
           $('#latitude').val(latitude);
           $('#latitude').val(latitude);
-
-
           $('#longitude').val(longitude);
         });
       });
  </script>
  <script>
 $(document).on("click","#addcoupon",function() {
-        var coupon= $('#coupon').val();
-        var code= $('#coupon').val();
+        var code= $('#coupon_code').val();
          if(code===''){
             $('#coupon_error').text('This field is required !'); 
             return;
          }
-        
         $.ajax({
                 Type:"POST",
                 url : "{{url('/user/coupon/')}}",
@@ -602,7 +594,7 @@ $(document).on("click","#addcoupon",function() {
                      
                      $('.coupon_discount').text('-₹'+parseFloat(response.discount).toFixed(2));
                      $('.coupon_applied').text('Discount '+'(' + response.coupon + ')');
-                     $("#coupon").css("display",'none');
+                     $("#coupon_code").css("display",'none');
                      $("#addcoupon").text("Remove Coupon");
                      $('#addcoupon').attr('id','removecoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').last().text().slice(1).replace(/,/g, ''));
@@ -633,7 +625,7 @@ $(document).on("click","#removecoupon",function() {
                      $('#coupon_error').text(response.msg);
                      $('.coupon_discount').text('₹'+ '00.00');
                      $('.coupon_applied').text('Discount');
-                     $("#coupon").css("display",'initial');
+                     $("#coupon_code").css("display",'initial');
                      $("#removecoupon").text("Apply Coupon");
                      $('#removecoupon').attr('id','addcoupon'); 
                      var cart_amount =parseFloat($('.cart_amount').text().slice(1).replace(/,/g, ''));
@@ -650,7 +642,6 @@ $(document).on("click","#removecoupon",function() {
     $('.input-number').keyup(function(){
         var value=$(this).val();
         var productid= $(this).data('productid');
-    // value++;
     $.ajax({
             Type:"POST",
             url : '{{url("/user/updatecart")}}',
@@ -675,14 +666,8 @@ $(document).on("click","#removecoupon",function() {
     }
 
     function SuccessHandler(transaction) {
-      
-        //$("#paymentDetail").removeAttr('style');
+      $('#dvLoading').css('display','block');
         $('#paymentID').val(transaction.razorpay_payment_id);
-       // var paymentDate = new Date();
-      //   $('#paymentDate').text(
-      //           padStart(paymentDate.getDate()) + '.' + padStart(paymentDate.getMonth() + 1) + '.' + paymentDate.getFullYear() + ' ' + padStart(paymentDate.getHours()) + ':' + padStart(paymentDate.getMinutes())
-      //           );
-         
         $.ajax({
             method: 'post',
             url: "{{url('user/orderupdate')}}",
@@ -691,22 +676,18 @@ $(document).on("click","#removecoupon",function() {
                var data=$.parseJSON(r.responseText);
                 if(data['status']==="authorized" || data['status']==="captured"){
                   $('#dvLoading').fadeOut('slow', function () {
-                     $(this).remove();
+                     window.location.href="{{url('/user/thanku')}}"
                   });
-                  window.location.href="{{url('/user/thanku')}}"
                 }
             }
         })
     }
 </script>
 <script>
-  
-
     $(document).on('submit','#checkout_form',function (e) {
         var button = $(this).find('button');
         var parent = $(this);
        // button.attr('disabled', 'true').html('Please Wait...');
-
         $.ajax({
             method: 'post',
             url:this.action,
@@ -745,7 +726,6 @@ $(document).on("click","#removecoupon",function() {
             
                      rzp.open();
                   }
-               
             }
         })
         return false;

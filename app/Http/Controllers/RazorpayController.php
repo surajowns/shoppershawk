@@ -58,7 +58,7 @@ class RazorpayController extends Controller
         $order_id= Order::orderBy('id', 'DESC')->first();
         $order  = $api->order->create(array('receipt' =>$order_id['id']+1, 'amount' => $total_amount * 100 , 'currency' => 'INR')); // Creates order
         $orderId = $order['id']; 
-        $amount=['amount'];
+        $amount=$order['amount']/100;
         return response()->json(['amount'=>$amount,'order_id'=>$orderId]);
         }catch(\Exception $e){
                  return response()->json(['error'=>$e->getMessage()]);

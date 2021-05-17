@@ -904,7 +904,7 @@ $(".toggle-password").click(function() {
     'use strict'; // Start of use strict
     // Loader 
      $('#dvLoading').fadeOut('slow', function () {
-            $(this).remove();
+           //$(this).remove();
         });
 	$('.google-map').on('click', function() {
             $('.google-map').find('iframe').css("pointer-events", "auto");

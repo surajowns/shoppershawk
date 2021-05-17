@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Socialite, Auth, Session;
 use App\User;
+use App\Refferal;
+use Str;
+use DB;
 
 class SocialAuthController extends Controller
 {
@@ -17,6 +20,8 @@ class SocialAuthController extends Controller
 
     public function callback_google()
     {
+
+        DB::beginTransaction();
         try {
            
        
@@ -40,13 +45,26 @@ class SocialAuthController extends Controller
                 $user->save();
                 Session::put('logid',$user->id);
                 Session::put('logRole',2);
+                 
+                $refferal_code=Str::random(10);
+                $refferal_link=url("/register/reff=$refferal_code");
+                $user=User::orderBy('id','DESC')->first();
+                $refferals = new Refferal;
+                $refferals->user_id= $user['id'];
+                $refferals->referrer_id=$refferal_code;
+                $refferals->link= $refferal_link;
+                $refferals->save();
+
+
                 auth()->login($user);
             }
+            DB::commit();
+            UserRegisterEmail($user,$refferal_code);
             return redirect('/')->with('success', 'Login Successfully');
 
         }
         catch(\Exception $e){
-           
+            DB::rollback(); 
             return redirect('/')->with('success', $e->getMessage());
 
 
@@ -69,7 +87,7 @@ class SocialAuthController extends Controller
                 Session::flush();
             } else{
                 
-                 Session::put('logid',$detail['id']);
+                Session::put('logid',$detail['id']);
                 Session::put('logRole',2);
                 auth()->login($detail);
              
@@ -83,6 +101,7 @@ class SocialAuthController extends Controller
     }
 
     public function findOrCreateFbUser($user){
+        DB::beginTransaction();
         try {
         $fb_user = $user->stateless()->user();
      
@@ -110,6 +129,17 @@ class SocialAuthController extends Controller
                 $new_user->role     = 2;
                 $new_user->status   =1;
                 $new_user->save();
+
+                $refferal_code=Str::random(10);
+                $refferal_link=url("/register/reff=$refferal_code");
+                $user=User::orderBy('id','DESC')->first();
+                $refferals = new Refferal;
+                $refferals->user_id= $user['id'];
+                $refferals->referrer_id=$refferal_code;
+                $refferals->link= $refferal_link;
+                $refferals->save();
+                DB::commit();
+                UserRegisterEmail($user,$refferal_code);
                 return $new_user;
             }
             // }
@@ -118,7 +148,7 @@ class SocialAuthController extends Controller
             return redirect('/');
         }
     } catch(\Exception $e){
-           
+        DB::rollback(); 
         return redirect('/')->with('success', $e->getMessage());
 
 
