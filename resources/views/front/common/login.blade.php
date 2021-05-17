@@ -325,7 +325,7 @@ input[type="checkbox"] {
              </div>
             <div class="input">
             <input class="main-form animated bounceInDown" id="password-field2" type="password" name="password"  placeholder=" Password"/>
-            <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password animated bounceInDown"></span>
+            <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon togglepassword animated bounceInDown"></span>
             <div class="input">
               <label class="pull-left text-light">
                 <input name="remember" type="checkbox" checked>Remember me
@@ -341,13 +341,16 @@ input[type="checkbox"] {
              </div>
             </form> 
              <div class="input">
-                 <button class="loginBtn loginBtn--facebook">
-                 <a href="{{url('redirect/facebook')}}"> Login with Facebook</a>
-                </button>
-
-                <button class="loginBtn loginBtn--google">
-                   <a href="{{url('redirect/google')}}">Login with Google</a>
-                </button>
+             <a href="{{url('redirect/facebook')}}">
+                 <div class="loginBtn loginBtn--facebook">
+                 Login with Facebook
+              </div>
+              </a>
+              <a href="{{url('redirect/google')}}">
+                <div class="loginBtn loginBtn--google">
+                   Login with Google
+                </div>
+               </a>
              </div>
             
           </div>
@@ -489,15 +492,18 @@ input[type="checkbox"] {
        </script>
 
 <script>
-        $(document).on('click','.toggle-password'function() {
+  $(document).ready(function() {
+        $(document).on('click','.togglepassword' ,function() {
+         // alert('dss');
           $(this).toggleClass("fa-eye fa-eye-slash");
           var input = $($(this).attr("toggle"));
-          if (input.attr("type") == "password") {
-            input.attr("type", "text");
-          } else {
+          if (input.attr('type') == 'password') {
+            input.attr('type', 'text');
+          }else{
             input.attr("type", "password");
           }
         });
+      });
     </script>
     <script>
         $(".tabs a").on("click", function(){
