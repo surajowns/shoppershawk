@@ -7757,13 +7757,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-bottom: 1px solid #ddd;
 }
 .order_table table tfoot tr th {
-  min-width: 50%;
+  /* min-width: 50%; */
   text-align: center;
   padding: 15px 0;
   border-bottom: 1px solid #ddd;
 }
 .order_table table tfoot tr td {
-  min-width: 50%;
+  /* min-width: 50%; */
   text-align: center;
   padding: 15px 0;
   border-bottom: 1px solid #ddd;

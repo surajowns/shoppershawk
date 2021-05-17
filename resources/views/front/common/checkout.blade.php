@@ -353,12 +353,13 @@
                               <tfoot>
                                 @if(Auth::check())
                                 <tr>
-                                    <th colspan="2" class="text-right">Subtotal</th>
+                                    <th colspan="" class="text-right mr-3">Subtotal</th>
+                                    <td></td>
                                     <td class="cart_amount">₹{{number_format($subtotal,2)}}</td>
                                  </tr>
                                  <tr>
-                                    <th colspan="2">Shipping</th>
-                                   
+                                    <th colspan="">Shipping</th>
+                                    <td></td>
                                     <td>
                                        <strong>
                                           <p class="shipping_cart_amount text-success">Free</p>
@@ -366,7 +367,8 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                   <th colspan="2" class="coupon_applied">Discount @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
+                                   <th colspan="" class="coupon_applied">Discount @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
+                                   <td></td>
                                    <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
@@ -375,17 +377,19 @@
                                      {{Session::put('code',Session::get('coupon'))}}
                                    @endif
                                   
-                                    <th colspan="2">Order Total</th>
+                                    <th colspan="">Order Total</th>
+                                    <td></td>
                                     <td><strong class="cart_amount">₹{{number_format($subtotal-Session::get('discount'),2)}}</strong></td>
                                  </tr>
                                 @else
                                  <tr>
-                                    <th colspan="2">Subtotal</th>
+                                    <th colspan="">Subtotal</th>
+                                    <td></td>
                                     <td class="cart_amount">₹{{number_format(Cart::getSubTotal(),2)}}</td>
                                  </tr>
                                  <tr>
-                                    <th colspan="2">Shipping</th>
-                                   
+                                    <th colspan="">Shipping</th>
+                                    <td></td>
                                     <td>
                                        <strong>
                                           <p class="shipping_cart_amount text-success">Free</p>
@@ -393,7 +397,8 @@
                                     </td>
                                  </tr>
                                  <tr>
-                                   <th colspan="2" class="coupon_applied">Discount  @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
+                                   <th colspan="" class="coupon_applied">Discount  @if(session()->has('coupon'))({{Session::get('coupon')}})@endif</th>
+                                   <td></td>
                                    <td class="coupon_discount">₹{{number_format(Session::get('discount'),2)}}</td>
                                  </tr>
                                  <tr class="order_total">
@@ -402,7 +407,8 @@
                                      {{Session::put('code',Session::get('coupon'))}}
                                    @endif
                                   
-                                    <th colspan="2">Order Total</th>
+                                    <th colspan="">Order Total</th>
+                                    <td></td>
                                     <td><strong class="cart_amount">₹{{number_format(Cart::getTotal()-Session::get('discount'),2)}}</strong></td>
                                  </tr>
                                  @endif

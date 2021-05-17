@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." name="keywords" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?$_GET['cat']:'')}}" type="text" class="sample_search" required />
+                        <input placeholder="Search product..." name="keywords" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?(is_numeric($_GET['cat'])?'':$_GET['cat']):'')}}" type="text" class="sample_search" required />
                         <button type="submit">Search</button>
                     </div>
                    
@@ -77,7 +77,7 @@
                         </select>
                     </div>
                     <div class="search_box">
-                        <input placeholder="Search product..." name="keywords" type="text" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?$_GET['cat']:'')}}"  class="sample_search" required />
+                        <input placeholder="Search product..." name="keywords" type="text" value="{{isset($_GET['keywords'])?$_GET['keywords']:(isset($_GET['cat'])?(is_numeric($_GET['cat'])?'':$_GET['cat']):'')}}"  class="sample_search" required />
                         <button type="submit">Search</button>
                     </div>
                    

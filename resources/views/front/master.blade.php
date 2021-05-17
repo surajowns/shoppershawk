@@ -251,21 +251,16 @@
                         cache: false,
                         data: {productid:productid},
                         success: function(response){
-                         console.log(response);
                          if(response.totalwishlist == 0){
                              location.reload();
                            }
                          if(response.status == 'add'){
-                           
-        
                             $('.wishlist_count').text(response.totalwishlist);
-                            // data('tippy').text("Remove from Wishlist");
                             $('#'+id).addClass(response.adclass);
                             toastr.info(response.message);
                            
                          }else if(response.status == 'remove'){
                            
-                            // $(this).children().removeClass(className);
                              $('.wishlist_count').text(response.totalwishlist);
                              $('#'+id).addClass(response.remoclass);
                             toastr.info(response.message);
@@ -285,6 +280,9 @@
             cache: false,
             data: {productid:productid},
             success: function(response){
+                if(response.totalwishlist == 0){
+                             location.reload();
+                           }
                 if(response.status == 'error'){
                 
                 }
@@ -293,6 +291,8 @@
                 $( ".cart_item" ).remove();
                 $( ".cart_price" ).text('₹'+response.carttotal);
                 $( ".cart_count" ).text(response.totalin_cart);
+                $('.wishlist_count').text(response.totalwishlist);
+
                 $( ".price" ).text('₹'+response.carttotal);
 
                 
