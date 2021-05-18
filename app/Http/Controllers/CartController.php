@@ -98,7 +98,7 @@ class CartController extends Controller
                                 
            );
            Cart::add($add); 
-           $total_in_wishlist=0;
+           $totalwishlist=0;
            $check=Wishlist::where('user_id',isset($user['id'])?$user['id']:'')->where('product_id',$request->productid)->first();
            if(!empty($check) && !empty($user)){
                Wishlist::where('user_id',$user->id)->where('product_id',$request->productid)->delete();
