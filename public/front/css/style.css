@@ -800,7 +800,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .sticky-header.sticky {
   position: fixed;
-  z-index: 999999;
+  z-index: 999;
   width: 100%;
   top: 0;
   background: rgba(255, 255, 255, 0.95);
@@ -11117,6 +11117,7 @@ label.star:before {
     position: fixed;
     bottom: 0;
     width: 100%;
+    left: 0;
     z-index: 9999;
   }
   .nav-item1{
