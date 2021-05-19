@@ -92,24 +92,29 @@
 <div class="bottom-nav1">
             <nav class="nav-mob1">
               <a class="nav-item1" href="{{url('/')}}">
-                <i class="fa fa-home" aria-hidden="true"></i><span>Home</span>
+               <div class="{{Request::segment(2)==''?'myclass':''}}">
+                <i class="fa fa-home " aria-hidden="true"></i><span class="{{Request::segment(2)==''?'myclassspan':''}}">Home</span>
+                </div>
               </a>
               
               <a class="nav-item1" href="{{url('/product/category')}}">
-                <i class="fa fa-archive" aria-hidden="true"></i><span>Category</span>
+              <div class="{{Request::segment(2)=='category'?'myclass':''}}">
+                <i class="fa fa-archive " aria-hidden="true"></i><span class="{{Request::segment(2)=='category'?'myclassspan':''}}">Category</span>
+              </div>
               </a>
               
               <a class="nav-item1" href="{{url('user/cart_details')}}">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Cart</span>
+              <div class="{{Request::segment(2)=='cart_details'?'myclass':''}}">
+                <i class="fa fa-shopping-cart  " aria-hidden="true"></i><span class="{{Request::segment(2)=='cart_details'?'myclassspan':''}}">Cart</span>
+                 </div>
               </a>
               
               <a class="nav-item1" href="{{url('user/account')}}">
-                <i class="fa fa-user" aria-hidden="true"></i><span>Profile</span>
-              </a>
+              <div class="{{Request::segment(2)=='account'?'myclass':''}}">
+                 <i class="fa fa-user " aria-hidden="true"></i><span class="{{Request::segment(2)=='account'?'myclassspan':''}}">Profile</span>
+              </div>
+                </a>
             </nav>
         </div>
-        <script>
-             feather.replace();
-            document.querySelector(".nav-item1").focus();
-        </script>
+       
 

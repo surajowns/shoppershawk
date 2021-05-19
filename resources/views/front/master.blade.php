@@ -61,7 +61,7 @@
 </script>
     </head>
     <body>
-    <div id="dvLoading"></div>
+    <!-- <div id="dvLoading"></div> -->
         <!--Offcanvas menu area start-->
         
         <div class="off_canvars_overlay"></div>
