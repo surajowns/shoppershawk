@@ -301,5 +301,13 @@ class HomeController extends Controller
         return view('front.common.contactus');
      }
 
+     public function mobileCategory(Request $request)
+     {     
+           $category =CategoryModel::where('status',1)->where('parent_id',0)->get();
+           $subcategories=CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+
+           return view('front.pages.mobilecategory',compact('category','subcategories'));
+     }
+
 
 }

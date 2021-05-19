@@ -21,6 +21,7 @@
 	.tabs, .form, .form{width: 100% !important;}
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
+	.bottom-nav1{display: block !important;}
 }
 
 @media only screen and (max-width: 599px){
@@ -36,6 +37,7 @@
 	.tabs, .form, .form{width: 100% !important;}
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
+	.bottom-nav1{display: block !important;}
 }
 
 @media only screen and (max-width: 479px) {
@@ -72,5 +74,6 @@
 	.tabs, .form, .form{width: 100% !important;}
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
+	.bottom-nav1{display: block !important;}
 
 }

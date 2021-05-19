@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- mobile serch -->
     <div class="row">
@@ -83,10 +84,32 @@
                    
                 </form>
                  <ul class="list_details"></ul>
-        </div>
+           </div>
         </div>
     </div>
-
 </div>
-
+ <!-- /mobile bottom nav -->
+<div class="bottom-nav1">
+            <nav class="nav-mob1">
+              <a class="nav-item1" href="{{url('/')}}">
+                <i class="fa fa-home" aria-hidden="true"></i><span>Home</span>
+              </a>
+              
+              <a class="nav-item1" href="{{url('/product/category')}}">
+                <i class="fa fa-archive" aria-hidden="true"></i><span>Category</span>
+              </a>
+              
+              <a class="nav-item1" href="{{url('user/cart_details')}}">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Cart</span>
+              </a>
+              
+              <a class="nav-item1" href="{{url('user/account')}}">
+                <i class="fa fa-user" aria-hidden="true"></i><span>Profile</span>
+              </a>
+            </nav>
+        </div>
+        <script>
+             feather.replace();
+            document.querySelector(".nav-item1").focus();
+        </script>
 

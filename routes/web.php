@@ -106,6 +106,9 @@ Route::any('/google/callback','SocialAuthController@callback_google')->name('cal
 Route::any('/redirect/facebook','SocialAuthController@facebook')->name('facebook');
 Route::any('/facebook/callback','SocialAuthController@callback_fb')->name('callback facebook');
 
+Route::any('/product/category','HomeController@mobileCategory')->name('Mobile category');
+
+
 
 
 
