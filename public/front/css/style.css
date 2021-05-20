@@ -7168,11 +7168,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /* 13. cart page css here */
 .cart_page_bg {
   background: #F5F5F9;
-  padding:10px 0 133px;
+  padding:10px 0 1px;
 }
 @media only screen and (max-width: 767px) {
   .cart_page_bg {
-    padding: 55px 0 111px;
+    padding: 10px 0 1px;
   }
 }
 

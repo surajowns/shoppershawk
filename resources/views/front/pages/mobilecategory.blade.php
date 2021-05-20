@@ -4,26 +4,8 @@
 <div class="cart_page_bg">
     <div class="container">
         <section>
-            <div class="container">
-      <div class="row">
-        @foreach($category as $cat)
-        <div class="col-md-3 col-sm-6">
-            <div class="service_box">
-                <div class="service_icon">
-                 <a href="{{url('/products/'.'?cat='.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
+           @include('front.common.categories')
 
-                </div>
-                <h3><a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a></h3>
-                <p> @foreach($subcategories as $subcat)
-                                @if($cat['id']==$subcat['parent_id']) 
-                                    <a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}&nbsp;&nbsp;</a>
-                                @endif
-                     @endforeach</p>
-            </div>
-        </div>
-     @endforeach
-    </div>
-</div>
         </section>
         </div>
     </div>
