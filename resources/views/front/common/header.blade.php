@@ -93,25 +93,25 @@
             <nav class="nav-mob1">
               <a class="nav-item1" href="{{url('/')}}">
                <div class="{{Request::segment(2)==''?'myclass':''}}">
-                <i class="fa fa-home " aria-hidden="true"></i><span class="{{Request::segment(2)==''?'myclassspan':''}}">Home</span>
+                <i class="fa fa-home " aria-hidden="true"></i><span class="{{Request::segment(2)==''?'myclassspan':'myclassshide'}}">Home</span>
                 </div>
               </a>
               
               <a class="nav-item1" href="{{url('/product/category')}}">
               <div class="{{Request::segment(2)=='category'?'myclass':''}}">
-                <i class="fa fa-archive " aria-hidden="true"></i><span class="{{Request::segment(2)=='category'?'myclassspan':''}}">Category</span>
+                <i class="fa fa-archive " aria-hidden="true"></i><span class="{{Request::segment(2)=='category'?'myclassspan':'myclassshide'}}">Category</span>
               </div>
               </a>
               
               <a class="nav-item1" href="{{url('user/cart_details')}}">
               <div class="{{Request::segment(2)=='cart_details'?'myclass':''}}">
-                <i class="fa fa-shopping-cart  " aria-hidden="true"></i><span class="{{Request::segment(2)=='cart_details'?'myclassspan':''}}">Cart</span>
+                <i class="fa fa-shopping-cart  " aria-hidden="true"></i><span class="{{Request::segment(2)=='cart_details'?'myclassspan':'myclassshide'}}">Cart</span>
                  </div>
               </a>
               
               <a class="nav-item1" href="{{url('user/account')}}">
               <div class="{{Request::segment(2)=='account'?'myclass':''}}">
-                 <i class="fa fa-user " aria-hidden="true"></i><span class="{{Request::segment(2)=='account'?'myclassspan':''}}">Profile</span>
+                 <i class="fa fa-user " aria-hidden="true"></i><span class="{{Request::segment(2)=='account'?'myclassspan':'myclassshide'}}">Profile</span>
               </div>
                 </a>
             </nav>

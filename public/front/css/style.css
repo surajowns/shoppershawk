@@ -11130,10 +11130,10 @@ label.star:before {
     background-color: rgba(255, 255, 255, 0);
   }
   
-  .nav-item1 span{
+  /* .nav-item1 span{
     width: 0;
     overflow: hidden;
-  }
+  } */
   
   /* .nav-item1:focus{
     text-decoration: none;
@@ -11147,19 +11147,25 @@ label.star:before {
     margin-left: 8px;
     transition: .2s;
   } */
-  .nav-item1 .myclass{
+  .nav-item1 .myclass {
     text-decoration: none;
     color: white;
-  
+    display: flex;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.2);
     padding: 8px 16px;
     transition: .2s;
-  }
-  
-  .nav-item1 .myclassspan{
+    line-height: 15px;
+}
+  .nav-item1 .myclass .myclassspan{
     width: 100%;
     margin-left: 8px;
     transition: .2s;
+  }
+  .myclassshide{
+    width: 0;
+    margin-left: 8px;
+    transition: .2s;
+    display: none;
   }
   .bottom-nav1{display: none !important;}
