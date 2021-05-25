@@ -33,6 +33,7 @@
 
   gtag('config', 'G-P9S15Q3GME');
 </script>
+    @laravelPWA
     </head>
     <body>
     <div id="dvLoading"></div>
