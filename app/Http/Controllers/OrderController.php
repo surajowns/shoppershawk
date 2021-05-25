@@ -46,8 +46,8 @@ class OrderController extends Controller
         else{
               if($coupon['limit']==1){
 
-                     if($coupon['coupon_limit']>0){
-                      $coupon->decrement('coupon_limit',1);
+                     if($coupon['coupon_limit']>$coupon['used']){
+                      // $coupon->decrement('coupon_limit',1);
                       $discount=$coupon['discount'];
                       $coupon_code=$coupon['code'];
                       $minimum_amount=$coupon['minimum_amount'];
@@ -71,6 +71,7 @@ class OrderController extends Controller
                 }
               $item_total;
               if($minimum_amount <= $item_total){
+                  $coupon->increment('used',1);
                   Session::put('coupon',$coupon_code);
                   Session::put('discount',$discount);
                 return response()->json(['status'=>'success','msg'=>"Coupon applied successfull",'discount'=>$discount,'coupon'=>$coupon_code]);
@@ -84,9 +85,10 @@ class OrderController extends Controller
         try{
           $date=Date('Y-m-d');
           $coupon=CouponModel::where('code',$request->code)->where('starting_at','<=',$date)->first();
-          if($coupon['limit']==1){
-                $coupon->increment('coupon_limit',1);
-            }
+          // if($coupon['limit']==1){
+          //       $coupon->increment('coupon_limit',1);
+          //   }
+         $coupon->decrement('used',1);
          Session::forget('coupon');
          Session::forget('discount'); 
          return response()->json(['status'=>'success','msg'=>'Coupon removed successfull']);

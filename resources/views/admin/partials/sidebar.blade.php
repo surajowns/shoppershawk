@@ -34,7 +34,7 @@
 							<a href="{{url('admin/contactus')}}"><i class="fa fa-inbox" aria-hidden="true"></i></span><span>Enquiry List</span></a>
 						</li>
 						<li>
-							<a href="{{url('admin/under-construction')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
+							<a href="{{url('admin/payment')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
 						</li>
 						<li class="{{Request::segment(2)=='coupon'?'active':''}}">
 							<a href="{{url('admin/coupon')}}"><i class="fas fa-ticket-alt"></i> <span>Coupons</span></a>

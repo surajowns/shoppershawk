@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderDetails;
 use App\Status;
 use PDF;
+use App\Transaction;
 
 class OrderController extends Controller
 {
@@ -70,5 +71,14 @@ class OrderController extends Controller
            $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.invoice',compact('orders','orderdetails','status','additinal_charges','transaction_amount'));
          return $pdf->download($orders['order_no'].'.pdf');
 
+    }
+
+    public function paymemtTransaction(Request $request)
+    {
+       
+          // $orders=Order::with('users','status','additionalCharges')->orderBy('id','DESC')->get()->toArray();
+          // $status=Status::get();
+           $transaction=Transaction::with('orders','orders.users')->orderBy('id','DESC')->get()->toArray();
+           return view('admin.payments.index',compact('transaction'));    
     }
 }

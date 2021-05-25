@@ -32,6 +32,7 @@
                                 <th>Code</th>
                                 <th>Discount</th>
                                 <th>Minimum Amount</th>
+                                <th>Used/Limit</th>
                                 <th>Notes</th>
                                 <th>Starting Date</th>
                                 <th>End Date</th>
@@ -48,6 +49,7 @@
                                <td>{{$cat['code']}}</td>
                                <td>{{$cat['discount']}}</td>
                                <td>{{$cat['minimum_amount']}}</td>
+                               <th>{{$cat['used']}}/{{$cat['coupon_limit']}}</th>
                                <td>{{$cat['notes']}}</td>
 
                                <td> {{date('d/M/Y', strtotime($cat['starting_at']))}}</td>

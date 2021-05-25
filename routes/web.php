@@ -236,6 +236,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
       Route::any('contactus','ContactUsController@Index')->name('Enquiry List');
       Route::any('contactus/delete/{id}','ContactUsController@deleteenquiry')->name('Enquiry List');
 
+      
+
+      //Payments
+      Route::get('/payment','OrderController@paymemtTransaction')->name('Payment list');
 
 
 

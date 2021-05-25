@@ -94,7 +94,7 @@
 
 </div>
 <div class="row">
-<div class="col-md-6 d-flex">
+<div class="col-md-12 d-flex">
 
 <!-- Recent Bookings -->
 <div class="card card-table flex-fill">
@@ -106,6 +106,7 @@
 			<table class="table table-center">
 				<thead>
 					<tr>
+						<th>Order Id</th>
 						<th>Customer</th>
 						<th>Date</th>
 						
@@ -115,8 +116,10 @@
 				</thead>
 				<tbody>
 					@foreach($orders as $value)
-					
 					<tr>
+					
+                        <td> <a href="{{url('admin/orders/viewdetails/'.$value['id'])}}">SHOPPERSHAWK#{{$value['id']}} </a></td>
+                    
 						<td class="text-nowrap">
 							<img class="avatar-xs rounded-circle" src="{{url('public/profile/'.$value->users[0]['profile_image'])}}" alt="User Image">{{$value->users[0]['name']}}
 						</td>
@@ -130,7 +133,9 @@
 						<td>
 							<div class="font-weight-600">₹{{number_format($value['total_amount'],2)}}</div>
 						</td>
+					
 					</tr>
+                    
 					@endforeach
 				</tbody>
 			</table>
@@ -140,154 +145,6 @@
 <!-- /Recent Bookings -->
 
 </div>
-<div class="col-md-6 d-flex">
 
-<!-- Payments -->
-<div class="card card-table flex-fill">
-	<div class="card-header">
-		<h4 class="card-title">Payments</h4>
-	</div>
-	<div class="card-body">
-		<div class="table-responsive">
-			<table class="table table-center">
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>User</th>
-						<th>Provider</th>
-						<th>Service</th>
-						<th>Amount</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>15 Sep 2020</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/customer/user-02.jpg">
-								</a>
-								<a href="javascript:void(0);">Nancy Olson</a>
-							</span>
-						</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-02.jpg">
-								</a>
-								<a href="javascript:void(0);">Matthew Garcia</a>
-							</span>
-						</td>
-						<td>Hp core i5 generation</td>
-						<td>₹21,000</td>
-						<td>
-							<span class="badge badge-dark">Pending</span>
-						</td>
-					</tr>
-					<tr>
-						<td>14 Sep 2020</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/customer/user-03.jpg">
-								</a>
-								<a href="javascript:void(0);">Ramona Kingsley</a>
-							</span>
-						</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-03.jpg">
-								</a>
-								<a href="javascript:void(0);">Yolanda Potter</a>
-							</span>
-						</td>
-						<td>Hp core i5 generation</td>
-						<td>₹21,000</td>
-						<td>
-							<span class="badge badge-dark">Pending</span>
-						</td>
-					</tr>
-					<tr>
-						<td>13 Sep 2020</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/customer/user-04.jpg">
-								</a>
-								<a href="javascript:void(0);">Ricardo Lung</a>
-							</span>
-						</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-04.jpg">
-								</a>
-								<a href="javascript:void(0);">Ricardo Flemings</a>
-							</span>
-						</td>
-						<td>Hp core i5 generation</td>
-						<td>₹21,000</td>
-						<td>
-							<span class="badge badge-dark">Pending</span>
-						</td>
-					</tr>
-					<tr>
-						<td>12 Sep 2020</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/customer/user-05.jpg">
-								</a>
-								<a href="javascript:void(0);">Annette Silva</a>
-							</span>
-						</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-05.jpg">
-								</a>
-								<a href="javascript:void(0);">Maritza Wasson</a>
-							</span>
-						</td>
-						<td>Hp core i5 generation</td>
-						<td>₹21,000</td>
-						<td>
-							<span class="badge badge-dark">Pending</span>
-						</td>
-					</tr>
-					<tr>
-						<td>11 Sep 2020</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/customer/user-06.jpg">
-								</a>
-								<a href="javascript:void(0);">Stephen Wilson</a>
-							</span>
-						</td>
-						<td>
-							<span class="table-avatar">
-								<a href="#" class="avatar avatar-xs mr-2">
-									<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-06.jpg">
-								</a>
-								<a href="javascript:void(0);">Marya Ruiz</a>
-							</span>
-						</td>
-						<td>Hp core i5 generation</td>
-						<td>₹21,000</td>
-						<td>
-							<span class="badge badge-info">Inprogress</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
-<!-- Payments -->
-
-</div>
 </div>
 @endsection

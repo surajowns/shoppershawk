@@ -281,7 +281,7 @@
             data: {productid:productid},
             success: function(response){
                 if(response.totalwishlist == 0){
-                             location.reload();
+                             //location.reload();
                            }
                 if(response.status == 'error'){
                 

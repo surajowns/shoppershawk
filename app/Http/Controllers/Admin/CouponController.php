@@ -61,7 +61,11 @@ class CouponController extends Controller
                 'end_at' => 'required|after_or_equal:starting_at',
                 'notes' => 'required',
             ]);
+           
             $data=$request->except('_token');
+            if(empty($request->input('limit'))){
+                $data['coupon_limit']=0;
+             }
             $update =CouponModel::where('id',$id)->update($data);
             if($update){
                 return redirect('/admin/coupon')->with('success','Coupon updated successful');
