@@ -61,7 +61,9 @@
 </script>
     </head>
     <body>
+    @if(Request::segment(2)=='checkout')
     <div id="dvLoading"></div>
+    @endif
         <!--Offcanvas menu area start-->
         
         <div class="off_canvars_overlay"></div>

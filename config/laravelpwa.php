@@ -59,11 +59,11 @@ return [
         ],
         'shortcuts' => [
             [
-                'name' => 'Shortcut Link 1',
+                'name' => 'Shoppershawk',
                 'description' => 'Shortcut Link 1 Description',
-                'url' => '/shortcutlink1',
+                'url' => '/',
                 'icons' => [
-                    "src" => "/images/icons/icon-72x72.png",
+                    "src" => "public/images/icons/icon-72x72.png",
                     "purpose" => "any"
                 ]
             ],
