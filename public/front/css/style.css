@@ -11169,3 +11169,9 @@ label.star:before {
     display: none;
   }
   .bottom-nav1{display: none !important;}
+
+  .add-button {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+  }
