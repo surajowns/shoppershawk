@@ -201,7 +201,8 @@
 
             <!-- categories  product area start-->
             <!-- categories product area end-->
-            <button class="add-button">Add to home screen</button>
+            
+            <button class="add-button">Add Shoppershawk to Home screen</button>
 
         </div>
         <!--home section bg area end-->
