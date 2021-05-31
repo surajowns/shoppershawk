@@ -36,7 +36,7 @@
     @laravelPWA
     </head>
     <body>
-    <div id="dvLoading"></div>
+    <!-- <div id="dvLoading"></div> -->
         <!--Offcanvas menu area start-->
         
         <div class="off_canvars_overlay"></div>
@@ -202,7 +202,7 @@
             <!-- categories  product area start-->
             <!-- categories product area end-->
             
-            <button class="add-button">Add Shoppershawk to Home screen</button>
+            <button class="add-button">Add Shoppers Hawk to Home screen</button>
 
         </div>
         <!--home section bg area end-->
