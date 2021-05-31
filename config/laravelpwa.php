@@ -4,10 +4,10 @@ return [
     'name' => 'Shoppers Hawk',
     'manifest' => [
         'name' => env('APP_NAME', 'Shoppers Hawk'),
-        'short_name' => 'Shoppershawk',
+        'short_name' => 'SHOPPERS HAWK',
         'start_url' => '/',
-        'background_color' => '#c40316',
-        'theme_color' => '#c40316',
+        'background_color' => '#ffffff',
+        'theme_color' => '#000000',
         'display' => 'standalone',
         'orientation'=> 'any',
         'status_bar'=> 'black',
@@ -59,7 +59,7 @@ return [
         ],
         'shortcuts' => [
             [
-                'name' => 'Shoppershawk',
+                'name' => 'Shoppers Hawk',
                 'description' => 'Shoppers Hawk',
                 'url' => '/',
                 'icons' => [
