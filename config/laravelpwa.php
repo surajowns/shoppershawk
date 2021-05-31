@@ -60,7 +60,7 @@ return [
         'shortcuts' => [
             [
                 'name' => 'Shoppershawk',
-                'description' => 'Shortcut Link 1 Description',
+                'description' => 'Shoppers Hawk',
                 'url' => '/',
                 'icons' => [
                     "src" => "https://shoppershawk.com/public/images/icons/icon-72x72.png",
@@ -68,8 +68,8 @@ return [
                 ]
             ],
             [
-                'name' => 'Shortcut Link 2',
-                'description' => 'Shortcut Link 2 Description',
+                'name' => 'Shoppers Hawk',
+                'description' => 'Shoppers Hawk',
                 'url' => '/'
             ]
         ],
