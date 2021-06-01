@@ -133,20 +133,20 @@
             <span class="text-danger">{{$errors->first('description')}}</span>
         </div> 
     </div>
-    <div class="form-group row">
+    <!-- <div class="form-group row">
     <label for="example-text-input" class="col-sm-3 col-form-label">Product Image</label>
     <div class="col-sm-9">
         <input class="form-control" name="product_image" type="file" value="" id="product_image"  required placeholder="Enter ">
         <span class="text-danger">{{$errors->first('product_image')}}</span>
     </div>
-</div>
-<!-- <div class="form-group row">
-    <label for="example-text-input" class="col-sm-3 col-form-label">Variant Image</label>
+</div> -->
+<div class="form-group row">
+    <label for="example-text-input" class="col-sm-3 col-form-label">Image</label>
     <div class="col-sm-9">
-        <input class="form-control" name="image[0][]" type="file" value="" id="image" multiple required placeholder="Enter ">
+        <input class="form-control" name="image[]" type="file" value="" id="image" multiple  placeholder="Enter ">
         <span class="text-danger">{{$errors->first('image')}}</span>
     </div>
-</div> -->
+</div>
 
 <div class="form-group row">
     
