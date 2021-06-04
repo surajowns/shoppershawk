@@ -8,6 +8,8 @@ use App\User;
 use App\Refferal;
 use Str;
 use DB;
+use Cart;
+use App\CartModel;
 
 class SocialAuthController extends Controller
 {
@@ -45,6 +47,26 @@ class SocialAuthController extends Controller
                 $user->save();
                 Session::put('logid',$user->id);
                 Session::put('logRole',2);
+
+
+                
+                $cartdetails=Cart::getContent()->toArray();
+                if(!empty($cartdetails)){
+                    foreach($cartdetails as $details){
+                        $check=CartModel::where('user_id',$user->id)->where('product_id',$details['id'])->first();
+                       
+                        if(empty($check)){
+                        $carts= new CartModel;
+                        $carts->user_id=$user->id;
+                        $carts->product_id=$details['id'];
+                        $carts->price=$details['price'];
+                        $carts->quantity=$details['quantity'] ;
+                        $carts->save(); 
+                      
+                      }
+                                               
+                    }
+                }
                  
                 $refferal_code=Str::random(10);
                 $refferal_link=url("/register/reff=$refferal_code");
@@ -129,6 +151,26 @@ class SocialAuthController extends Controller
                 $new_user->role     = 2;
                 $new_user->status   =1;
                 $new_user->save();
+
+
+                $cartdetails=Cart::getContent()->toArray();
+                if(!empty($cartdetails)){
+                    foreach($cartdetails as $details){
+                        $check=CartModel::where('user_id',$user['id'])->where('product_id',$details['id'])->first();
+                       
+                        if(empty($check)){
+                        $carts= new CartModel;
+                        $carts->user_id=$user['id'];
+                        $carts->product_id=$details['id'];
+                        $carts->price=$details['price'];
+                        $carts->quantity=$details['quantity'] ;
+                        $carts->save(); 
+                      
+                      }
+                                               
+                    }
+                }
+
 
                 $refferal_code=Str::random(10);
                 $refferal_link=url("/register/reff=$refferal_code");
