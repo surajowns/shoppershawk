@@ -460,9 +460,11 @@ $.ajax({
             $('.list_details').css("display", "block");
             var rows='';
                     $.each(response,function(key,value){
+                        if(value.status===1){
                         var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
                        
                         rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
+                        }
                     });
             $('.list_details').html(rows)
         }

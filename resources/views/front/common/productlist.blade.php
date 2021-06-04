@@ -100,6 +100,7 @@
         <div class="row no-gutters shop_wrapper">
         
            @foreach($product as $details)
+            @if($details->status==1)
              <div class="col-lg-3 col-md-4 col-12 ">
                 <article class="single_product {{$details['qty']<=0?'not_in_stock':''}}">
                     <figure>
@@ -249,6 +250,7 @@
                         @endif
                 </article>
              </div>
+             @endif
             @endforeach
         </div>
 
