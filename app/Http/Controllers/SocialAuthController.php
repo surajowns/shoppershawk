@@ -87,7 +87,7 @@ class SocialAuthController extends Controller
         }
         catch(\Exception $e){
             DB::rollback(); 
-            return redirect('/')->with('success', $e->getMessage());
+            return redirect('/')->with('success', $e->getMessage().$e->getLine());
 
 
          }
@@ -156,11 +156,11 @@ class SocialAuthController extends Controller
                 $cartdetails=Cart::getContent()->toArray();
                 if(!empty($cartdetails)){
                     foreach($cartdetails as $details){
-                        $check=CartModel::where('user_id',$user['id'])->where('product_id',$details['id'])->first();
+                        $check=CartModel::where('user_id',$new_user['id'])->where('product_id',$details['id'])->first();
                        
                         if(empty($check)){
                         $carts= new CartModel;
-                        $carts->user_id=$user['id'];
+                        $carts->user_id=$new_user['id'];
                         $carts->product_id=$details['id'];
                         $carts->price=$details['price'];
                         $carts->quantity=$details['quantity'] ;
@@ -191,7 +191,7 @@ class SocialAuthController extends Controller
         }
     } catch(\Exception $e){
         DB::rollback(); 
-        return redirect('/')->with('success', $e->getMessage());
+        return redirect('/')->with('success', $e->getMessage().$e->getLine());
 
 
      }
