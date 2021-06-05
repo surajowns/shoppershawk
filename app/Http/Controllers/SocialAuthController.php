@@ -34,7 +34,27 @@ class SocialAuthController extends Controller
             if($existUser) {
                 Session::put('logid',$existUser['id']);
                 Session::put('logRole',$existUser['role']);
+
+                $cartdetails=Cart::getContent()->toArray();
+                if(!empty($cartdetails)){
+                    foreach($cartdetails as $details){
+                        $check=CartModel::where('user_id',$existUser['id'])->where('product_id',$details['id'])->first();
+                       
+                        if(empty($check)){
+                        $carts= new CartModel;
+                        $carts->user_id=$existUser['id'];
+                        $carts->product_id=$details['id'];
+                        $carts->price=$details['price'];
+                        $carts->quantity=$details['quantity'] ;
+                        $carts->save(); 
+                      
+                      }
+                                               
+                    }
+                }
                 Auth::loginUsingId($existUser->id);
+
+
             }
             else {
                
@@ -50,14 +70,25 @@ class SocialAuthController extends Controller
 
 
                 
+               
+                 
+                $refferal_code=Str::random(10);
+                $refferal_link=url("/register/reff=$refferal_code");
+                $user=User::orderBy('id','DESC')->first();
+                $refferals = new Refferal;
+                $refferals->user_id= $user['id'];
+                $refferals->referrer_id=$refferal_code;
+                $refferals->link= $refferal_link;
+                $refferals->save();
+                
                 $cartdetails=Cart::getContent()->toArray();
                 if(!empty($cartdetails)){
                     foreach($cartdetails as $details){
-                        $check=CartModel::where('user_id',$user->id)->where('product_id',$details['id'])->first();
+                        $check=CartModel::where('user_id',$user['id'])->where('product_id',$details['id'])->first();
                        
                         if(empty($check)){
                         $carts= new CartModel;
-                        $carts->user_id=$user->id;
+                        $carts->user_id=$user['id'];
                         $carts->product_id=$details['id'];
                         $carts->price=$details['price'];
                         $carts->quantity=$details['quantity'] ;
@@ -67,16 +98,6 @@ class SocialAuthController extends Controller
                                                
                     }
                 }
-                 
-                $refferal_code=Str::random(10);
-                $refferal_link=url("/regiuserster/reff=$refferal_code");
-                $user=User::orderBy('id','DESC')->first();
-                $refferals = new Refferal;
-                $refferals->user_id= $['id'];
-                $refferals->referrer_id=$refferal_code;
-                $refferals->link= $refferal_link;
-                $refferals->save();
-
 
                 auth()->login($user);
             }
