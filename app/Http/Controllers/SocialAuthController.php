@@ -98,11 +98,10 @@ class SocialAuthController extends Controller
                                                
                     }
                 }
-
+                UserRegisterEmail($user,$refferal_code);
                 auth()->login($user);
             }
             DB::commit();
-            UserRegisterEmail($user,$refferal_code);
             return redirect('/')->with('success', 'Login Successfully');
 
         }

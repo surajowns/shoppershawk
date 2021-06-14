@@ -22,6 +22,7 @@
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
 	.bottom-nav1{display: block !important;}
+	#dvLoading{display: none !important;}
 }
 
 @media only screen and (max-width: 599px){
@@ -38,6 +39,7 @@
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
 	.bottom-nav1{display: block !important;}
+	#dvLoading{display: none !important;}
 }
 
 @media only screen and (max-width: 479px) {
@@ -75,5 +77,6 @@
 	.li-form {margin: 10px 12px 0 !important;}
 	.tabs{height: 50px !important;}
 	.bottom-nav1{display: block !important;}
+	#dvLoading{display: none !important;}
 
 }
