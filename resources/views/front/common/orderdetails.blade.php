@@ -453,11 +453,11 @@ ol.progtrckr li.progtrckr-todo:before {
                                                 </div>
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-0 w-100">Additional charges</h6>
-                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['additionalCharges']['0']['amount']-$orders['total_amount'],2)}}</p>
+                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($additinal_charges,2)}}</p>
                                                 </div>
                                                 <div class="col-6 col-md">
                                                     <h6 class="text-charcoal mb-0 w-100">Total</h6>
-                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($orders['additionalCharges']['0']['amount'],2)}}</p>
+                                                    <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">₹{{number_format($total_amount,2)}}</p>
                                                 </div>
                                                 
                                                 <div class="col-12 col-md-3">

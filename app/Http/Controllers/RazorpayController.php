@@ -197,7 +197,7 @@ class RazorpayController extends Controller
                          $total=$total+$value['quantity']*$value['price'] ;  
                      }
              
-                     $discount=session()->has('discount_amount')?Session::get('discount_amount'):0;
+                     $discount=session()->has('discount_amount')?Session::get('discount_amount'):Session::get('discount');
              
                      $data['price']=$total;
                      $data['user_id']=$user['id'];
@@ -205,7 +205,7 @@ class RazorpayController extends Controller
                      $data['quantity']=$quantity;
                      $data['status']=1;
                      $data['total_amount']=$total - $discount;
-                     $data['coupon'] =session()->has('code')?Session::get('code'):'';
+                     $data['coupon'] =session()->has('code')?Session::get('code'):Session::get('coupon');
                      $data['discount'] = $discount;
                    
             

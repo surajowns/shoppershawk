@@ -76,9 +76,12 @@ class UserController extends Controller
        
 
         $orders=Order::with('users','status','additionalCharges')->where('id',$order_id)->first();
+        $transaction_amount=$orders['additionalCharges'][0]['amount'];
+        $total_amount=$orders['total_amount'];
+        $additinal_charges=$transaction_amount-$total_amount;
         $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$order_id)->get();
         $status=Status::get();
-        return view('front.common.orderdetails',compact('orders','orderdetails','status'));
+        return view('front.common.orderdetails',compact('orders','orderdetails','status','additinal_charges','total_amount'));
 
     }
     
