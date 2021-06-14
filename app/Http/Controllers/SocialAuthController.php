@@ -131,6 +131,24 @@ class SocialAuthController extends Controller
                 
                 Session::put('logid',$detail['id']);
                 Session::put('logRole',2);
+
+                $cartdetails=Cart::getContent()->toArray();
+                if(!empty($cartdetails)){
+                    foreach($cartdetails as $details){
+                        $check=CartModel::where('user_id',$$detail['id'])->where('product_id',$details['id'])->first();
+                       
+                        if(empty($check)){
+                        $carts= new CartModel;
+                        $carts->user_id=$detail['id'];
+                        $carts->product_id=$details['id'];
+                        $carts->price=$details['price'];
+                        $carts->quantity=$details['quantity'] ;
+                        $carts->save(); 
+                      
+                      }
+                                               
+                    }
+                }
                 auth()->login($detail);
              
                     return redirect('/')->with('success','Login Successfully');
