@@ -57,7 +57,7 @@
 													</span>
 												</td>
                                                 <td>{{$value['contact']}}</td>
-												<td>₹{{number_format($value['amount']/100,2)}}</td>
+												<td>₹{{number_format($value['amount'],2)}}</td>
 												<td>{{$value['payment_id']}}</td>
 
 												<td>{{$value['pay_order_id']}}</td>
