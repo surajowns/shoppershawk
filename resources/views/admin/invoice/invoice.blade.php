@@ -69,9 +69,8 @@ body {
                  
                 <table class="table">
                 <th><img src="http://shoppershawk.com/public/front/img/logo/logo.png" alt="Logo" /></th>
-                <!-- <th><h6>@if($orders['gst_no'] !=null )GSTIN:{{$orders['gst_no']}} @endif</h6></th> -->
+                <th><h3 class="text-center" style="text-align:center">Tax Invoice</h3></th>
                 </table>
-                <h3 class="text-center" style="text-align:center">Tax Invoice</h3>
                 <table class="table" style="border: 1px solid #333;">
                     <thead>
                         <tr>
