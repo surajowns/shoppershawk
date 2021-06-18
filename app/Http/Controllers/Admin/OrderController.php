@@ -65,11 +65,12 @@ class OrderController extends Controller
            $orders=Order::with('users','status','additionalCharges')->where('id',$id)->first();
            $transaction_amount=$orders['additionalCharges'][0]['amount'];
            $total_amount=$orders['total_amount'];
+           $discount=$orders['discount']/$orders['quantity'];
            $additinal_charges=$transaction_amount-$total_amount;
            $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
            $status=Status::get();
-           
-           $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.invoice',compact('orders','orderdetails','status','additinal_charges','transaction_amount'));
+
+           $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.invoice',compact('orders','orderdetails','status','additinal_charges','transaction_amount','discount'));
          return $pdf->download($orders['order_no'].'.pdf');
 
     }
