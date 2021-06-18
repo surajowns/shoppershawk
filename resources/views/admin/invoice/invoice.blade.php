@@ -130,7 +130,8 @@ body {
                         <tr>
                            <!-- <th>S.N</th> -->
                             <th><h6> Product </h6></th>
-                            <th><h6>Description</h6></th>
+                            <th><h6>HSN</h6></th>
+                            <th><h6>IGST rate</h6></th>
                             <th><h6>Qty</h6></th>
                             <th><h6>Gross Amount</h6></th>
                             <th><h6>Discount</h6></th>
@@ -145,7 +146,8 @@ body {
                         @foreach($orderdetails as $value)
                         <tr class="list-item">
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
-                            <td>HSN:&nbsp;{{$value['products'][0]['hsn_no']}} IGST&nbsp;{{$value['products'][0]['gst']}}&nbsp;%</td>
+                            <td>{{$value['products'][0]['hsn_no']}}</td>
+                            <td>{{$value['products'][0]['gst']}}&nbsp;%</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
                             <td data-label="Unit Price" class="tableitem">{{number_format($value['price'],2)}}</td>
                             <td data-label="discount">{{number_format($value['quantity']*$discount,2)}}</td>
@@ -154,14 +156,14 @@ body {
                             <td data-label="taxable">{{number_format(($value['price']-($value['quantity']*$discount))/1.18,2)}}</td>
 
                             <!-- <td data-label="Unit Price">{{number_format(($value['price']/1.18)-($value['quantity']*$discount),2)}}</td> -->
-                            <td data-label="sgst"> @if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']/1.18)-($value['quantity']*$discount))*18/100)/2,2)}} @else 00.00 @endif</td>
-                            <td data-label="cgst">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']/1.18)-($value['quantity']*$discount))*18/100)/2,2)}} @else 00.00 @endif</td>
-                            <td data-label="gst" class="tableitem">{{number_format((($value['price']/1.18)-($value['quantity']*$discount))*18/100,2)}}</td>
+                            <td data-label="sgst"> @if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/1.18)*18/100)/2,2)}} @else 00.00 @endif</td>
+                            <td data-label="cgst">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/1.18)*18/100)/2,2)}} @else 00.00 @endif</td>
+                            <td data-label="gst" class="tableitem">{{number_format((($value['price']-($value['quantity']*$discount))/1.18)*18/100,2)}}</td>
                             <!-- <td data-label="Total" class="tableitem">{{number_format((($value['price']/1.18)-($value['quantity']*$discount))+(($value['price']/1.18)-($value['quantity']*$discount))*18/100,2)}}</td> -->
                         </tr>
                          @endforeach
                         <tr>
-                            <td colspan="2" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
+                            <td colspan="3" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
                             <td colspan="4" style="font-weight:bold;">Additional charges:00.00</td>
                             <td  colspan="4" style="font-weight:bold;">Total Price(INR):&nbsp;{{number_format($orders['total_amount'],2)}}</td>
                         </tr>                        
