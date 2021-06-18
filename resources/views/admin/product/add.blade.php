@@ -66,6 +66,13 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-3 col-form-label">Hsn Number</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" name="hsn_no" value="" id="hsn_no" required placeholder="Enter HSN Number" required  autocomplete="off" >
+            <span class="text-danger">{{$errors->first('hsn_no')}}</span>
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="inputEmail3" class="col-sm-3 col-form-label">Category *</label>
         <div class="col-sm-9">
             <select name="supercategory_id" id="" class="form-control" required>

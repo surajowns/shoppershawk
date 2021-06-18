@@ -34,6 +34,7 @@
                                 <th>Category</th>
                                 <th>Brand</th>
                                 <th>Model No.</th>
+                                <th>Hsn No.</th>
                                 <th>Price</th>
                                 <th>Selling Price</th>
                                 <th>In Stock</th>
@@ -53,6 +54,7 @@
                                <td>{{$product['category']['name']}}</td>
                                <td>{{$product['product_brand']['name']}}</td>
                                <td>{{$product['model_no']}}</td>
+                               <td>{{$product['hsn_no']}}</td>
                                <td>{{$product['price']}}</td>
                                <td>{{$product['selling_price']}}</td>
                                <td>{{$product['qty']}}</td>

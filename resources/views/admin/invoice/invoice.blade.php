@@ -73,7 +73,7 @@ body {
                                 <h5>Order Date:&nbsp;&nbsp;{{date('d M Y',strtotime($orders['created_at']))}}</h5>
                             </th>
                             <th>
-                                <h5>Invoice No:{{$orders['order_no']}}</h5>
+                                <h5>Invoice No:&nbsp;000001</h5>
                                 <h5>Invoice Date:{{date('d M Y',strtotime($orders['created_at']))}}</h5>
                             </th>
                             <th>
@@ -118,35 +118,37 @@ body {
                         </tr>
                     </tbody>
                 </table>
-                <table class="table">
+                <table class="table" style="border: 1px solid #cccccc;">
                     <thead>
                         <tr>
-                           <th>S.N</th>
+                           <!-- <th>S.N</th> -->
                             <th>Product</th>
+                            <th>Description</th>
                             <th>Qty</th>
-                            <th>Unit Price(INR)</th>
-                            <th>IGST (Included)</th>
-                            <th>Total(INR)</th>
+                            <th>Gross Amount</th>
+                            <th>Taxable Value</th>
+                            <th>IGST</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($orderdetails as $value)
                         <tr class="list-item">
-                            <td>{{$loop->iteration}}</td>
+                            <!-- <td>{{$loop->iteration}}</td> -->
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
+                            <td> IGST&nbsp;{{$value['products'][0]['gst']}}&nbsp;%</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
                             <td data-label="Unit Price" class="tableitem">{{number_format($value['price'],2)}}</td>
-                            <td data-label="gst" class="tableitem">{{$value['products'][0]['gst']}}&nbsp;%</td>
+                            <td>{{number_format($value['price']-$value['price']*($value['products'][0]['gst'])/100,2)}}</td>
+                            <td data-label="gst" class="tableitem">{{number_format($value['price']*($value['products'][0]['gst'])/100,2)}}</td>
                             <td data-label="Total" class="tableitem">{{number_format($value['total_amount'],2)}}</td>
                         </tr>
                          @endforeach
                         <tr>
-                            <td colspan="2" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
-                            <td  style="font-weight:bold;">Discount: {{number_format($orders['discount'],2)}}</td>
-                            <td  style="font-weight:bold;">Additinal charges: {{number_format($additinal_charges,2)}}</td>
-
-                            <td style="font-weight:bold;" colspan="1">Total Price (INR): </td>
-                            <td style="font-weight:bold;">{{number_format($transaction_amount,2)}}</td>
+                            <td colspan="1" style="font-weight:bold;">Total Qty: {{$orders['quantity']}}</td>
+                            <td colspan="2" style="font-weight:bold;">Discount: {{number_format($orders['discount'],2)}}</td>
+                            <td colspan="2" style="font-weight:bold;">Additional charges: {{number_format($additinal_charges,2)}}</td>
+                            <td  colspan="2" style="font-weight:bold;">Total Price(INR):&nbsp;{{number_format($transaction_amount,2)}} </td>
                         </tr>                        
                     </tbody>
                 </table>

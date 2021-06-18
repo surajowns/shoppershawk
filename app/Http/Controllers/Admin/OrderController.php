@@ -68,6 +68,7 @@ class OrderController extends Controller
            $additinal_charges=$transaction_amount-$total_amount;
            $orderdetails=orderDetails::with('products','products.productImage')->where('order_id',$id)->get();
            $status=Status::get();
+           
            $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('admin.invoice.invoice',compact('orders','orderdetails','status','additinal_charges','transaction_amount'));
          return $pdf->download($orders['order_no'].'.pdf');
 
