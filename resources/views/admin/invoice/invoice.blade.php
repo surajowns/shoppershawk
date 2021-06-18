@@ -136,7 +136,7 @@ body {
                         <tr class="list-item">
                             <!-- <td>{{$loop->iteration}}</td> -->
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
-                            <td> IGST&nbsp;{{$value['products'][0]['gst']}}&nbsp;%</td>
+                            <td>HSN:&nbsp;{{$value['products'][0]['hsn_no']}} IGST&nbsp;{{$value['products'][0]['gst']}}&nbsp;%</td>
                             <td data-label="Quantity" class="tableitem">{{$value['quantity']}}</td>
                             <td data-label="Unit Price" class="tableitem">{{number_format($value['price'],2)}}</td>
                             <td>{{number_format($value['price']-$value['price']*($value['products'][0]['gst'])/100,2)}}</td>
