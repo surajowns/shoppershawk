@@ -144,6 +144,10 @@ body {
                     </thead>
                     <tbody>
                         @foreach($orderdetails as $value)
+                           <?php   
+                                  $gst=$value['products'][0]['gst']; 
+                                  $gst_value=(100+$gst)/100;
+                           ?>
                         <tr class="list-item">
                             <td data-label="product" class="tableitem">{{$value['products'][0]['name']}}</td>
                             <td>{{$value['products'][0]['hsn_no']}}</td>
@@ -153,13 +157,13 @@ body {
                             <td data-label="discount">{{number_format($value['quantity']*$discount,2)}}</td>
                             <td data-label="net amount">{{number_format($value['price']-($value['quantity']*$discount),2)}}</td>
 
-                            <td data-label="taxable">{{number_format(($value['price']-($value['quantity']*$discount))/1.18,2)}}</td>
+                            <td data-label="taxable">{{number_format(($value['price']-($value['quantity']*$discount))/$gst_value,2)}}</td>
 
-                            <!-- <td data-label="Unit Price">{{number_format(($value['price']/1.18)-($value['quantity']*$discount),2)}}</td> -->
-                            <td data-label="sgst"> @if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/1.18)*18/100)/2,2)}} @else 00.00 @endif</td>
-                            <td data-label="cgst">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/1.18)*18/100)/2,2)}} @else 00.00 @endif</td>
-                            <td data-label="gst" class="tableitem">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state'] != 'Delhi'){{number_format((($value['price']-($value['quantity']*$discount))/1.18)*18/100,2)}} @else 00.00 @endif  </td>
-                            <!-- <td data-label="Total" class="tableitem">{{number_format((($value['price']/1.18)-($value['quantity']*$discount))+(($value['price']/1.18)-($value['quantity']*$discount))*18/100,2)}}</td> -->
+                            <!-- <td data-label="Unit Price">{{number_format(($value['price']/$gst_value)-($value['quantity']*$discount),2)}}</td> -->
+                            <td data-label="sgst"> @if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/$gst_value)*$gst/100)/2,2)}} @else 00.00 @endif</td>
+                            <td data-label="cgst">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state']=='Delhi'){{number_format(((($value['price']-($value['quantity']*$discount))/$gst_value)*$gst/100)/2,2)}} @else 00.00 @endif</td>
+                            <td data-label="gst" class="tableitem">@if($orders['shipping_state']?$orders['shipping_state']:$orders['billing_state'] != 'Delhi'){{number_format((($value['price']-($value['quantity']*$discount))/$gst_value)*$gst/100,2)}} @else 00.00 @endif  </td>
+                            <!-- <td data-label="Total" class="tableitem">{{number_format((($value['price']/$gst_value)-($value['quantity']*$discount))+(($value['price']/$gst_value)-($value['quantity']*$discount))*$gst/100,2)}}</td> -->
                         </tr>
                          @endforeach
                         <tr>
