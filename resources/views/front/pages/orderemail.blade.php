@@ -136,11 +136,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="5" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Additional charges</strong></td>
-                                                            <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹{{number_format($orders['additionalCharges']['0']['amount']-$orders['total_amount'],2)}}</strong></td>
+                                                            <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹ 00.00</strong></td>
                                                         </tr>
                                                         <tr>
                                                         <td colspan="5" style="border-right:1px solid #ccc;border-top:1px solid #ccc"><strong>Total</strong></td>
-                                                            <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹{{number_format($orders['additionalCharges']['0']['amount'],2)}}</strong></td>
+                                                            <td align="center" style="border-top:1px solid #ccc;border-right:1px solid #ccc;"><strong>₹{{number_format($orders['total_amount'],2)}}</strong></td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
