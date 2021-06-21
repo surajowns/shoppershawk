@@ -115,7 +115,7 @@
                                                             <td align="center" style="border-right:1px solid #ccc;border-top:1px solid #ccc">{{$value['quantity']}}</td>
                                                             <td align="center" style="border-right:1px solid #ccc;border-top:1px solid #ccc">
                                                                @foreach($value->products as $data)
-                                                                  {{$data['gst']}}
+                                                                  {{$data['gst']}}%
                                                                   @endforeach
                                                                  </td>
 
