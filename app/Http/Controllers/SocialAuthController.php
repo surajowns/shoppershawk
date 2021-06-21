@@ -185,7 +185,6 @@ class SocialAuthController extends Controller
                 $new_user->name     = $fb_name;
                 $new_user->password = bcrypt(rand(1,10000));
                 $new_user->email    = $email?$email:'';
-                $new_user->profile_image = $fb_img;
                 $new_user->role     = 2;
                 $new_user->status   =1;
                 $new_user->save();
