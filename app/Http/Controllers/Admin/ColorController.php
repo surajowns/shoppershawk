@@ -23,8 +23,8 @@ class ColorController extends Controller
            return view('admin.colors.add');
     }
      /**
-     * Edit & update coupon page detail
-     * @method editcoupon
+     * Edit & update color page detail
+     * @method editcolor
      * @param page_id
      */
     public function editColor(Request $request,$id=null)
@@ -44,9 +44,9 @@ class ColorController extends Controller
         return view('admin.colors.edit',compact('page'));
     }
     /**
-     * Delete page
-     * @method deletePage
-     * @param page id
+     * Delete color
+     * @method delete color
+     * @param color id
      */
     public function deleteColor($id=null)
     {

@@ -211,7 +211,9 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="orders">
+                                @if(!empty($orders))
                                     <h3>Orders</h3>
+                                   
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -239,6 +241,13 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    @else
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                        <img src="{{url('/public/front/img/emptyorder.jpg')}}" alt="">
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                                 <div class="tab-pane fade" id="downloads">
                                     <h3>My Cart</h3>
