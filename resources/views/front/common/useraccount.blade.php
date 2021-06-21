@@ -203,7 +203,7 @@
                                             <div class="defalt-address">
                                                 <h4>Addresss</h4>
                                                 <div class="address-type">
-                                                    <p>Home</p>
+                                                    <!-- <p>Home</p> -->
                                                 </div>
                                                 <p>{{$user['location']}}</p>
                                             </div>
@@ -390,7 +390,7 @@
                                                 <div class="row pb-2">
                                                   <div class="col-sm-12">
                                                   <label>Profile</label>
-                                                    <input class="form-control" type="file" name="profile_image" value="{{url('public/admin/images/'.$user['profile_image'])}}">
+                                                    <input class="form-control" type="file" name="profile_image" value="{{url('public/profile/'.$user['profile_image'])}}">
                                                   </div>
                                                 </div>
                                                   
