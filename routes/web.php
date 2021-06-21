@@ -242,6 +242,13 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
       Route::get('/payment','OrderController@paymemtTransaction')->name('Payment list');
 
 
+      ///Colour
+      Route::get('color','ColorController@Index')->name('Colors');
+      Route::any('add-color','ColorController@Addcolor')->name('Add  Colors');
+      Route::any('edit-color/{id}','ColorController@editColor')->name('Edit  Colors');
+      Route::any('delete-color/{id}','ColorController@deleteColor')->name('Delete  Colors');
+
+
 
       Route::get('/under-construction',function(){
 

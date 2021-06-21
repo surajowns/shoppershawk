@@ -21,6 +21,9 @@
 						<li class="{{Request::segment(2)=='brand'?'active':''}}">
 							<a href="{{url('admin/brand')}}"><i class="fab fa-buffer"></i> <span>Brand</span></a>
 						</li>
+						<li class="{{Request::segment(2)=='color'?'active':''}}">
+							<a href="{{url('admin/color')}}"><i class="fas fa-palette"></i> <span>Color</span></a>
+						</li>
 						<li class="{{Request::segment(2)=='product'?'active':''}}">
 							<a href="{{url('/admin/product')}}"><i class="fas fa-bullhorn"></i> <span>Products</span></a>
 						</li>
