@@ -112,7 +112,12 @@ a.float:hover {
                         @else
                         
                         <div class="price_box">
-                           <span class="current_price">SOLD OUT</span><br><span> This item is currently out of stock</span>
+                         
+                           <span class="current_price">SOLD OUT</span>&nbsp;&nbsp;&nbsp; <a href="https://api.whatsapp.com/send?phone=+91-8920213321&text=Hello Mam/Sir, I have a query..........." class="float" target="_blank">
+                              <i class="fa fa-whatsapp my-float"></i>
+                           </a>
+                           <br><span> This item is currently out of stock</span>
+                          
                         </div>
                      
                         @endif
