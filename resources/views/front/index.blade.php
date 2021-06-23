@@ -35,6 +35,11 @@
 </script>
     @laravelPWA
     </head>
+    <?php 
+
+  $sociallinks=App\SocialLinksModel::where('status',1)->get();
+
+?>
     <body>
     <!-- <div id="dvLoading"></div> -->
         <!--Offcanvas menu area start-->
@@ -105,7 +110,14 @@
                                     <a href="#"><i class="fa fa-envelope-o"></i>care@Shoppershawk.com</a>
                                 </span>
                                 <ul>
-                                    <li class="facebook">
+                                    @if(count($sociallinks)>0)
+                                        @foreach($sociallinks as $row)
+                                            <li class="{{strtolower($row->title)}}">
+                                                <a class="{{strtolower($row->title)}}" href="{{$row->links}}" target="_blank"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
+                                            </li>
+                                            @endforeach
+                                    @endif
+                                    <!-- <li class="facebook">
                                         <a href="#"><i class="fa fa-facebook"></i></a>
                                     </li>
                                     <li class="twitter">
@@ -119,7 +131,7 @@
                                     </li>
                                     <li class="linkedin">
                                         <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>

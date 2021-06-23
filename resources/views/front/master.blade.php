@@ -11,7 +11,8 @@
             
              $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
              $subcategories=App\CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
-           
+             $sociallinks=App\SocialLinksModel::where('status',1)->get();
+
 
          ?>
         <meta charset="utf-8" />
@@ -132,21 +133,13 @@
                                     <a href="#"><i class="fa fa-envelope-o"></i>care@Shoppershawk.com</a>
                                 </span>
                                 <ul>
-                                    <li class="facebook">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li class="twitter">
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li class="pinterest">
-                                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                                    </li>
-                                    <li class="google-plus">
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li class="linkedin">
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
+                                @if(count($sociallinks)>0)
+                                        @foreach($sociallinks as $row)
+                                            <li class="{{strtolower($row->title)}}">
+                                                <a class="{{strtolower($row->title)}}" href="{{$row->links}}" target="_blank"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
+                                            </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
