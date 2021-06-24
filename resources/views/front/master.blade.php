@@ -407,7 +407,7 @@
                 data: {value:value,productid:productid},
                 success: function(response){
                 if(response.status == 'error'){
-                toastr.warning("error");
+                // toastr.warning(response.message);
                 }
                 else{
                     location.reload();
@@ -430,7 +430,7 @@
                 data: {value:value,productid:productid},
                 success: function(response){
                 if(response.status == 'error'){
-                        toastr.warning("error");
+                        // toastr.warning(response.message);
                 }
                 else{
                     location.reload();

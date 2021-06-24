@@ -343,7 +343,7 @@
                                     </td>
                                     <td class="product_quantity">
                                         <p> <a href="javascript:void(0)" class="removecart" data-productid="{{$data['id']}}"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;₹ {{number_format($data['price'],2)}}</p>
-                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$data['quantity']}}" data-productid="{{$data['id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['id']}}">+</span>
+                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['id']}}">–</span><input class="input-number" min="1" maxlength="3"  value="{{$data['quantity']}}" data-productid="{{$data['id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['id']}}">+</span>
                                     </td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>
@@ -665,12 +665,10 @@ $(document).on("click","#removecoupon",function() {
             data: {value:value,productid:productid},
             success: function(response){
             if(response.status == 'error'){
-               window.top.location = window.top.location
-
-            toastr.warning(response.error);
+            // toastr.warning("error");
             }
             else{
-               window.top.location = window.top.location
+                location.reload();
             }
             }
         })

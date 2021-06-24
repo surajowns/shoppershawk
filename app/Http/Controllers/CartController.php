@@ -10,6 +10,7 @@ use Auth;
 use App\Wishlist;
 use App\CartModel;
 
+
 class CartController extends Controller
 {
     public function index(Request $request)
@@ -176,6 +177,13 @@ class CartController extends Controller
     public function updateCart(Request $request)
     {
         $qty=$request->value;
+        $products=Product::where('id',$request->productid)->where('qty','>=',$qty)->first();
+        if(empty($products)){
+            $products=Product::where('id',$request->productid)->first();
+            $qty=$products['qty'];
+            // return response()->json(['status'=>'error','message'=>'This product can not add more']);
+        }
+
         if($qty==0 || $qty==null){
             $id=$request->productid;
             $success=Cart::remove($id);
