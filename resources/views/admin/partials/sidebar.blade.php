@@ -36,7 +36,7 @@
 						<li  class="{{Request::segment(2)=='contactus'?'active':''}}">
 							<a href="{{url('admin/contactus')}}"><i class="fa fa-inbox" aria-hidden="true"></i></span><span>Enquiry List</span></a>
 						</li>
-						<li>
+						<li class="{{Request::segment(2)=='payment'?'active':''}}">
 							<a href="{{url('admin/payment')}}"><i class="fas fa-hashtag"></i> <span>Payments</span></a>
 						</li>
 						<li class="{{Request::segment(2)=='coupon'?'active':''}}">
