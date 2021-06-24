@@ -51,6 +51,7 @@ class ProductController extends Controller
                 'brand' => 'required',
                 'slug'=>'required',
                 'model_no' => 'required',
+                'hsn_no' => 'required',
                 'supercategory_id'=>'required|numeric',
                 'category_id'=>'required|numeric',
                 'price'=>'required|numeric',
@@ -67,6 +68,7 @@ class ProductController extends Controller
                 $product->slug = $request->slug;
                 $product->brand = $request->brand;
                 $product->model_no = $request->model_no;
+                $product->hsn_no = $request->hsn_no;
                 $product->supercategory_id = $request->supercategory_id;
                 $product->category_id = $request->category_id;
                 $product->price = $request->price;
@@ -126,6 +128,7 @@ class ProductController extends Controller
                 'brand' => 'required',
                 'slug'=>'required',
                 'model_no' => 'required',
+                'hsn_no' => 'required',
                 'supercategory_id'=>'required|numeric',
                 'category_id'=>'required|numeric',
                 'price'=>'required|numeric',
