@@ -665,10 +665,12 @@ $(document).on("click","#removecoupon",function() {
             data: {value:value,productid:productid},
             success: function(response){
             if(response.status == 'error'){
-            toastr.warning("error");
+               window.top.location = window.top.location
+
+            toastr.warning(response.error);
             }
             else{
-                location.reload();
+               window.top.location = window.top.location
             }
             }
         })
