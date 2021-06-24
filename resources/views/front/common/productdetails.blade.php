@@ -24,6 +24,155 @@
 a.float:hover {
     color: #fff !important;
 }
+.social {
+  color: #fff;
+  transition: all 0.35s;
+  transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social:hover {
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+  transition: all ease 0.5s;
+  -moz-transition: all ease-in 0.5s;
+  -webkit-transition: all ease-in 0.5s;
+  -o-transition: all ease-in 0.5s;
+}
+
+.facebook {
+  color: #4267b2;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+
+.twitter {
+  color: #1da1f2;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+.product_nav ul li{margin-right: 10px;}
+.youtube {
+  color: #c4302b;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+.pinterest {
+  color: #c8232c;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+.instagram {
+  color: transparent;
+  left: 10px;
+    position: relative;
+    top: 10px;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -webkit-radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.tumblr {
+  color: #34526f;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+.whatsapp {
+  color: #25d366;
+  left: 10px;
+    position: relative;
+    top: 10px;
+}
+
+.bg-ico {
+  display: flex;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  /line-height: 90px;/
+  margin: 10px 0 10px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  opacity: 0.99;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}
+/*.bg-ico:hover {
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.8);
+}*/
+.product_nav ul li a{background: transparent;}
+#facebook:hover {
+  background-color: #4267b2;
+}
+.product_nav ul li a:hover{background: transparent !important;}
+#twitter:hover {
+  background-color: #1da1f2;
+}
+#youtube:hover {
+  background-color: #c4302b;
+}
+#pinterest:hover {
+  background-color: #c8232c;
+}
+#instagram:hover {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -webkit-radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+.fa-3x {
+    font-size: 1.5em !important;
+}
+#tumblr:hover {
+  background-color: #34526f;
+}
+#whatsapp:hover {
+  background-color: #25d366;
+}
+
+.facebook:hover,
+.twitter:hover,
+.youtube:hover,
+.pinterest:hover,
+.instagram:hover,
+.tumblr:hover,
+.whatsapp:hover {
+  color: #fff;
+  transform: scale(1.3);
+}
 </style>
 <div class="product_page_bg">
    <div class="container">
@@ -58,6 +207,21 @@ a.float:hover {
                   <div class="product_d_right">
                      <form action="#">
                         <h3><a href="javascript:void(0)">{{$product['name']}}</a></h3>
+                        <div class="product_nav">
+                                        <!-- <ul>
+                                            <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
+                                            <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>
+                                        </ul> -->
+                                        <ul>
+                                            <li><a href="https://www.facebook.com/share.php?u={{URL::current()}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'"><div class="bg-ico" id="facebook"><i class="fa fa-facebook social  facebook fa-3x"></i></div></a></li>
+                                            <!-- <li><a href="#"><div class="bg-ico" id="pinterest"><i class="fa fa-pinterest social  pinterest fa-3x"></i></div></a></li> -->
+                                            <li><a href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{URL::current()}}"><div class="bg-ico" id="twitter"><i class="fa fa-twitter social  twitter fa-3x"></i></div></a></li>
+                                            <!-- <li><a href="#"><div class="bg-ico" id="instagram"><i class="fa fa-instagram social  instagram fa-3x"></i></div></a></li> -->
+                                            <!-- <li><a href="#"><div class="bg-ico" id="tumblr"><i class="fa fa-tumblr social  tumblr fa-3x"></i></div></a></li> -->
+                                            <li><a href="https://api.whatsapp.com/send?text={{URL::current()}}" target="_blank"><div class="bg-ico" id="whatsapp"><i class="fa fa-whatsapp social  whatsapp fa-3x"></i></div></a></li>
+                                            <!-- <li><a href="#"><div class="bg-ico" id="youtube"><i class="fa fa-youtube social  youtube fa-3x"></i></div></a></li> -->
+                                        </ul>
+                                    </div>
                         <div class="product_rating">
                            <ul>
                               <?php  $avgrating = 0; ?>
