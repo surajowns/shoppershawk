@@ -86,9 +86,9 @@ class LoginController extends Controller
                     $loginlog->location=$user['location'];
                     $loginlog->email=$request->email;
                     $loginlog->ip_address= $c_ip;
-                    $loginlog->ip_address= $c_browser;
-                    $loginlog->ip_address= $c_os;
-                    $loginlog->ip_address= $c_device;
+                    $loginlog->c_browser= $c_browser;
+                    $loginlog->c_os= $c_os;
+                    $loginlog->c_device= $c_device;
                     $loginlog->save();
                     return redirect('admin/dashboard')
                             ->with('success', 'Welcome to admin dashboard.');
