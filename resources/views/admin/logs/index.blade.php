@@ -7,14 +7,6 @@
         <div class="col">
             <h3 class="page-title">Log List</h3>
         </div>
-        <div class="col-auto text-right">
-            <!-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
-                <i class="fas fa-filter"></i>
-            </a> -->
-            <!-- <a href="{{url('admin/category/add-category')}}" class="btn btn-primary add-button ml-3">
-                <i class="fas fa-plus"></i>
-            </a> -->
-        </div>
     </div>
 </div>
 <!-- /Page Header -->
@@ -72,13 +64,12 @@
 </div>
 @endsection
 @section('javascript')
-
-<script src="{{url('admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('admin/assets/js/moment.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{url('admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{url('admin/assets/js/bootstrapValidator.min.html')}}"></script>
-<script src="{{url('admin/assets/plugins/datatables/datatables.min.js')}}"></script>
-<script src="{{url('admin/assets/js/select2.min.js')}}"></script>
-<script src="{{url('admin/assets/js/admin.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/moment.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
+<script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
+<script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 @stop
