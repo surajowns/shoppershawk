@@ -36,6 +36,7 @@
                                 <th>Os</th>
                                 <th>Browser</th>
                                 <th>Device</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
