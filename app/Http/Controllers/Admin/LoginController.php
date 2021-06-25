@@ -46,6 +46,13 @@ class LoginController extends Controller
     {
         
         // dd($request->all());
+        
+        // echo $c_ip ;
+        // echo $c_browser;
+        // echo $c_os;
+        // echo $c_device;
+        // die;
+
         if ($request->isMethod('post')) {
             $validator = Validator::make($request->all(), [
                     'email' => 'required',
@@ -68,27 +75,21 @@ class LoginController extends Controller
                     $user=Auth::User();
                     Session::put('logRole',Auth::User()['role']); 
                     Session::put('logid',Auth::User()['id']) ; 
-                    // $clientIP = \Request::ip();
-
-                    $url='https://maps.google.com/maps/api/geocode/json?latlng='.$request->latitude.','.$request->longitude.'&key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries';
-                    //  echo $url;
+                    $c_ip=LoginLogModel::get_ip();
+                    $c_browser=LoginLogModel::get_browser();
+                    $c_os=LoginLogModel::get_os();
+                    $c_device=LoginLogModel::get_device(); 
                      
-                    // $response =  redirect()->away($url);
-
-                    // $data=json_decode($response);
-                    // dd($data);
-                    // $json = @file_get_contents($response);
-                    // dd($json);
-                    // $data=json_decode($json);
-                    // dd($data);
-
-                    //    $loginlog= new LoginLogModel;
-                    //    $loginlog->user=$user['name'];
-                    //    $loginlog->mobile=$user['mobile'];
-                    //    $loginlog->location=$user['location'];
-                    //    $loginlog->email=$request->email;
-                    //    $loginlog->ip_address=$clientIP;
-                    //    $loginlog->save();
+                    $loginlog= new LoginLogModel;
+                    $loginlog->user=$user['name'];
+                    $loginlog->mobile=$user['mobile'];
+                    $loginlog->location=$user['location'];
+                    $loginlog->email=$request->email;
+                    $loginlog->ip_address= $c_ip;
+                    $loginlog->ip_address= $c_browser;
+                    $loginlog->ip_address= $c_os;
+                    $loginlog->ip_address= $c_device;
+                    $loginlog->save();
                     return redirect('admin/dashboard')
                             ->with('success', 'Welcome to admin dashboard.');
                     
