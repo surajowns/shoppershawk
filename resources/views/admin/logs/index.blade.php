@@ -33,7 +33,9 @@
                                 <th>Mobile</th>
                                 <th>Location</th>
                                 <th>IP Address</th>
-                                <th>Login Date/Time</th>
+                                <th>Os</th>
+                                <th>Browser</th>
+                                <th>Device</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +48,10 @@
                                <td>{{$cat['mobile']}}</td>     
                                <td>{{$cat['location']}}</td>     
                                <td>{{$cat['ip_address']}}</td> 
+                               <td>{{$cat['c_os']}}</td> 
+                               <td>{{$cat['c_browser']}}</td>
+                               <td>{{$cat['c_device']}}</td>  
+
                                <td>{{date('d/m/Y h:i:j',strtotime($cat['created_at']))}}</td>    
                      
   
