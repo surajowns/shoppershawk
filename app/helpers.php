@@ -52,5 +52,27 @@ if (! function_exists('UserRegisterEmail')) {
   }
 }
 
+if(! function_exists('LoginLogs')){
+
+    function LoginLogs($user)
+    {
+
+      $c_ip= App\LoginLogModel::get_ip();
+      $c_browser= App\LoginLogModel::get_browser();
+      $c_os= App\LoginLogModel::get_os();
+      $c_device= App\LoginLogModel::get_device(); 
+
+      $loginlog= new App\LoginLogModel;
+      $loginlog->user=$user['name'];
+      $loginlog->mobile=$user['mobile'];
+      $loginlog->location=$user['location'];
+      $loginlog->email=$user['email'];
+      $loginlog->ip_address= $c_ip;
+      $loginlog->c_browser= $c_browser;
+      $loginlog->c_os= $c_os;
+      $loginlog->c_device= $c_device;
+      $loginlog->save();
+    }
+}
 
 ?>

@@ -64,7 +64,7 @@ class LoginController extends Controller
                         }
                     }
 
-
+                    LoginLogs($user);
                     Session::put('logid',Auth::User()['id']) ; 
                     if($redirectto==="checkout"){
                         return redirect('user/checkout')->with('success', 'Login Successfully');

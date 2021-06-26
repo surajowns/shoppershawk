@@ -75,21 +75,22 @@ class LoginController extends Controller
                     $user=Auth::User();
                     Session::put('logRole',Auth::User()['role']); 
                     Session::put('logid',Auth::User()['id']) ; 
-                    $c_ip=LoginLogModel::get_ip();
-                    $c_browser=LoginLogModel::get_browser();
-                    $c_os=LoginLogModel::get_os();
-                    $c_device=LoginLogModel::get_device(); 
-                     
-                    $loginlog= new LoginLogModel;
-                    $loginlog->user=$user['name'];
-                    $loginlog->mobile=$user['mobile'];
-                    $loginlog->location=$user['location'];
-                    $loginlog->email=$request->email;
-                    $loginlog->ip_address= $c_ip;
-                    $loginlog->c_browser= $c_browser;
-                    $loginlog->c_os= $c_os;
-                    $loginlog->c_device= $c_device;
-                    $loginlog->save();
+                    // $c_ip=LoginLogModel::get_ip();
+                    // $c_browser=LoginLogModel::get_browser();
+                    // $c_os=LoginLogModel::get_os();
+                    // $c_device=LoginLogModel::get_device(); 
+                    // $email=$request->email;
+                    LoginLogs($user);
+                    // $loginlog= new LoginLogModel;
+                    // $loginlog->user=$user['name'];
+                    // $loginlog->mobile=$user['mobile'];
+                    // $loginlog->location=$user['location'];
+                    // $loginlog->email=$request->email;
+                    // $loginlog->ip_address= $c_ip;
+                    // $loginlog->c_browser= $c_browser;
+                    // $loginlog->c_os= $c_os;
+                    // $loginlog->c_device= $c_device;
+                    // $loginlog->save();
                     return redirect('admin/dashboard')
                             ->with('success', 'Welcome to admin dashboard.');
                     
