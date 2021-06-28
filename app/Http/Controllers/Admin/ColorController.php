@@ -7,11 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Color;
 class ColorController extends Controller
 {
-
     public function __construct()
     {
-       $this->middleware('adminauth');
-
+        $this->middleware('CheckSession');
     }
     public function Index(Request $request)
     {
