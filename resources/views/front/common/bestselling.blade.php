@@ -43,9 +43,6 @@ $avgrating=0;
                                         <div class="product_thumb">
                                         @if(!empty($productdetails['product_image']))
                                            <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img class="best-selling" src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a>
-                                           @if(array_key_exists(1,$productdetails['product_image']))
-                                           <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" alt="" /></a>
-                                          @endif
                                       @endif 
   
                                         </div>
