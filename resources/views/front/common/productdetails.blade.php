@@ -213,12 +213,12 @@ a.float:hover {
                                             <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>
                                         </ul> -->
                                         <ul>
-                                            <li><a href="https://www.facebook.com/share.php?u={{URL::current()}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="_blank"><div class="bg-ico" id="facebook"><i class="fa fa-facebook social  facebook fa-3x"></i></div></a></li>
+                                            <li><a  data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Share on facebook" href="https://www.facebook.com/share.php?u={{URL::current()}}&title='Refer to your friends and Get Exciting deals on Laptop & Desktop'" target="_blank" ><div class="bg-ico" id="facebook"><i class="fa fa-facebook social  facebook fa-3x"></i></div></a></li>
                                             <!-- <li><a href="#"><div class="bg-ico" id="pinterest"><i class="fa fa-pinterest social  pinterest fa-3x"></i></div></a></li> -->
-                                            <li><a href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{URL::current()}}" target="_blank"><div class="bg-ico" id="twitter"><i class="fa fa-twitter social  twitter fa-3x"></i></div></a></li>
+                                            <li><a data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Share on twitter" href="https://twitter.com/intent/tweet?status='Refer to your friends and Get Exciting deals on Laptop & Desktop'+{{URL::current()}}" target="_blank"><div class="bg-ico" id="twitter"><i class="fa fa-twitter social  twitter fa-3x"></i></div></a></li>
                                             <!-- <li><a href="#"><div class="bg-ico" id="instagram"><i class="fa fa-instagram social  instagram fa-3x"></i></div></a></li> -->
                                             <!-- <li><a href="#"><div class="bg-ico" id="tumblr"><i class="fa fa-tumblr social  tumblr fa-3x"></i></div></a></li> -->
-                                            <li><a href="https://api.whatsapp.com/send?text={{URL::current()}}" target="_blank"><div class="bg-ico" id="whatsapp"><i class="fa fa-whatsapp social  whatsapp fa-3x"></i></div></a></li>
+                                            <li><a data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Share on whatsapp" href="https://api.whatsapp.com/send?text={{URL::current()}}" target="_blank"><div class="bg-ico" id="whatsapp"><i class="fa fa-whatsapp social  whatsapp fa-3x"></i></div></a></li>
                                             <!-- <li><a href="#"><div class="bg-ico" id="youtube"><i class="fa fa-youtube social  youtube fa-3x"></i></div></a></li> -->
                                         </ul>
                                     </div>
