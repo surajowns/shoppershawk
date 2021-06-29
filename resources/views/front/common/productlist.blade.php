@@ -105,10 +105,14 @@
                 <article class="single_product {{$details['qty']<=0?'not_in_stock':''}}">
                     <figure>
                         <div class="product_thumb">
-                        @foreach($details->productImage as $image)
-       
+                        @foreach($details->productImage as $key=>$image)
+                              @if($key==0)
+ 
                                 <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
-                                @break
+                               
+                              @elseif($key==1)
+                                    <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt=""></a>
+                            @endif
                          @endforeach                             
                             <!-- <div class="label_product">
                                 <span class="label_sale">Sale</span>
