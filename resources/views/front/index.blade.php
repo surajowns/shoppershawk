@@ -386,6 +386,7 @@ $.ajax({
             $( ".cart_price" ).text('₹'+response.carttotal);
             $( ".cart_count" ).text(response.totalin_cart);
             $( ".price" ).text('₹'+response.carttotal);
+            $( ".no_products" ).css('display','none');
 
            
             $( ".cart_close" ).after('<div class="cart_item"></div>');

@@ -92,6 +92,7 @@
             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
         </div>
     </div>
+     
     @if(Auth::check())
     
     @foreach($cartdetails as $details)
@@ -124,6 +125,7 @@
     </div>
     @endforeach
    @endif
+   @if(!empty($cartdetails))
     <div class="mini_cart_table">
         <div class="cart_total">
             <span>Sub total:</span>
@@ -142,5 +144,8 @@
             <a class="active" href="{{url('/user/checkout')}}">Checkout</a>
         </div> -->
     </div>
+    @else
+      <p class="no_products text-center">No products in the cart</p>
+    @endif
 </div>
 <!--mini cart end-->
