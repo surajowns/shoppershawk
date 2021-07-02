@@ -6443,12 +6443,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_nav {
   float: right;
   position: relative;
-  top: -46px;
+  top: -95px;
 }
 @media only screen and (max-width: 767px) {
-  .product_nav {
+  /* .product_nav {
     display: none;
-  }
+  } */
 }
 .product_nav ul li {
   display: inline-block;
