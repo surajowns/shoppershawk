@@ -3207,7 +3207,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .slider_area .owl-dots .owl-dot {
   width: 8px;
   height: 8px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(21 2 2 / 74%);
   display: inline-block;
   margin: 0 7px;
   border-radius: 50%;
