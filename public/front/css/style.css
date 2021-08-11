@@ -6055,6 +6055,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .grid_content h4.product_name {
   margin-bottom: 15px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
 }
 
 .grid_list .product_name {
