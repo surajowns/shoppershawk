@@ -62,7 +62,7 @@
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+91 120-2514786">+91 120-2514786</a></li>
+                                    <li>Hotline: <a href="tel:+918920213321">+91-892-021-3321</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
