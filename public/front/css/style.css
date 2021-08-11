@@ -11178,3 +11178,8 @@ label.star:before {
     top: 1px;
     left: 1px;
   }
+  .product_name{
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+  }
