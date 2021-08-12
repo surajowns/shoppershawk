@@ -101,7 +101,7 @@
         
            @foreach($product as $details)
             @if($details->status==1)
-             <div class="col-lg-3 col-md-4 col-12 ">
+             <div class="col-lg-3 col-md-4 col-12 pl-2">
                 <article class="single_product {{$details['qty']<=0?'not_in_stock':''}}">
                     <figure>
                         <div class="product_thumb">
