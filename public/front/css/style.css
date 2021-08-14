@@ -3189,7 +3189,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .slider_section {
     margin-top: 0;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
   }
 }
 
@@ -3551,7 +3551,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .slider_s_three .single_slider {
-    height: 418px;
+    height:500px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3561,7 +3561,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider_s_three .single_slider {
-    height:230px;
+    height: 311px;
     /* background-position: 55%; */
   }
   .header_bottom{
@@ -3571,7 +3571,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .slider_s_three .single_slider {
     background-position: 10%;
-    height:132px;
+    height:172px;
   }
 }
 
