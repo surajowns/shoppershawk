@@ -10733,7 +10733,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
             padding: 15px 25px;
             color: rgba(255, 255, 255, 0.9);
             border-radius: 5px;
-            background: linear-gradient(-45deg, #ff9933, #138808, #138808, #ff9933);
+            background: linear-gradient(-45deg, #dacfc5, #c42625, #c32b2a, #c42625);
             background-size: 600%;
             -webkit-animation: anime 16s linear infinite;
             animation: anime 16s linear infinite;

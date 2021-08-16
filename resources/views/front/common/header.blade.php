@@ -54,12 +54,14 @@
             </div>
         </div>
         <div class="column3 col-lg-3 col-md-6">
+            <a href="https://shoppershawk.com/products?cat=laptop">
             <div class="header_bigsale">
                 <div class="btn-my">
-                    Happy Independence Day !!!
+                    New Arrivals !!!
                     <div class="btn2-my"></div>
                 </div>
             </div>
+           </a>
         </div>
 
     </div>
