@@ -75,7 +75,9 @@ class HomeController extends Controller
     }
     public function Login(Request $request)
     {
-        return view('front.common.login');
+      $categories=CategoryModel::where('parent_id',0)->where('status',1)->get();
+      $subcategories=CategoryModel::where('parent_id','!=',0)->where('status',1)->get();
+        return view('front.common.login',compact('categories','subcategories'));
     }
     public function ProuctList(Request $request,$slug=null)
     {   

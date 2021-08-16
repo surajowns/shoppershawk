@@ -182,6 +182,21 @@ input[type="checkbox"] {
 
 </style>
     </head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9S15Q3GME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P9S15Q3GME');
+</script>
+    @laravelPWA
+    </head>
+    <?php 
+
+  $sociallinks=App\SocialLinksModel::where('status',1)->get();
+
+?>
     <body>
         <!--Offcanvas menu area start-->
         <div class="off_canvars_overlay"></div>
@@ -202,13 +217,13 @@ input[type="checkbox"] {
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+0120-2512786">+91 120-2514786</a></li>
+                                    <li>Hotline: <a href="tel:+918920213321">+91-892-021-3321</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
                                 <a class="btn btn-danger" href="{{url('/login')}}">Login|Register</a>
                                 @else
-                                <a href="">Hi {{Auth::user()->name}}</a></li>
+                                <a href="{{url('/user/account')}}">Hi {{Auth::user()->name}}</a></li>
                                  <a class="btn btn-danger" href="{{url('/user/logout')}}">Logout</a></li>
                                 @endif
                                 </div>
@@ -218,10 +233,25 @@ input[type="checkbox"] {
                                     <li class="menu-item-has-children active">
                                         <a href="{{url('/')}}">Home</a>
                                     </li>
-                                    <!-- <li class="menu-item-has-children">
-                                        <a href="#">Category</a>
-                                    </li> -->
-                                    
+                                    <li class="menu-item-has-children"><span class="menu-expand"><i class="fa fa-angle-down"></i></span>
+                                    <a href="javascript:void(0)">Category</a>
+                                    <ul class="sub-menu" style="display: none;">
+                                    @foreach($categories as $cat)
+                                        <li class="menu-item-has-children"><span class="menu-expand"><i class="fa fa-angle-down"></i></span>
+                                            <a href="{{url('/products/'.'?cat='.$cat['slug'])}}">{{$cat['name']}}</a>
+                                            <ul class="sub-menu" style="display: none;">
+                                            @foreach($subcategories as $subcat)
+                                                 @if($cat['id']==$subcat['parent_id']) 
+                                                <li><a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a></li>
+                                                @endif
+                                            @endforeach    
+                                             
+                                            </ul>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                  
                                     <li class="menu-item-has-children">
                                         <a href="{{url('/user/account')}}">my account</a>
                                     </li>
@@ -232,10 +262,17 @@ input[type="checkbox"] {
                             </div>
                             <div class="Offcanvas_footer">
                                 <span>
-                                    <a href="{{url('/')}}"><i class="fa fa-envelope-o"></i>care@Shoppershawk.com</a>
+                                    <a href="#"><i class="fa fa-envelope-o"></i>care@Shoppershawk.com</a>
                                 </span>
                                 <ul>
-                                    <li class="facebook">
+                                    @if(count($sociallinks)>0)
+                                        @foreach($sociallinks as $row)
+                                            <li class="{{strtolower($row->title)}}">
+                                                <a class="{{strtolower($row->title)}}" href="{{$row->links}}" target="_blank"><i class="fa fa-{{strtolower($row->title)}}"></i></a>
+                                            </li>
+                                            @endforeach
+                                    @endif
+                                    <!-- <li class="facebook">
                                         <a href="#"><i class="fa fa-facebook"></i></a>
                                     </li>
                                     <li class="twitter">
@@ -249,7 +286,7 @@ input[type="checkbox"] {
                                     </li>
                                     <li class="linkedin">
                                         <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
