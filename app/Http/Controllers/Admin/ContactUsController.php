@@ -15,7 +15,7 @@ class ContactUsController extends Controller
     }
     public function Index(Request $request)
     {
-      $data=DB::table('inquiry')->get();
+      $data=DB::table('inquiry')->orderBy('id','DESC')->get();
       //dd($data);
       return view('admin.contactus.index',compact('data'));   
     }
