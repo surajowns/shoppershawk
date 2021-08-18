@@ -434,7 +434,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .mt-20 {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .mt-23 {
