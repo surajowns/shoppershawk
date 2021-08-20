@@ -80,7 +80,7 @@ body {
                                 
                             </th>
                             <th>
-                                <h6>Invoice No:&nbsp;00000{{$orders['id']-3}}</h6>
+                                <h6>Invoice No:&nbsp;SH00{{$orders['id']-3}}</h6>
                                 <h6>Invoice Date:{{date('d/m/Y',strtotime($orders['created_at']))}}</h6>
                             </th>
                             <th>
