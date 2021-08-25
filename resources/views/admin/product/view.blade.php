@@ -59,7 +59,20 @@
                                <td>{{$product['hsn_no']}}</td>
                                <td>{{$product['price']}}</td>
                                <td>{{$product['selling_price']}}</td>
-                               <td>{{$product['qty']}}</td>
+                               <td>
+                                    {{ Form::open(array('url' => 'admin/product/updatequantity')) }}
+														<input type = "hidden" name = "product_id" value = "{{$product['id']}}" >
+														<select name = "qty_change" class="form-control w-auto selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
+                                                        <option  value = "0" @if($product['qty'] == 0){{'selected'}} @endif>0</option>
+                                                        <option  value = "5" @if($product['qty'] == 5){{'selected'}} @endif>5</option>
+														<option  value = "10" @if($product['qty'] == 10){{'selected'}} @endif>10</option>
+														<option  value = "20" @if($product['qty'] == 20){{'selected'}} @endif>20</option>
+														<option  value = "30" @if($product['qty'] == 30){{'selected'}} @endif>30</option>
+														<option  value = "50" @if($product['qty'] == 50){{'selected'}} @endif>50</option>
+														<option  value = "100" @if($product['qty'] == 100){{'selected'}} @endif>100</option>
+													   </select>
+                                    {{ Form::close() }}
+                               </td>
                                <td>{{$product['product_type']['name']}}</td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/products/'.$product['id'].'/'.$product['status'])}}">{{$product['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">

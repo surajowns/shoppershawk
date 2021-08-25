@@ -212,4 +212,10 @@ class ProductController extends Controller
          return back()->with('success','Product Image Deleted successful');
 
     }
+
+    public function UpdateQuantity(Request $request)
+    {   
+        $result=Product::where('id',$request->product_id)->update(['qty'=>$request->qty_change]);
+         return back()->with('success','Product Quantity Updated successful');
+    }
 }
