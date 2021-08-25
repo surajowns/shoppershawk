@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data=Product::with('productBrand','productType','category')->orderBy('id','DESC')->get()->toArray();
+        $data=Product::with('productImage','productBrand','productType','category')->orderBy('id','DESC')->get()->toArray();
         // dd($data);
         // foreach($data as $product){
           
