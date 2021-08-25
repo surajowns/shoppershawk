@@ -62,48 +62,10 @@
                                <td>
                                     {{ Form::open(array('url' => 'admin/product/updatequantity')) }}
 														<input type = "hidden" name = "product_id" value = "{{$product['id']}}" >
-														<select name = "qty_change" class="form-control w-auto selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
-                                                        <option  value = "0" @if($product['qty'] == 0){{'selected'}} @endif>0</option>
-                                                        <option  value = "1" @if($product['qty'] == 1){{'selected'}} @endif>1</option>
-                                                        <option  value = "2" @if($product['qty'] == 2){{'selected'}} @endif>2</option>
-                                                        <option  value = "3" @if($product['qty'] == 3){{'selected'}} @endif>3</option>
-                                                        <option  value = "4" @if($product['qty'] == 4){{'selected'}} @endif>4</option>
-                                                        <option  value = "5" @if($product['qty'] == 5){{'selected'}} @endif>5</option>
-                                                        <option  value = "6" @if($product['qty'] == 6){{'selected'}} @endif>6</option>
-                                                        <option  value = "7" @if($product['qty'] == 7){{'selected'}} @endif>7</option>
-                                                        <option  value = "8" @if($product['qty'] == 8){{'selected'}} @endif>8</option>
-                                                        <option  value = "9" @if($product['qty'] == 9){{'selected'}} @endif>9</option>
-                                                        <option  value = "10" @if($product['qty'] == 10){{'selected'}} @endif>10</option>
-                                                        <option  value = "15" @if($product['qty'] == 15){{'selected'}} @endif>15</option>
-                                                        <option  value = "20" @if($product['qty'] == 20){{'selected'}} @endif>20</option>
-                                                        <option  value = "25" @if($product['qty'] == 25){{'selected'}} @endif>25</option>
-                                                        <option  value = "30" @if($product['qty'] == 30){{'selected'}} @endif>30</option>
-														<option  value = "35" @if($product['qty'] == 35){{'selected'}} @endif>35</option>
-														<option  value = "40" @if($product['qty'] == 40){{'selected'}} @endif>40</option>
-														<option  value = "45" @if($product['qty'] == 45){{'selected'}} @endif>45</option>
-                                                        <option  value = "50" @if($product['qty'] == 50){{'selected'}} @endif>50</option>
+														<input type="number" name = "qty_change" class="form-control w-auto selectpicker" data-style="btn-primary" value="{{$product['qty']}}" min="0" onchange = "this.form.submit()"/> 
+                                                 
 
-														<option  value = "55" @if($product['qty'] == 55){{'selected'}} @endif>55</option>
-                                                        <option  value = "60" @if($product['qty'] == 60){{'selected'}} @endif>60</option>
-														<option  value = "65" @if($product['qty'] == 65){{'selected'}} @endif>65</option>
-														<option  value = "70" @if($product['qty'] == 70){{'selected'}} @endif>70</option>
-														<option  value = "75" @if($product['qty'] == 75){{'selected'}} @endif>75</option>
-														<option  value = "80" @if($product['qty'] == 80){{'selected'}} @endif>80</option>
-                                                        <option  value = "85" @if($product['qty'] == 85){{'selected'}} @endif>85</option>
-														<option  value = "90" @if($product['qty'] == 90){{'selected'}} @endif>90</option>
-
-                                                        <option  value = "95" @if($product['qty'] == 95){{'selected'}} @endif>95</option>
-														<option  value = "100" @if($product['qty'] == 100){{'selected'}} @endif>100</option>
-														<option  value = "120" @if($product['qty'] == 120){{'selected'}} @endif>120</option>
-														<option  value = "130" @if($product['qty'] == 130){{'selected'}} @endif>130</option>
-														<option  value = "140" @if($product['qty'] == 140){{'selected'}} @endif>140</option>
-														<option  value = "150" @if($product['qty'] == 150){{'selected'}} @endif>150</option>
-														<option  value = "175" @if($product['qty'] == 175){{'selected'}} @endif>175</option>
-														<option  value = "185" @if($product['qty'] == 185){{'selected'}} @endif>185</option>
-														<option  value = "195" @if($product['qty'] == 195){{'selected'}} @endif>195</option>
-														<option  value = "200" @if($product['qty'] == 200){{'selected'}} @endif>200</option>
-														<option  value = "250" @if($product['qty'] == 250){{'selected'}} @endif>250</option>
-													   </select>
+													
                                     {{ Form::close() }}
                                </td>
                                <td>{{$product['product_type']['name']}}</td>
