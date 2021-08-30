@@ -3207,8 +3207,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .slider_area .owl-dots .owl-dot {
-  width: 8px;
-  height: 8px;
+  width:5px;
+  height:5px;
   background: rgb(21 2 2 / 74%);
   display: inline-block;
   margin: 0 2px;
@@ -3218,8 +3218,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .slider_area .owl-dots .owl-dot::before {
   position: absolute;
   content: "";
-  width: 11px;
-  height: 11px;
+  width:8px;
+  height:8px;
   left: -2px;
   top: -2px;
   background: #ffffff;
