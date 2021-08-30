@@ -40,9 +40,9 @@
 		loop: true,
         nav: false,
         autoplay: true,
-        autoplayTimeout:4000,
+        autoplayTimeout:3000,
         items: 1,
-        dots: true,
+        dots:false,
     });
     
     /*---Initialize Swiper---*/
