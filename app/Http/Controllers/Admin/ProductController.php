@@ -215,6 +215,9 @@ class ProductController extends Controller
 
     public function UpdateQuantity(Request $request)
     {   
+        $request->validate([
+              'qty_change'=>'required',
+        ]);
         $result=Product::where('id',$request->product_id)->update(['qty'=>$request->qty_change]);
          return back()->with('success','Product Quantity Updated successful');
     }
