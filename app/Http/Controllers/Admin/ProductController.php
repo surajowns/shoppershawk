@@ -208,6 +208,8 @@ class ProductController extends Controller
 
     public function removeCategory($id=null)
     {
+        $deletefile=ProductImage::where('id',$id)->first();
+        unlink(public_path('product_image/'.$deletefile['image']));
         $result=ProductImage::where('id',$id)->delete();
          return back()->with('success','Product Image Deleted successful');
 
