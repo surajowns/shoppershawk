@@ -1129,7 +1129,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: block;
   font-size: 14px;
   line-height: 30px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 500;
   position: relative;
   color: #222222;
