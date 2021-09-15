@@ -6378,7 +6378,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_d_right .product_desc p {
   font-size: 14px;
-  line-height: 21px;
+  line-height: 26px;
 }
 .product_d_right .priduct_social ul li {
   display: inline-block;
@@ -6709,7 +6709,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_info_content p {
-  line-height: 21px;
+  line-height: 28px;
 }
 
 .product_d_table {
@@ -11184,5 +11184,12 @@ label.star:before {
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
+  }
+
+ .product_desc ul {
+    padding:0 18px 0;
+  }
+  .product_info_content ul {
+    padding:0 18px 0;
   }
   
