@@ -6378,7 +6378,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product_d_right .product_desc p {
   font-size: 14px;
-  line-height:10px;
+  line-height: 21px;
 }
 .product_d_right .priduct_social ul li {
   display: inline-block;
@@ -6709,7 +6709,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_info_content p {
-  line-height:10px;
+  line-height: 21px;
 }
 
 .product_d_table {
