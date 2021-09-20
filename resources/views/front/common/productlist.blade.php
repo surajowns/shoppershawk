@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title','Product List')
+@section('title','Shoppershawk retail outlet to extraordinary our products/services')
 @section('content')
 <!--breadcrumbs area start-->
 <?php

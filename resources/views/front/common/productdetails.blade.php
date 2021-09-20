@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title','Product Details')
+@section('title',$product['name'])
 @section('content')
 <?php $user=Auth::user();?>
 <style>

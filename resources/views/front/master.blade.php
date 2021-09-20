@@ -17,7 +17,7 @@
          ?>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Shoppershawk</title>
+        <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="title" content="{{Request::segment(2)}}">
         <meta name="description" content="{{isset($product)?$product['description']:''}}">
