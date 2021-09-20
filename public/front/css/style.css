@@ -6448,7 +6448,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_nav {
   float: right;
   position: relative;
-  top: -95px;
+  top:0px;
 }
 @media only screen and (max-width: 767px) {
   /* .product_nav {
