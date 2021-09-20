@@ -231,6 +231,11 @@
         </script>
         <script>
             $(document).ready(function(){
+             
+		     	document.addEventListener("click", function(){
+				  $(".list_details").css("display", "none");
+                 });
+
                 $(document).on("click",".addtowishlist",function(){
                 
                 var productid= $(this).data('productid');

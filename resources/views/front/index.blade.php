@@ -264,6 +264,9 @@
         
         <script>
             $(document).ready(function() {
+                document.addEventListener("click", function(){
+				  $(".list_details").css("display", "none");
+                 });
                   // Register service worker to control making site work offline
 
             if ('serviceWorker' in navigator) {

@@ -11195,4 +11195,11 @@ label.star:before {
   .product_d_table ul {
     padding:0 18px 0;
   }
+  .list_details li{
+    display: none;
+  }
+  .list_details li:nth-child(-n+8){
+      display:list-item;
+    
+  }
   
