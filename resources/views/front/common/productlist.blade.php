@@ -108,10 +108,10 @@
                         @foreach($details->productImage as $key=>$image)
                               @if($key==0)
  
-                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt="" /></a>
+                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" /></a>
                                
                               @elseif($key==1)
-                                    <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}"><img src="{{url('public/product_image/'.$image->image)}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="$details['name']"></a>
                             @endif
                          @endforeach                             
                             <!-- <div class="label_product">
@@ -155,7 +155,7 @@
 
                         <div class="product_content grid_content">
                             <div class="product_content_inner">
-                                <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
+                                <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank">{{ucfirst($details['name'])}}</a></h4>
                                 <div class="product_rating">
                                     <ul>
                                     
@@ -186,7 +186,7 @@
                             @endif
                         </div>
                         <div class="product_content list_content">
-                            <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}">{{ucfirst($details['name'])}}</a></h4>
+                            <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank">{{ucfirst($details['name'])}}</a></h4>
                             <div class="product_rating">
                                 <ul>
                                 <?php  $avgrating = 0; ?>
