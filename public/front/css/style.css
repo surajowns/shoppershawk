@@ -1991,13 +1991,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-bottom: 2px solid #ebebeb;
   border-radius: 0 5px 5px 0;
 }
-.list_details li{
+/* .list_details li{
   display: none;
-}
-.list_details li:nth-child(-n+6){
+} */
+/* .list_details li:nth-child(-n+6){
     display:list-item;
   
-}
+} */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .search_box {
     margin-bottom: 25px;

@@ -16,6 +16,7 @@ use App\BannerModel;
 use DB;
 use App\Refferal;
 use Str;
+use App\BrandModel;
 
 class HomeController extends Controller
 {
@@ -213,28 +214,20 @@ class HomeController extends Controller
     }
     public function Search(Request  $request)
     {       
-        $subcategory =CategoryModel::where('status',1)->where('slug','like',$request->keywords.'%')->where('parent_id',0)->pluck('id')->toArray();
+        $supcategory =CategoryModel::where('status',1)->where('slug','like',$request->keywords.'%')->where('parent_id',0)->pluck('id')->toArray();
         $category =CategoryModel::where('status',1)->where('slug','like',$request->keywords.'%')->where('parent_id','!=',0)->pluck('id')->toArray();
-
-        // foreach ($subcategory  as $key => $value) {
-        //        $suppercategory[]=$key;
-        //        $category[]=$value;
-        //  }
-        // //  print_r($subcategory);
-        if(!empty($subcategory || $category )){
-          //  dd($subcategory);
-          $result=Product::with('category')->orWhereIn('supercategory_id',[implode(',',$subcategory)])->orWhereIn('category_id',[implode(',',$category)])->where('status',1)->get();
-          // dd($result);
-        }elseif($request->cat){
-               
+        $brands =BrandModel::where('status',1)->where('name','like',$request->keywords.'%')->pluck('id')->toArray();
+    
+        if($request->cat){
            $subcategory =CategoryModel::where('status',1)->where('slug',$request->cat)->first();
-            //  dd($subcategory);
-            $result=Product::with('category')->where('supercategory_id',$subcategory['parent_id'])->where('name','like',$request->keywords.'%')->orWhere('model_no','like',$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->get();
-          }
-          else{
-
+           $result=Product::with('category')->where('supercategory_id',$subcategory['parent_id'])->where('name','like',$request->keywords.'%')->orWhere('model_no','like',$request->keywords.'%')->orWhere('description','like','%'.$request->keywords.'%')->where('status',1)->get();
+         }
+         elseif(!empty($brands || $supcategory || $category )){
+            $result=Product::whereIn('brand',[implode(',',$brands)])->orWhereIn('supercategory_id',[implode(',',$supcategory)])->orWhereIn('category_id',[implode(',',$category)])->where('status',1)->get();
+         }        
+        else{
            $result=Product::with('category')->where('name','like','%'.$request->keywords.'%')->orWhere('slug','like','%'.$request->keywords.'%')->orWhere('model_no','like','%'.$request->keywords.'%')->where('status',1)->get();
- 
+
           }
           return response()->json($result);
     }
