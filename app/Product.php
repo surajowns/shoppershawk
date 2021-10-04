@@ -32,7 +32,7 @@ class Product extends Model
     }
     public function category()
     {
-        return  $this->hasMany('App\CategoryModel','id','supercategory_id');
+        return  $this->hasOne('App\CategoryModel','id','supercategory_id');
 
     }
     public function subcategory()
