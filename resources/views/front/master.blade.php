@@ -50,7 +50,7 @@
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
         <script src="{{url('public/front/js/checkout.js')}}"></script>
 
-        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+        <link rel="stylesheet"  href="{{url('public/front/css/toastr.css')}}"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9S15Q3GME"></script>
 <script>
@@ -215,7 +215,7 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="{{url('public/front/js/toastr.min.js')}}"></script>
 
         @yield('javascript')
         <script>

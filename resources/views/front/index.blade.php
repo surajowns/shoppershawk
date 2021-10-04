@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="{{url('public/front/css/style.css')}}" />
         <!-- Main Responsive CSS -->
         <link rel="stylesheet" href="{{url('public/front/css/responsive.css')}}" />
-        <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+        <link rel="stylesheet"  href="{{url('public/front/css/toastr.css')}}"/>
         <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -258,7 +258,7 @@
 
         <!-- Main JS -->
         <script src="{{url('public/front/js/main.js')}}"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="{{url('public/front/js/toastr.min.js')}}"></script>
 
         @yield('javascript')
         
