@@ -10000,7 +10000,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*  23. newsletter popup css here */
 .newletter-popup {
     background: #fff;
-    top: 50% !important;
+    top: 35% !important;
     margin-top: -179px;
     position: fixed !important;
     padding: 0px;
