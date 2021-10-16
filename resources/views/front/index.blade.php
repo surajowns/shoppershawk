@@ -228,7 +228,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-         <div class="newletter-popup">
+         <!-- <div class="newletter-popup">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">
@@ -242,12 +242,10 @@
                            <img src="{{url('public/newsletter/sale.jpg')}}" alt="" width="1000">
                            </a>
                         </div>
-                     <!-- //.box-content -->
                      </div>
                 </div>
             </div> 
-             <!-- /.box  -->
-         </div> 
+         </div>  -->
         <!--news letter popup start-->
 
         <!-- JS
