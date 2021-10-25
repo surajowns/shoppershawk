@@ -84,7 +84,7 @@
 				<i class="fas fa-archive"></i>
 				</span>
 				<div class="dash-widget-info">
-					<h3>₹124</h3>
+					<h3>₹{{$totalearning}}</h3>
 					<h6 class="text-muted">Earning</h6>
 				</div>
 			</div>

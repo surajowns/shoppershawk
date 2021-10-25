@@ -119,9 +119,10 @@ class LoginController extends Controller
         $brand=BrandModel::get()->count();
         $products=Product::get()->count();
         $totalorders=Order::get()->count();
+        $totalearning=Order::get()->sum('total_amount');
         $orders=Order::with('users')->orderBy('id','DESC')->get()->take(5);
          $status=Status::get();
-        return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders','status'));
+        return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders','status','totalearning'));
     }
     
     public function logout()
