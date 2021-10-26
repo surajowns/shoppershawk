@@ -212,6 +212,8 @@
             <!--triple ads banner area end-->
 
             <!-- categories  product area start-->
+            @include('front.common.single_banner')
+
             <!-- categories product area end-->
             
             <!-- <button class="add-button">Add Shoppers Hawk to Home screen</button> -->
@@ -239,7 +241,7 @@
                         </div>
                         <div class="box-content newleter-content">
                         <a href="https://shoppershawk.com/products?cat=laptops">
-                           <img src="{{url('public/newsletter/sale.jpg')}}" alt="" width="1000">
+                           <img src="{{url('public/newsletter/sale.jpg')}}" alt="" width="400">
                            </a>
                         </div>
                      </div>

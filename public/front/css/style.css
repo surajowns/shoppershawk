@@ -502,7 +502,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .mb-55 {
-  margin-bottom: 55px;
+  margin-bottom:30px;
 }
 
 .mb-58 {
@@ -3665,7 +3665,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*  04. banner section css here  */
 @media only screen and (max-width: 767px) {
   .banner_area {
-    margin-bottom: 25px;
+    margin-bottom: 0px;
   }
 }
 
@@ -9999,13 +9999,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*modal css end*/
 /*  23. newsletter popup css here */
 .newletter-popup {
-    background: #fff;
-    top: 35% !important;
-    margin-top: -179px;
-    position: fixed !important;
-    padding: 0px;
-    text-align: center;
-    display: none;
+  background: #fff;
+  top: 50% !important;
+  margin-top: -179px;
+  position: fixed !important;
+  padding: 0px;
+  text-align: center;
+  display: none;
 }
 @media only screen and (max-width: 767px) {
   .newletter-popup {
