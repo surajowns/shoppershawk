@@ -79,7 +79,11 @@
             </div>
 
             <div class="niceselectoption">
-                <?php $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";  ?>
+                <?php $subcat=isset($_GET['subcat'])?'&subcat='.$_GET['subcat']:"";
+                   if(Session::get('keywords')){
+                      $subcat='&keywords='.Session::get('keywords'); 
+                   }
+                ?>
             {{ Form::open(array('url' => '/products/'.'?cat='.$_GET['cat'].$subcat)) }}
 
             <select name = "filterby" class="form-control w-auto selectpicker" data-style="btn-primary" onchange = "this.form.submit()"> 
