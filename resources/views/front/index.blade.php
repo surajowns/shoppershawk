@@ -212,7 +212,7 @@
             <!--triple ads banner area end-->
 
             <!-- categories  product area start-->
-            @include('front.common.single_banner')
+            <!-- @include('front.common.single_banner') -->
 
             <!-- categories product area end-->
             
