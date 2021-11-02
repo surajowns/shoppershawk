@@ -230,7 +230,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-         <!-- <div class="newletter-popup">
+         <div class="newletter-popup">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">
@@ -247,7 +247,7 @@
                      </div>
                 </div>
             </div> 
-         </div>  -->
+         </div> 
         <!--news letter popup start-->
 
         <!-- JS
