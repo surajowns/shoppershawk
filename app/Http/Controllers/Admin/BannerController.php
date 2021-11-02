@@ -70,14 +70,15 @@ class BannerController extends Controller
              
             $details=BannerModel::where('id',$id)->first();
                 if($file = $request->hasFile('banner_image')){
+                    $removeimage=public_path('/banner/'.$details->banner_image);
+                    if($details->banner_image){
+                        unlink($removeimage);
+                    }
                     $file = $request->file('banner_image');
                     $fileName = uniqid('banner')."".$file->getClientOriginalName();
                     $file->move(public_path('/banner/'),$fileName);
                     $data['banner_image'] = $fileName;
-                    $removeimage=('/public/banner/'.$details->banner_image);
-                    if($details->banner_image){
-                        File::delete($removeimage);
-                    }
+                   
                 }
 
            
@@ -101,7 +102,12 @@ class BannerController extends Controller
      * @param page id
      */
     public function deletebanner($id=null)
-    {
+    {  
+        $details=BannerModel::where('id',$id)->first();
+        $removeimage=public_path('/banner/'.$details->banner_image);
+        if($details->banner_image){
+            unlink($removeimage);
+        }
         $deleted = BannerModel::where('id',$id)->delete();
             if($deleted){
                 return redirect('/admin/banner')->with('success','Data deleted successful');
