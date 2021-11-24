@@ -2008,7 +2008,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
   .search_box {
     /*margin-bottom: 25px;*/
-    border-left: 2px solid #ffffff;
+    border-left: 2px solid #ebebeb;
     border-radius: 4px;
   }
   .list_details li{
@@ -11202,5 +11202,17 @@ label.star:before {
   .product_d_table ul {
     padding:0 18px 0;
   }
- 
-  
+  .list_details li:hover {
+    color: #c40316 !important;
+    background: #eee!important;
+    border: 0 solid #ddd!important;
+    border-top: 0 solid #eee!important;
+    border-bottom: 0 solid #eee!important;
+}
+   .list_detail  {
+    color: #c40316 !important;
+    background: #eee!important;
+    border: 0 solid #ddd!important;
+    border-top: 0 solid #eee!important;
+    border-bottom: 0 solid #eee!important;
+}

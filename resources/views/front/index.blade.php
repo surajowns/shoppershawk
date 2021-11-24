@@ -230,7 +230,7 @@
         <!-- modal area end-->
 
         <!--news letter popup start-->
-         <div class="newletter-popup">
+         <!-- <div class="newletter-popup">
             <div id="boxes" class="newletter-container">
                 <div id="dialog" class="window">
                     <div id="popup2">
@@ -247,7 +247,7 @@
                      </div>
                 </div>
             </div> 
-         </div> 
+         </div>  -->
         <!--news letter popup start-->
 
         <!-- JS
@@ -461,7 +461,8 @@ $.ajax({
     <script>
     $(function () {
 
-    $(".sample_search").keyup(function () {
+    $(".sample_search").keyup(function (e) {
+        if(e.which !=40 && e.which !=38){
         var  cat = $('#categor').val();
         var   keywords  = $(this).val();
         // alert(cat);
@@ -479,7 +480,7 @@ $.ajax({
                         // if(value.status===1){
                         var newurl = "{{url('/products/'.'?cat=')}}"+value.slug;
                        
-                        rows+='<li class="menu_item_children"><a href="'+newurl+'">'+value.name+'</a></li>';
+                        rows+='<li class="menu_item_children"><a class="search_value" href="'+newurl+'">'+value.name+'</a></li>';
                         // }
                     });
             $('.list_details').html(rows)
@@ -488,9 +489,9 @@ $.ajax({
     }else{
         $('.list_details').css("display", "none");
     }
+        }
     });
     });
 </script>
-
     </body>
 </html>

@@ -369,7 +369,8 @@
             <script>
             $(function () {
 
-            $(".sample_search").keyup(function () {
+            $(".sample_search").keyup(function (e) {
+                if(e.which !=40 && e.which !=38){
             var  cat = $('#categor').val();
             var   keywords  = $(this).val();
             // alert(cat);
@@ -397,6 +398,7 @@
             else{
             $('.list_details').css("display", "none");
             }
+          }
             });
             });
             $(document).ready(function(){

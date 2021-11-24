@@ -50,7 +50,7 @@
                     </div>
                    
                 </form>
-                 <ul class="list_details"></ul>
+                 <ul class="list_details" id="list"></ul>
             </div>
         </div>
         <div class="column3 col-lg-3 col-md-6">
