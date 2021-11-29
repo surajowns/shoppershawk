@@ -11216,3 +11216,20 @@ label.star:before {
     border-top: 0 solid #eee!important;
     border-bottom: 0 solid #eee!important;
 }
+.order_button #paytm_payment{
+cursor: pointer;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #c40316;
+    font-weight: 500;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    margin-bottom: 0;
+    border-radius: 5px;
+}  
+.order_button #paytm_payment:hover {
+  background: #222222;
+}

@@ -95,6 +95,10 @@ Route::any('/user/createorder/','OrderController@createOrder')->name('create ord
 
   Route::any('user/payment/callback', 'RazorpayController@WebhookSuccess');
 
+   //Paytm Payment
+      
+   Route::any('/paytm/payment','PaytmController@pay');
+   Route::post('/payment/status', 'PaytmController@paymentCallback');
 
 //REfferal link generate
 Route::any('/register/{reff}','LoginController@referalRegister')->name('Refferal Register');
@@ -255,5 +259,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
 
         return view('underconstruction');
       });
+
+     
 
 });

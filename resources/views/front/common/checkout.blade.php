@@ -58,7 +58,7 @@
             <div class="row">
                <div class="col-lg-6 col-md-6">
                   <div class="checkout_form_left">
-                     <form method="post"  action="{{url('/user/payment')}}"  id="checkout_form">
+                     <form method="post"  action="{{url('/user/payment')}}" name="checkout_form" id="checkout_form">
                      @csrf
                         <h3>Billing Details</h3>
                         <div class="row">
@@ -283,11 +283,15 @@
                            <input  type="hidden" name="payment_id" id="paymentID" value="">
 
                            <div class="order_button">
-                              <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Proceed to Pay</button>
+                              <button  type="submit"  {{Auth::check()?:'disabled'}} id="btnSubmit" >Pay with Razorpay</button>
                            </div>
                         </div>
 
                      </form>
+                     <div class="order_button mt-3">
+                       <span> <img src="{{url('public/front/img/logo/paytmlogo.svg')}}" alt="logo"></span>
+                       <span><input id="paytm_payment" class="" type="button"  {{Auth::check()?:'disabled'}} value="Pay with Paytm"  id="btnSubmitPaytm" style="width:auto;"/></span>
+                     </div>
                   </div>
                </div>
                <div class="col-lg-6 col-md-6">
@@ -433,7 +437,7 @@ $(document).ready(function(){
      return regexpr.test(value);
    }, "Please enter a valid GST no.");
 
-     if ($("#checkout_form").length > 0) {
+   
 $("#checkout_form").validate({
 
     rules: {
@@ -550,12 +554,9 @@ $("#checkout_form").validate({
 
     },
 })
-}else{
-
-}
 });
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPOxoqGdov5Z9xJw1SMVa_behLLSPacVM&libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApHzFZCW-qgkKMRSDspR2s0rW5kBwB-wQ&libraries=places"></script>
 <script>
 
 google.maps.event.addDomListener(window, 'load', function () {
@@ -746,5 +747,16 @@ $(document).on("click","#removecoupon",function() {
         return false;
     })
 </script>
-
+<script>
+ $(document).ready(function(){
+     $(document).on('click','#paytm_payment',function (e){
+        var validate= $("#checkout_form").valid();
+        if(validate){
+            var form = document.getElementById('checkout_form');
+            form.action = "{{url('/paytm/payment')}}";
+            form.submit();
+        }
+    });
+   });
+</script>
 @stop

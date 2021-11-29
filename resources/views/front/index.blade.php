@@ -310,6 +310,9 @@
                 @if(Session::has('error'))
                     toastr.error("{{Session::get('error')}}")
                 @endif
+                @if(Session::has('message'))
+                    toastr.error("{{Session::get('message')}}");
+                @endif
 
             });
         </script>
