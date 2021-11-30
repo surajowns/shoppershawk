@@ -18,7 +18,7 @@ use App\CouponModel;
 use App\NotificationModel;
 use App\User;
 use App\Transaction;
-
+use Str;
 class PaytmController extends Controller
 {
          
@@ -54,10 +54,11 @@ class PaytmController extends Controller
         }
         $total_amount=$total - $discount;
         $order_id= Order::orderBy('id', 'DESC')->first();
-       
+          $id=Str::random(4);
+          $id.=$order_id['id']+1;
                 $payment = PaytmWallet::with('receive');
                 $payment->prepare([
-                'order' =>$order_id['id']+1,
+                'order' =>$id,
                 'user' => $user->id,
                 'mobile_number' => isset($user->mobile)?$user->mobile:$data['billing_mobile'],
                 'email' => $user->email,
@@ -91,7 +92,7 @@ class PaytmController extends Controller
                    
                      $data=Session::get('addressData');
             
-                     $cartsdetails=CartModel::where('user_id',$user->id)->get();
+                     $cartsdetails=CartModel::where('user_id',$user['id'])->get();
                      $total=0;
                      $quantity=0;
                      $discount=0;
@@ -147,9 +148,9 @@ class PaytmController extends Controller
                           $transaction->pay_order_id=$response['ORDERID'];
                           $transaction->bank_transaction_id=$response['BANKTXNID'];
                           // $transaction->upi_transaction_id=isset($response['acquirer_data']['upi_transaction_id'])?$response['acquirer_data']['upi_transaction_id']:'';
-                          // $transaction->payment_email=$response['email'];
-                          // $transaction->contact=$response['contact'];
-                          $transaction->order_id=$response['ORDERID'];
+                          $transaction->payment_email=isset($user->email)?$user->email:$data['billing_mobile'];
+                          $transaction->contact=isset($user->mobile)?$user->mobile:$data['billing_mobile'];
+                          $transaction->order_id=$order_id['id'];
                           $transaction->payment_status=$response['STATUS'];
                           $transaction->amount=$response['TXNAMOUNT'];
                           $transaction->method=$response['PAYMENTMODE'];
@@ -181,6 +182,7 @@ class PaytmController extends Controller
           // dd($response);
              return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }else if($transaction->isOpen()){
+          // dd($response);
           return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }
        // $transaction->getResponseMessage(); //Get Response Message If Available
