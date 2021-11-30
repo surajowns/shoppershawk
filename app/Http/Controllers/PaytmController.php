@@ -57,7 +57,7 @@ class PaytmController extends Controller
        
                 $payment = PaytmWallet::with('receive');
                 $payment->prepare([
-                'order' =>22,
+                'order' =>$order_id+1,
                 'user' => $user->id,
                 'mobile_number' => $user->mobile,
                 'email' => $user->email,
