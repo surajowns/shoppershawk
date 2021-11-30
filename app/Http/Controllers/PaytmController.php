@@ -59,7 +59,7 @@ class PaytmController extends Controller
                 $payment->prepare([
                 'order' =>$order_id+1,
                 'user' => $user->id,
-                'mobile_number' => $user->mobile,
+                'mobile_number' => isset($user->mobile)?$user->mobile:$data['billing_mobile'],
                 'email' => $user->email,
                 'amount' =>$total_amount, 
                 'callback_url' => url('/payment/status'),
