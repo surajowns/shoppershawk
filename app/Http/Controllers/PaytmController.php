@@ -19,6 +19,8 @@ use App\NotificationModel;
 use App\User;
 use App\Transaction;
 use Str;
+use PaytmChecksumLibrary;
+use  App\PaytmChecksum;
 class PaytmController extends Controller
 {
          
@@ -56,6 +58,23 @@ class PaytmController extends Controller
         $order_id= Order::orderBy('id', 'DESC')->first();
           $id=Str::random(4);
           $id.=$order_id['id']+1;
+        //generate checksum
+        $paytmParams = array();
+        $paytmParams["MID"] =env('YOUR_MERCHANT_ID');
+        $paytmParams["ORDERID"] = $id;
+      
+        /**
+        * Generate checksum by parameters we have
+        * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+        */
+        $paytmChecksum = PaytmChecksum::generateSignature($paytmParams, env('YOUR_MERCHANT_ID'));
+        $verifySignature = PaytmChecksum::verifySignature($paytmParams, env('YOUR_MERCHANT_ID'), $paytmChecksum);
+        Session::put('paytmChecksum',$paytmChecksum);
+        // print($paytmChecksum);
+        // print( $verifySignature);
+        // dd('checksum');
+             if($verifySignature){
+
                 $payment = PaytmWallet::with('receive');
                 $payment->prepare([
                 'order' =>$id,
@@ -67,8 +86,14 @@ class PaytmController extends Controller
                 ]);
                 // $this->paymentCallback($data);
                 return   $payment->receive();
+             }
+             else{
+              return redirect('/user/checkout')->with('message','Something Went Wrong');
+
+             }
 
             }catch(\Exception $e){
+              return redirect('/user/checkout')->with('message','Something Went Wrong');
              dd($e->getMessage().$e->getLine());
           }
     }
@@ -85,9 +110,11 @@ class PaytmController extends Controller
         $transaction = PaytmWallet::with('receive');
         $response = $transaction->response(); // To get raw response as array
         //Check out response parameters sent by paytm here -> http://paywithpaytm.com/developer/paytm_api_doc?target=interpreting-response-sent-by-paytm
+        // print('session expire');
         // dd($response);
         if($transaction->isSuccessful()){
-         
+          // echo "success";
+          // dd($response);
            DB::beginTransaction();
                    
                      $data=Session::get('addressData');
@@ -154,7 +181,7 @@ class PaytmController extends Controller
                           $transaction->payment_status=$response['STATUS'];
                           $transaction->amount=$response['TXNAMOUNT'];
                           $transaction->method=$response['PAYMENTMODE'];
-                          $transaction->bank=$response['BANKNAME'];
+                          $transaction->bank=isset($response['BANKNAME'])?$response['BANKNAME']:$response['GATEWAYNAME'];
                           $transaction->save();
                           Order::where('id',$order_id['id'])->update(['order_type'=>$response['PAYMENTMODE']]);
                      }
@@ -179,18 +206,22 @@ class PaytmController extends Controller
                      }
           // return redirect('/paytm/payment')->with('message', "Your payment is Successfull.");
         }else if($transaction->isFailed()){
+          // echo "failed";
           // dd($response);
              return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }else if($transaction->isOpen()){
+          // echo "pending";
           // dd($response);
           return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }
        // $transaction->getResponseMessage(); //Get Response Message If Available
         //get important parameters via public methods
        // $transaction->getOrderId(); // Get order id
+        return redirect('/user/checkout')->with('message', $response['RESPMSG']);
 
        // $transaction->getTransactionId(); // Get transaction id
       }catch(\Exception $e){
+          return redirect('/user/checkout')->with('message','Something Went Wrong');
           dd($e->getMessage().$e->getLine());
       }
     }    
