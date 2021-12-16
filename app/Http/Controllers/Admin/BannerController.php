@@ -102,7 +102,8 @@ class BannerController extends Controller
      * @param page id
      */
     public function deletebanner($id=null)
-    {  
+    {   
+        try{
         $details=BannerModel::where('id',$id)->first();
         $removeimage=public_path('/banner/'.$details->banner_image);
         if($details->banner_image){
@@ -112,5 +113,8 @@ class BannerController extends Controller
             if($deleted){
                 return redirect('/admin/banner')->with('success','Data deleted successful');
             }
+        }catch(\Exception $e){
+            return redirect('/admin/banner/')->with('error',$e->getMessage());
+        }
     }
 }

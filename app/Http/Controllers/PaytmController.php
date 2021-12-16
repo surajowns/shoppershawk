@@ -206,12 +206,24 @@ class PaytmController extends Controller
                      }
           // return redirect('/paytm/payment')->with('message', "Your payment is Successfull.");
         }else if($transaction->isFailed()){
-          // echo "failed";
-          // dd($response);
-             return redirect('/user/checkout')->with('message', $response['RESPMSG']);
+        //  dd($response);
+              $transaction =new Transaction;
+              $transaction->payment_id=isset($response['TXNID'])?$response['TXNID']:'';
+              $transaction->pay_order_id=$response['ORDERID'];
+              $transaction->bank_transaction_id=$response['BANKTXNID'];
+              // $transaction->upi_transaction_id=isset($response['acquirer_data']['upi_transaction_id'])?$response['acquirer_data']['upi_transaction_id']:'';
+              $transaction->payment_email=isset($user->email)?$user->email:'';
+              $transaction->contact=isset($user->mobile)?$user->mobile:'';
+              $transaction->payment_status=$response['STATUS'];
+              $transaction->amount=$response['TXNAMOUNT'];
+              $transaction->method=isset($response['PAYMENTMODE'])?$response['PAYMENTMODE']:'';
+              $transaction->bank=isset($response['BANKNAME'])?$response['BANKNAME']:(isset($response['GATEWAYNAME'])?$response['GATEWAYNAME']:'');
+              $transaction->save();
+              if($response['RESPCODE']==141){
+                return redirect('/user/checkout');
+              }
+              return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }else if($transaction->isOpen()){
-          // echo "pending";
-          // dd($response);
           return redirect('/user/checkout')->with('message', $response['RESPMSG']);
         }
        // $transaction->getResponseMessage(); //Get Response Message If Available
@@ -221,7 +233,7 @@ class PaytmController extends Controller
 
        // $transaction->getTransactionId(); // Get transaction id
       }catch(\Exception $e){
-          return redirect('/user/checkout')->with('message','Something Went Wrong');
+          // return redirect('/user/checkout')->with('message','Something Went Wrong');
           dd($e->getMessage().$e->getLine());
       }
     }    
