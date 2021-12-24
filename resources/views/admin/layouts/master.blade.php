@@ -132,7 +132,7 @@
 	  @if(Request::segment(2)=='dashboard' or substr(Request::segment(3),0,3)=='add'  or Request::segment(2)=='notification' )
       <script src="{{url('public/admin/assets/js/admin.js')}}"></script>
 	  @endif
-      <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+      <script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
       @yield('javascript')
       <script> 
          // $(document).ready(function () { 
