@@ -1531,7 +1531,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .mini_cart {
   position: fixed;
-  min-width: 355px;
+  width: 45%;
+  /* min-width: 355px; */
   height: 100%;
   padding: 18px 28px 33px;
   background: #fff;
