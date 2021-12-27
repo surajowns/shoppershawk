@@ -7248,6 +7248,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .table_desc .cart_page table tbody tr td.product_name {
   min-width: 180px;
+  white-space:normal;
 }
 .table_desc .cart_page table tbody tr td.product_name a {
   color: #222222;
