@@ -93,11 +93,10 @@ class HomeController extends Controller
             else{
                 //  dd(str_replace(' ', '', $_GET['cat']));
                 if($_GET['cat']){
-                   $category =CategoryModel::where('status',1)->where('slug','like','%'.str_replace(' ', '', $_GET['cat']).'%')->first();
+                   $category =CategoryModel::where('status',1)->where('slug','like','%'.$_GET['cat'].'%')->first();
                  } else{
                   $category='';
                  }
-                 
               if(!empty($category)){
                 $product=Product::with(['productImage','productRating','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('supercategory_id',$category['id'])->orderBy('selling_price',$filter)->where('status',1)->orderBy('qty','DESC')->paginate(100);
                 // dd( $product);
@@ -170,7 +169,7 @@ class HomeController extends Controller
         $category[$i]['subcat']=CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
         $i++;
         }
-        $singleaddbanner=BannerModel::where('type',2)->first();
+        $singleaddbanner=BannerModel::where('status',1)->where('type',2)->first();
         if(isset($_GET['cat'])){
           return view('front.common.productlist',compact('product','category','singleaddbanner'));
 

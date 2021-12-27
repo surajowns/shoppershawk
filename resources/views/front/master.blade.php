@@ -165,29 +165,9 @@
                     @include('front.common.header')
 
                     <!--header bottom end-->
-                    <div class="breadcrumbs_area">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <ul>
-                            <li><a href="{{url('/')}}">home</a></li>
-                           @if(isset($_GET['cat']))
-                           <?php $brandname=App\BrandModel::where('id',$_GET['cat'])->first('name')?>
-                            <li>{{is_numeric($_GET['cat'])?$brandname['name']:$_GET['cat']}}</li>
-                            @endif
-                            @if(isset($_GET['subcat']))
-                            <li>{{$_GET['subcat']}}</li>
-                            @else
-                            <li>@yield('title')</li>
-
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
+                     <div class="breadcrumbs_area">
+        
+                     </div>
                 </div>
             </div>
         </header>
