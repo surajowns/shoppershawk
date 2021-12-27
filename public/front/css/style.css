@@ -1582,6 +1582,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 20px;
   display: block;
   margin-bottom: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: inherit;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .cart_info a {
