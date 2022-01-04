@@ -21,6 +21,7 @@
         "paytm/paytmchecksum": "^1.1",
         "razorpay/razorpay": "^2.6",
         "silviolleite/laravelpwa": "^2.0",
+        "spatie/laravel-backup": "6.*",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
