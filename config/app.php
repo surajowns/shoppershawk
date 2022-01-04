@@ -182,6 +182,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
        
         Anand\LaravelPaytmWallet\PaytmWalletServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
 
 
