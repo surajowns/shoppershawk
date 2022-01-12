@@ -36,8 +36,9 @@ class ProductExport implements FromCollection, WithHeadings,WithMapping
             $product_list->selling_price,
             $product_list->gst,
             $product_list->qty,
-            $product_list->created_at,
-            $product_list->updated_at,
+            url('/product_details/'.$product_list->slug),
+            date('d-m-Y',strtotime($product_list->created_at)),
+            date('d-m-Y',strtotime($product_list->updated_at)),
         ] ;
  
  
@@ -54,6 +55,7 @@ class ProductExport implements FromCollection, WithHeadings,WithMapping
             'Selling Price',
             'GST',
             'Quantity',
+            'Url',
             'Uploaded Date',
             'Updated Date',
           
