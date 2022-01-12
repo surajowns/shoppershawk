@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Exports\ProductExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
@@ -10,6 +10,8 @@ use DB;
 use App\ProductImage;
 use Validator;
 use App\BrandModel;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ProductController extends Controller
 {
     
@@ -223,4 +225,11 @@ class ProductController extends Controller
         $result=Product::where('id',$request->product_id)->update(['qty'=>$request->qty_change]);
          return back()->with('success','Product Quantity Updated successful');
     }
+    
+    public function Export(Request $request)
+    {
+        return Excel::download(new ProductExport, date('d-m-Y').'product list.xlsx');
+    }
+
+
 }

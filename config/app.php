@@ -184,6 +184,8 @@ return [
         Anand\LaravelPaytmWallet\PaytmWalletServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
 
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
 
 
 
@@ -247,6 +249,8 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
 
 
 

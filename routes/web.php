@@ -157,6 +157,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function(){
     Route::any('/remove-image/{id}','ProductController@removeCategory')->name('Remove Product Image');
     Route::any('/product/delete-product/{id}','ProductController@deleteProduct')->name('Delete Product');
     Route::any('/product/updatequantity','ProductController@UpdateQuantity')->name('Update Product Quantity');
+    Route::any('/product/list_export','ProductController@Export')->name('Export Product List');
 
 
     //Brand

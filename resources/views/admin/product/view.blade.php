@@ -8,9 +8,9 @@
             <h3 class="page-title">Product List</h3>
         </div>
         <div class="col-auto text-right">
-            <!-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
-                <i class="fas fa-filter"></i>
-            </a> -->
+            <a class="btn  btn-primary filter-btn" href="{{url('admin/product/list_export')}}" id="filter_search">
+                Export
+            </a>
             <a href="{{url('/admin/product/add-product')}}" class="btn btn-primary add-button ml-3">
                 <i class="fas fa-plus"></i>
             </a>
