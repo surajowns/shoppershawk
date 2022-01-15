@@ -12,7 +12,7 @@
                     <p><?php  $products=App\Product::where('supercategory_id',$cat['id'])->get()->count();  echo $products;?>&nbsp;&nbsp;Deals</p>
                 </div>
                 <div class="categories_product_thumb">
-                    <a href="{{url('/products/'.'?cat='.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="" /></a>
+                    <a href="{{url('/products/'.'?cat='.$cat['slug'])}}"><img src="{{url('public/category/'.$cat['image'])}}" alt="{{$cat['name']}}" /></a>
                 </div>
             </div>
             @endforeach
