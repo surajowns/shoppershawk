@@ -10,7 +10,7 @@
                 <div class="col-lg-4 col-md-4">
                     <figure class="single_banner">
                         <div class="banner_thumb">
-                          <a href="{{$triple['link']}}"><img class="flip-box-img" src="{{url('public/banner/'.$triple['banner_image'])}}" alt="" /></a>
+                          <a href="{{$triple['link']}}"><img class="flip-box-img" src="{{url('public/banner/'.$triple['banner_image'])}}" alt="{{$triple['title']}}" /></a>
                         </div>
                     </figure>
                 </div>

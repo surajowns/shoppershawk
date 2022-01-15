@@ -16,10 +16,10 @@
                         </div>
                         <div class="app_img">
                             <figure class="app_img">
-                                <a href="#"><img src="{{url('public/front/img/icon/icon-appstore.png')}}" alt="" /></a>
+                                <a href="#"><img src="{{url('public/front/img/icon/icon-appstore.png')}}" alt="app store" /></a>
                             </figure>
                             <figure class="app_img">
-                                <a href="#"><img src="{{url('public/front/img/icon/icon-googleplay.png')}}" alt="" /></a>
+                                <a href="#"><img src="{{url('public/front/img/icon/icon-googleplay.png')}}" alt="google play" /></a>
                             </figure>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
                                 <div class="contact_icone">
-                                    <img src="{{url('public/front/img/icon/icon-phone.png')}}" alt="" />
+                                    <img src="{{url('public/front/img/icon/icon-phone.png')}}" alt="+91-892-021-3321" />
                                 </div>
                                 <div class="contact_text">
                                     <p>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer_payment" style="text-align: right;">
-                        <img src="{{url('public/front/img/icon/payment.png')}}" alt="" />
+                        <img src="{{url('public/front/img/icon/payment.png')}}" alt="payment options" />
                     </div>
                 </div>
             </div>
