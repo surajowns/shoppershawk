@@ -31,29 +31,19 @@
     <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-4">
             <div class="logo">
-                <a href="{{url('/')}}"><img src="{{url('public/front/img/logo/logo.png')}}" alt="logo" /></a>
+                <a href="{{url('/')}}"><img id="logoid" src="{{url('public/front/img/logo/logo.png')}}" alt="logo" /></a>
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
              <div class="main_menu menu_position text-center">
             <nav>
                 <ul>
-
                 @foreach($categories as $cat)
                         <li>
                             <a class="active" href="{{url('/products/'.'?cat='.$cat['slug'])}}">
-                            <img src="{{url('public/category/'.$cat['image'])}}" alt="" width='50'>
+                            <img src="{{url('public/category/'.$cat['image'])}}" alt="{{$cat['name']}}" width='50'>
                             <br>
                             {{$cat['name']}}</a>
-                            <!-- <ul class="sub_menu">
-                                @foreach($subcategories as $subcat)
-                                @if($cat['id']==$subcat['parent_id']) 
-                                <li class="menu_item_children">
-                                    <a href="{{url('/products/'.'?cat='.$cat['slug'].'&subcat='.$subcat['slug'])}}">{{$subcat['name']}}</a>
-                                </li>
-                                @endif
-                                @endforeach
-                            </ul> -->
                         </li>
                        @endforeach 
                 </ul>
@@ -98,7 +88,7 @@
     @foreach($cartdetails as $details)
     <div class="cart_item">
         <div class="cart_img">
-            <a href="{{url('/product_details/'.$details['products'][0]['slug'])}}"><img src="{{url('public/product_image/',$details['products']['0']['product_image'][0]['image'])}}" alt="" /></a>
+            <a href="{{url('/product_details/'.$details['products'][0]['slug'])}}"><img src="{{url('public/product_image/',$details['products']['0']['product_image'][0]['image'])}}" alt="{{$details['products'][0]['slug']}}" /></a>
         </div>
         <div class="cart_info">
             <a href="{{url('/product_details/'.$details['products'][0]['slug'])}}">{{$details['products'][0]['name']}}</a>
@@ -113,7 +103,7 @@
     @foreach($cartdetails as $cart)
     <div class="cart_item">
         <div class="cart_img">
-            <a href="{{url('/product_details/'.$cart['attributes']['slug'])}}"><img src="{{url('public/product_image/',$cart['attributes']['image'])}}" alt="" /></a>
+            <a href="{{url('/product_details/'.$cart['attributes']['slug'])}}"><img src="{{url('public/product_image/',$cart['attributes']['image'])}}" alt="{{$cart['attributes']['slug']}}" /></a>
         </div>
         <div class="cart_info">
             <a href="{{url('/product_details/'.$cart['attributes']['slug'])}}">{{$cart['name']}}</a>
