@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Shoppers Hawk</title>
-        <meta name="description" content="We are excited to announce the release of our #shoppershawk retail outlet to extraordinary our products/services, and we believe that #shoppershawk will help you enjoy your experience with us even more." />
+        <title> Online Shopping site in India: Shop Online for Laptops,Tablets, Desktops, Monitors ,Accessories and More - Shoppershawk.com </title>
+        <meta name="description" content="Shoppershawk.com: Online Shopping India - Buy laptops,desktops,monitors,apparel,accessories,Free Shipping Available." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="title" content="Shoppershawk retail outlet to extraordinary our products/services">
 
