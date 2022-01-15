@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title','Shoppershawk retail outlet to extraordinary our products/services')
+@section('title',is_numeric($_GET['cat'])?'Online Shopping site in India: Shop Online for Laptops,Tablets, Desktops, Monitors ,Accessories and More - Shoppershawk.com':(!empty(Session::get('keywords'))?'Shoppershawk.com :'.' '.Session::get('keywords'):ucfirst($_GET['cat']).': Buy New '.ucfirst($_GET['cat']).' Online at Best Prices in India | Buy '.ucfirst($_GET['cat']).' Online - Shoppershawk.com'))
 @section('content')
 <!--breadcrumbs area start-->
 <?php
