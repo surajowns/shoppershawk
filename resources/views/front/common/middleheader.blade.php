@@ -130,9 +130,7 @@
         <div class="cart_button">
             <a href="{{url('user/cart_details')}}">View cart</a>
         </div>
-        <!-- <div class="cart_button">
-            <a class="active" href="{{url('/user/checkout')}}">Checkout</a>
-        </div> -->
+       
     </div>
     @else
       <p class="no_products text-center">No products in the cart</p>
