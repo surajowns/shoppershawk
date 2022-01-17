@@ -74,13 +74,6 @@
                               <label for="country">Country <span>*</span></label>
                               <select class="niceselect_option" name="billing_country" id="country" required>
                                  <option value="india">India</option>
-                                 <!-- <option value="3">Algeria</option>
-                                    <option value="4">Afghanistan</option>
-                                    <option value="5">Ghana</option>
-                                    <option value="6">Albania</option>
-                                    <option value="7">Bahrain</option>
-                                    <option value="8">Colombia</option>
-                                    <option value="9">Dominican Republic</option> -->
                               </select>
                            </div>
                            <div class="col-6 mb-20">
@@ -145,7 +138,6 @@
                               <input type="text" name="billing_pincode" value="" required>
                            </div>
                            <div class="col-12 mb-20">
-                              <!-- <input id="address" type="checkbox" data-target="createp_account" /> -->
                               <label class="righ_0" for="address" data-bs-toggle="collapse" data-bs-target="#useinvoice" aria-controls="collapseOne">Use GST Invoice</label>
                               <span class="text-danger">{{$errors->first('gst_no')}}</span>
                               <br>
@@ -183,13 +175,6 @@
                                        <label for="country">Country <span>*</span></label>
                                        <select  class="niceselect_option addrequired" name="shipping_country" id="shipping_country">
                                           <option value="india">India</option>
-                                          <!-- <option value="3">Algeria</option>
-                                             <option value="4">Afghanistan</option>
-                                             <option value="5">Ghana</option>
-                                             <option value="6">Albania</option>
-                                             <option value="7">Bahrain</option>
-                                             <option value="8">Colombia</option>
-                                             <option value="9">Dominican Republic</option> -->
                                        </select>
                                     </div>
                                     <div class="col-6 mb-20">
@@ -263,21 +248,10 @@
                         </div>
                         <div class="payment_method">
                            <div class="panel-default">
-
-                              <!-- <input id="payment_defult" name="order_type" value="cod" type="radio" data-target="createp_account" /> -->
-                              <!-- <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">COD</label> -->
-                              
-                              <!-- <input id="payment_defult" name="order_type" value="online" type="radio" data-target="createp_account" /> -->
-                              <!-- <label for="payment_defult" data-bs-toggle="collapse" data-bs-target="#collapsedefult" aria-controls="collapsedefult">Online</label> -->
                              <br>
                               @if($errors->first('order_type'))
                               <span class="text-danger">Please Select Payment Method</span>
                               @endif
-                              <!-- <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                 <div class="card-body1">
-                                    <p>account.</p>
-                                 </div>
-                              </div> -->
                            </div>
                            <input  type="hidden" name="coupon" id="coupon" value="{{Session::has('coupon')?Session::get('coupon'):''}}">
                            <input  type="hidden" name="payment_id" id="paymentID" value="">
