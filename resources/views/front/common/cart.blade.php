@@ -7,7 +7,6 @@
             <div class="shopping_cart_area">
                
              <div class="col-sm-3 p-3 mb-2 bg-gradient-warning text-dark"><h3>My Cart </h3></div>
-                <!-- <form action="#"> -->
                     <div class="row">
                         <div class="col-12">
                             <div class="table_desc">
@@ -33,7 +32,6 @@
                                                 <td class="product-price">₹{{ number_format($details['price'],2)}}</td>
                                                 <td class="product_quantity">
                                                 <span class="input-number-decrement decrement" id="decrement" data-productid="{{$details['product_id']}}">–</span><input class="input-number" min="1" maxlength="3"  value="{{$details['quantity']}}" data-productid="{{$details['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"><span class="input-number-increment increment" id="increment" data-productid="{{$details['product_id']}}">+</span>
-                                                 <!-- <input min="1" max="100" value="{{$details['quantity']}}" type="number"> -->
                                                 </td>
                                                 <td class="product_total">₹ {{number_format($details['quantity']*$details['price'],2)}}</td>
 
@@ -60,9 +58,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- <div class="cart_submit">
-                                    <button type="submit">update cart</button>
-                                </div> -->
+                              
                             </div>
                         </div>
                     </div>
@@ -70,18 +66,7 @@
                     <div class="coupon_area">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <!-- <div class="coupon_code left">
-                                    <h3>Coupon</h3>
-                                    <div class="coupon_inner">
-                                     <form action="{{url('/user/coupon/')}}" method="post" >
-                                    @csrf
-                                        <input placeholder="Coupon code" type="text" name="code">
-                                        <button type="submit">Apply coupon</button>
-                                        <span class="text-danger">{{$errors->first('code')}}</span>
-                                    </form>
-                                       
-                                    </div>
-                                </div> -->
+                              
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="coupon_code right">
@@ -100,7 +85,6 @@
                                             <p>Discount</p>
                                             <p>₹{{number_format(Session::get('discount'),2)}}</p>
                                         </div>
-                                        <!-- <a href="#">Calculate shipping</a> -->
 
                                         <div class="cart_subtotal">
                                             <p>Total</p>
@@ -120,7 +104,6 @@
                                             <p>Discount</p>
                                             <p>₹{{number_format(Session::get('discount'),2)}}</p>
                                         </div>
-                                        <!-- <a href="#">Calculate shipping</a> -->
 
                                         <div class="cart_subtotal">
                                             <p>Total</p>
@@ -128,7 +111,6 @@
                                         </div>
                                         @endif
                                         <div class="checkout_btn">
-                                         <!-- <a href="tel:+0120-2512786" class="btn btn-lg btn-block">Call Us 0120-2512786</a> -->
                                             <a href="{{url('/user/checkout')}}">Proceed to Checkout</a>
                                         </div>
                                     </div>
@@ -156,7 +138,6 @@
     $('.input-number').keyup(function(){
         var value=$(this).val();
         var productid= $(this).data('productid');
-    // value++;
     $.ajax({
             Type:"POST",
             url : '{{url("/user/updatecart")}}',
@@ -165,7 +146,6 @@
             data: {value:value,productid:productid},
             success: function(response){
             if(response.status == 'error'){
-            // toastr.warning("error");
             }
             else{
                 location.reload();

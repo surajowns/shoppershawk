@@ -259,14 +259,6 @@ a.float:hover {
                              <div id="circle1"></div>
                                <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a>
                            </div>
-
-                           <!-- <a href="https://api.whatsapp.com/send?phone=+91-8920213321&text=Hello Mam/Sir, I have a query..........." class="float" target="_blank">
-                              <i class="fa fa-whatsapp my-float"></i>
-                           </a> -->
-
-                           <!-- <a href="{{url('ajax/addtocart/'.$product['id'])}}" class="button cart btn-lg" role="button">Buy Now</a> -->
-                           <!-- <a href="javascript:void(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}">Add to cart</a> -->
-                           <!-- <a href="javascriptvoid(0)" class="cart" title="Add to cart" data-productid="{{$product['id']}}" data-url="product_details"> <button class="button" type="submit">add to cart</button></a> -->
                         </div>
                         <div class=" product_d_action">
                            <ul>
@@ -363,13 +355,6 @@ a.float:hover {
                               </div>
                               <div class="product_rating mb-10">
                                  <h3>Your rating</h3>
-                                 <!-- <ul>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    </ul> -->
                               </div>
                               <div class="product_review_form">
                                  <form action="{{url('/user/createreview')}}" method="post">
@@ -429,9 +414,7 @@ a.float:hover {
                                    @endif
                     
                      @endif  
-                     <!-- <div class="label_product">
-                        <span class="label_sale">Sale</span>
-                     </div> -->
+                  
                      <div class="action_links">
                         <ul>
                            @if(isset($user))
@@ -456,12 +439,9 @@ a.float:hover {
                            </li>
                            @endif
                            <li class="compare">
-                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                            </li>
                            <li class="quick_button">
-                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
-                                 <i class="ion-ios-search-strong"></i>
-                                 </a> -->
+                            
                            </li>
                         </ul>
                      </div>

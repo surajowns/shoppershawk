@@ -1,6 +1,5 @@
 <?php
   $product=App\Product::with('productImage','wishlist','productRating')->where('type',3)->where('status',1)->orderBy('qty','DESC')->get()->toArray();
-//   dd($product);
   $cate=array();
   foreach($product as $productdetails){
        $cate[]=$productdetails['supercategory_id'];

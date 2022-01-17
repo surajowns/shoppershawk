@@ -2,15 +2,11 @@
 @section('title','User Profile')
 @section('content')
 <style>
-            /*.social-links {
-  max-width: 300px;
-}*/
           
           /* container */
 
 #share {
 	width: 100%;
-  	/* margin: 100px auto; */
   	text-align: center;
 }
 
@@ -147,10 +143,6 @@
                 display: flex;
                 justify-content: center !important;
             }
-
-            /*.u-sizeViewHeightMin100 {
-  min-height: 100vh !important;
-}*/
 
             .u-size1040 {
                 max-width: 1040px;

@@ -52,21 +52,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-2 col-md-5 col-sm-6">
-                    <div class="widgets_container widget_menu">
-                        <h3>Customer Service</h3>
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a href="#">Sitemap</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="#">Specials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="col-lg-3 col-md-7 col-sm-12">
                     <div class="widgets_container">
                         <h3>CONTACT INFO</h3>
@@ -94,15 +79,6 @@
                                 </li>
                                 @endforeach
                                 @endif
-                                <!-- <li>
-                                    <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                                </li> -->
                             </ul>
                         </div>
                     </div>

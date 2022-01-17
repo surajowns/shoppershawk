@@ -313,11 +313,7 @@
             $(document).on("click",".removecart",function(){
 
             var productid= $(this).data('productid');
-            // alert()
-
-            // $(this).parent().prev().prev().parent().css("display","none");
-            // $(this).parent().prev().css("display","none");
-            // $(this).parent().css("display","none");
+            
             $(this).closest("tr").remove();
             $(this).parent().parent().remove();
 

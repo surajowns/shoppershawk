@@ -1,7 +1,6 @@
 <?php
   $user=Auth::user();
   $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('type',2)->where('status',1)->orderBy('qty','DESC')->get()->toArray();
-//   dd($product);
   $cate=array();
   foreach($product as $productdetails){
        $cate[]=$productdetails['supercategory_id'];
@@ -54,40 +53,13 @@
                                      <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" title="{{$productdetails['name']}}" alt="{{$productdetails['name']}}" /></a>
                                    @endif
                                   @endif                                   
-                                    <!-- <div class="label_product">
-                                        <span class="label_sale">Sale</span>
-                                    </div> -->
+                                  
                                     <div class="action_links">
                                     <ul>
-                                    <!-- @if(isset($user))
-                                        @if(!empty($productdetails['wishlist']))
-                                           @foreach($productdetails['wishlist'] as $val)
-                                           
-                                                    <li class="wishlist">
-                                                    @if($val['user_id'] == $user->id )
-                                                        <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Remove from Wishlist"><i class="ion-android-favorite"></i></a>
-                                                        @else
-                                                          <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                                     @endif
-                                                    </li>
-                                            @endforeach
-                                        @else
-                                         <li class="wishlist">
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                       @endif
-                                    @else
-                                       <li class="wishlist">
-                                            <a href="{{url('user/wishlist/'.$productdetails['id'])}}" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                    @endif -->
                                         <li class="compare">
-                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                                         </li>
                                         <li class="quick_button">
-                                            <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
-                                                <i class="ion-ios-search-strong"></i>
-                                            </a> -->
+                                          
                                         </li>
                                     </ul>
                                     </div>

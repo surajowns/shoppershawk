@@ -272,21 +272,6 @@ input[type="checkbox"] {
                                             </li>
                                             @endforeach
                                     @endif
-                                    <!-- <li class="facebook">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li class="twitter">
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li class="pinterest">
-                                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                                    </li>
-                                    <li class="google-plus">
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li class="linkedin">
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>

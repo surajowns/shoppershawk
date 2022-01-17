@@ -36,9 +36,7 @@
                                    @endif 
                                 <!-- <a class="secondary_img" href="#"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="" /></a> -->
                                   @endif                                   
-                                    <!-- <div class="label_product">
-                                        <span class="label_sale">Sale</span>
-                                    </div> -->
+                                  
                                     <div class="action_links">
                         <ul>
                            @if(isset($user))
@@ -63,12 +61,9 @@
                            </li>
                            @endif
                            <li class="compare">
-                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                            </li>
                            <li class="quick_button">
-                              <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="{{$productdetails['slug']}}" data-tippy="quick view">
-                                 <i class="ion-ios-search-strong"></i>
-                                 </a> -->
+                            
                            </li>
                         </ul>
                      </div>

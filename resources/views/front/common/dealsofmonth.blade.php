@@ -49,33 +49,9 @@
                                      <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" title="{{$productdetails['name']}}" alt="{{$productdetails['name']}}" /></a>
                                    @endif
                              @endif
-                                <!-- <div class="label_product">
-                                    <span class="label_sale">Sale</span>
-                                </div> -->
+                               
                                 <div class="action_links">
                                     <ul>
-                                    <!-- @if(isset($user))
-                                        @if(!empty($productdetails['wishlist']))
-                                           @foreach($productdetails['wishlist'] as $val)
-                                           
-                                                    <li class="wishlist">
-                                                    @if($val['user_id'] == $user->id )
-                                                        <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top"   data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true" ><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite"></i></a>
-                                                        @else
-                                                          <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}"  data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
-                                                     @endif
-                                                    </li>
-                                            @endforeach
-                                        @else
-                                         <li class="wishlist">
-                                            <a href="javascript:void(0)" class="addtowishlist" data-tippy-placement="top" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid_'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                       @endif
-                                    @else
-                                       <li class="wishlist">
-                                            <a href="javascript:void(0)" data-tippy-placement="top" class="addtowishlist" data-productid="{{$productdetails['id']}}" data-tippy-arrow="true" data-tippy-inertia="true"><i id="{{'productid'.$productdetails['id']}}" class="ion-android-favorite-outline"></i></a>
-                                         </li>
-                                    @endif -->
                                         <li class="compare">
                                             <!-- <a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a> -->
                                         </li>
@@ -97,9 +73,7 @@
                                     <div class="price_box">
                                         <span class="current_price">{{number_format((($productdetails['price']-$productdetails['selling_price'])/$productdetails['price'])*100,2)}}% off</span>
                                     </div>
-                                    <!-- <div class="product_timing">
-                                        <div data-countdown="{{date('Y/m/d', strtotime($productdetails['created_at']))}}"></div>
-                                    </div> -->
+                                   
                                 </div>
                                 @if($productdetails['qty'] > 0)
                                 <div class="add_to_cart">
@@ -120,15 +94,3 @@
         </div>
     </div>
 </div>
-<!--modal start-->
-
-<!--end modal-->
-<!-- @section('javascript')
-<script>
- $(document).ready(function(){
-    $(".deals_of_the_month li:first a").addClass("active");
-    $('.deals_of_the_month li:first a').attr('aria-selected', true);
-    $('.dealsofthemonth').first().addClass('active show');
- })
-</script>
-@stop -->

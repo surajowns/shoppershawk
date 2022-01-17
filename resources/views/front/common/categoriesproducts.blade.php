@@ -4,7 +4,6 @@
   $category[$i]['subcat']=App\CategoryModel::where('status',1)->where('parent_id',$cat['id'])->get();
   $i++;
   }
-//   dd($category);
 ?>
 <div class="small_product_area small_product_style2">
     <div class="container">
@@ -20,7 +19,6 @@
                         </div>
                     <div class="product_carousel small_p_container product_column1 owl-carousel">
                    @foreach($cat['subcat'] as $subcat)
-                    <!-- {{$subcat}} -->
                        <div class="product_items">
                             <figure class="single_product">
                                 <div class="product_thumb">
@@ -62,7 +60,6 @@
             </div>
          </div>
             @endforeach
-          
         </div>
     </div>
 </div>

@@ -10,10 +10,6 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="contact_message content">
                             <h3>contact us</h3>
-                            <p>
-                             <!-- Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human.
-                              qui sequitur mutationem consuetudium lectorum. Mirum est notare quam -->
-                              </p>
                             <ul>
                                 <li><i class="fa fa-fax"></i> Address : N-12 & 13, First Floor, Opposite HSBC Bank,Noida, Uttar Pradesh</li>
                                 <li><i class="fa fa-phone"></i> <a href="tel:+91 120-2514786;">+91 120-2514786</a></li>

@@ -545,5 +545,4 @@ ol.progtrckr li.progtrckr-todo:before {
                 </div>
             </div>
         </div>
-
 @endsection
