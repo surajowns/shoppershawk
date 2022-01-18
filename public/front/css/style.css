@@ -11237,3 +11237,6 @@ cursor: pointer;
 .order_button #paytm_payment:hover {
   background: #222222;
 }
+.widget_dropdown_categories li a:hover {
+  color: #c40316;
+}
