@@ -416,8 +416,8 @@
                 cache: true,
                 data: {value:value,productid:productid},
                 success: function(response){
-                if(response.status == 'error'){
-                        // toastr.warning(response.message);
+                    if(response.totalin_cart ==0){
+                    window.location.href = "{{url('user/cart_details')}}";
                 }
                 else{
                     location.reload();

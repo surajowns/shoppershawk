@@ -308,7 +308,7 @@
                                     </td>
                                     <td class="product_quantity">
                                         <p><a href="javascript:void(0)" class="removecart" data-productid="{{$data['product_id']}}"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>₹ {{number_format($data['price'],2)}}</p>
-                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['product_id']}}">–</span><input class="input-number" min="1" max="100"  value="{{$data['quantity']}}" data-productid="{{$data['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['product_id']}}">+</span>
+                                       <span class="input-number-decrement decrement" id="decrement" data-productid="{{$data['product_id']}}">–</span><input class="input-number" min="1" maxlength="3"  value="{{$data['quantity']}}" data-productid="{{$data['product_id']}}"  type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" style="width:80px"><span class="input-number-increment increment" id="increment" data-productid="{{$data['product_id']}}">+</span>
                                     </td>
                                     <td>₹ {{number_format($data['quantity']*$data['price'],2)}}</td>
                                  </tr>

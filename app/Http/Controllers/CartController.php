@@ -187,7 +187,8 @@ class CartController extends Controller
         if($qty==0 || $qty==null){
             $id=$request->productid;
             $success=Cart::remove($id);
-             return json_encode($success);
+            $totalin_cart=Cart::getContent()->count();
+            return response()->json(array('totalin_cart'=>$totalin_cart));
           }
         $success=Cart::update($request->productid,array(
                 'quantity' => array(
@@ -202,6 +203,8 @@ class CartController extends Controller
                  CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$qty]);
               
             }
-        return json_encode($success);
+        $totalin_cart=Cart::getContent()->count();
+        return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart));   
+
     }
 }
