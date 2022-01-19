@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-5 col-sm-7">
                     <div class="widgets_container contact_us">
-                        <h3>GET THE APP</h3>
+                        <h1 id="widgets_containersforgettheapp">GET THE APP</h1>
                         <div class="aff_content">
                             <p><strong>Shoppers Hawk</strong> App is now available on Google Play & App Store. Get it now.</p>
                         </div>
