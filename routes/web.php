@@ -23,6 +23,7 @@ Route::any('/register','HomeController@Register')->name('Register');
 Route::get('/login','HomeController@Login')->name('Login page');
 Route::post('/user/verifyuser','LoginController@validateUser')->name('Verify User');
 Route::any('/user/logout','LoginController@logout')->name('User Logout');
+Route::any('/sitemap.xml','SitemapController@Index');
 
 Route::any('/user/forgetpassword','LoginController@ForgetPassword')->name('Forget Password');
 
@@ -111,7 +112,6 @@ Route::any('/redirect/facebook','SocialAuthController@facebook')->name('facebook
 Route::any('/facebook/callback','SocialAuthController@callback_fb')->name('callback facebook');
 
 Route::any('/product/category','HomeController@mobileCategory')->name('Mobile category');
-
 
 
 
