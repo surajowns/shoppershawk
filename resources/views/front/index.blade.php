@@ -7,7 +7,7 @@
         <title> Online Shopping site in India: Shop Online for Laptops,Tablets, Desktops, Monitors ,Accessories and More - Shoppershawk.com </title>
         <meta name="description" content="Shoppershawk.com: Online Shopping India - Buy laptops,desktops,monitors,apparel,accessories,Free Shipping Available." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="title" content="Shoppershawk retail outlet to extraordinary our products/services">
+        <meta name="keywords" content="Shoppershawk.com, Shoppers Hawk, Online Shopping, online shopping india, shoppershawk india, shoppershawk, buy online, buy laptops online, buy desktops online, buy tablets online,computers,laptop,watches,home,accessories,Led's,monitor,tft,tfts,hp,dell,lenovo,acer,asus,silicon power">
 
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{url('public/front/img/favicon.png')}}" />
