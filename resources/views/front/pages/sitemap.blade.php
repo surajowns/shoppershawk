@@ -4,7 +4,7 @@
         <url>
             <loc>{{url($product->slug)}}</loc>
             <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($product->updated_at)) }}</lastmod>
-            <changefreq>daily</changefreq>
+            <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>
     @endforeach
