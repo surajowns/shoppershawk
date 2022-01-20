@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     @foreach ($products as $product)
         <url>
-            <loc>{{url($product->slug)}}</loc>
+            <loc>{{url('/product_details/'.$product->slug)}}</loc>
             <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($product->updated_at)) }}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
