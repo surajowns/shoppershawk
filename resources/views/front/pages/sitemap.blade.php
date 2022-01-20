@@ -3,7 +3,7 @@
     @foreach ($products as $product)
         <url>
             <loc>{{url('/product_details/'.$product->slug)}}</loc>
-            <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($product->updated_at)) }}</lastmod>
+            <lastmod>{{ gmdate('Y-m-d',strtotime($product->updated_at)) }}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>
