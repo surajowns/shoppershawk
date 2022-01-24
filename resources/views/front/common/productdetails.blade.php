@@ -185,7 +185,7 @@ a.float:hover {
                      <div id="img-1" class="zoomWrapper single-zoom">
                         <a href="#">
                         @foreach($product->productImage as $image)
-                        <img id="zoom1" src="{{url('public/product_image/'.$image->image)}}" data-zoom-image="{{url('public/product_image/'.$image->image)}}" alt="big-1">
+                        <img id="zoom1" src="{{url('public/product_image/'.$image->image)}}" data-zoom-image="{{url('public/product_image/'.$image->image)}}" alt="{{$product['name']}}" title="{{$product['name']}}">
                         @break
                         @endforeach
                         </a>
@@ -195,7 +195,7 @@ a.float:hover {
                            @foreach($product->productImage as $image)
                            <li>
                               <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{url('public/product_image/'.$image->image)}}" data-zoom-image="{{url('public/product_image/'.$image->image)}}">
-                              <img src="{{url('public/product_image/'.$image->image)}}" alt="zo-th-1" />
+                              <img src="{{url('public/product_image/'.$image->image)}}" alt="{{$product['name']}}" title="{{$product['name']}}" />
                               </a>
                            </li>
                            @endforeach
@@ -206,7 +206,7 @@ a.float:hover {
                <div class="col-lg-7 col-md-6">
                   <div class="product_d_right">
                      <form action="#">
-                        <h3><a href="javascript:void(0)">{{$product['name']}}</a></h3>
+                        <h3><a href="javascript:void(0)" title="{{$product['name']}}">{{$product['name']}}</a></h3>
                         <div class="product_nav">
                                         <!-- <ul>
                                             <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
@@ -408,9 +408,9 @@ a.float:hover {
                <figure>
                   <div class="product_thumb">
                      @if(!empty($productdetails['product_image']))
-                     <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" title="{{$productdetails['name']}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="{{$productdetails['name']}}" /></a>
+                     <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" title="{{$productdetails['name']}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="{{$productdetails['name']}}" title="{{$productdetails['name']}}" /></a>
                      @if(array_key_exists(1,$productdetails['product_image']))
-                                     <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" title="{{$productdetails['name']}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" alt="{{$productdetails['name']}}" /></a>
+                                     <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" title="{{$productdetails['name']}}" target="_blank"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" alt="{{$productdetails['name']}}" title="{{$productdetails['name']}}" /></a>
                                    @endif
                     
                      @endif  
