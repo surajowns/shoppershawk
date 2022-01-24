@@ -104,10 +104,10 @@
                         @foreach($details->productImage as $key=>$image)
                               @if($key==0)
  
-                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" /></a>
+                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" title="{{$details['name']}}" /></a>
                                
                               @elseif($key==1)
-                                    <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="$details['name']"></a>
+                                    <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" title="{{$details['name']}}"></a>
                             @endif
                          @endforeach                             
                           
