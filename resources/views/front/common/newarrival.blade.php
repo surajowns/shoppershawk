@@ -40,7 +40,7 @@ $user=Auth::user();
                         <figure>
                             <div class="product_thumb">
                             @if(!empty($productdetails['product_image']))
-                                <a class="primary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" target="_blank" title="{{$productdetails['name']}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="{{$productdetails['name']}}" /></a>
+                                <img class="primary_img" src="{{url('public/product_image/'.$productdetails['product_image'][0]['image'])}}" alt="{{$productdetails['name']}}" />
                                 @if(array_key_exists(1,$productdetails['product_image']))
                                      <a class="secondary_img" href="{{url('/product_details/'.$productdetails['slug'])}}" target="_blank" title="{{$productdetails['name']}}"><img src="{{url('public/product_image/'.$productdetails['product_image'][1]['image'])}}" alt="{{$productdetails['name']}}" /></a>
                                    @endif                            
@@ -59,7 +59,7 @@ $user=Auth::user();
                             </div>
                             <div class="product_content">
                                 <div class="product_content_inner">
-                                    <h4 class="product_name"><a href="{{url('/product_details/'.$productdetails['slug'])}}" title="{{$productdetails['name']}}" target="_blank">{{$productdetails['name']}}</a></h4>
+                                    <h4 class="product_name">{{$productdetails['name']}}</h4>
                                     <div class="price_box">
                                         <span class="old_price">₹{{number_format($productdetails['price'],2)}}</span>
                                         <span class="current_price">₹{{number_format($productdetails['selling_price'],2)}}</span>
