@@ -104,7 +104,7 @@
                         @foreach($details->productImage as $key=>$image)
                               @if($key==0)
  
-                                <a class="primary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" title="{{$details['name']}}" /></a>
+                                <img class="primary_img" src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" title="{{$details['name']}}" />
                                
                               @elseif($key==1)
                                     <a class="secondary_img" href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank"><img src="{{url('public/product_image/'.$image->image)}}" alt="{{$details['name']}}" title="{{$details['name']}}"></a>
@@ -146,7 +146,7 @@
 
                         <div class="product_content grid_content">
                             <div class="product_content_inner">
-                                <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank">{{ucfirst($details['name'])}}</a></h4>
+                                <h4 class="product_name">{{ucfirst($details['name'])}}</h4>
                                 <div class="product_rating">
                                     <ul>
                                     
@@ -177,7 +177,7 @@
                             @endif
                         </div>
                         <div class="product_content list_content">
-                            <h4 class="product_name"><a href="{{url('/product_details/'.$details['slug'])}}" title="{{$details['name']}}" target="_blank">{{ucfirst($details['name'])}}</a></h4>
+                            <h4 class="product_name">{{ucfirst($details['name'])}}</h4>
                             <div class="product_rating">
                                 <ul>
                                 <?php  $avgrating = 0; ?>
