@@ -20,7 +20,6 @@ class CartController extends Controller
         if(!empty($userdeta)){
                
            $cartdetails=CartModel::with('products','products.productImage')->where('user_id',$userdeta['id'])->get()->toArray();
-        //    dd($cartdetails);
             foreach($cartdetails as $data){
                 $subtotal=$subtotal+$data['quantity']*$data['price'];
             }
@@ -176,6 +175,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
+        $user=Auth::user();
         $qty=$request->value;
         $products=Product::where('id',$request->productid)->where('qty','>=',$qty)->first();
         if(empty($products)){
@@ -184,26 +184,31 @@ class CartController extends Controller
             // return response()->json(['status'=>'error','message'=>'This product can not add more']);
         }
 
-        if($qty==0 || $qty==null){
+        if(empty($user) && $qty==0 || $qty==null){
+            // dd('dd');
             $id=$request->productid;
             $success=Cart::remove($id);
             $totalin_cart=Cart::getContent()->count();
             return response()->json(array('totalin_cart'=>$totalin_cart));
           }
-        $success=Cart::update($request->productid,array(
+         $success=Cart::update($request->productid,array(
                 'quantity' => array(
                 'relative' => false,
                 'value' => $qty
             ),));
+            $totalin_cart=Cart::getContent()->count();
 
             $user=Auth::user();
             $checkcart=CartModel::where('product_id',$request->productid)->first();
             $quantity=1;
             if(!empty($checkcart) && !empty($user)){
+                if($qty==0 || $qty==null){
+                    CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->delete();
+                }else{
                  CartModel::where('user_id',$user->id)->where('product_id',$checkcart['product_id'])->update(['quantity'=>$qty]);
-              
+                }
+                $totalin_cart= CartModel::where('user_id',$user->id)->count();
             }
-        $totalin_cart=Cart::getContent()->count();
         return response()->json(array('status'=>'success','totalin_cart'=>$totalin_cart));   
 
     }
