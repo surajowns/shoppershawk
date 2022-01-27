@@ -206,7 +206,7 @@ a.float:hover {
                <div class="col-lg-7 col-md-6">
                   <div class="product_d_right">
                      <form action="#">
-                        <h3><a href="javascript:void(0)" title="{{$product['name']}}">{{$product['name']}}</a></h3>
+                        <h1><a href="javascript:void(0)" title="{{$product['name']}}">{{$product['name']}}</a></h1>
                         <div class="product_nav">
                                         <!-- <ul>
                                             <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
