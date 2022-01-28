@@ -121,9 +121,7 @@ body {
 .pb-50{
   padding-bottom: 50px;
 }
-.pb-60{
-  padding-bottom: 60px;
-}
+
 
 .pt-60{
   padding-top: 60px;
@@ -157,12 +155,8 @@ body {
 .mt-20{
   margin: 20px 0 0 0;
 }
-.mt-30{
-  margin: 30px 0 0 0;
-}
-.mt-40{
-  margin: 40px 0 0 0;
-}
+
+
 .mt-50{
   margin: 50px 0 0 0;
 }
@@ -179,18 +173,8 @@ body {
 .mb-60{
   margin: 0 0 60px 0;
 }
-.mb-80{
-  margin: 0 0 80px 0;
-}
-.mb-90{
-  margin: 0 0 90px 0;
-}
-.bg-gray{
-  background: #F5F7FA;
-}
-.bg-blue{
-  background: #0879C9
-}
+
+
 .bg-white{
   background: #fff;
 }
@@ -1247,7 +1231,7 @@ body {
   border: 2px solid #FF6A00;
   color: #FF6A00;
 }
-.slider-text-info.style-6 .slier-btn-1 a:hover, ,.slider-text-info.style-8 .slier-btn-1 a:hover {
+.slider-text-info.style-6 .slier-btn-1 a:hover ,.slider-text-info.style-8 .slier-btn-1 a:hover {
   background: #FF6A00;
   border: 2px solid #FF6A00;
   color: #fff;
@@ -4620,7 +4604,6 @@ thead {
 	padding: 8px 20px;
 	cursor: pointer;
 	margin: 20px 0;
-	text-align: ;
 	text-align: center;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
