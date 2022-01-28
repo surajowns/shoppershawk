@@ -2238,17 +2238,8 @@ html.menu-opened body {
 	align-items: center;
 	display: flex;
 }
-.submit-section {
-	text-align: center;
-	margin-top: 40px;
-}
-.submit-btn {
-	border-radius: 50px;
-	font-size: 18px;
-	font-weight: 600;
-	min-width: 200px;
-	padding: 10px 20px;
-}
+
+
 
 /*-----------------
 	15. Profile
@@ -3762,25 +3753,10 @@ small.help-block {
 .event-form .input-group .form-control {
 	height: 40px;
 }
-.submit-section {
-	text-align: center;
-	margin-top: 40px;
-}
-.submit-btn {
-	border-radius: 50px;
-	font-size: 18px;
-	font-weight: 600;
-	min-width: 200px;
-	padding: 10px 20px;
-}
-
 /*-----------------
 	19. Inbox
 -----------------------*/
 
-.dropdown-action {
-	margin-bottom: 5px;
-}
 .dropdown-action .dropdown-toggle:after {
 	display: none;
 }
