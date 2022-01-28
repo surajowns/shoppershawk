@@ -300,91 +300,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 -------------------------------------*/
 
 
-
-.mt-50 {
-  margin-top: 50px;
-}
-
-.mt-45 {
-  margin-top: 45px;
-}
-
-.mt-55 {
-  margin-top: 55px;
-}
-
-.mt-57 {
-  margin-top: 57px;
-}
-
-.mt-60 {
-  margin-top: 60px;
-}
-
 .mb-10 {
   margin-bottom: 10px;
-}
-
-
-
-.mb-30 {
-  margin-bottom: 30px;
-}
-
-.mb-25 {
-  margin-bottom: 25px;
-}
-
-.mb-35 {
-  margin-bottom: 35px;
-}
-
-.mb-40 {
-  margin-bottom: 40px;
-}
-
-.mb-45 {
-  margin-bottom: 45px;
-}
-
-.mb-50 {
-  margin-bottom: 50px;
 }
 
 .mb-55 {
   margin-bottom:30px;
 }
 
-.mb-58 {
-  margin-bottom: 58px;
-}
 
-.mb-46 {
-  margin-bottom: 46px;
-}
-
-.mb-47 {
-  margin-bottom: 47px;
-}
 
 .mb-60 {
   margin-bottom: 60px;
-}
-
-.mb-65 {
-  margin-bottom: 65px;
-}
-
-.mb-66 {
-  margin-bottom: 66px;
-}
-
-.mb-68 {
-  margin-bottom: 68px;
-}
-
-.mb-70 {
-  margin-bottom: 70px;
 }
 
 /* 02. Element */
@@ -711,21 +638,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: none;
 }
 
-.sticky_header_right {
-  display: flex;
-  justify-content: flex-end;
-}
-.sticky_header_right .main_menu {
+
+ .main_menu {
   margin-left: 0;
   margin-right: 50px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .sticky_header_right .main_menu {
+   .main_menu {
     margin-right: 44px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .sticky_header_right .main_menu nav > ul > li {
+   .main_menu nav > ul > li {
     margin-right: 24px;
   }
 }

@@ -652,16 +652,6 @@ progress {
     width: 25%
 }
 
-.row-cols-5>* {
-    flex: 0 0 auto;
-    width: 20%
-}
-
-.row-cols-6>* {
-    flex: 0 0 auto;
-    width: 16.6666666667%
-}
-
 .col-auto {
     flex: 0 0 auto;
     width: auto
@@ -849,15 +839,8 @@ progress {
         width: 25%
     }
 
-    .row-cols-sm-5>* {
-        flex: 0 0 auto;
-        width: 20%
-    }
+    
 
-    .row-cols-sm-6>* {
-        flex: 0 0 auto;
-        width: 16.6666666667%
-    }
 
     .col-sm-auto {
         flex: 0 0 auto;
@@ -1430,10 +1413,7 @@ progress {
         flex:1 0 0%
     }
 
-    .row-cols-xl-auto>* {
-        flex: 0 0 auto;
-        width: auto
-    }
+    
 
     .row-cols-xl-1>* {
         flex: 0 0 auto;
@@ -3451,20 +3431,6 @@ textarea.form-control-lg {
     }
 
     .dropdown-menu-xl-end {
-        --bs-position: end;
-        right: 0;
-        left: auto
-    }
-}
-
-@media (min-width: 1400px) {
-    .dropdown-menu-xxl-start {
-        --bs-position:start;
-        right: auto;
-        left: 0
-    }
-
-    .dropdown-menu-xxl-end {
         --bs-position: end;
         right: 0;
         left: auto
@@ -11793,29 +11759,10 @@ img.mfp-img {
     }
 }
 
-.fa-rotate-90 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg)
-}
 
-.fa-rotate-180 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg)
-}
 
-.fa-rotate-270 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg)
-}
 
-.fa-flip-horizontal {
-    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
-    -webkit-transform: scale(-1, 1);
-    transform: scale(-1, 1)
-}
+
 
 .fa-flip-vertical {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
@@ -12478,10 +12425,6 @@ img.mfp-img {
 
 .fa-hand-o-left:before {
     content: "\f0a5"
-}
-
-.fa-hand-o-up:before {
-    content: "\f0a6"
 }
 
 .fa-hand-o-down:before {
