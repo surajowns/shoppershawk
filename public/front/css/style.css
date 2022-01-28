@@ -566,11 +566,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     padding-bottom:0px;
   }
 }
-@media only screen and (max-width: 767px) {
-  .main_header {
-    /*padding-bottom: 25px;*/
-  }
-}
+
 .main_header.header_padding {
   padding-bottom: 0;
 }
@@ -2678,11 +2674,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .slider_section {
-    /* margin-top: 20px; */
-  }
-}
 @media only screen and (max-width: 767px) {
   .slider_section {
     margin-top: 0;
@@ -3659,11 +3650,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #c40316;
   /* display: block; */
 }
-.action_links ul li a:hover {
-  /* background: #c40316; */
-  /* border-color: #c40316; */
-  /* color: #ffffff; */
-}
+
 
 .product_rating ul {
   display: flex;
@@ -3787,11 +3774,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin: 0 auto;
   height: 250px;
 }
-@media only screen and (max-width: 767px) {
-  .product_carousel .product_thumb a img {
-    /* width: 100%; */
-  }
-}
+
 .product_carousel .col-lg-3 {
   flex: 0 0 100%;
   max-width: 100%;
@@ -10212,7 +10195,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*.search_container-1{display: none !important;}*/
 .otp-form input{width: 24% !important; float: left; margin-left: 1%;margin-bottom: 20px;}
-.personal-info{}
 .profile-img img{border-radius: 50%;border:2px solid #333;width: 100px; height: 100px;}
 .personal-details p {padding: 0; margin: 0;}
 .defalt-address p {padding: 0; margin: 0;}
