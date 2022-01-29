@@ -4084,155 +4084,17 @@ thead {
 }
 .blog-search-form .form-input .blog-search-button:hover {
   color: #0879C9;
-}
-
-.comments-area.comments-reply-ara .comment-submit {
-  background: #333333 none repeat scroll 0 0;
-}
-.comment-submit {
-  margin-top: 10px;
-}
-.comments-area.comments-reply-ara .comment-submit:hover {
-  background: #009e90;
-}
-.comment-form-author,.comment-form-email,.comment-form-url {
-  float: left;
-  padding: 0 10px;
-  width: 33.3333%;
-}
-.comment-input {
-  margin: 0 -10px;
-}
-.comment-form-comment > label, .comment-input label {
-  color: #333;
-  display: block;
-  font-size: 14px;
-  margin: 0 0 5px;
-}
-.comment-form-comment textarea {
-  border: 1px solid #e5e5e5;
-  font-size: 14px;
-  height: 130px;
-  padding: 10px;
-  width: 100%;
-}
-.comment-input input{
-  border: 1px solid #e5e5e5;
-  height: 42px;
-  width: 100%;
-  padding: 0 0 0 10px;
-  font-size: 14px;
-}
-.comment-form-area {
-  margin-bottom: 60px;
-}
-.comment-form-submit .comment-submit {
-  background: #333333 none repeat scroll 0 0;
-  border: medium none;
-  color: #ffffff;
-  font-size: 15px;
-  height: 50px;
-  line-height: 50px;
-  margin-top: 10px;
-  padding: 0 20px;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-.comment-form-submit .comment-submit:hover {
-  background: #0879C9;
-}
-.ht-sidebar-three-instagram {
-  float: left;
-  margin: 0 -2px;
-}
-.ht-sidebar-three-instagram li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  float: left;
-  padding: 0 2px 4px;
-  width: 33.333%;
-}   
+}  
 /*----- single-blog-post -------*/
-.comments-area > h3 {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 22px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-.comments-area .commentlist li .single-comment {
-  background: #ffffff none repeat scroll 0 0;
-  border: 1px solid #dddddd;
-  margin: 0 0 20px;
-  padding: 30px;
-  width: 100%;
-}
-.comments-area .commentlist li .comment-avatar {
-  float: left;
-  margin-right: 20px;
-}
-.commentlist {
-  padding: 0;
-}
-.comments-area .commentlist li .comment-info {
-  border: medium none;
-  overflow: hidden;
-  position: relative;
-}
-.commentlist li {
-  list-style: outside none none;
-}
-.comments-area .commentlist .comment-info a {
-  color: #222222;
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-}
-.comments-area .commentlist .comment-info span.date {
-  color: #222222;
-  display: block;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 19px;
-  margin-bottom: 15px;
-}
 
-.comments-area .commentlist li .comment-info .reply a {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: 1px solid #0879C9;
-  border-radius: 500px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #0879C9;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  height: 28px;
-  line-height: 26px;
-  padding: 0 20px;
-  text-shadow: none;
-  text-transform: uppercase;
-  -webkit-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  white-space: nowrap;
-}
 /*----------------------------------------
     28. My Account Page CSS
 ----------------------------------------*/
-.dashboard-upper-info {
-  border-bottom: 1px solid #ebebeb;
-  border-top: 1px solid #ebebeb;
-  margin-bottom: 60px;
-}
+
 .dashboard-content .tab-pane:not(.active) {
     display: none;
 }
-.dashboard-upper-info [class*="col-"]:not(:last-child) .d-single-info {
-  border-right: 1px solid #ebebeb;
-  padding: 30px 20px;
-}
+
 .user-name{
   position: relative;
 }
@@ -4245,10 +4107,7 @@ thead {
   position: absolute;
   top: 0;
 }
-.account-dashboard p {
-	font-size: 14px;
-	margin: 0;
-}
+
 .d-single-info a, .account-login-form a {
   color: #333;
 }
@@ -4814,6 +4673,3 @@ thead {
     margin-top: 12px;
   }
 }
-
-
-

@@ -2237,39 +2237,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categorie_sub_menu {
-    display: none;
-    padding: 1px 0 9px 30px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .categorie_sub_menu {
-    display: none;
-    padding: 1px 0 9px 30px;
-  }
-}
-.categorie_sub_menu li a {
-  color: #222222;
-  text-transform: capitalize;
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 30px;
-}
-.categorie_sub_menu li a:hover {
-  color: #c40316;
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categorie_sub_menu li a {
-    line-height: 33px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .categorie_sub_menu li a {
-    line-height: 33px;
-  }
-}
 
 .categories_menu_toggle ul li ul.categories_mega_menu.column_3 {
   width: 620px;
@@ -2327,42 +2294,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
-.categorie_sub {
-  opacity: 0;
-  z-index: 999;
-  position: absolute;
-  right: -2px;
-  left: -2px;
-  border-left: 2px solid #c40316;
-  border-right: 2px solid #c40316;
-  border-bottom: 2px solid #c40316;
-  background: #fff;
-  -webkit-transition: .3s;
-  transition: .3s;
-  top: 65%;
-  visibility: hidden;
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categorie_sub {
-    width: 100%;
-    left: 0px;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categorie_sub {
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-}
-.categorie_sub.open {
-  top: 95%;
-  opacity: 1;
-  visibility: visible;
-}
+
 
 .categories_menu_toggle ul li.has-sub > a::before {
   position: absolute;
@@ -2409,9 +2341,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 /*home four css here*/
-.sticky_header_four {
-  display: none;
-}
+
 .sticky_header_four.sticky-header.sticky {
   display: block;
 }
@@ -2484,13 +2414,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding-right: 10px;
 }
 
-.menu_four nav > ul > li > a {
-  color: #ffffff;
-}
-.menu_four nav > ul > li > a::before {
-  background: #ffffff;
-}
-
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .header_configure_four .header_wishlist {
     margin-right: 25px;
@@ -2547,8 +2470,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*extra css end*/
 /*home seven css here*/
-
-.categories_seven .categories_menu_toggle {
+ .categories_menu_toggle {
   padding: 16px 0 7px;
   display: block;
   border-top: 0;
@@ -2556,42 +2478,31 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 0 0 4px 4px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .categories_seven .categories_menu_toggle {
+   .categories_menu_toggle {
     padding: 5px 0 7px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categories_seven .categories_menu_toggle {
+   .categories_menu_toggle {
     display: none;
   }
 }
 @media only screen and (max-width: 767px) {
-  .categories_seven .categories_menu_toggle {
+   .categories_menu_toggle {
     display: none;
   }
 }
-.categories_seven .categories_menu_toggle > ul > li > a {
+ .categories_menu_toggle > ul > li > a {
   line-height: 40px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .categories_seven .categories_menu_toggle > ul > li > a {
+   .categories_menu_toggle > ul > li > a {
     line-height: 33px;
     font-size: 13px;
   }
 }
-.categories_seven .categories_title {
+ .categories_title {
   border-radius: 4px 4px 0 0;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .header_bottom7 .colm_none {
-    display: none;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .header_bottom7 .colm_none {
-    display: none;
-  }
 }
 
 /* 02. slider area css here */
@@ -3235,11 +3146,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .banner_style4 {
-    margin-bottom: 30px;
-  }
-}
 
 /* 03. product section css here */
 .tab-content > .tab-pane.active {
