@@ -3496,36 +3496,8 @@ textarea.form-control-lg {
     list-style: none
 }
 
-.page-link {
-    position: relative;
-    display: block;
-    color: #0d6efd;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
-}
 
-@media (prefers-reduced-motion:reduce) {
-    .page-link {
-        transition: none
-    }
-}
 
-.page-link:hover {
-    z-index: 2;
-    color: #0a58ca;
-    background-color: #e9ecef;
-    border-color: #dee2e6
-}
-
-.page-link:focus {
-    z-index: 3;
-    color: #0a58ca;
-    background-color: #e9ecef;
-    outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25)
-}
 
 .page-item:not(:first-child) .page-link {
     margin-left: -1px
@@ -3545,9 +3517,7 @@ textarea.form-control-lg {
     border-color: #dee2e6
 }
 
-.page-link {
-    padding: .375rem .75rem
-}
+
 
 .page-item:first-child .page-link {
     border-top-left-radius: .25rem;
@@ -3623,13 +3593,6 @@ textarea.form-control-lg {
     color: inherit
 }
 
-.alert-link {
-    font-weight: 700
-}
-
-.alert-dismissible {
-    padding-right: 3rem
-}
 
 .alert-dismissible .btn-close {
     position: absolute;
@@ -3638,27 +3601,6 @@ textarea.form-control-lg {
     z-index: 2;
     padding: 1.25rem 1rem
 }
-
-.alert-primary {
-    color: #084298;
-    background-color: #cfe2ff;
-    border-color: #b6d4fe
-}
-
-.alert-primary .alert-link {
-    color: #06357a
-}
-
-.alert-secondary {
-    color: #41464b;
-    background-color: #e2e3e5;
-    border-color: #d3d6d8
-}
-
-.alert-secondary .alert-link {
-    color: #34383c
-}
-
 .alert-success {
     color: #0f5132;
     background-color: #d1e7dd;
@@ -3758,22 +3700,8 @@ textarea.form-control-lg {
     }
 }
 
-.progress-bar-striped {
-    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-    background-size: 1rem 1rem
-}
 
-.progress-bar-animated {
-    -webkit-animation: 1s linear infinite progress-bar-stripes;
-    animation: 1s linear infinite progress-bar-stripes
-}
 
-@media (prefers-reduced-motion:reduce) {
-    .progress-bar-animated {
-        -webkit-animation: none;
-        animation: none
-    }
-}
 
 .list-group {
     display: flex;
@@ -4048,10 +3976,7 @@ textarea.form-control-lg {
     border-color: #084298
 }
 
-.list-group-item-secondary {
-    color: #41464b;
-    background-color: #e2e3e5
-}
+
 
 .list-group-item-secondary.list-group-item-action:focus,.list-group-item-secondary.list-group-item-action:hover {
     color: #41464b;
@@ -4508,12 +4433,6 @@ textarea.form-control-lg {
 }
 
 @media (max-width: 991.98px) {
-    .modal-fullscreen-lg-down {
-        width:100vw;
-        max-width: none;
-        height: 100%;
-        margin: 0
-    }
 
     .modal-fullscreen-lg-down .modal-content {
         height: 100%;
@@ -5079,8 +4998,8 @@ textarea.form-control-lg {
     border-width: .2em
 }
 
-@-webkit-keyframes spinner-grow {
-    0% {
+@-webkit-keyframes body {
+    50% {
         transform: scale(0)
     }
 
@@ -5090,8 +5009,8 @@ textarea.form-control-lg {
     }
 }
 
-@keyframes spinner-grow {
-    0% {
+@keyframes body {
+    50% {
         transform: scale(0)
     }
 
