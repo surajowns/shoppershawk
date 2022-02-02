@@ -635,10 +635,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 
- .main_menu {
+ /* .main_menu {
   margin-left: 0;
   margin-right: 50px;
-}
+} */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
    .main_menu {
     margin-right: 44px;
