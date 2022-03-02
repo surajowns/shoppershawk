@@ -29,6 +29,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Contact No.</th>
                                 <th>Email</th>
                                 <th>Subject</th>
                                 <th>Message</th>
@@ -42,6 +43,7 @@
                         <tr>
                                <td>{{$loop->iteration}}</td>
                                <td>{{$value->name}}</td>
+                               <td>{{$value->contact_no}}</td>
                                <td>{{$value->email}}</td>
                                <td>{{$value->subject}}</td>
                                <td>{{$value->message}}</td>

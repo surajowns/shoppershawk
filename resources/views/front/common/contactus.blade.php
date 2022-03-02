@@ -29,6 +29,12 @@
 
                                 </p>
                                 <p>
+                                    <label>Contact Number </label>
+                                    <input name="contact_no" placeholder="Contact Number *" type="number" id="contact_no" required>
+                                    <span class="text-danger">{{$errors->first('contact_no')}}</span>
+
+                                </p>
+                                <p>
                                     <label> Your Email </label>
                                     <input name="email" placeholder="Email *" type="email" id="email" required>
                                     <span class="text-danger">{{$errors->first('email')}}</span>
@@ -72,7 +78,12 @@ rules: {
    name: {
        required: true,
    },
-
+   contact_no:{
+       required: true,
+       maxlength: 10,
+       minlength: 10,
+       number: true,
+   },
    email: {
        required: true,
        maxlength: 50,
@@ -94,7 +105,14 @@ messages: {
    name: {
        required: "Please enter your name",
    },
-  
+   
+   contact_no: {
+       required: "Please enter valid contact number",
+       number: "Please enter valid contact number",
+       maxlength: "The number should be  equal to 10 digits",
+       maxlength: "The number should be  equal to 10 digits",
+
+   },
    email: {
        required: "Please enter valid email",
        email: "Please enter valid email",

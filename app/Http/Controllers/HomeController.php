@@ -286,6 +286,7 @@ class HomeController extends Controller
               $validator = Validator::make($request->all(), [
                       'email' => 'required',
                       'name'	=> 'required',
+                      'contact_no'	=> 'required',
               ]);
                
 
