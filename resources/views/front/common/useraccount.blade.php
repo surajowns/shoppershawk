@@ -64,7 +64,7 @@
 
 
             .wrapper {
-                background: #c40316;
+                background:#c40316 ;
             }
 
             p {

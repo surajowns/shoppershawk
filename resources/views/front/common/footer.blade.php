@@ -58,12 +58,12 @@
                         <div class="footer_contact">
                             <div class="footer_contact_inner">
                                 <div class="contact_icone">
-                                    <img src="{{url('public/front/img/icon/icon-phone.png')}}" alt="+91-892-021-3321" />
+                                    <img src="{{url('public/front/img/icon/icon-phone.png')}}" alt="+91-971-160-0187" />
                                 </div>
                                 <div class="contact_text">
                                     <p>
                                         Hotline Free 24/7: <br />
-                                        <strong><a href="tel:+918920213321">+91-892-021-3321</a></strong>
+                                        <strong><a href="tel:+919711600187">+91-971-160-0187</a></strong>
                                         <strong><a href="mailto:care@shoppershawk.com;">care@shoppershawk.com</a></strong>
                                     </p>
                                 </div>

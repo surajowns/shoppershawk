@@ -29,7 +29,7 @@
 
                                 </p>
                                 <p>
-                                    <label>Contact Number </label>
+                                    <label>Your Contact Number </label>
                                     <input name="contact_no" placeholder="Contact Number *" type="number" id="contact_no" required>
                                     <span class="text-danger">{{$errors->first('contact_no')}}</span>
 

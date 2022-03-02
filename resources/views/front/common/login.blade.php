@@ -40,7 +40,7 @@
     }
 .form input.btn:hover{
     background-color: #fff;
-    color: #c40316;
+    color:#c40316 ;
 }    
 .loginBtn {
   box-sizing: border-box;
@@ -96,7 +96,7 @@
 /* Google */
 .loginBtn--google {
   /*font-family: "Roboto", Roboto, arial, sans-serif;*/
-  background: #c40316;
+  background:#c40316 ;
 }
 .loginBtn--google:before {
   border-right: #BB3F30 1px solid;
@@ -113,7 +113,7 @@
   border-radius: 5px;
 }
 .tabs {
-  background: #c40316;
+  background:#c40316 ;
   height: 60px;
   margin: 5px auto 0px;
   color: #000;
@@ -176,7 +176,7 @@ input[type="checkbox"] {
   color: #fff;
 }
 .form input.btn {
-  background: #c40316;
+  background:#c40316 ;
   border: none;
 }
 
@@ -217,7 +217,7 @@ input[type="checkbox"] {
                             <div class="header_top_settings text-right">
                                 <ul>
                                     <li><a href="#">Track Your Order</a></li>
-                                    <li>Hotline: <a href="tel:+918920213321">+91-892-021-3321</a></li>
+                                    <li>Hotline: <a href="tel:+919711600187">+91-971-160-0187</a></li>
                                 </ul>
                                 <div class="order_button mt-20">
                                 @if(!Auth::check())
