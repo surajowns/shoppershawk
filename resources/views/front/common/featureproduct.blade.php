@@ -1,6 +1,6 @@
 <?php
   $user=Auth::user();
-  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('type',2)->where('status',1)->orderBy('qty','DESC')->get()->toArray();
+  $product=App\Product::with(['productImage','wishlist'=>function($query) use ($user){$query->select('*')->where('user_id',isset($user)?$user->id:'');}])->where('type',2)->where('status',1)->where('qty','!=',0)->orderBy('qty','DESC')->get()->toArray();
   $cate=array();
   foreach($product as $productdetails){
        $cate[]=$productdetails['supercategory_id'];
