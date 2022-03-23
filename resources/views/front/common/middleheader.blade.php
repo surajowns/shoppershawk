@@ -31,7 +31,7 @@
     <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-4">
             <div class="logo">
-                <a href="{{url('/')}}" title="shoppers hawk"><img id="logoid" src="{{url('public/front/img/logo/logo.png')}}" alt="shoppers hawk" /></a>
+                <a href="{{url('/')}}" title="shoppers hawk"><img id="logoid" src="{{url('public/front/img/logo/logo.png')}}" alt="shoppers hawk"  title="shoppershawk"/></a>
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
