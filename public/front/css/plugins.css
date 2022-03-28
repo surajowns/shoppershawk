@@ -5735,3 +5735,6 @@ a.meanmenu-reveal {
 .ion-ios-arrow-forward:before {
     content: "\f3d1";
 }
+.ion-ios-arrow-back:before {
+    content: "\f3cf";
+}
