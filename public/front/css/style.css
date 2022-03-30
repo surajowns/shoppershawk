@@ -869,7 +869,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   /* text-transform: uppercase; */
   font-weight: 500;
   position: relative;
-  color:#222222 ;
+  /* color:#222222 ; */
 }
 .main_menu nav > ul > li > a img{
  width: 50px;
