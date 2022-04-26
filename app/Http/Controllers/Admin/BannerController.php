@@ -43,7 +43,7 @@ class BannerController extends Controller
             $data=$request->all();
             if($file = $request->hasFile('banner_image')){
                 $file = $request->file('banner_image');
-                $fileName = uniqid('banner')."".$file->getClientOriginalName();
+                $fileName = uniqid('banner')."".str_replace(" ","",$file->getClientOriginalName());
                 $file->move(public_path('/banner/'),$fileName);
                 $data['banner_image'] = $fileName;
             }
@@ -75,13 +75,11 @@ class BannerController extends Controller
                         unlink($removeimage);
                     }
                     $file = $request->file('banner_image');
-                    $fileName = uniqid('banner')."".$file->getClientOriginalName();
+                    $fileName = uniqid('banner')."".str_replace(" ","",$file->getClientOriginalName());
                     $file->move(public_path('/banner/'),$fileName);
                     $data['banner_image'] = $fileName;
                    
-                }
-
-           
+                }           
             $update =BannerModel::where('id',$id)->update($data);
             if($update){
                 return redirect('/admin/banner')->with('success','Data updated successful');
