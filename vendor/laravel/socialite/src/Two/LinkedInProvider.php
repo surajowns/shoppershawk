@@ -2,6 +2,7 @@
 
 namespace Laravel\Socialite\Two;
 
+use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Arr;
 
 class LinkedInProvider extends AbstractProvider implements ProviderInterface
@@ -37,17 +38,6 @@ class LinkedInProvider extends AbstractProvider implements ProviderInterface
     }
 
     /**
-     * Get the POST fields for the token request.
-     *
-     * @param  string  $code
-     * @return array
-     */
-    protected function getTokenFields($code)
-    {
-        return parent::getTokenFields($code) + ['grant_type' => 'authorization_code'];
-    }
-
-    /**
      * {@inheritdoc}
      */
     protected function getUserByToken($token)
@@ -66,12 +56,13 @@ class LinkedInProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getBasicProfile($token)
     {
-        $url = 'https://api.linkedin.com/v2/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))';
-
-        $response = $this->getHttpClient()->get($url, [
-            'headers' => [
+        $response = $this->getHttpClient()->get('https://api.linkedin.com/v2/me', [
+            RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
                 'X-RestLi-Protocol-Version' => '2.0.0',
+            ],
+            RequestOptions::QUERY => [
+                'projection' => '(id,firstName,lastName,profilePicture(displayImage~:playableStreams))',
             ],
         ]);
 
@@ -86,12 +77,14 @@ class LinkedInProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getEmailAddress($token)
     {
-        $url = 'https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))';
-
-        $response = $this->getHttpClient()->get($url, [
-            'headers' => [
+        $response = $this->getHttpClient()->get('https://api.linkedin.com/v2/emailAddress', [
+            RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
                 'X-RestLi-Protocol-Version' => '2.0.0',
+            ],
+            RequestOptions::QUERY => [
+                'q' => 'members',
+                'projection' => '(elements*(handle~))',
             ],
         ]);
 
@@ -108,12 +101,12 @@ class LinkedInProvider extends AbstractProvider implements ProviderInterface
         $lastName = Arr::get($user, 'lastName.localized.'.$preferredLocale);
 
         $images = (array) Arr::get($user, 'profilePicture.displayImage~.elements', []);
-        $avatar = Arr::first(Arr::where($images, function ($image) {
+        $avatar = Arr::first($images, function ($image) {
             return $image['data']['com.linkedin.digitalmedia.mediaartifact.StillImage']['storageSize']['width'] === 100;
-        }));
-        $originalAvatar = Arr::first(Arr::where($images, function ($image) {
+        });
+        $originalAvatar = Arr::first($images, function ($image) {
             return $image['data']['com.linkedin.digitalmedia.mediaartifact.StillImage']['storageSize']['width'] === 800;
-        }));
+        });
 
         return (new User)->setRaw($user)->map([
             'id' => $user['id'],

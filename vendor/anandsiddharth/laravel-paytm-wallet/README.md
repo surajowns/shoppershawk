@@ -5,7 +5,10 @@
 [![License](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/license)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
 [![Join the chat at https://gitter.im/laravel-paytm-wallet/Lobby](https://badges.gitter.im/laravel-paytm-wallet/Lobby.svg)](https://gitter.im/laravel-paytm-wallet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-For Laravel 5.0 and above
+**For Laravel 5.0** use version `^1.0.0` <br />
+**For Laravel 6.0** use version `^1.0.0` <br />
+**For Laravel 7.0** use version `^1.0.0` <br />
+**For Laravel 8.0** use version `^2.0.0` <br />
 
 ## Introduction
 Integrate paytm wallet in your laravel application easily with this package. This package uses official Paytm PHP SDK's.
@@ -118,7 +121,7 @@ class OrderController extends Controller
     {
         $transaction = PaytmWallet::with('receive');
         
-        $response = $transaction->response() // To get raw response as array
+        $response = $transaction->response(); // To get raw response as array
         //Check out response parameters sent by paytm here -> http://paywithpaytm.com/developer/paytm_api_doc?target=interpreting-response-sent-by-paytm
         
         if($transaction->isSuccessful()){
@@ -139,7 +142,7 @@ class OrderController extends Controller
 Make sure the `callback_url` you have mentioned while receiving payment is `post` on your `routes.php` file, Example see below:
 
 ```php
-Route::post('/payment/status', 'OrderController@paymentCallback');
+Route::post('/payment/status', [App\Http\Controllers\PaytmController::class,'paymentCallback'])->name('status');
 ```
 Important: The `callback_url` must not be csrf protected [Check out here to how to do that](https://laracasts.com/discuss/channels/general-discussion/l5-disable-csrf-middleware-on-certain-routes)
 ### Get transaction status/information using order id
@@ -163,7 +166,7 @@ class OrderController extends Controller
         $status->prepare(['order' => $order->id]);
         $status->check();
         
-        $response = $status->response() // To get raw response as array
+        $response = $status->response(); // To get raw response as array
         //Check out response parameters sent by paytm here -> http://paywithpaytm.com/developer/paytm_api_doc?target=txn-status-api-description
         
         if($status->isSuccessful()){
@@ -206,7 +209,7 @@ class OrderController extends Controller
             'transaction' => $order->transaction_id // provide paytm transaction id referring to this order 
         ]);
         $refund->initiate();
-        $response = $refund->response() // To get raw response as array
+        $response = $refund->response(); // To get raw response as array
         
         if($refund->isSuccessful()){
           //Refund Successful
@@ -245,7 +248,7 @@ class OrderController extends Controller
         ]);
         $refundStatus->check();
         
-        $response = $refundStatus->response() // To get raw response as array
+        $response = $refundStatus->response(); // To get raw response as array
         
         if($refundStatus->isSuccessful()){
           //Refund Successful
