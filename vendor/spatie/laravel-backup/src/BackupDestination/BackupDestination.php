@@ -74,6 +74,10 @@ class BackupDestination
 
     public function write(string $file)
     {
+        if (! is_null($this->connectionError)) {
+            throw InvalidBackupDestination::connectionError($this->diskName);
+        }
+
         if (is_null($this->disk)) {
             throw InvalidBackupDestination::diskNotSet($this->backupName);
         }
@@ -82,7 +86,7 @@ class BackupDestination
 
         $handle = fopen($file, 'r+');
 
-        $this->disk->getDriver()->writeStream(
+        $result = $this->disk->getDriver()->writeStream(
             $destination,
             $handle,
             $this->getDiskOptions()
@@ -90,6 +94,10 @@ class BackupDestination
 
         if (is_resource($handle)) {
             fclose($handle);
+        }
+
+        if ($result === false) {
+            throw InvalidBackupDestination::writeError($this->diskName);
         }
     }
 
@@ -104,7 +112,16 @@ class BackupDestination
             return $this->backupCollectionCache;
         }
 
-        $files = is_null($this->disk) ? [] : $this->disk->allFiles($this->backupName);
+        $files = [];
+
+        if (! is_null($this->disk)) {
+            // $this->disk->allFiles() may fail when $this->disk is not reachable
+            // in that case we still want to send the notification
+            try {
+                $files = $this->disk->allFiles($this->backupName);
+            } catch (Exception $ex) {
+            }
+        }
 
         return $this->backupCollectionCache = BackupCollection::createFromFiles(
             $this->disk,
