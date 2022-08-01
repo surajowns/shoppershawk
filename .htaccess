@@ -21,4 +21,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    
+       
+    RewriteCond %{HTTPS} off
+    # RewriteCond %{HTTP_HOST} !^shoppershawk.com$
+    RewriteRule ^(.*)$ https://shoppershawk.com/$1 [R=301,L]
+    
 </IfModule>
