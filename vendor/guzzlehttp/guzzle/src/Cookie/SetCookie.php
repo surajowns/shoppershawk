@@ -227,7 +227,7 @@ class SetCookie
     /**
      * Get whether or not this is a secure cookie
      *
-     * @return bool|null
+     * @return null|bool
      */
     public function getSecure()
     {
@@ -247,7 +247,7 @@ class SetCookie
     /**
      * Get whether or not this is a session cookie
      *
-     * @return bool|null
+     * @return null|bool
      */
     public function getDiscard()
     {
@@ -333,19 +333,12 @@ class SetCookie
      */
     public function matchesDomain($domain)
     {
-        $cookieDomain = $this->getDomain();
-        if (null === $cookieDomain) {
-            return true;
-        }
-
         // Remove the leading '.' as per spec in RFC 6265.
         // http://tools.ietf.org/html/rfc6265#section-5.2.3
-        $cookieDomain = ltrim(strtolower($cookieDomain), '.');
-
-        $domain = strtolower($domain);
+        $cookieDomain = ltrim($this->getDomain(), '.');
 
         // Domain not set or exact match.
-        if ('' === $cookieDomain || $domain === $cookieDomain) {
+        if (!$cookieDomain || !strcasecmp($domain, $cookieDomain)) {
             return true;
         }
 
@@ -384,8 +377,8 @@ class SetCookie
         // Check if any of the invalid characters are present in the cookie name
         if (preg_match(
             '/[\x00-\x20\x22\x28-\x29\x2c\x2f\x3a-\x40\x5c\x7b\x7d\x7f]/',
-            $name
-        )) {
+            $name)
+        ) {
             return 'Cookie name must not contain invalid characters: ASCII '
                 . 'Control characters (0-31;127), space, tab and the '
                 . 'following characters: ()<>@,;:\"/?={}';
