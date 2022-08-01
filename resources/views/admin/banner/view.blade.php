@@ -26,8 +26,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                 
-                <table class="table table-hover table-center mb-0 datatable">
+
+                    <table class="table table-hover table-center mb-0 datatable">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -40,36 +40,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                         @foreach($data as $banner)
-                        <tr>
+                            @foreach($data as $banner)
+                            <tr>
 
-                               <td>{{$loop->iteration}}</td>
-                               <td>{{$banner['title']}}</td>
-                               <td><img class="rounded service-img mr-1"  src="{{url('public/banner/'.$banner['banner_image'])}}" alt="Banner Image"></td>
-                               <td>{{$banner['link']}}</td>
-                               <td>{{$banner['bannertype'][0]['name']}}</td>
-                               <td><a class="text-primary" href="{{url('/admin/update-status/banner/'.$banner['id'].'/'.$banner['status'])}}">{{$banner['status']==1?'Active':'Inactive'}}</a></td>
-                               <td class="text-right">
-                                    <a href="{{url('admin/banner/edit-banner/'.$banner['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-                                    <a class="text-danger btn btn-sm bg-danger-light mr-2" href="{{url('admin/banner/delete-banner/'.$banner['id'])}}"onclick="return confirm('Are you sure you want to delete?');"> <i class="far fa-trash-alt mr-1"></i>Deleted</a></td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$banner['title']}}</td>
+                                <td><img class="rounded service-img mr-1"
+                                        src="{{url('public/banner/'.$banner['banner_image'])}}" alt="Banner Image"></td>
+                                <td title="{{ $banner['link'] }}">{{ substr($banner['link'], 0, 15)}}</td>
+                                <td>{{$banner['bannertype'][0]['name']}}</td>
+                                <td><a class="text-primary"
+                                        href="{{url('/admin/update-status/banner/'.$banner['id'].'/'.$banner['status'])}}">{{$banner['status']==1?'Active':'Inactive'}}</a>
                                 </td>
-                          
-                        </tr>
-                        @endforeach
+                                <td class="text-right">
+                                    <a href="{{url('admin/banner/edit-banner/'.$banner['id'])}}"
+                                        class="btn btn-sm bg-success-light mr-2"> <i class="far fa-edit mr-1"></i>
+                                        Edit</a>
+                                    <a class="text-danger btn btn-sm bg-danger-light mr-2"
+                                        href="{{url('admin/banner/delete-banner/'.$banner['id'])}}"
+                                        onclick="return confirm('Are you sure you want to delete?');"> <i
+                                            class="far fa-trash-alt mr-1"></i>Deleted</a></td>
+                                </td>
+
+                            </tr>
+                            @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="show">
-  <div class="overlay"></div>
-  <div class="img-show">
-    <span>X</span>
-    <img src="">
-  </div>
 </div>
 @endsection
 @section('javascript')

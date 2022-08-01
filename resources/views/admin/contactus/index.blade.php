@@ -38,19 +38,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                   
-                         @foreach($data as $value)
-                        <tr>
-                               <td>{{$loop->iteration}}</td>
-                               <td>{{$value->name}}</td>
-                               <td>{{$value->contact_no}}</td>
-                               <td>{{$value->email}}</td>
-                               <td>{{$value->subject}}</td>
-                               <td>{{$value->message}}</td>
-                               <td>{{date('d M Y h:i A',strtotime($value->created_at))}}</td>
-                               <td><a class="text-danger btn btn-sm bg-danger-light mr-2" href="{{url('admin/contactus/delete/'.$value->id)}}"onclick="return confirm('Are you sure you want to delete?');"> <i class="far fa-trash-alt mr-1"></i>Deleted</a></td>
-                        </tr>
-                        @endforeach
+                            @foreach($data as $value)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$value->name}}</td>
+                                    <td>{{$value->contact_no}}</td>
+                                    <td>{{$value->email}}</td>
+                                    <td title="{{ $value->subject }}">{{ substr($value->subject, 0, 20)}}</td>
+                                    <td title="{{ $value->message }}">{{ substr($value->message, 0, 25)}}</td>
+                                    <td>{{date('d M Y h:i A',strtotime($value->created_at))}}</td>
+                                    <td>
+                                        <a class="text-danger btn btn-sm bg-danger-light mr-2" href="{{url('admin/contactus/delete/'.$value->id)}}"onclick="return confirm('Are you sure you want to delete?');"> 
+                                            <i class="far fa-trash-alt mr-1"></i>Deleted
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -61,12 +64,12 @@
 @endsection
 @section('javascript')
 
-<script src="{{url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('public/admin/assets/js/moment.min.js')}}"></script>
-<script src="{{url('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{url('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-<script src="{{url('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
-<script src="{{url('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
-<script src="{{url('public/admin/assets/js/select2.min.js')}}"></script>
-<script src="{{url('public/admin/assets/js/admin.js')}}"></script>
+<script src="{{asset('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/js/moment.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/js/bootstrapValidator.min.html')}}"></script>
+<script src="{{asset('public/admin/assets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/js/select2.min.js')}}"></script>
+<script src="{{asset('public/admin/assets/js/admin.js')}}"></script>
 @stop

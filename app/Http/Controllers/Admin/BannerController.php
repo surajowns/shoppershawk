@@ -23,7 +23,7 @@ class BannerController extends Controller
      */
     public function index(Request $request)
     {
-        $data= BannerModel::with('bannertype')->get()->toArray();
+        $data= BannerModel::with('bannertype')->get();
         return view('admin.banner.view',compact('data'));
     }
 

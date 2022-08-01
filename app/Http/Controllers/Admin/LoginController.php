@@ -23,7 +23,11 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-       $this->middleware('adminauth');
+        // if(session()->has('logRole') && session()->has('logid')){
+        //     return redirect(route('admin.dashboard'));
+        // }
+
+        $this->middleware('adminauth');
 
     }
     /**
@@ -33,7 +37,9 @@ class LoginController extends Controller
      */
     public function adminLogin(Request $request)
     {
-
+        if(session()->has('logRole') && session()->has('logid')){
+            return redirect('admin/dashboard');
+        }
         return view('admin.index.login');
     }
      
@@ -80,7 +86,7 @@ class LoginController extends Controller
                     // $c_os=LoginLogModel::get_os();
                     // $c_device=LoginLogModel::get_device(); 
                     // $email=$request->email;
-                    LoginLogs($user);
+                    // LoginLogs($user);
                     // $loginlog= new LoginLogModel;
                     // $loginlog->user=$user['name'];
                     // $loginlog->mobile=$user['mobile'];
@@ -121,7 +127,7 @@ class LoginController extends Controller
         $totalorders=Order::get()->count();
         $totalearning=Order::get()->sum('total_amount');
         $orders=Order::with('users')->orderBy('id','DESC')->get()->take(5);
-         $status=Status::get();
+        $status=Status::get();
         return view('admin.index.dashboard',compact('user','categories','brand','products','totalorders','orders','status','totalearning'));
     }
     

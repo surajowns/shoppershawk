@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cbe443d11fb8f46e222b678f1a7ec377a2ee848f',
+        'reference' => '65b2fa3332aab284b9a669ed137533ae3549e9c1',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -463,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cbe443d11fb8f46e222b678f1a7ec377a2ee848f',
+            'reference' => '65b2fa3332aab284b9a669ed137533ae3549e9c1',
             'dev_requirement' => false,
         ),
         'laravel/legacy-factories' => array(
@@ -572,6 +572,15 @@
             'install_path' => __DIR__ . '/../league/oauth1-client',
             'aliases' => array(),
             'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
+            'dev_requirement' => false,
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v2.10.6',
+            'version' => '2.10.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
+            'aliases' => array(),
+            'reference' => '020ad095cf1239138b097d22b584e2701ec3edfb',
             'dev_requirement' => false,
         ),
         'maatwebsite/excel' => array(

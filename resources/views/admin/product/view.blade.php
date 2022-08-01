@@ -52,7 +52,7 @@
 
                                <td>{{$loop->iteration}}</td>
                                <td><img src="{{url('public/product_image/'.$product['product_image'][0]['image'])}}" alt="" width="100" height="100"></td>
-                               <td>{{$product['name']}}</td>
+                               <td title="{{ $product['name'] }}">{{ substr($product['name'], 0, 15) }}</td>
                                <td>{{$product['category']['name']}}</td>
                                <td>{{$product['product_brand']['name']}}</td>
                                <td>{{$product['model_no']}}</td>
