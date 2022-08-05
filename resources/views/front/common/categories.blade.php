@@ -1,6 +1,5 @@
 <?php 
   $categories=App\CategoryModel::where('parent_id',0)->where('status',1)->get();
-
 ?>
 <div class="categories_product_area mb-55">
     <div class="container">

@@ -4,34 +4,26 @@
  
     $cartdetails=Cart::getContent()->toArray(); 
     $user=Auth::user();
-     
-   
+
     $subtotal=0;
-    if(!empty($user)){
-           
-        $cartdetails=App\CartModel::with('products','products.productImage')->where('user_id',$user['id'])->get()->toArray();
+    if(!empty($user)){  
+        $cartdetails=App\CartModel::with('products','products.productImage')->where('user_id',$user['id'])->get();
         $totalincart=count($cartdetails);
         foreach($cartdetails as $data){
             $subtotal=$subtotal+$data['quantity']*$data['price'];
         }
-
-    
-    }
-
-    if(!empty($user)){
         $wishlist=App\Wishlist::where('user_id',$user->id)->get()->count();
-
     }else{
         $wishlist=0;
     }
-    
-
 ?>
 <div class="header_middle sticky-header">
     <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-4">
             <div class="logo">
-                <a href="{{url('/')}}" title="shoppers hawk"><img id="logoid" src="{{url('public/front/img/logo/logo.png')}}" alt="shoppers hawk"  title="shoppershawk"/></a>
+                <a href="{{url('/')}}" title="shoppers hawk">
+                    <img id="logoid" src="{{url('public/front/img/logo/logo.png')}}" alt="shoppers hawk" />
+                </a>
             </div>
         </div>
         <div class="col-lg-7 col-md-12">

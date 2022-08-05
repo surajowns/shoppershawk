@@ -139,7 +139,10 @@ class CommonController extends Controller
 
     public function Users(Request $request)
     {
-        $data= User::with('roles','referrals')->where('role',2)->orderBy('id','DESC')->get()->toArray();
+        $data= User::with('roles','referrals')
+        ->where('role',2)
+        ->orderBy('id','DESC')
+        ->get();
         return view('admin.users.view',compact('data'));
     }
 

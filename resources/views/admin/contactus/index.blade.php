@@ -11,7 +11,7 @@
             <!-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                 <i class="fas fa-filter"></i>
             </a> -->
-            <!-- <a href="{{url('admin/category/add-category')}}" class="btn btn-primary add-button ml-3"> -->
+            {{-- <!-- <a href="{{url('admin/category/add-category')}}" class="btn btn-primary add-button ml-3"> --> --}}
                 <!-- <i class="fas fa-plus"></i> -->
            <!-- </a> -->
         </div>

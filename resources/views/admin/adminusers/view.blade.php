@@ -48,7 +48,9 @@
                                <td>{{$user['email']}}</td>
                                <td>{{$user['location']}}</td>
                                <td>{{$user['roles']['name']}}</td>
-                               <td><img class="rounded service-img mr-1" src="{{url('public/admin/images/'.$user['profile_image'])}}" alt="profile"></td>
+                               <td>
+                                    <img class="rounded mr-1" src="{{url('public/admin/images/'.$user['profile_image'])}}" alt="profile" width="80px">
+                               </td>
                                <td><a class="text-primary" href="{{url('/admin/update-status/users/'.$user['id'].'/'.$user['status'])}}">{{$user['status']==1?'Active':'Inactive'}}</a></td>
                                <td class="text-right">
                                     <a href="{{url('admin/admin_users/edit-user/'.$user['id'])}}" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>

@@ -91,7 +91,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
-                        <p>Copyright &copy; 2021 <a href="https://www.besthawk.com/" target="_blank">Best Hawk Infosystems Pvt. Ltd.</a> All Right Reserved.</p>
+                        <p>Copyright &copy; <span id="year"></span> <a href="https://www.besthawk.com/" target="_blank">Best Hawk Infosystems Pvt. Ltd.</a> All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -99,6 +99,9 @@
                         <img src="{{url('public/front/img/icon/payment.png')}}" alt="payment options" />
                     </div>
                 </div>
+                <script>
+                    document.getElementById("year").innerHTML = new Date().getFullYear();
+                </script>
             </div>
         </div>
     </div>

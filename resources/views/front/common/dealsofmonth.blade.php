@@ -4,10 +4,8 @@
   $cate=array();
   foreach($product as $productdetails){
        $cate[]=$productdetails['supercategory_id'];
-    
   }
   $categories=App\CategoryModel::whereIn('id',$cate)->get();
-  
 ?>
 <div class="product_area deals_product">
     <div class="container">

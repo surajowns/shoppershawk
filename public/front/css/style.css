@@ -183,6 +183,34 @@ figure {
     width: 100%;
   }
 }
+/* Public Home Page Slide */
+/* @media screen and (max-width: 1000px) {
+  .slider_c_three{
+    margin-bottom: -100px;
+  }
+} */
+@media only screen and (max-width: 767px) {
+  .slider_c_three {
+    margin-bottom: -50px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .slider_c_three {
+    margin-bottom: -100px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .slider_c_three {
+    margin-bottom: -140px;
+  }
+}
+@media only screen and (min-width:1003px) {
+  .slider_c_three {
+    margin-bottom: -190px;
+    left: 0;
+  }
+}
+
 .capitalize {
   text-transform: capitalize;
 }

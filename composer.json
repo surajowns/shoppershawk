@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.1",
         "anandsiddharth/laravel-paytm-wallet": "*",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "darryldecode/cart": "~4.0",
@@ -33,6 +33,7 @@
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",

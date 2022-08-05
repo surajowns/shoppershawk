@@ -21,6 +21,11 @@
       #DataTables_Table_0_filter{
       text-align: right;
       }
+      .tbl-wdth{
+         width: 345px !important; 
+         overflow: auto;
+         display: flex;
+      }
    </style>
    <?php 
       // $notification=App\NotificationModel::with('users')
@@ -32,9 +37,11 @@
          <!-- Header -->
             <livewire:admin.notification />
          <!-- /Header -->
+
          <!-- Sidebar -->
          @include('admin.partials.sidebar')
          <!-- /Sidebar -->
+
          <div class="page-wrapper">
             <div class="content container-fluid">
                @include('message')
@@ -54,6 +61,7 @@
 
             </div>
          </div>
+         
       </div>
       <!-- jQuery -->
       <script src="{{asset('public/admin/assets/js/jquery-3.5.0.min.js')}}"></script>
@@ -63,10 +71,11 @@
       <!-- Slimscroll JS -->
       <script src="{{asset('public/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
       <!-- Custom JS -->
-	  @if(Request::segment(2)=='dashboard' or substr(Request::segment(3),0,3)=='add'  or Request::segment(2)=='notification' )
-      <script src="{{asset('public/admin/assets/js/admin.js')}}"></script>
-	  @endif
+      @if(Request::segment(2)=='dashboard' or substr(Request::segment(3),0,3)=='add' or Request::segment(2)=='notification' )
+         <script src="{{asset('public/admin/assets/js/admin.js')}}"></script>
+      @endif
       <script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+
       @yield('javascript')
       <script> 
          // $(document).ready(function () { 
@@ -78,14 +87,11 @@
          // alert('dfdfd');
              }); 
          // }); 
-      </script> 
-      <script>
+         
          CKEDITOR.replace('specification' );
-      </script>
-      <script>
+         
          CKEDITOR.replace('comment' );
-      </script>
-      <script>
+         
          CKEDITOR.replace('description' );
       </script>
       @livewireScripts

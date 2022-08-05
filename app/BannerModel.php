@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class BannerModel extends Model
 {
-    
-    protected $fillable=['title','banner_image','type','link','status','created_at'];
-    protected $table='banner';
+    protected $fillable = [
+        'title',
+        'banner_image',
+        'type',
+        'link',
+        'status',
+    ];
+    protected $table = 'banner';
+    // public $timestamps = false;
     
     public function bannertype()
     {
